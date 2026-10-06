@@ -118,3 +118,17 @@
                 fillBtn.classList.replace('bg-gray-200', 'bg-teal-500');
                 fillBtn.classList.replace('text-gray-600', 'text-white');
                 choiceBtn.
+                    
+        // 監聽 Enter 鍵送出填充題
+        document.getElementById('fill-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !this.disabled) {
+                checkFillAnswer();
+            }
+        });
+
+        // 初始化
+        generateChoiceQuestion();
+        generateFillQuestion();
+    </script>
+</body>
+</html>
