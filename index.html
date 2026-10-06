@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見藥用植物科名 測驗</title>
+    <!-- 使用 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 font-sans">
+    <div class="max-w-2xl mx-auto p-4 py-10">
+        <!-- 標題區塊 -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-teal-600 mb-2">單元一：常見藥用植物科名</h1>
+            <p class="text-gray-500">幫助你記憶英文單詞與對應中文</p>
+        </div>
+
+        <!-- 頁籤切換 -->
+        <div class="flex justify-center mb-6 space-x-2">
+            <button id="tab-choice" class="px-6 py-2 bg-teal-500 text-white rounded-lg font-semibold shadow hover:bg-teal-600 transition" onclick="switchTab('choice')">選擇題</button>
+            <button id="tab-fill" class="px-6 py-2 bg-gray-200 text-gray-600 rounded-lg font-semibold shadow hover:bg-gray-300 transition" onclick="switchTab('fill')">填充題</button>
+        </div>
+
+        <!-- 選擇題區塊 -->
+        <div id="choice-section" class="bg-white rounded-xl shadow-lg p-6 fade-in">
+            <div class="text-center mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">選擇題</span>
+                <h2 id="choice-question" class="text-2xl font-bold mt-2 min-h-[4rem] flex items-center justify-center">載入中...</h2>
+            </div>
+            
+            <div id="choice-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- 選項按鈕會透過 JS 生成 -->
+            </div>
+
+            <div id="choice-feedback" class="mt-6 text-center hidden">
+                <p id="choice-result-text" class="text-lg font-bold mb-4"></p>
+                <button onclick="generateChoiceQuestion()" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition shadow">下一題</button>
+            </div>
+        </div>
+
+        <!-- 填充題區塊 -->
+        <div id="fill-section" class="bg-white rounded-xl shadow-lg p-6 fade-in hidden">
+            <div class="text-center mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">填充題</span>
+                <h2 id="fill-question" class="text-2xl font-bold mt-2 min-h-[4rem] flex items-center justify-center">載入中...</h2>
+            </div>
+
+            <div class="flex flex-col items-center gap-4">
+                <input type="text" id="fill-input" placeholder="請輸入對應的答案..." class="w-full max-w-md px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition text-center text-lg">
+                <button id="fill-submit" onclick="checkFillAnswer()" class="px-6 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition shadow w-full max-w-md font-bold">送出答案</button>
+            </div>
+
+            <div id="fill-feedback" class="mt-6 text-center hidden flex-col items-center gap-4">
+                <p id="fill-result-text" class="text-lg font-bold"></p>
+                <div id="fill-correct-answer" class="text-gray-700 bg-gray-100 px-4 py-2 rounded-lg w-full max-w-md"></div>
+                <button onclick="generateFillQuestion()" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition shadow">下一題</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 題庫資料
+        const plantData = [
+            { zh: '菊科', en: ['Asteraceae', 'Compositae'] },
+            { zh: '五加科', en: ['Araliaceae'] },
+            { zh: '毛茛科', en: ['Ranunculaceae'] },
+            { zh: '馬兜鈴科', en: ['Aristolochiaceae'] },
+            { zh: '豆科', en: ['Fabaceae', 'Leguminosae'] },
+            { zh: '葫蘆科', en: ['Cucurbitaceae'] },
+            { zh: '唇形科', en: ['Lamiaceae', 'Labiatae'] },
+            { zh: '蘭科', en: ['Orchidaceae'] },
+            { zh: '繖形科', en: ['Apiaceae', 'Umbelliferae'] },
+            { zh: '木蘭科', en: ['Magnoliaceae'] },
+            { zh: '茄科', en: ['Solanaceae'] },
+            { zh: '紫葳科', en: ['Bignoniaceae'] },
+            { zh: '十字花科', en: ['Brassicaceae', 'Cruciferae'] },
+            { zh: '夾竹桃科', en: ['Apocynaceae'] },
+            { zh: '百合科', en: ['Liliaceae'] },
+            { zh: '薔薇科', en: ['Rosaceae'] },
+            { zh: '薑科', en: ['Zingiberaceae'] },
+            { zh: '石竹科', en: ['Caryophyllaceae'] },
+            { zh: '芸香科', en: ['Rutaceae'] },
+            { zh: '大戟科', en: ['Euphorbiaceae'] }
+        ];
+
+        let currentChoiceQuestion = null;
+        let currentFillQuestion = null;
+
+        // 工具函數：取得格式化的英文名稱（用 / 連接）
+        function getEnString(enArray) {
+            return enArray.join(' / ');
+        }
+
+        // 切換頁籤
+        function switchTab(tab) {
+            const choiceBtn = document.getElementById('tab-choice');
+            const fillBtn = document.getElementById('tab-fill');
+            const choiceSec = document.getElementById('choice-section');
+            const fillSec = document.getElementById('fill-section');
+
+            if (tab === 'choice') {
+                choiceBtn.classList.replace('bg-gray-200', 'bg-teal-500');
+                choiceBtn.classList.replace('text-gray-600', 'text-white');
+                fillBtn.classList.replace('bg-teal-500', 'bg-gray-200');
+                fillBtn.classList.replace('text-white', 'text-gray-600');
+                choiceSec.classList.remove('hidden');
+                fillSec.classList.add('hidden');
+            } else {
+                fillBtn.classList.replace('bg-gray-200', 'bg-teal-500');
+                fillBtn.classList.replace('text-gray-600', 'text-white');
+                choiceBtn.classList.replace('bg-teal-500', 'bg-gray-200');
+                choiceBtn.classList.replace('text-white', 'text-gray-600');
+                fillSec.classList.remove('hidden');
+                choiceSec.classList.add('hidden');
+                // 讓輸入框自動獲得焦點
+                setTimeout(() => document.getElementById('fill-input').focus(), 100);
+            }
+        }
+
+        // ================= 選擇題邏輯 =================
+
+        function generateChoiceQuestion() {
+            // 隱藏回饋、清空選項
+            document.getElementById('choice-feedback').classList.add('hidden');
+            const optionsContainer = document.getElementById('choice-options');
+            optionsContainer.innerHTML = '';
+            
+            // 隨機選一個題目
+            const targetIndex = Math.floor(Math.random() * plantData.length);
+            currentChoiceQuestion = plantData[targetIndex];
+            
+            // 決定是 英文問中文(0) 還是 中文問英文(1)
+            currentChoiceQuestion.isAskEn = Math.random() > 0.5;
+
+            // 設置題目文字
+            const qEl = document.getElementById('choice-question');
+            if (currentChoiceQuestion.isAskEn) {
+                qEl.textContent = getEnString(currentChoiceQuestion.en);
+            } else {
+                qEl.textContent = currentChoiceQuestion.zh;
+            }
+
+            // 準備選項 (1對 + 3錯)
+            let options = [currentChoiceQuestion];
+            while (options.length < 4) {
+                let randomOption = plantData[Math.floor(Math.random() * plantData.length)];
+                if (!options.includes(randomOption)) {
+                    options.push(randomOption);
+                }
+            }
+            // 打亂選項順序
+            options.sort(() => Math.random() - 0.5);
+
+            // 生成選項按鈕
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full p-4 border-2 border-gray-200 rounded-lg text-lg font-medium text-gray-700 hover:bg-gray-50 transition transform hover:-translate-y-1 active:translate-y-0';
+                
+                if (currentChoiceQuestion.isAskEn) {
+                    btn.textContent = opt.zh;
+                } else {
+                    btn.textContent = getEnString(opt.en);
+                }
+                
+                // 儲存完整資料以供比對與顯示
+                btn.dataset.zh = opt.zh;
+                btn.dataset.en = getEnString(opt.en);
+
+                btn.onclick = () => handleChoiceAnswer(btn, opt);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleChoiceAnswer(selectedBtn, selectedData) {
+            // 禁用所有按鈕
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-50', 'hover:-translate-y-1', 'active:translate-y-0');
+            });
+
+            const isCorrect = (selectedData.zh === currentChoiceQuestion.zh);
+            const feedbackText = document.getElementById('choice-result-text');
+
+            if (isCorrect) {
+                feedbackText.textContent = "✅ 答對了！";
+                feedbackText.className = "text-lg font-bold text-green-600 mb-4";
+            } else {
+                feedbackText.textContent = "❌ 答錯了！";
+                feedbackText.className = "text-lg font-bold text-red-600 mb-4";
+            }
+
+            // 標示顏色並顯示選項詳細資訊 (符合需求 4：答題後顯示各選項對應的正確答案)
+            allBtns.forEach(btn => {
+                const btnZh = btn.dataset.zh;
+                const btnEn = btn.dataset.en;
+                
+                // 將每個按鈕文字改為「中文 - 英文」的完整對照
+                btn.textContent = `${btnZh} (${btnEn})`;
+                btn.classList.remove('border-gray-200', 'text-gray-700');
+
+                if (btnZh === currentChoiceQuestion.zh) {
+                    // 正確選項標示淺綠色
+                    btn.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
+                } else if (btn === selectedBtn && !isCorrect) {
+                    // 選錯的選項標示淺紅色
+                    btn.classList.add('bg-red-100', 'border-red-400', 'text-red-800');
+                } else {
+                    btn.classList.add('bg-gray-100', 'border-gray-300', 'text-gray-500');
+                }
+            });
+
+            document.getElementById('choice-feedback').classList.remove('hidden');
+        }
+
+
+        // ================= 填充題邏輯 =================
+
+        function generateFillQuestion() {
+            document.getElementById('fill-feedback').classList.add('hidden');
+            const inputEl = document.getElementById('fill-input');
+            const submitBtn = document.getElementById('fill-submit');
+            
+            inputEl.value = '';
+            inputEl.disabled = false;
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('hidden');
+
+            const targetIndex = Math.floor(Math.random() * plantData.length);
+            currentFillQuestion = plantData[targetIndex];
+            
+            // 決定是 英文問中文(0) 還是 中文問英文(1)
+            currentFillQuestion.isAskEn = Math.random() > 0.5;
+
+            const qEl = document.getElementById('fill-question');
+            if (currentFillQuestion.isAskEn) {
+                qEl.textContent = getEnString(currentFillQuestion.en);
+                inputEl.placeholder = "請輸入對應的「中文」科名...";
+            } else {
+                qEl.textContent = currentFillQuestion.zh;
+                inputEl.placeholder = "請輸入對應的「英文」科名...";
+            }
+            
+            setTimeout(() => inputEl.focus(), 50);
+        }
+
+        function checkFillAnswer() {
+            const inputEl = document.getElementById('fill-input');
+            const userAnswer = inputEl.value.trim().toLowerCase();
+            
+            if (!userAnswer) return; // 沒輸入不理會
+
+            inputEl.disabled = true;
+            document.getElementById('fill-submit').classList.add('hidden');
+
+            let isCorrect = false;
+            let correctAnswerDisplay = "";
+
+            if (currentFillQuestion.isAskEn) {
+                // 題目是英文，需要回答中文
+                isCorrect = (userAnswer === currentFillQuestion.zh);
+                correctAnswerDisplay = currentFillQuestion.zh;
+            } else {
+                // 題目是中文，需要回答英文 (兩種皆可，不分大小寫)
+                isCorrect = currentFillQuestion.en.some(enName => enName.toLowerCase() === userAnswer);
+                correctAnswerDisplay = getEnString(currentFillQuestion.en);
+            }
+
+            const feedbackText = document.getElementById('fill-result-text');
+            const correctAnsDiv = document.getElementById('fill-correct-answer');
+
+            if (isCorrect) {
+                feedbackText.textContent = "✅ 答對了！";
+                feedbackText.className = "text-lg font-bold text-green-600";
+                inputEl.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
+            } else {
+                feedbackText.textContent = "❌ 答錯了！";
+                feedbackText.className = "text-lg font-bold text-red-600";
+                inputEl.classList.add('bg-red-100', 'border-red-400', 'text-red-800');
+            }
+
+            correctAnsDiv.innerHTML = `正確解答：<br><span class="font-bold text-teal-700 text-xl">${currentFillQuestion.zh} <br> ${getEnString(currentFillQuestion.en)}</span>`;
+            
+            document.getElementById('fill-feedback').classList.remove('hidden');
+            document.getElementById('fill-feedback').classList.add('flex');
+        }
+
+        // 監聽 Enter 鍵送出填充題
+        document.getElementById('fill-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !this.disabled) {
+                checkFillAnswer();
+            }
+        });
+
+        // 初始化
+        generateChoiceQuestion();
+        generateFillQuestion();
+    </script>
+</body>
+</html>
