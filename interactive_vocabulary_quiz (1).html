@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見藥用植物科名測驗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .correct-bg {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724 !important;
+        }
+        .wrong-bg {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24 !important;
+        }
+        .neutral-bg {
+            background-color: #e2e8f0 !important;
+            color: #4a5568 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 md:p-8 flex flex-col">
+        <header class="mb-6 text-center">
+            <h1 class="text-2xl font-bold text-gray-800">單元一：常見藥用植物科名</h1>
+            <p class="text-gray-500 mt-2 text-sm mb-4">請選擇測驗模式</p>
+            
+            <!-- Tabs -->
+            <div class="flex bg-gray-100 p-1 rounded-xl">
+                <button id="tab-mcq" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all shadow-sm bg-white text-indigo-700">
+                    選擇題
+                </button>
+                <button id="tab-fitb" class="flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-all text-gray-500 hover:text-gray-700 hover:bg-gray-200">
+                    填充題
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow flex flex-col">
+            <!-- Shared Question Display -->
+            <div class="text-center mb-6 min-h-[4rem] flex items-center justify-center border-b pb-4">
+                <h2 id="question-text" class="text-xl md:text-2xl font-semibold text-indigo-700"></h2>
+            </div>
+
+            <!-- MCQ Section -->
+            <div id="mcq-section" class="flex flex-col gap-3">
+                <!-- Options injected by JS -->
+            </div>
+
+            <!-- FITB Section -->
+            <div id="fitb-section" class="hidden flex-col gap-4">
+                <div>
+                    <input type="text" id="fitb-input" class="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:outline-none transition-all text-center text-lg" placeholder="請輸入答案..." autocomplete="off">
+                </div>
+                <button id="fitb-submit" class="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-bold py-3 rounded-xl transition duration-200">
+                    送出答案
+                </button>
+                
+                <!-- FITB Feedback -->
+                <div id="fitb-feedback" class="hidden flex-col items-center p-4 rounded-xl mt-2 text-center">
+                    <span id="fitb-result-text" class="text-lg font-bold mb-1"></span>
+                    <span id="fitb-full-translation" class="text-sm font-medium"></span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-8 h-12">
+            <button id="next-btn" class="hidden w-full h-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition duration-200 shadow-md flex items-center justify-center text-lg">
+                下一題 (Next)
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        const vocabulary = [
+            { zh: "菊科", en: ["Asteraceae", "Compositae"] },
+            { zh: "五加科", en: ["Araliaceae"] },
+            { zh: "毛茛科", en: ["Ranunculaceae"] },
+            { zh: "馬兜鈴科", en: ["Aristolochiaceae"] },
+            { zh: "豆科", en: ["Fabaceae", "Leguminosae"] },
+            { zh: "葫蘆科", en: ["Cucurbitaceae"] },
+            { zh: "唇形科", en: ["Lamiaceae", "Labiatae"] },
+            { zh: "蘭科", en: ["Orchidaceae"] },
+            { zh: "繖形科", en: ["Apiaceae", "Umbelliferae"] },
+            { zh: "木蘭科", en: ["Magnoliaceae"] },
+            { zh: "茄科", en: ["Solanaceae"] },
+            { zh: "紫葳科", en: ["Bignoniaceae"] },
+            { zh: "十字花科", en: ["Brassicaceae", "Cruciferae"] },
+            { zh: "夾竹桃科", en: ["Apocynaceae"] },
+            { zh: "百合科", en: ["Liliaceae"] },
+            { zh: "薔薇科", en: ["Rosaceae"] },
+            { zh: "薑科", en: ["Zingiberaceae"] },
+            { zh: "石竹科", en: ["Caryophyllaceae"] },
+            { zh: "芸香科", en: ["Rutaceae"] },
+            { zh: "大戟科", en: ["Euphorbiaceae"] }
+        ];
+
+        let currentMode = 'mcq'; // 'mcq' or 'fitb'
+        let currentQuestion = null;
+        let isAnswered = false;
+        let isEnToZh = true;
+        let mcqOptionsData = [];
+
+        // DOM Elements
+        const tabMcq = document.getElementById('tab-mcq');
+        const tabFitb = document.getElementById('tab-fitb');
+        const mcqSection = document.getElementById('mcq-section');
+        const fitbSection = document.getElementById('fitb-section');
+        const questionText = document.getElementById('question-text');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const fitbInput = document.getElementById('fitb-input');
+        const fitbSubmit = document.getElementById('fitb-submit');
+        const fitbFeedback = document.getElementById('fitb-feedback');
+        const fitbResultText = document.getElementById('fitb-result-text');
+        const fitbFullTranslation = document.getElementById('fitb-full-translation');
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function formatEn(enArray) {
+            return enArray.join(" / ");
+        }
+
+        function switchTab(mode) {
+            currentMode = mode;
+            if (mode === 'mcq') {
+                tabMcq.classList.replace('text-gray-500', 'text-indigo-700');
+                tabMcq.classList.replace('hover:bg-gray-200', 'bg-white');
+                tabMcq.classList.add('shadow-sm');
+                
+                tabFitb.classList.replace('text-indigo-700', 'text-gray-500');
+                tabFitb.classList.replace('bg-white', 'hover:bg-gray-200');
+                tabFitb.classList.remove('shadow-sm');
+
+                mcqSection.classList.remove('hidden');
+                mcqSection.classList.add('flex');
+                fitbSection.classList.add('hidden');
+                fitbSection.classList.remove('flex');
+            } else {
+                tabFitb.classList.replace('text-gray-500', 'text-indigo-700');
+                tabFitb.classList.replace('hover:bg-gray-200', 'bg-white');
+                tabFitb.classList.add('shadow-sm');
+                
+                tabMcq.classList.replace('text-indigo-700', 'text-gray-500');
+                tabMcq.classList.replace('bg-white', 'hover:bg-gray-200');
+                tabMcq.classList.remove('shadow-sm');
+
+                fitbSection.classList.remove('hidden');
+                fitbSection.classList.add('flex');
+                mcqSection.classList.add('hidden');
+                mcqSection.classList.remove('flex');
+            }
+            loadNextQuestion();
+        }
+
+        function loadNextQuestion() {
+            isAnswered = false;
+            nextBtn.classList.add('hidden');
+            isEnToZh = Math.random() < 0.5;
+            
+            const correctIndex = getRandomInt(vocabulary.length);
+            currentQuestion = vocabulary[correctIndex];
+
+            // Set question display
+            questionText.textContent = isEnToZh ? formatEn(currentQuestion.en) : currentQuestion.zh;
+
+            if (currentMode === 'mcq') {
+                setupMCQ(correctIndex);
+            } else {
+                setupFITB();
+            }
+        }
+
+        function setupMCQ(correctIndex) {
+            mcqSection.innerHTML = '';
+            
+            const incorrectIndices = new Set();
+            while(incorrectIndices.size < 3) {
+                const randomIdx = getRandomInt(vocabulary.length);
+                if (randomIdx !== correctIndex) {
+                    incorrectIndices.add(randomIdx);
+                }
+            }
+
+            mcqOptionsData = [currentQuestion];
+            incorrectIndices.forEach(idx => mcqOptionsData.push(vocabulary[idx]));
+            shuffleArray(mcqOptionsData);
+
+            mcqOptionsData.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-gray-200 text-gray-700 font-medium hover:border-indigo-300 hover:bg-indigo-50 transition duration-200 focus:outline-none";
+                btn.textContent = isEnToZh ? item.zh : formatEn(item.en);
+                btn.onclick = () => handleMCQClick(btn, item);
+                mcqSection.appendChild(btn);
+            });
+        }
+
+        function handleMCQClick(clickedBtn, selectedItem) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const isCorrect = (selectedItem === currentQuestion);
+            const allButtons = mcqSection.querySelectorAll('button');
+
+            allButtons.forEach((btn, index) => {
+                const item = mcqOptionsData[index];
+                btn.classList.remove('hover:border-indigo-300', 'hover:bg-indigo-50', 'cursor-pointer');
+                btn.classList.add('cursor-default');
+                btn.textContent = `${item.zh} - ${formatEn(item.en)}`; // Show full translation
+
+                if (item === currentQuestion) {
+                    btn.classList.add('correct-bg');
+                } else if (btn === clickedBtn && !isCorrect) {
+                    btn.classList.add('wrong-bg');
+                } else {
+                    btn.classList.add('neutral-bg', 'opacity-60');
+                }
+            });
+
+            nextBtn.classList.remove('hidden');
+        }
+
+        function setupFITB() {
+            fitbInput.value = '';
+            fitbInput.disabled = false;
+            fitbSubmit.disabled = false;
+            fitbFeedback.classList.add('hidden');
+            fitbFeedback.classList.remove('correct-bg', 'wrong-bg');
+            fitbInput.focus();
+        }
+
+        function handleFITBSubmit() {
+            if (isAnswered) return;
+            const userInput = fitbInput.value.trim();
+            if (!userInput) return; // Ignore empty submissions
+
+            isAnswered = true;
+            fitbInput.disabled = true;
+            fitbSubmit.disabled = true;
+
+            let isCorrect = false;
+
+            if (isEnToZh) {
+                // User must type Chinese
+                isCorrect = (userInput === currentQuestion.zh);
+            } else {
+                // User must type English (any of the valid names, case-insensitive)
+                const userLower = userInput.toLowerCase();
+                isCorrect = currentQuestion.en.some(name => name.toLowerCase() === userLower);
+            }
+
+            // Display Feedback
+            fitbFeedback.classList.remove('hidden');
+            if (isCorrect) {
+                fitbFeedback.classList.add('correct-bg');
+                fitbResultText.textContent = "答對了！";
+            } else {
+                fitbFeedback.classList.add('wrong-bg');
+                fitbResultText.textContent = "答錯了！";
+            }
+            
+            fitbFullTranslation.textContent = `正解：${currentQuestion.zh} - ${formatEn(currentQuestion.en)}`;
+            nextBtn.classList.remove('hidden');
+        }
+
+        tabMcq.addEventListener('click', () => switchTab('mcq'));
+        tabFitb.addEventListener('click', () => switchTab('fitb'));
+        nextBtn.addEventListener('click', loadNextQuestion);
+        fitbSubmit.addEventListener('click', handleFITBSubmit);
+        
+        // Allow pressing Enter to submit FITB
+        fitbInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleFITBSubmit();
+            }
+        });
+
+        // Initialize the app
+        window.onload = loadNextQuestion;
+    </script>
+</body>
+</html>
