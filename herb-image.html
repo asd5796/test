@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單元二：中藥材圖片辨識</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 font-sans">
+    <div class="max-w-2xl mx-auto p-4 py-10">
+        
+        <!-- 返回首頁按鈕 -->
+        <a href="index.html" class="inline-block mb-6 text-teal-600 hover:text-teal-800 font-semibold flex items-center gap-1">
+            <span>&larr; 返回目錄</span>
+        </a>
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600 mb-2">單元二：中藥材圖片辨識</h1>
+            <p class="text-gray-500">觀察圖片並選出正確的中藥材名稱</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <!-- 圖片顯示區 -->
+            <div class="flex justify-center mb-6">
+                <img id="quiz-image" src="" alt="載入中..." class="max-w-full h-64 object-cover rounded-lg shadow-md border border-gray-200">
+            </div>
+
+            <!-- 選項按鈕區 (4選1) -->
+            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md mx-auto">
+                <!-- 選項會透過 JavaScript 自動生成 -->
+            </div>
+
+            <!-- 答題回饋區 -->
+            <div id="feedback-section" class="mt-8 text-center hidden flex-col items-center gap-4">
+                <p id="result-text" class="text-xl font-bold"></p>
+                <button onclick="generateQuestion()" class="px-8 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition shadow font-bold text-lg">下一題</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. 圖片題庫（有對應圖片的題目）
+        // 請確保 imgPath 的路徑與您上傳到 GitHub 的檔名一致
+        const imageQuizData = [
+            { zh: '熊膽', imgPath: 'images/Medv_jelch.jpg' },
+            { zh: '朱砂', imgPath: 'images/cinnabar.jpg' },
+            { zh: '石膏', imgPath: 'images/gypsum.jpg' },            
+            { zh: '龍骨', imgPath: 'images/longgu.jpg' },
+            { zh: '阿膠', imgPath: 'images/Donkey-hide_gelatin.jpg' },
+            { zh: '地黃', imgPath: 'images/Rehmannia_Root.jpg' },
+            { zh: '陳皮', imgPath: 'images/Dried_Tangerine_Peel.jpg' },
+            { zh: '丹蔘', imgPath: 'images/Salvia.jpg' },
+            { zh: '澤瀉', imgPath: 'images/Alisma.jpg' },
+            { zh: '黃耆', imgPath: 'images/Astragalus_Root.jpg' },
+            { zh: '蛇床子', imgPath: 'images/Cnidium_Fruit.jpg' },
+            { zh: '五味子', imgPath: 'images/Schisandra_Fruit.jpg' },
+            { zh: '杜仲', imgPath: 'images/Eucommia_Bark.jpg' },
+            { zh: '黃柏', imgPath: 'images/Phelloendron_Bark.jpg' },
+            { zh: '石斛', imgPath: 'images/Dendrobium.jpg' },
+            { zh: '黃連', imgPath: 'images/Coptis_Rhizome.jpg' },
+            { zh: '地龍', imgPath: 'images/earthworm.jpg' },
+            { zh: '鹿茸', imgPath: 'images/sliced_antler.jpg' },
+            { zh: '川芎', imgPath: 'images/chuanxiong.jpg' },
+            // 您可以繼續新增有圖片的項目...
+        ];
+
+        // 2. 所有選項清單（包含有圖片與沒圖片的，用來當作干擾項）
+        const extraHerbNames = [
+            '當歸', '枸杞', '黃耆', '人參', '甘草', '白朮', '茯苓', '川芎', '白芍', '熟地黃',
+            '桂枝', '麻黃', '陳皮', '半夏', '麥門冬', '五味子', '柴胡', '黃芩', '連翹', '金銀花',
+            '防風', '荊芥', '薄荷', '紫蘇', '葛根', '杜仲', '牛膝', '山藥', '山茱萸', '牡丹皮'
+        ];
+
+      // 3. 程式自動將上面兩者合併，並過濾掉不小心重複輸入的名稱
+        const allHerbNames = [...new Set([
+            ...imageQuizData.map(item => item.zh), 
+            ...extraHerbNames
+        ])];
+      
+        let currentQuestion = null;
+
+        function generateQuestion() {
+            // 隱藏回饋區、清空選項
+            document.getElementById('feedback-section').classList.add('hidden');
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            // 隨機從有圖片的題庫中抽出一題當作「正確答案」
+            const targetIndex = Math.floor(Math.random() * imageQuizData.length);
+            currentQuestion = imageQuizData[targetIndex];
+            
+            // 替換圖片
+            document.getElementById('quiz-image').src = currentQuestion.imgPath;
+            
+            // 準備 4 個選項 (1 個正確 + 3 個隨機錯誤選項)
+            let options = [currentQuestion.zh];
+            
+            while (options.length < 4) {
+                // 從所有名單中隨機抽一個
+                let randomOption = allHerbNames[Math.floor(Math.random() * allHerbNames.length)];
+                // 確保選項不重複
+                if (!options.includes(randomOption)) {
+                    options.push(randomOption);
+                }
+            }
+
+            // 打亂 4 個選項的順序
+            options.sort(() => Math.random() - 0.5);
+
+            // 生成選項按鈕
+            options.forEach(optText => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full p-4 border-2 border-gray-200 rounded-lg text-lg font-bold text-gray-700 hover:bg-gray-50 transition transform hover:-translate-y-1 active:translate-y-0';
+                btn.textContent = optText;
+                btn.onclick = () => checkAnswer(optText, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedText, selectedBtn) {
+            // 禁用所有按鈕，移除 Hover 效果
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-50', 'hover:-translate-y-1', 'active:translate-y-0');
+            });
+
+            const isCorrect = (selectedText === currentQuestion.zh);
+            const feedbackText = document.getElementById('result-text');
+
+            if (isCorrect) {
+                feedbackText.textContent = "✅ 答對了！";
+                feedbackText.className = "text-xl font-bold text-green-600";
+            } else {
+                feedbackText.textContent = "❌ 答錯了！";
+                feedbackText.className = "text-xl font-bold text-red-600";
+            }
+
+            // 標示出正確與錯誤的選項顏色
+            allBtns.forEach(btn => {
+                btn.classList.remove('border-gray-200', 'text-gray-700');
+                if (btn.textContent === currentQuestion.zh) {
+                    // 正確答案永遠標示為綠色
+                    btn.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
+                } else if (btn === selectedBtn && !isCorrect) {
+                    // 如果這顆按鈕是使用者點擊的錯誤答案，標示為紅色
+                    btn.classList.add('bg-red-100', 'border-red-400', 'text-red-800');
+                } else {
+                    // 其他沒選的錯誤選項標示為灰色
+                    btn.classList.add('bg-gray-100', 'border-gray-300', 'text-gray-400');
+                }
+            });
+
+            // 顯示回饋區塊 (包含下一題按鈕)
+            document.getElementById('feedback-section').classList.remove('hidden');
+            document.getElementById('feedback-section').classList.add('flex');
+        }
+
+        // 網頁載入時執行出題
+        generateQuestion();
+    </script>
+</body>
+</html>
