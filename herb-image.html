@@ -40,7 +40,6 @@
 
     <script>
         // 1. 圖片題庫（有對應圖片的題目）
-        // 請確保 imgPath 的路徑與您上傳到 GitHub 的檔名一致
         const imageQuizData = [
             { zh: '熊膽', imgPath: 'images/Medv_jelch.jpg' },
             { zh: '朱砂', imgPath: 'images/cinnabar.jpg' },
@@ -61,7 +60,6 @@
             { zh: '地龍', imgPath: 'images/earthworm.jpg' },
             { zh: '鹿茸', imgPath: 'images/sliced_antler.jpg' },
             { zh: '川芎', imgPath: 'images/chuanxiong.jpg' },
-            // 您可以繼續新增有圖片的項目...
         ];
 
         // 2. 所有選項清單（包含有圖片與沒圖片的，用來當作干擾項）
@@ -71,7 +69,6 @@
             '防風', '荊芥', '薄荷', '紫蘇', '葛根', '杜仲', '牛膝', '山藥', '山茱萸', '牡丹皮'
         ];
 
-      // 3. 程式自動將上面兩者合併，並過濾掉不小心重複輸入的名稱
         const allHerbNames = [...new Set([
             ...imageQuizData.map(item => item.zh), 
             ...extraHerbNames
