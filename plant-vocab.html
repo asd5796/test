@@ -270,8 +270,17 @@
                 isCorrect = (userAnswer === currentFillQuestion.zh);
                 correctAnswerDisplay = currentFillQuestion.zh;
             } else {
-                // 題目是中文，需要回答英文 (兩種皆可，不分大小寫)
-                isCorrect = currentFillQuestion.en.some(enName => enName.toLowerCase() === userAnswer);
+                // 題目是中文，需要回答英文
+                // 1. 將題庫中的正確答案全部轉為小寫
+                const correctAnswers = currentFillQuestion.en.map(name => name.toLowerCase());
+                
+                // 2. 處理使用者輸入：允許使用者使用 "/" 或 "," 來分隔多個答案，並自動清除多餘的空白
+                const userInputs = userAnswer.split(/[\/,]/).map(s => s.trim()).filter(s => s !== "");
+                
+                // 3. 判斷邏輯：只要使用者輸入的「每一個」單字都存在於正確答案陣列中，就判定答對
+                // 這樣無論是單寫一個 (Asteraceae)、兩個都寫 (Asteraceae / Compositae)、甚至是順序相反，都能完美通過
+                isCorrect = userInputs.length > 0 && userInputs.every(input => correctAnswers.includes(input));
+                
                 correctAnswerDisplay = getEnString(currentFillQuestion.en);
             }
 
