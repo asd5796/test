@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單元三：常見中藥科名測驗</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800 font-sans">
+    <div class="max-w-2xl mx-auto p-4 py-10">
+        
+        <!-- 返回首頁按鈕 -->
+        <a href="index.html" class="inline-block mb-6 text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+            <span>&larr; 返回目錄</span>
+        </a>
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 mb-2">單元三：常見中藥科名測驗</h1>
+            <p class="text-gray-500">請根據顯示的中藥名稱，選出正確的植物科名</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <!-- 題目顯示區 -->
+            <div class="text-center mb-8">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">中藥名稱</span>
+                <h2 id="quiz-question" class="text-4xl font-bold mt-4 text-gray-800 min-h-[4rem] flex items-center justify-center">載入中...</h2>
+            </div>
+
+            <!-- 選項按鈕區 (4選1) -->
+            <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md mx-auto">
+                <!-- 選項會透過 JavaScript 自動生成 -->
+            </div>
+
+            <!-- 答題回饋區 -->
+            <div id="feedback-section" class="mt-8 text-center hidden flex-col items-center gap-4">
+                <p id="result-text" class="text-xl font-bold"></p>
+                <div id="correct-answer-display" class="text-gray-700 bg-gray-100 px-4 py-2 rounded-lg w-full max-w-md text-xl font-bold text-indigo-700"></div>
+                <button onclick="generateQuestion()" class="px-8 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition shadow font-bold text-lg">下一題</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. 題庫區 (您可以自行修改中藥與對應的科名)
+        // ==========================================
+        const herbFamilyData = [
+            { herb: '黃連', family: '毛茛科' },
+            { herb: '石斛', family: '蘭科' },
+            { herb: '黃柏', family: '芸香科' },
+            { herb: '蛇床子', family: '繖形科' },
+            { herb: '五味子', family: '木蘭科' },
+            { herb: '杜仲', family: '杜仲科' },
+            { herb: '黃耆', family: '豆科' },
+            { herb: '丹蔘', family: '唇形科' },
+            { herb: '川芎', family: '繖形科' },
+            { herb: '陳皮', family: '芸香科' }, 
+            { herb: '澤瀉', family: '澤瀉科' },
+            { herb: '地黃', family: '玄參科' },
+            { herb: '天麻', family: '蘭科' },
+            { herb: '遠志', family: '遠志科' },
+            { herb: '人蔘', family: '五加科' },
+            { herb: '吳茱萸', family: '芸香科' },
+            { herb: '貝母', family: '百合科' },
+            { herb: '厚朴', family: '木蘭科' },
+            { herb: '當歸', family: '繖形科' },
+            { herb: '紫草', family: '紫草科' },
+            { herb: '桑白皮', family: '桑科' },
+            { herb: '蒼耳子', family: '菊科' },
+            { herb: '荊芥', family: '唇形科' },
+            { herb: '附子', family: '毛茛科' },
+            { herb: '連翹', family: '木犀科' },
+            { herb: '半夏', family: '天南星科' },
+            { herb: '桔梗', family: '桔梗科' },
+            { herb: '夏枯草', family: '唇形科' }
+            
+            // 請在此繼續依照格式新增...
+        ];
+
+        // ==========================================
+        // 2. 額外的干擾選項區
+        // ==========================================
+        const extraFamilyNames = [
+            '菊科', '五加科', '毛茛科', '馬兜鈴科', '葫蘆科',
+            '蘭科', '木蘭科', '紫葳科', '十字花科', '夾竹桃科',
+            '薔薇科', '薑科', '石竹科', '芸香科', '大戟科'
+        ];
+
+        // ==========================================
+        // 3. 系統自動合併所有科名 (自動過濾重複項目)
+        // ==========================================
+        const allFamilyNames = [...new Set([
+            ...herbFamilyData.map(item => item.family),
+            ...extraFamilyNames
+        ])];
+
+        let currentQuestion = null;
+
+        function generateQuestion() {
+            // 隱藏回饋區、清空選項
+            document.getElementById('feedback-section').classList.add('hidden');
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            // 隨機抽出一題當作題目
+            const targetIndex = Math.floor(Math.random() * herbFamilyData.length);
+            currentQuestion = herbFamilyData[targetIndex];
+            
+            // 顯示題目 (中藥名)
+            document.getElementById('quiz-question').textContent = currentQuestion.herb;
+            
+            // 準備 4 個選項 (1 個正確科名 + 3 個隨機錯誤科名)
+            let options = [currentQuestion.family];
+            
+            while (options.length < 4) {
+                // 從所有科名中隨機抽一個
+                let randomOption = allFamilyNames[Math.floor(Math.random() * allFamilyNames.length)];
+                // 確保選項不重複
+                if (!options.includes(randomOption)) {
+                    options.push(randomOption);
+                }
+            }
+
+            // 打亂選項順序
+            options.sort(() => Math.random() - 0.5);
+
+            // 生成選項按鈕
+            options.forEach(optText => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full p-4 border-2 border-gray-200 rounded-lg text-lg font-bold text-gray-700 hover:bg-gray-50 transition transform hover:-translate-y-1 active:translate-y-0';
+                btn.textContent = optText;
+                btn.onclick = () => checkAnswer(optText, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedText, selectedBtn) {
+            // 禁用所有按鈕
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-50', 'hover:-translate-y-1', 'active:translate-y-0');
+            });
+
+            const isCorrect = (selectedText === currentQuestion.family);
+            const feedbackText = document.getElementById('result-text');
+            const correctAnsDiv = document.getElementById('correct-answer-display');
+
+            if (isCorrect) {
+                feedbackText.textContent = "✅ 答對了！";
+                feedbackText.className = "text-xl font-bold text-green-600";
+            } else {
+                feedbackText.textContent = "❌ 答錯了！";
+                feedbackText.className = "text-xl font-bold text-red-600";
+            }
+
+            // 標示正確與錯誤顏色
+            allBtns.forEach(btn => {
+                btn.classList.remove('border-gray-200', 'text-gray-700');
+                if (btn.textContent === currentQuestion.family) {
+                    btn.classList.add('bg-green-100', 'border-green-400', 'text-green-800');
+                } else if (btn === selectedBtn && !isCorrect) {
+                    btn.classList.add('bg-red-100', 'border-red-400', 'text-red-800');
+                } else {
+                    btn.classList.add('bg-gray-100', 'border-gray-300', 'text-gray-400');
+                }
+            });
+
+            correctAnsDiv.textContent = `正確解答：${currentQuestion.family}`;
+            
+            document.getElementById('feedback-section').classList.remove('hidden');
+            document.getElementById('feedback-section').classList.add('flex');
+        }
+
+        // 網頁載入時執行出題
+        generateQuestion();
+    </script>
+</body>
+</html>
