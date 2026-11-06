@@ -4,38 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>中醫藥與植物學習系統</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center text-gray-800 font-sans p-4">
-    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center my-6">
-        <h1 class="text-3xl font-bold text-teal-600 mb-2">學習測驗系統</h1>
-        <p class="text-gray-500 mb-6">請選擇您要進行的練習單元：</p>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center text-slate-800 font-sans p-4">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8 text-center my-6 border border-slate-100">
+        <div class="inline-flex p-3 bg-teal-50 text-teal-600 rounded-full mb-3">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        </div>
+        <h1 class="text-3xl font-extrabold text-slate-800 mb-1 tracking-tight">中醫藥與植物學習系統</h1>
+        <p class="text-slate-500 mb-6 text-sm">請選擇您要進行練習的專業單元：</p>
         
-        <div class="space-y-4">
-            <!-- 連結到單字測驗頁面 -->
-            <a href="plant-vocab.html" class="block w-full px-6 py-4 bg-teal-500 text-white rounded-xl font-bold text-lg hover:bg-teal-600 transition shadow transform hover:-translate-y-1">
-                🌿 單元一：常見藥用植物科名
+        <div class="space-y-3.5 text-left">
+            <!-- 單元一 -->
+            <a href="plant-vocab.html" class="block w-full p-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-teal-100 font-semibold uppercase tracking-wider">Unit 1</div>
+                        <div class="text-base sm:text-lg">🌿 單元一：常見藥用植物科名</div>
+                    </div>
+                    <span class="text-teal-200 text-xl font-bold">→</span>
+                </div>
             </a>
             
-            <!-- 連結到圖片辨識頁面 -->
-            <a href="herb-image.html" class="block w-full px-6 py-4 bg-blue-500 text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition shadow transform hover:-translate-y-1">
-                🌱 單元二：中藥材圖片辨識
+            <!-- 單元二 -->
+            <a href="herb-image.html" class="block w-full p-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-blue-100 font-semibold uppercase tracking-wider">Unit 2</div>
+                        <div class="text-base sm:text-lg">🌱 單元二：中藥材圖片辨識</div>
+                    </div>
+                    <span class="text-blue-200 text-xl font-bold">→</span>
+                </div>
             </a>
 
-            <!-- 連結到中藥科名測驗頁面 -->
-            <a href="herb-family.html" class="block w-full px-6 py-4 bg-indigo-500 text-white rounded-xl font-bold text-lg hover:bg-indigo-600 transition shadow transform hover:-translate-y-1">
-                📖 單元三：常見中藥科名測驗
+            <!-- 單元三 -->
+            <a href="herb-family.html" class="block w-full p-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-indigo-100 font-semibold uppercase tracking-wider">Unit 3</div>
+                        <div class="text-base sm:text-lg">📖 單元三：常見中藥科名測驗</div>
+                    </div>
+                    <span class="text-indigo-200 text-xl font-bold">→</span>
+                </div>
             </a>
 
-            <!-- 新增：連結到講義紅字與期中考點測驗 -->
-            <a href="botany-exam.html" class="relative block w-full px-6 py-4 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 border-2 border-rose-300">
-                <span class="absolute -top-2.5 -right-2 px-2.5 py-0.5 bg-yellow-300 text-red-800 text-xs font-black rounded-full shadow animate-pulse">🔥 期中必考</span>
-                🌸 單元四：講義紅字與期中考點測驗
-                <div class="text-xs text-rose-100 font-normal mt-1">法規限值・氣孔軸式・管胞紋孔・單雙子葉鑑別</div>
+            <!-- 新增：單元四（期中考點與紅字全真題庫 220題） -->
+            <a href="botany-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-rose-300">
+                <span class="absolute -top-2.5 -right-2 px-2.5 py-0.5 bg-yellow-300 text-red-800 text-xs font-black rounded-full shadow-sm animate-pulse">🔥 期中必考・220題</span>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-xs text-rose-100 font-semibold uppercase tracking-wider">Unit 4・全真題庫</div>
+                        <div class="text-base sm:text-lg">🌸 單元四：講義紅字與期中考點全真題庫</div>
+                        <div class="text-xs text-rose-100 font-normal mt-0.5">220 題全覆蓋・43 題顯微圖鑑・速記翻卡與錯題重測</div>
+                    </div>
+                    <span class="text-rose-100 text-xl font-bold">→</span>
+                </div>
             </a>
         </div>
 
-        <div class="mt-8 pt-4 border-t border-gray-100 text-xs text-gray-400">
+        <div class="mt-8 pt-4 border-t border-slate-100 text-xs text-slate-400">
             藥用植物學 (Pharmaceutical Botany) 學習平台
         </div>
     </div>
