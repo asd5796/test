@@ -7,25 +7,36 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex items-center justify-center text-gray-800 font-sans p-4">
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center my-6">
         <h1 class="text-3xl font-bold text-teal-600 mb-2">學習測驗系統</h1>
-        <p class="text-gray-500 mb-8">請選擇您要進行的練習單元：</p>
+        <p class="text-gray-500 mb-6">請選擇您要進行的練習單元：</p>
         
         <div class="space-y-4">
             <!-- 連結到單字測驗頁面 -->
-            <a href="plant-vocab.html" class="block w-full px-6 py-4 bg-teal-500 text-white rounded-lg font-bold text-lg hover:bg-teal-600 transition shadow transform hover:-translate-y-1">
+            <a href="plant-vocab.html" class="block w-full px-6 py-4 bg-teal-500 text-white rounded-xl font-bold text-lg hover:bg-teal-600 transition shadow transform hover:-translate-y-1">
                 🌿 單元一：常見藥用植物科名
             </a>
             
             <!-- 連結到圖片辨識頁面 -->
-            <a href="herb-image.html" class="block w-full px-6 py-4 bg-blue-500 text-white rounded-lg font-bold text-lg hover:bg-blue-600 transition shadow transform hover:-translate-y-1">
+            <a href="herb-image.html" class="block w-full px-6 py-4 bg-blue-500 text-white rounded-xl font-bold text-lg hover:bg-blue-600 transition shadow transform hover:-translate-y-1">
                 🌱 單元二：中藥材圖片辨識
             </a>
 
-            <!-- 新增：連結到中藥科名測驗頁面 -->
-            <a href="herb-family.html" class="block w-full px-6 py-4 bg-indigo-500 text-white rounded-lg font-bold text-lg hover:bg-indigo-600 transition shadow transform hover:-translate-y-1">
+            <!-- 連結到中藥科名測驗頁面 -->
+            <a href="herb-family.html" class="block w-full px-6 py-4 bg-indigo-500 text-white rounded-xl font-bold text-lg hover:bg-indigo-600 transition shadow transform hover:-translate-y-1">
                 📖 單元三：常見中藥科名測驗
             </a>
+
+            <!-- 新增：連結到講義紅字與期中考點測驗 -->
+            <a href="botany-exam.html" class="relative block w-full px-6 py-4 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 border-2 border-rose-300">
+                <span class="absolute -top-2.5 -right-2 px-2.5 py-0.5 bg-yellow-300 text-red-800 text-xs font-black rounded-full shadow animate-pulse">🔥 期中必考</span>
+                🌸 單元四：講義紅字與期中考點測驗
+                <div class="text-xs text-rose-100 font-normal mt-1">法規限值・氣孔軸式・管胞紋孔・單雙子葉鑑別</div>
+            </a>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-gray-100 text-xs text-gray-400">
+            藥用植物學 (Pharmaceutical Botany) 學習平台
         </div>
     </div>
 </body>
