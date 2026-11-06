@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單元四：藥用植物學 講義紅字與期中考點測驗</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.25s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* 翻卡效果 */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans pb-12">
+
+    <!-- 頂部導航 -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="inline-flex items-center text-teal-600 hover:text-teal-800 font-bold transition text-sm sm:text-base">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                回測驗首頁
+            </a>
+            <div class="flex items-center space-x-1.5">
+                <button id="mode-choice-btn" onclick="switchMode('choice')" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-rose-500 text-white shadow-sm transition">
+                    📝 選擇題模式
+                </button>
+                <button id="mode-card-btn" onclick="switchMode('card')" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    🃏 速記翻卡模式
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 pt-6">
+
+        <!-- 標題卡片 -->
+        <div class="bg-gradient-to-r from-rose-500 via-rose-600 to-amber-500 rounded-2xl p-6 text-white shadow-lg mb-6 text-center">
+            <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-semibold uppercase tracking-wider mb-2">
+                Unit 4・手寫打星號 ★ 核心考點統整
+            </span>
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight">藥用植物學：講義紅字與期中考點測驗</h1>
+            <p class="text-rose-100 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
+                嚴格鎖定 4 份講義藍筆星號後考試文字：法規限值、氣孔五大軸式、管胞紋孔、根尖分生、單雙子葉鑑別！
+            </p>
+        </div>
+
+        <!-- 類別篩選標籤 -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+            <button onclick="filterCategory('all')" class="cat-filter-btn active px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-rose-500 text-white shadow-sm transition" data-cat="all">
+                🌟 全部考點 (<span id="count-all">30</span>)
+            </button>
+            <button onclick="filterCategory('法規與科名毒性')" class="cat-filter-btn px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition" data-cat="法規與科名毒性">
+                📜 法規與科名毒性 (<span id="count-cat1">10</span>)
+            </button>
+            <button onclick="filterCategory('顯微構造與組織')" class="cat-filter-btn px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition" data-cat="顯微構造與組織">
+                🔬 顯微構造與組織 (<span id="count-cat2">10</span>)
+            </button>
+            <button onclick="filterCategory('根莖葉器官解剖')" class="cat-filter-btn px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition" data-cat="根莖葉器官解剖">
+                🌿 根莖葉器官解剖 (<span id="count-cat3">10</span>)
+            </button>
+        </div>
+
+        <!-- 選擇題區塊 -->
+        <div id="choice-mode-container" class="fade-in">
+            <!-- 進度與計分條 -->
+            <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 mb-5 flex items-center justify-between">
+                <div>
+                    <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">答題進度</span>
+                    <div class="text-base sm:text-lg font-black text-rose-600">
+                        第 <span id="current-q-index">1</span> / <span id="total-q-count">30</span> 題
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">當前正確率</span>
+                        <div class="text-base sm:text-lg font-black text-emerald-600">
+                            <span id="correct-count">0</span> 對 / <span id="answered-count">0</span> 答
+                            <span class="text-xs text-slate-400 font-normal">(<span id="accuracy-rate">0%</span>)</span>
+                        </div>
+                    </div>
+                    <button onclick="shuffleCurrentQuestions()" title="隨機洗牌題目與選項順序" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-slate-600 transition">
+                        🔀
+                    </button>
+                </div>
+            </div>
+
+            <!-- 題目主卡片 -->
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-8 mb-6">
+                <!-- 題目分類標籤 -->
+                <div class="flex items-center justify-between mb-4">
+                    <span id="question-badge" class="px-3 py-1 bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold rounded-full">
+                        考點分類
+                    </span>
+                    <span id="question-id-tag" class="text-xs text-slate-400 font-mono">#Q1</span>
+                </div>
+
+                <!-- 題目內文 -->
+                <h2 id="question-text" class="text-lg sm:text-xl font-bold text-slate-800 leading-relaxed mb-6">
+                    載入中...
+                </h2>
+
+                <!-- 四個選項列表 -->
+                <div id="options-list" class="space-y-3">
+                    <!-- JS 生成 -->
+                </div>
+
+                <!-- 即時詳解反饋區塊 -->
+                <div id="feedback-card" class="mt-6 p-4 rounded-xl hidden border">
+                    <div class="flex items-center mb-1.5">
+                        <span id="feedback-icon" class="text-xl mr-2">✅</span>
+                        <span id="feedback-title" class="font-extrabold text-base">回答正確！</span>
+                    </div>
+                    <div id="feedback-explanation" class="text-sm leading-relaxed mt-2 p-3 bg-white/70 rounded-lg">
+                        <!-- 詳解內容 -->
+                    </div>
+                </div>
+
+                <!-- 下一題按鈕 -->
+                <div class="mt-6 flex items-center justify-between">
+                    <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold text-sm transition hidden">
+                        ← 上一題
+                    </button>
+                    <button id="next-btn" onclick="nextQuestion()" class="ml-auto px-6 py-2.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition flex items-center">
+                        下一題 →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 考點速記翻卡區塊 (Flashcards) -->
+        <div id="card-mode-container" class="hidden fade-in">
+            <div class="text-center mb-4">
+                <p class="text-xs sm:text-sm text-slate-500">
+                    💡 點擊卡片任何位置即可翻面！正面為精選題目，背面為紅字考點與記憶口訣。
+                </p>
+                <div class="text-xs text-rose-600 font-bold mt-1">
+                    卡片 <span id="card-current-idx">1</span> / <span id="card-total-count">30</span>
+                </div>
+            </div>
+
+            <!-- 3D 翻轉卡片容器 -->
+            <div class="perspective-1000 w-full max-w-xl mx-auto h-80 sm:h-96 cursor-pointer" onclick="flipCard()">
+                <div id="flashcard-inner" class="relative w-full h-full transform-style-3d transition-transform duration-500">
+                    
+                    <!-- 卡片正面 (問題) -->
+                    <div class="absolute inset-0 w-full h-full bg-white border-2 border-rose-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-md backface-hidden">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span id="card-badge" class="px-3 py-1 bg-rose-50 text-rose-600 border border-rose-200 rounded-full text-xs font-bold">
+                                    考點分類
+                                </span>
+                                <span class="text-xs text-slate-400">點擊翻面 🔄</span>
+                            </div>
+                            <h3 id="card-question-text" class="text-lg sm:text-xl font-black text-slate-800 mt-6 leading-relaxed">
+                                問題載入中...
+                            </h3>
+                        </div>
+                        <div class="text-center text-xs text-rose-400 font-semibold">
+                            👇 點擊翻轉看標準答案與紅字口訣
+                        </div>
+                    </div>
+
+                    <!-- 卡片背面 (答案與詳解) -->
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl backface-hidden rotate-y-180 overflow-y-auto">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-2">
+                                <span class="text-xs text-amber-400 font-bold">★ 官方紅字與星號解答</span>
+                                <span class="text-xs text-slate-400">點擊翻回 🔄</span>
+                            </div>
+                            <div id="card-answer-text" class="text-base sm:text-lg font-black text-emerald-400 mt-3">
+                                正確答案
+                            </div>
+                            <div id="card-explanation-text" class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+                                詳解說明
+                            </div>
+                        </div>
+                        <div class="text-center text-xs text-slate-500 pt-2 border-t border-slate-800">
+                            Pharmaceutical Botany Exam Flashcard
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 翻卡控制按鈕 -->
+            <div class="flex items-center justify-center space-x-4 mt-6">
+                <button onclick="prevCard()" class="px-5 py-2.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold rounded-xl text-sm shadow-sm transition">
+                    ← 上一張
+                </button>
+                <button onclick="flipCard()" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl text-sm shadow-md transition">
+                    🔄 翻轉卡片
+                </button>
+                <button onclick="nextCard()" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl text-sm shadow-md transition">
+                    下一張 →
+                </button>
+            </div>
+        </div>
+
+        <!-- 測驗完成結果 Modal / 總結卡片 -->
+        <div id="results-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border border-slate-100 transform transition-all">
+                <div id="result-trophy" class="text-5xl mb-3">🏆</div>
+                <h3 class="text-2xl font-black text-slate-800 mb-1">測驗完成！</h3>
+                <p id="result-subtitle" class="text-xs text-slate-500 mb-6">藥用植物學 講義紅字與期中考點驗收</p>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-6">
+                    <div class="text-4xl font-black text-rose-600 mb-1">
+                        <span id="modal-score">0</span> / <span id="modal-total">30</span>
+                    </div>
+                    <div class="text-sm font-bold text-slate-600">
+                        總得分率：<span id="modal-accuracy" class="text-emerald-600">0%</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5">
+                    <button id="retry-incorrect-btn" onclick="retryIncorrectOnly()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-bold text-sm shadow-md transition">
+                        ❌ 僅針對錯題重測 (<span id="incorrect-count">0</span>題)
+                    </button>
+                    <button onclick="restartFullQuiz()" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold text-sm shadow-md transition">
+                        🔄 全體重新測驗 (30題)
+                    </button>
+                    <a href="index.html" class="block w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-sm transition">
+                        🏠 返回學習系統首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 題庫與核心邏輯 -->
+    <script>
+        const allQuestions = [{"id": 1, "category": "法規與科名毒性", "question": "依據《DBS64/64001—2022》（寧夏食品安全地方標準 枸杞），判定檢驗二氧化硫之合格限值為何？", "options": ["≤ 100 mg/kg (100 ppm)", "≤ 150 mg/kg (150 ppm)", "≤ 400 mg/kg (400 ppm)", "≤ 500 mg/kg (500 ppm)"], "answer": 0, "explanation": "【講義星號考點】寧夏枸杞地方標準《DBS64/64001—2022》判定限值為 ≤ 100 mg/kg (100 ppm)。新聞調查抽檢 11 批樣本判定結果全部不合格！"}, {"id": 2, "category": "法規與科名毒性", "question": "違法商販常以工業硫磺燻製枸杞以保持鮮豔外觀與防霉，工業硫磺中最主要的劇毒雜質為何？", "options": ["重金屬鉛 (Pb)", "重金屬砷 (As)", "黃麴毒素 (Aflatoxin)", "馬兜鈴酸 (AA)"], "answer": 1, "explanation": "【講義紅字考點】工業硫磺含有高毒性重金屬「砷 (Arsenic)」，食用會破壞腎功能、多發性神經炎與肝臟損害。"}, {"id": 3, "category": "法規與科名毒性", "question": "依據衛福部《中藥材含二氧化硫、黃麴毒素限量基準》，針對枸杞、天麻、當歸、川芎、山藥等 25 種特定中藥材，二氧化硫之限量基準為何？", "options": ["≤ 100 ppm", "≤ 150 ppm", "≤ 400 ppm", "不得檢出"], "answer": 2, "explanation": "【講義星號考點】衛福部針對葛根、天麻、白朮、山藥、枸杞、當歸等 25 種易吸附二氧化硫之特定中藥材，限量標準放寬為 ≤ 400 ppm；其餘一般中藥材為 ≤ 150 ppm。"}, {"id": 4, "category": "法規與科名毒性", "question": "依據衛福部中藥材黃麴毒素限量基準，中藥材之「總黃麴毒素」與「黃麴毒素 B1」限量分別為何？", "options": ["總量 ≤ 10 ppb，B1 ≤ 5 ppb", "總量 ≤ 15 ppb，B1 ≤ 10 ppb", "總量 ≤ 50 ppb，B1 ≤ 20 ppb", "總量 ≤ 100 ppb，B1 ≤ 50 ppb"], "answer": 0, "explanation": "【講義星號考點】中藥材黃麴毒素限量基準：總黃麴毒素 (B1+B2+G1+G2) ≤ 10 ppb (μg/kg)；黃麴毒素 B1 ≤ 5 ppb。"}, {"id": 5, "category": "法規與科名毒性", "question": "馬兜鈴科中藥材因含有「馬兜鈴酸」具嚴重腎毒性，台灣目前對馬兜鈴科藥材「細辛」之法規使用限制為何？", "options": ["全草皆可入藥，無劑量限制", "完全禁用，任何部位皆不得使用", "僅限使用地下「根及根莖」，地上部位嚴禁入藥且限量", "僅限使用葉部入藥"], "answer": 2, "explanation": "【講義星號考點】台灣已禁用關木通、廣防己等含AA藥材；「細辛」因馬兜鈴酸集中於地上莖葉，故法規嚴格規定「僅限使用地下根及根莖」，並限制馬兜鈴酸含量。"}, {"id": 6, "category": "法規與科名毒性", "question": "下列哪一個科的植物具「四稜莖、葉對生、二強雄蕊、4枚小堅果」，且氣孔多為垂軸式？", "options": ["唇形科 (Lamiaceae)", "菊科 (Asteraceae)", "繖形科 (Apiaceae)", "玄參科 (Scrophulariaceae)"], "answer": 0, "explanation": "【講義星號考點】唇形科特徵：四稜莖、單葉對生、二強雄蕊、輪傘花序、4枚小堅果，典型藥材有薄荷、黃芩、丹參。"}, {"id": 7, "category": "法規與科名毒性", "question": "繖形科 (Apiaceae / Umbelliferae) 植物之花序與果實類型為何？", "options": ["頭狀花序，瘦果", "複繖形花序，雙懸果 (Cremocarp)", "大戟花序，蒴果", "輪傘花序，角果"], "answer": 1, "explanation": "【講義星號考點】繖形科特徵為「複繖形花序」，果實為特化由2分果構成的「雙懸果」，橫切面必具分泌道（油管）。代表藥材：當歸、川芎、白芷。"}, {"id": 8, "category": "法規與科名毒性", "question": "十字花科 (Brassicaceae / Cruciferae) 植物最具指標性的雄蕊與果實形態為何？", "options": ["聚藥雄蕊，瘦果", "二體雄蕊 (9+1)，莢果", "四強雄蕊 (4長2短)，角果 (Silique)", "二強雄蕊，小堅果"], "answer": 2, "explanation": "【講義星號考點】十字花科為十字花冠、四強雄蕊（6枚雄蕊中4枚長、2枚短）、角果。代表藥材：菘藍（板藍根、大青葉）。"}, {"id": 9, "category": "法規與科名毒性", "question": "芸香科 (Rutaceae) 植物之葉片在光線透射下，常可觀察到何種特殊微觀構造？", "options": ["透明分泌腔（油點 / 溶生性油室）", "乳汁管", "泡狀細胞", "晶鞘纖維"], "answer": 0, "explanation": "【講義星號考點】芸香科葉片與果皮富含揮發油，具特化的「透明分泌腔（油點）」，為溶生性分泌腔。代表藥材：陳皮、枳實。"}, {"id": 10, "category": "法規與科名毒性", "question": "下列哪一科的藥用植物多具有白色乳汁、特化之「大戟花序（杯狀花序）」，種子多具劇毒（如巴豆、蓖麻子）？", "options": ["大戟科 (Euphorbiaceae)", "夾竹桃科 (Apocynaceae)", "毛茛科 (Ranunculaceae)", "茄科 (Solanaceae)"], "answer": 0, "explanation": "【講義星號考點】大戟科具白色乳汁、杯狀聚傘花序（大戟花序），果實為三生蒴果，種子多含劇烈瀉下毒蛋白（如巴豆、蓖麻子）。"}, {"id": 11, "category": "顯微構造與組織", "question": "雙子葉植物氣孔軸式中，若「兩個副衛細胞長軸與氣孔裂隙長軸互相平行」，屬於何種類型？", "options": ["平軸式 (Paracytic type)", "垂軸式 (Diacytic type)", "不等式 (Anisocytic type)", "不定式 (Anomocytic type)"], "answer": 0, "explanation": "【講義星號考點】平軸式：2個副衛細胞長軸與氣孔長軸「平行」。代表植物：茜草科（梔子）、豆科（番瀉葉）。口訣：平軸豆茜平行走。"}, {"id": 12, "category": "顯微構造與組織", "question": "薄荷、穿心蓮等唇形科與石竹科植物，其氣孔「兩個副衛細胞相接界線與氣孔裂隙互相垂直」，此軸式稱為？", "options": ["平軸式", "垂軸式 / 直軸式 (Diacytic type)", "環軸式 (Actinocytic type)", "不等式"], "answer": 1, "explanation": "【講義星號考點】垂軸式（直軸式）：2個副衛細胞之接合面垂直於氣孔裂隙。代表植物：石竹科（瞿麥）、唇形科（薄荷）。口訣：垂軸唇形石竹垂。"}, {"id": 13, "category": "顯微構造與組織", "question": "十字花科（如大青葉）與茄科（如曼陀羅），其氣孔周圍具 3 個副衛細胞，其中「1 個副衛細胞顯著小於其他 2 個」，此類型為何？", "options": ["不等式 (Anisocytic type)", "不定式", "平軸式", "環軸式"], "answer": 0, "explanation": "【講義星號考點】不等式：具3個副衛細胞，大小明顯不均，其中1個特別小。代表：十字花科、茄科。口訣：不等十字茄科三。"}, {"id": 14, "category": "顯微構造與組織", "question": "毛茛科（毛茛、黃連）與葫蘆科植物的氣孔周圍副衛細胞無特殊形態與固定數目，與普通表皮細胞無異，此軸式為何？", "options": ["不定式 / 無規則式 (Anomocytic type)", "平軸式", "環軸式", "垂軸式"], "answer": 0, "explanation": "【講義星號考點】不定式（無規則式）：副衛細胞數目不拘且大小形態無特殊規則。代表：毛茛科、葫蘆科。口訣：不定毛茛無常規。"}, {"id": 15, "category": "顯微構造與組織", "question": "關於木質部輸導分子「管胞 (Tracheid)」之顯微構造，下列手寫筆記標註之核心特徵何者正確？", "options": ["末端具發達穿孔板，水流直接貫穿", "兩端封閉，末端【上下間無穿孔】，水流需經紋孔對迂迴滲透", "僅存在於被子植物中作為主要輸水構造", "為活細胞，具發達原生質體"], "answer": 1, "explanation": "【講義星號與手寫考點】P.129手寫註記「上下間無穿孔」！管胞是單一死細胞，兩端尖斜且兩端細胞壁無穿孔，靠側壁紋孔對滲透；為裸子植物與蕨類唯一輸水分子，在被子植物中為「非主要運輸」。"}, {"id": 16, "category": "顯微構造與組織", "question": "管胞之具緣紋孔（有緣紋孔）中央常具圓盤狀加厚構造，其名稱與功能為何？", "options": ["紋孔膜，負責分泌黏液", "紋孔塞 (Torus)，遇蒸散壓差時偏轉堵塞紋孔以防氣栓擴散", "穿孔板，增強水流通透度", "胞間連絲，進行主動運輸"], "answer": 1, "explanation": "【講義星號考點】有緣紋孔膜中央局部加厚形成「紋孔塞 (Torus)」，具活塞閥門功能，能防止氣栓在相鄰管胞間蔓延擴散。"}, {"id": 17, "category": "顯微構造與組織", "question": "甘草 (Glycyrrhiza) 與黃柏切片中極具特徵的組織結構，即韌皮纖維束外圍包覆一層含有草酸鈣單晶的薄壁細胞，此構造稱為？", "options": ["嵌晶纖維", "晶鞘纖維 (Crystal fiber sheath)", "厚角組織", "石細胞群"], "answer": 1, "explanation": "【講義紅字與重要考點】纖維束外圍圍繞一圈含有草酸鈣方晶（單晶）的薄壁細胞，稱為「晶鞘纖維」，是甘草、黃柏生藥粉末鑑別的關鍵依據！"}, {"id": 18, "category": "顯微構造與組織", "question": "大黃 (Rheum) 與人參 (Panax) 組織中常見的草酸鈣結晶類型主要為何？", "options": ["草酸鈣簇晶 (Cluster crystals)", "草酸鈣針晶束", "草酸鈣砂晶", "草酸鈣柱晶"], "answer": 0, "explanation": "【講義星號與紅字考點】大黃含巨大草酸鈣簇晶；人參根之皮層及韌皮部亦富含草酸鈣簇晶。"}, {"id": 19, "category": "顯微構造與組織", "question": "半夏 (Pinellia)、天南星與石斛中常見，常聚集成束並存在於黏液細胞中的草酸鈣結晶類型為何？", "options": ["方晶", "針晶束 (Needle / Raphide crystals)", "砂晶", "簇晶"], "answer": 1, "explanation": "【講義星號考點】半夏、天南星等天南星科藥材特含刺激性強的「草酸鈣針晶束 (Raphides)」，常存在於特化的黏液細胞中。"}, {"id": 20, "category": "顯微構造與組織", "question": "牛膝 (Achyranthes) 與洋金花之薄壁細胞中，常充滿細小如細沙般的草酸鈣結晶，此類型為？", "options": ["草酸鈣砂晶 (Crystal sand)", "草酸鈣方晶", "草酸鈣針晶", "鐘乳體"], "answer": 0, "explanation": "【講義星號考點】草酸鈣砂晶呈微細顆粒狀散布於薄壁細胞中，牛膝、顛茄、洋金花為典型代表。"}, {"id": 21, "category": "根莖葉器官解剖", "question": "根尖四大分區中，「造成植物根部持續深入土壤中的主要動力」是哪一區細胞的活動？", "options": ["分生區細胞的旺盛分裂", "延長區（伸長區）細胞的快速伸長", "成熟區（根毛區）的大量吸水", "根冠細胞脫落產生的推力"], "answer": 1, "explanation": "【講義星號考點】表3-2註記：分生區分裂細胞，而「延長區細胞的伸長」是造成根部能持續生長並深深延伸穿入土壤中的最主要原因！"}, {"id": 22, "category": "根莖葉器官解剖", "question": "根尖構造中，具備「高度黏液化細胞壁以減少摩擦、保護生長點」，且內部含澱粉體感應向地性的構造為？", "options": ["根冠 (Root cap)", "分生區", "伸長區", "根毛區"], "answer": 0, "explanation": "【講義星號考點】根冠位於根尖最前端，外層高度黏液化潤滑土壤，保護分生組織，內含平衡石感應重力向地性。"}, {"id": 23, "category": "根莖葉器官解剖", "question": "植物根部初生構造中，木質部與韌皮部的發育順序皆屬於何種方式？", "options": ["內始式（原木在內，後木在外）", "外始式 (Exarch)（原生在外部，後生在內部，向心發育）", "中始式", "離心發育"], "answer": 1, "explanation": "【講義星號與手寫考點】根之初生木質部與韌皮部發育方向皆為「外始式 (Exarch)」，原生分子成熟於外側，後生分子向內分化發育（向心發育）。"}, {"id": 24, "category": "根莖葉器官解剖", "question": "【手寫命中考題】講義P.23手寫「考 被/雙 大部分是什麼」，雙子葉植物初生根的木質部脊數目通常為多少原型，且中央有無髓？", "options": ["多原型（10個以上），具發達中央髓", "二原型至五原型（以二原型、四原型最常見），實心無髓", "單原型，具木質髓", "八原型至十二原型，無髓"], "answer": 1, "explanation": "【手寫筆記考題直接命中】被子植物雙子葉植物的根木質部脊大部分為「二原型至五原型（二、四最常見）」，木質部呈星狀或十字狀貫穿中心，中央「實心無髓」！"}, {"id": 25, "category": "根莖葉器官解剖", "question": "單子葉植物（如禾本科、百合科、薑科）之根部維管束木質部脊型式與中央構造特徵為何？", "options": ["二原型，中央實心無髓", "四原型，中央具厚壁纖維", "多原型 (Polyarch)（常 > 10 個），中央具發達的薄壁髓部", "外韌維管束環狀排列"], "answer": 2, "explanation": "【講義星號考點】單子葉植物根具多原型（多束放射排列），且中央具有發達的薄壁細胞「髓 (Pith)」，一般不進行次生加粗。"}, {"id": 26, "category": "根莖葉器官解剖", "question": "側根（支根）起源於中柱鞘（周鞘），在「二原型」木質部之根中，側根發生的確切位置為何？", "options": ["正對木質部脊頂角", "發生在「木質部與韌皮部之間」", "正對韌皮部外側", "皮層薄壁細胞"], "answer": 1, "explanation": "【講義星號手寫考點】P.19星號重點：二原型根之側根發生在「木質部與韌皮部中間（木韌中間）」；而在三原型至五原型根中，側根則正對「木質部脊頂角」發生。"}, {"id": 27, "category": "根莖葉器官解剖", "question": "單子葉植物葉片上表皮相鄰葉脈間，常具大型、薄壁、充滿水分，失水時會收縮使葉片內捲以抗旱的特化細胞稱為？", "options": ["泡狀細胞 (Bulliform cells / 運動細胞)", "保衛細胞", "副衛細胞", "厚角細胞"], "answer": 0, "explanation": "【講義星號考點】單子葉禾本科葉上表皮特化「泡狀細胞 (Bulliform cells)」，又稱運動細胞，能調節葉片水分蒸散與捲曲抗旱。"}, {"id": 28, "category": "根莖葉器官解剖", "question": "單子葉植物葉片保衛細胞的特異形態通常為何？", "options": ["腎形", "啞鈴形 (Dumbbell-shaped)", "星芒狀", "扁平圓盤形"], "answer": 1, "explanation": "【講義星號考點】雙子葉植物保衛細胞多為「腎形」；單子葉禾本科保衛細胞特異呈「啞鈴形」，兩端膨大中間細狹。"}, {"id": 29, "category": "根莖葉器官解剖", "question": "下列葉緣分類與代表中藥材實例之配對，何者符合講義星號重點？", "options": ["重鋸齒狀 — 山櫻花、咬人貓", "牙齒狀（齒狀）— 地黃", "圓齒狀 — 枇杷", "全緣 — 薄荷"], "answer": 0, "explanation": "【講義星號考點】P.64星號葉緣舉例：重鋸齒狀（山櫻花、咬人貓）；牙齒狀（枇杷、石竹）；圓齒/鈍齒狀（地黃）；全緣（樟樹、女貞）。"}, {"id": 30, "category": "根莖葉器官解剖", "question": "雙子葉植物莖與單子葉植物莖在橫切面維管束分佈之根本差異為何？", "options": ["雙子葉維管束散生；單子葉維管束環狀排列", "雙子葉為無限維管束排成環狀（具形成層、皮髓分明）；單子葉為有限維管束散生於基本組織中", "雙子葉無形成層；單子葉具發達木材", "兩者構造完全相同"], "answer": 1, "explanation": "【講義星號考點】雙子葉植物莖：維管束為無限外韌型，環狀排列，具維管束形成層，皮層與髓界限分明；單子葉植物莖：有限外韌型維管束散生於基本薄壁組織中，無皮層與髓之分。"}];
+
+        let currentCategory = 'all';
+        let activeQuestions = [...allQuestions];
+        let currentIndex = 0;
+        let userAnswers = {}; // id -> chosenOptionIndex
+        let isCardFlipped = false;
+        let cardIndex = 0;
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCategoryCounts();
+            loadQuestion(currentIndex);
+            loadCard(cardIndex);
+        });
+
+        function updateCategoryCounts() {
+            document.getElementById('count-all').innerText = allQuestions.length;
+            document.getElementById('count-cat1').innerText = allQuestions.filter(q => q.category === '法規與科名毒性').length;
+            document.getElementById('count-cat2').innerText = allQuestions.filter(q => q.category === '顯微構造與組織').length;
+            document.getElementById('count-cat3').innerText = allQuestions.filter(q => q.category === '根莖葉器官解剖').length;
+        }
+
+        // 分類篩選
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-rose-500', 'text-white', 'shadow-sm');
+                    btn.classList.remove('bg-white', 'text-slate-600');
+                } else {
+                    btn.classList.remove('bg-rose-500', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-white', 'text-slate-600');
+                }
+            });
+
+            if (cat === 'all') {
+                activeQuestions = [...allQuestions];
+            } else {
+                activeQuestions = allQuestions.filter(q => q.category === cat);
+            }
+
+            currentIndex = 0;
+            cardIndex = 0;
+            userAnswers = {};
+            updateStats();
+            loadQuestion(currentIndex);
+            loadCard(cardIndex);
+        }
+
+        // 選擇題載入
+        function loadQuestion(idx) {
+            if (activeQuestions.length === 0) return;
+            const q = activeQuestions[idx];
+
+            document.getElementById('current-q-index').innerText = idx + 1;
+            document.getElementById('total-q-count').innerText = activeQuestions.length;
+            document.getElementById('question-badge').innerText = q.category;
+            document.getElementById('question-id-tag').innerText = `#Q${q.id}`;
+            document.getElementById('question-text').innerText = q.question;
+
+            // 控制上一題按鈕
+            const prevBtn = document.getElementById('prev-btn');
+            if (idx > 0) {
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+
+            const optionsContainer = document.getElementById('options-list');
+            optionsContainer.innerHTML = '';
+
+            const feedbackCard = document.getElementById('feedback-card');
+            feedbackCard.classList.add('hidden');
+
+            const hasAnswered = userAnswers.hasOwnProperty(q.id);
+
+            q.options.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 transition font-medium text-sm sm:text-base flex items-center justify-between ";
+
+                if (!hasAnswered) {
+                    btn.className += "border-slate-200 bg-white hover:border-rose-400 hover:bg-rose-50/50 text-slate-700";
+                    btn.onclick = () => selectOption(optIdx);
+                } else {
+                    const chosen = userAnswers[q.id];
+                    if (optIdx === q.answer) {
+                        // 正確答案亮綠
+                        btn.className += "border-emerald-500 bg-emerald-50 text-emerald-900 font-bold";
+                    } else if (optIdx === chosen) {
+                        // 學生選錯亮紅
+                        btn.className += "border-rose-500 bg-rose-50 text-rose-900 font-bold";
+                    } else {
+                        btn.className += "border-slate-200 bg-slate-50 text-slate-400 opacity-60";
+                    }
+                }
+
+                const letter = String.fromCharCode(65 + optIdx);
+                btn.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs mr-3 bg-slate-100 text-slate-700">${letter}</span>
+                        <span>${optText}</span>
+                    </div>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+
+            if (hasAnswered) {
+                showFeedback(userAnswers[q.id] === q.answer, q.explanation);
+            }
+
+            updateStats();
+        }
+
+        // 作答選擇
+        function selectOption(chosenIdx) {
+            const q = activeQuestions[currentIndex];
+            if (userAnswers.hasOwnProperty(q.id)) return; // 已作答
+
+            userAnswers[q.id] = chosenIdx;
+            loadQuestion(currentIndex);
+        }
+
+        // 顯示回饋詳解
+        function showFeedback(isCorrect, explanation) {
+            const card = document.getElementById('feedback-card');
+            const icon = document.getElementById('feedback-icon');
+            const title = document.getElementById('feedback-title');
+            const expl = document.getElementById('feedback-explanation');
+
+            card.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                card.classList.add('bg-emerald-50', 'border-emerald-200');
+                icon.innerText = "🎉";
+                title.innerText = "恭喜回答正確！";
+                title.className = "font-extrabold text-base text-emerald-800";
+            } else {
+                card.classList.add('bg-rose-50', 'border-rose-200');
+                icon.innerText = "⚠️";
+                title.innerText = "回答錯誤，請參閱考點解析：";
+                title.className = "font-extrabold text-base text-rose-800";
+            }
+
+            expl.innerHTML = explanation;
+        }
+
+        function nextQuestion() {
+            if (currentIndex < activeQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion(currentIndex);
+            } else {
+                // 已到最後一題，顯示結算
+                showResultsModal();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion(currentIndex);
+            }
+        }
+
+        // 統計資訊更新
+        function updateStats() {
+            let answered = 0;
+            let correct = 0;
+
+            activeQuestions.forEach(q => {
+                if (userAnswers.hasOwnProperty(q.id)) {
+                    answered++;
+                    if (userAnswers[q.id] === q.answer) {
+                        correct++;
+                    }
+                }
+            });
+
+            document.getElementById('answered-count').innerText = answered;
+            document.getElementById('correct-count').innerText = correct;
+            const rate = answered === 0 ? 0 : Math.round((correct / answered) * 100);
+            document.getElementById('accuracy-rate').innerText = `${rate}%`;
+        }
+
+        // 結果 Modal
+        function showResultsModal() {
+            let correct = 0;
+            const incorrectList = [];
+
+            activeQuestions.forEach(q => {
+                if (userAnswers[q.id] === q.answer) {
+                    correct++;
+                } else {
+                    incorrectList.push(q);
+                }
+            });
+
+            const total = activeQuestions.length;
+            const rate = Math.round((correct / total) * 100);
+
+            document.getElementById('modal-score').innerText = correct;
+            document.getElementById('modal-total').innerText = total;
+            document.getElementById('modal-accuracy').innerText = `${rate}%`;
+            document.getElementById('incorrect-count').innerText = incorrectList.length;
+
+            const trophy = document.getElementById('result-trophy');
+            if (rate >= 90) trophy.innerText = "🏆";
+            else if (rate >= 70) trophy.innerText = "🌟";
+            else if (rate >= 50) trophy.innerText = "💪";
+            else trophy.innerText = "📖";
+
+            const retryBtn = document.getElementById('retry-incorrect-btn');
+            if (incorrectList.length === 0) {
+                retryBtn.classList.add('hidden');
+            } else {
+                retryBtn.classList.remove('hidden');
+            }
+
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        function retryIncorrectOnly() {
+            document.getElementById('results-modal').classList.add('hidden');
+            const incorrectOnes = activeQuestions.filter(q => userAnswers[q.id] !== q.answer);
+            if (incorrectOnes.length > 0) {
+                activeQuestions = incorrectOnes;
+                currentIndex = 0;
+                userAnswers = {};
+                loadQuestion(currentIndex);
+            }
+        }
+
+        function restartFullQuiz() {
+            document.getElementById('results-modal').classList.add('hidden');
+            userAnswers = {};
+            currentIndex = 0;
+            filterCategory(currentCategory);
+        }
+
+        function shuffleCurrentQuestions() {
+            activeQuestions.sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            userAnswers = {};
+            loadQuestion(currentIndex);
+        }
+
+        // 翻卡模式邏輯
+        function loadCard(idx) {
+            if (activeQuestions.length === 0) return;
+            const q = activeQuestions[idx];
+
+            isCardFlipped = false;
+            document.getElementById('flashcard-inner').classList.remove('rotate-y-180');
+
+            document.getElementById('card-current-idx').innerText = idx + 1;
+            document.getElementById('card-total-count').innerText = activeQuestions.length;
+            document.getElementById('card-badge').innerText = q.category;
+            document.getElementById('card-question-text').innerText = q.question;
+            document.getElementById('card-answer-text').innerText = `【解答】${q.options[q.answer]}`;
+            document.getElementById('card-explanation-text').innerHTML = q.explanation;
+        }
+
+        function flipCard() {
+            const cardInner = document.getElementById('flashcard-inner');
+            isCardFlipped = !isCardFlipped;
+            if (isCardFlipped) {
+                cardInner.classList.add('rotate-y-180');
+            } else {
+                cardInner.classList.remove('rotate-y-180');
+            }
+        }
+
+        function nextCard() {
+            if (cardIndex < activeQuestions.length - 1) {
+                cardIndex++;
+            } else {
+                cardIndex = 0;
+            }
+            loadCard(cardIndex);
+        }
+
+        function prevCard() {
+            if (cardIndex > 0) {
+                cardIndex--;
+            } else {
+                cardIndex = activeQuestions.length - 1;
+            }
+            loadCard(cardIndex);
+        }
+
+        // 模式切換 (選擇題 vs 翻卡)
+        function switchMode(mode) {
+            const choiceBtn = document.getElementById('mode-choice-btn');
+            const cardBtn = document.getElementById('mode-card-btn');
+            const choiceContainer = document.getElementById('choice-mode-container');
+            const cardContainer = document.getElementById('card-mode-container');
+
+            if (mode === 'choice') {
+                choiceBtn.classList.replace('bg-slate-100', 'bg-rose-500');
+                choiceBtn.classList.replace('text-slate-600', 'text-white');
+                cardBtn.classList.replace('bg-rose-500', 'bg-slate-100');
+                cardBtn.classList.replace('text-white', 'text-slate-600');
+                choiceContainer.classList.remove('hidden');
+                cardContainer.classList.add('hidden');
+                loadQuestion(currentIndex);
+            } else {
+                cardBtn.classList.replace('bg-slate-100', 'bg-rose-500');
+                cardBtn.classList.replace('text-slate-600', 'text-white');
+                choiceBtn.classList.replace('bg-rose-500', 'bg-slate-100');
+                choiceBtn.classList.replace('text-white', 'text-slate-600');
+                cardContainer.classList.remove('hidden');
+                choiceContainer.classList.add('hidden');
+                loadCard(cardIndex);
+            }
+        }
+    </script>
+</body>
+</html>
