@@ -3,68 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中醫藥與植物學習系統</title>
+    <title>大一醫藥專業學科互動測驗學習系統</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center text-slate-800 font-sans p-4">
-    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8 text-center my-6 border border-slate-100">
-        <div class="inline-flex p-3 bg-teal-50 text-teal-600 rounded-full mb-3">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center text-slate-800 font-sans p-4 sm:p-6">
+    <div class="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 text-center my-6 border border-slate-200">
+        <!-- Logo & Header -->
+        <div class="inline-flex p-3.5 bg-gradient-to-tr from-teal-500 to-emerald-400 text-white rounded-2xl shadow-md mb-3 transform hover:rotate-6 transition duration-300">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
         </div>
-        <h1 class="text-3xl font-extrabold text-slate-800 mb-1 tracking-tight">中醫藥與植物學習系統</h1>
-        <p class="text-slate-500 mb-6 text-sm">請選擇您要進行練習的專業單元：</p>
+        <h1 class="text-2xl sm:text-3xl font-black text-slate-800 mb-1 tracking-tight">大一醫藥專業學科學習系統</h1>
+        <p class="text-slate-500 mb-6 text-xs sm:text-sm font-medium">期中全真模擬題庫・焦點透析・隨時隨地離線刷題</p>
         
-        <div class="space-y-3.5 text-left">
-            <!-- 單元一 -->
-            <a href="plant-vocab.html" class="block w-full p-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+        <!-- Section: 人體解剖學 (期中考焦點) -->
+        <div class="mb-5 text-left">
+            <div class="flex items-center gap-2 mb-2.5 px-1">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">人體解剖學 (Human Anatomy)</span>
+            </div>
+
+            <!-- 單元五：解剖學期中考 100 題 -->
+            <a href="anatomy-exam.html" class="relative block w-full p-4 sm:p-5 bg-gradient-to-r from-rose-600 via-red-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-rose-400">
+                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-yellow-300 text-red-900 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 期中考六大考區・100題</span>
                 <div class="flex items-center justify-between">
                     <div>
-                        <div class="text-xs text-teal-100 font-semibold uppercase tracking-wider">Unit 1</div>
-                        <div class="text-base sm:text-lg">🌿 單元一：常見藥用植物科名</div>
+                        <div class="text-[11px] text-rose-100 font-bold uppercase tracking-wider">Anatomy Exam・高鑑別度全真題庫</div>
+                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
+                            <span>🫀</span>
+                            <span>解剖學期中全真模擬題庫</span>
+                        </div>
+                        <div class="text-xs text-rose-100 font-normal mt-1 leading-relaxed">
+                            100 題全文字高鑑別度・92% 必考星號重點・題題標註簡報出處頁碼・支援錯題重練與收藏
+                        </div>
                     </div>
-                    <span class="text-teal-200 text-xl font-bold">→</span>
+                    <span class="text-rose-100 text-2xl font-bold ml-2">→</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Section: 藥用植物學 -->
+        <div class="space-y-3 text-left">
+            <div class="flex items-center gap-2 mb-1 px-1">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">藥用植物學 (Pharmaceutical Botany)</span>
+            </div>
+
+            <!-- 單元四：藥用植物學期中考 200 題 -->
+            <a href="botany-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5 border border-teal-400">
+                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-emerald-200 text-emerald-900 text-[11px] font-black rounded-full shadow-sm">四大考區・200題</span>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-teal-100 font-bold uppercase tracking-wider">Botany Exam・期中全真題庫</div>
+                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
+                            <span>🌸</span>
+                            <span>講義紅字與期中考點全真題庫</span>
+                        </div>
+                        <div class="text-xs text-teal-100 font-normal mt-1">
+                            200 題全覆蓋・30 題顯微圖鑑・組織解剖與結晶全收錄
+                        </div>
+                    </div>
+                    <span class="text-teal-100 text-xl font-bold ml-2">→</span>
+                </div>
+            </a>
+
+            <!-- 單元一 -->
+            <a href="plant-vocab.html" class="block w-full p-3.5 bg-slate-50 hover:bg-teal-50 text-slate-700 hover:text-teal-700 border border-slate-200 hover:border-teal-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 1</div>
+                        <div class="text-sm sm:text-base font-semibold">🌿 單元一：常見藥用植物科名中英對照</div>
+                    </div>
+                    <span class="text-slate-400 hover:text-teal-600 text-lg font-bold">→</span>
                 </div>
             </a>
             
             <!-- 單元二 -->
-            <a href="herb-image.html" class="block w-full p-4 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+            <a href="herb-image.html" class="block w-full p-3.5 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <div class="text-xs text-blue-100 font-semibold uppercase tracking-wider">Unit 2</div>
-                        <div class="text-base sm:text-lg">🌱 單元二：中藥材圖片辨識</div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 2</div>
+                        <div class="text-sm sm:text-base font-semibold">🌱 單元二：中藥材圖片辨識與特徵</div>
                     </div>
-                    <span class="text-blue-200 text-xl font-bold">→</span>
+                    <span class="text-slate-400 hover:text-blue-600 text-lg font-bold">→</span>
                 </div>
             </a>
 
             <!-- 單元三 -->
-            <a href="herb-family.html" class="block w-full p-4 bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5">
+            <a href="herb-family.html" class="block w-full p-3.5 bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 border border-slate-200 hover:border-indigo-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <div class="text-xs text-indigo-100 font-semibold uppercase tracking-wider">Unit 3</div>
-                        <div class="text-base sm:text-lg">📖 單元三：常見中藥科名測驗</div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 3</div>
+                        <div class="text-sm sm:text-base font-semibold">📖 單元三：常見中藥科名測驗</div>
                     </div>
-                    <span class="text-indigo-200 text-xl font-bold">→</span>
-                </div>
-            </a>
-
-            <!-- 新增：單元四（期中考點與紅字全真題庫 220題） -->
-            <a href="botany-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-rose-300">
-                <span class="absolute -top-2.5 -right-2 px-2.5 py-0.5 bg-yellow-300 text-red-800 text-xs font-black rounded-full shadow-sm animate-pulse">🔥 期中必考・220題</span>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-xs text-rose-100 font-semibold uppercase tracking-wider">Unit 4・全真題庫</div>
-                        <div class="text-base sm:text-lg">🌸 單元四：講義紅字與期中考點全真題庫</div>
-                        <div class="text-xs text-rose-100 font-normal mt-0.5">220 題全覆蓋・43 題顯微圖鑑・速記翻卡與錯題重測</div>
-                    </div>
-                    <span class="text-rose-100 text-xl font-bold">→</span>
+                    <span class="text-slate-400 hover:text-indigo-600 text-lg font-bold">→</span>
                 </div>
             </a>
         </div>
 
-        <div class="mt-8 pt-4 border-t border-slate-100 text-xs text-slate-400">
-            藥用植物學 (Pharmaceutical Botany) 學習平台
+        <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <span>大仁科技大學 醫藥護專業學科</span>
+            <span>純靜態・零後端・跨裝置支援</span>
         </div>
     </div>
 </body>

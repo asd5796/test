@@ -1,0 +1,2634 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解剖學 期中全真模擬題庫 (100題・高鑑別度)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #991b1b; /* 深紅解剖醫學主色 */
+      --primary-light: #ef4444;
+      --primary-dark: #7f1d1d;
+      --primary-bg: #fef2f2;
+      --secondary: #0f766e;
+      --secondary-bg: #f0fdfa;
+      --accent: #d97706;
+      --accent-bg: #fffbeb;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+      --error: #b91c1c;
+      --error-bg: #fef2f2;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 3rem;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      padding: 1.25rem 1rem;
+      box-shadow: 0 4px 12px rgba(127, 29, 29, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .site-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Filters Card */
+    .filter-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+
+    .tab-btn {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.825rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      font-weight: 700;
+    }
+
+    .tab-btn.star-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .tab-btn.wrong-tab.active {
+      background: var(--error);
+      border-color: var(--error);
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-weight: 600;
+    }
+
+    .stat-badge.score { color: var(--success); }
+    .stat-badge.wrong { color: var(--error); }
+    .stat-badge.star { color: var(--accent); }
+
+    /* Progress bar */
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Quiz Card */
+    .quiz-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .category-pill {
+      background: var(--secondary-bg);
+      color: var(--secondary);
+      border: 1px solid rgba(15, 118, 110, 0.2);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .exam-star-pill {
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid rgba(217, 119, 6, 0.25);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .q-number {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .bookmark-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      transition: all 0.2s;
+      padding: 0.2rem;
+    }
+
+    .bookmark-btn:hover {
+      transform: scale(1.15);
+      color: var(--accent);
+    }
+
+    .bookmark-btn.bookmarked {
+      color: var(--accent);
+    }
+
+    .question-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+    }
+
+    /* Options */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .option-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 100%;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary-light);
+      background: #fdf2f2;
+      transform: translateY(-1px);
+    }
+
+    .option-prefix {
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .option-btn.correct {
+      border-color: var(--success) !important;
+      background: var(--success-bg) !important;
+      color: var(--success) !important;
+      font-weight: 600;
+    }
+
+    .option-btn.correct .option-prefix {
+      background: var(--success);
+      color: white;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--error) !important;
+      background: var(--error-bg) !important;
+      color: var(--error) !important;
+    }
+
+    .option-btn.wrong .option-prefix {
+      background: var(--error);
+      color: white;
+    }
+
+    /* Explanation Box */
+    .explanation-box {
+      display: none;
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      margin-top: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .explanation-box.active {
+      display: block;
+    }
+
+    .explanation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .result-badge {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .source-badge {
+      background: #ede9fe;
+      color: #6d28d9;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ddd6fe;
+    }
+
+    .explanation-text {
+      font-size: 0.925rem;
+      line-height: 1.65;
+      color: #334155;
+      margin-bottom: 0.8rem;
+    }
+
+    .copy-report-btn {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .copy-report-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
+      border-color: #94a3b8;
+    }
+
+    /* Card Footer Navigation */
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: #e2e8f0;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Navigator Sidebar */
+    .sidebar {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 5rem;
+      max-height: calc(100vh - 6.5rem);
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .legend {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.35rem;
+    }
+
+    .grid-btn {
+      aspect-ratio: 1;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text-muted);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      position: relative;
+    }
+
+    .grid-btn:hover {
+      border-color: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .grid-btn.current {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+      font-weight: 700;
+    }
+
+    .grid-btn.correct {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+
+    .grid-btn.wrong {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+
+    .grid-btn.bookmarked::after {
+      content: '★';
+      position: absolute;
+      top: -3px;
+      right: 0px;
+      font-size: 0.65rem;
+      color: var(--accent);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1e293b;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-lg);
+      display: none;
+      animation: slideUp 0.3s ease;
+      z-index: 1000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="site-title">
+        <span>🫀</span>
+        <span>解剖學期中全真模擬題庫 (100題・高鑑別度)</span>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-btn">
+          <span>🏠</span>
+          <span>首頁</span>
+        </a>
+        <button id="shuffleBtn" class="nav-btn" onclick="toggleShuffle()">
+          <span>🔀</span>
+          <span id="shuffleText">隨機: 關</span>
+        </button>
+        <button class="nav-btn" onclick="clearProgress()">
+          <span>🔄</span>
+          <span>重設進度</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="left-col">
+      <!-- Filter Card -->
+      <div class="filter-card">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 100 題</button>
+          <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 必考星號題</button>
+          <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 細胞與上皮 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 胚胎與皮膚 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 骨骼與骨盆 (18題)</button>
+          <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 關節與滑液 (18題)</button>
+          <button class="tab-btn" onclick="setFilter('ch5', this)">Ch5 肌肉與作功 (18題)</button>
+          <button class="tab-btn" onclick="setFilter('ch6', this)">Ch6 心血管與循環 (16題)</button>
+        </div>
+        <div class="stats-bar">
+          <div>
+            <span class="stat-badge score">答對: <span id="correctScore">0</span></span>
+            <span class="stat-badge wrong" style="margin-left: 0.75rem;">答錯: <span id="wrongScore">0</span></span>
+            <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
+          </div>
+          <div>
+            <span id="progressText">1 / 100</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Track -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+
+      <!-- Active Quiz Card -->
+      <div class="quiz-card" id="quizCard">
+        <div class="question-header">
+          <div class="header-badges">
+            <span class="category-pill" id="chapterPill">章節</span>
+            <span class="exam-star-pill" id="examStarPill" style="display: none;">🔥 必考考點</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="q-number" id="questionNumber">第 1 / 100 題</span>
+            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="收藏本題">★</button>
+          </div>
+        </div>
+
+        <div class="question-text" id="questionStem">載入題目中...</div>
+
+        <!-- Options -->
+        <div class="options-list" id="optionsList"></div>
+
+        <!-- Explanation Box -->
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-header">
+            <span class="result-badge" id="resultBadge">💡 核心解析</span>
+            <span class="source-badge" id="sourceBadge">出處載入中</span>
+          </div>
+          <div class="explanation-text" id="explanationText"></div>
+          <button class="copy-report-btn" onclick="copyQuestionReport()">
+            <span>📋</span>
+            <span>複製本題資訊以供修正 / 筆記</span>
+          </button>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div class="card-footer">
+          <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>
+            <span>⬅</span>
+            <span>上一題</span>
+          </button>
+          <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+            <span>下一題</span>
+            <span>➡</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar Navigator -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span>題號導覽 (1~100)</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/100</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--success);"></span> 答對</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--error);"></span> 答錯</div>
+      </div>
+      <div class="grid-container" id="gridContainer"></div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">已複製至剪貼簿！</div>
+
+
+  <!-- Inlined Questions Data (100 Questions) -->
+  <script>
+/**
+ * 解剖學 100 題高鑑別度文字選擇題題庫 (100% 忠於簡報考點)
+ * 由 Antigravity 命題系統自動生成並通過零誤差腳本校驗
+ */
+
+window.QUIZ_DATA = [
+  {
+    "id": 1,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "依據細胞膜（Plasma membrane / Cell membrane）的化學成分分析，下列何種成分佔細胞膜總重量的比例最高？",
+    "options": [
+      "A. 磷脂質（Phospholipids），約佔 55%",
+      "B. 蛋白質（Proteins），約佔 55%",
+      "C. 膽固醇（Cholesterol），約佔 30%",
+      "D. 醣類（Carbohydrates），約佔 15%"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。根據講義細胞膜化學組成：蛋白質（Proteins）佔總重量約 55%，為比例最高之成分；磷脂質約佔 25%；膽固醇約佔 13%；醣類約佔 3%（與脂質或蛋白質結合為醣脂或醣蛋白形成細胞被 Glycocalyx）。A 選項數值錯誤（磷脂質為 25%）；C 選項數值錯誤（膽固醇為 13%）；D 選項數值錯誤（醣類僅約 3%）。",
+    "source": "大仁解剖學 Chap 1-3 P.8 (🔥考點一：細胞膜化學組成與四大功能)"
+  },
+  {
+    "id": 2,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "關於細胞膜中「膽固醇（Cholesterol）」的解剖分佈與生理角色，下列敘述何者最為正確？",
+    "options": [
+      "A. 屬於完全水溶性分子，僅附著於細胞膜外表面提供辨識",
+      "B. 具雙親媒性（Amphipathic），穿插嵌於磷脂雙層中調節膜的流動性與機械穩定度",
+      "C. 是細胞膜的主體骨架，兩側親水端朝向細胞質形成連續性屏障",
+      "D. 在人體體溫下主要作用為大幅增加細胞膜的流動性使膜鬆散"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。膽固醇分子具有微弱親水性的極性羥基（-OH）及疏水性的固醇環結構，屬於雙親媒性分子，穿插排列於磷脂雙層的脂肪酸尾部之間，在正常體溫下能限制磷脂分子的過度過度活動、增加膜的機械強度，低溫時則防止脂肪酸鏈緊密堆積固化，發揮雙向調節細胞膜「流動性（Fluidity）」與穩定度的關鍵角色。A 選項錯誤：膽固醇並非完全水溶性，亦非僅附著於表面；C 選項為磷脂雙層之特徵；D 選項錯誤：在正常體溫下膽固醇能穩定膜結構而非使其鬆散。",
+    "source": "大仁解剖學 Chap 1-3 P.9 (🔥考點一：細胞膜化學組成與四大功能)"
+  },
+  {
+    "id": 3,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "在細胞質胞器中，粗面內質網（Rough ER）與滑面內質網（Smooth ER）在結構與主要生合成產物上具有明確分工，下列比較何者正確？",
+    "options": [
+      "A. 粗面內質網表面附著核糖體，專門合成供細胞質內部自我利用的酵素蛋白",
+      "B. 滑面內質網缺乏核糖體，主要功能為合成磷脂質、固醇類荷爾蒙及進行藥物解毒",
+      "C. 粗面內質網由小管網狀構成，專門負責儲存與釋放細胞內鈣離子",
+      "D. 類固醇荷爾蒙（如睪固酮、皮質醇）主要由粗面內質網大量製造分泌"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。滑面內質網（Smooth ER）無核糖體附著，呈分支管狀，主要功能為生合成脂質、磷脂、膽固醇與類固醇荷爾蒙（如性腺與腎上腺皮質），並在肝細胞參與藥物與毒素解毒，在肌肉細胞則特化為肌質網儲存釋放 Ca2+。A 選項錯誤：粗面內質網合成的是外泌蛋白（Secretory proteins）、細胞膜蛋白與溶小體酵素，供細胞質內部自身使用的蛋白質由游離核糖體（Free ribosomes）合成；C 選項為滑面內質網之特徵；D 選項錯誤：類固醇荷爾蒙由滑面內質網合成。",
+    "source": "大仁解剖學 Chap 1-3 P.15 (🔥考點二：胞器微觀功能與製造分泌物)"
+  },
+  {
+    "id": 4,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "關於高基氏體（Golgi apparatus）在細胞分泌途徑中所扮演的角色，下列敘述何者最符合講義內容？",
+    "options": [
+      "A. 直接以游離核糖體為模板進行多胜肽鏈的初級轉譯",
+      "B. 接收來自粗面內質網的轉運囊泡，對蛋白質進行糖基化修飾、濃縮分選與包裝分泌",
+      "C. 凸面形成面（cis face）朝向細胞膜，凹面成熟面（trans face）朝向細胞核",
+      "D. 製造過氧化氫酶（Catalase）並包裹為過氧化物酶體"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。高基氏體由扁平囊泡堆疊而成，具有明顯極性：凸面形成面（cis face）朝向粗面內質網，接收含有未成熟蛋白質的轉運囊泡；在囊泡內進行糖基化、硫酸化等後轉譯修飾與濃縮，最後在凹面成熟面（trans face / exit face）分選包裝成外泌囊泡或溶小體。A 選項錯誤：高基氏體不直接轉譯多胜肽；C 選項極性方向顛倒（cis 朝向內質網/核，trans 朝向細胞膜）；D 選項錯誤：過氧化物酶體的酵素由游離核糖體合成導入，非高基氏體包裹。",
+    "source": "大仁解剖學 Chap 1-3 P.16 (🔥考點二：胞器微觀功能與製造分泌物)"
+  },
+  {
+    "id": 5,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "溶小體（Lysosome）與過氧化物酶體（Peroxisome）皆為單層膜包裹之消化性囊泡，下列關於兩者內含酵素與生理作用之鑑別何者正確？",
+    "options": [
+      "A. 溶小體含有酸性水解酶（Acid hydrolases），負責分解老舊胞器（自噬）與吞噬的外來異物",
+      "B. 過氧化物酶體含有大量水解酶，最適作用 pH 為 5.0，膜破裂會造成自溶",
+      "C. 溶小體富含過氧化氫酶（Catalase），專門將代謝產生的過氧化氫（H2O2）分解為水和氧",
+      "D. 兩者均由高基氏體以出芽方式形成外泌囊泡所衍生"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。溶小體含有 40 多種酸性水解酶（最佳作用環境約 pH 5.0），負責吞噬異物消化、老舊衰亡胞器分解（Autophagy 自噬作用）甚至在細胞受損死亡時引發自溶（Autolysis）。B 選項與 C 選項描述顛倒：過氧化物酶體含有氧化酶（Oxidases）與過氧化氫酶（Catalase），利用分子氧將受質氧化產生毒性 H2O2，再立即由過氧化氫酶將其分解為 H2O 與 O2，在肝腎解毒（如酒精代謝）極為重要；D 選項錯誤：過氧化物酶體主要是透過自體分裂或由內質網途徑衍生，酵素由游離核糖體直接合成導入。",
+    "source": "大仁解剖學 Chap 1-3 P.18-19 (🔥考點二：胞器微觀功能與製造分泌物)"
+  },
+  {
+    "id": 6,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": false,
+    "question": "中心體（Centrosome）內的中心粒（Centriole）在細胞分裂中負責組織紡錘體，其微觀微管結構排列特徵為：",
+    "options": [
+      "A. 由 9 組單微管環狀排列而成（9+0 結構）",
+      "B. 由 9 組雙聯微管圍繞中央 2 根單微管構成（9+2 結構）",
+      "C. 由 9 組三聯微管環狀排列構成圓柱形小體（9x3 結構），兩兩互相垂直成對",
+      "D. 由 13 根原纖絲平鋪成單層網狀板狀結構"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。每個中心體包含一對互相垂直排列的中心粒（Centrioles），每個中心粒在橫切面上是由 9 組三聯微管（Triplet microtubules, 9x3 構型）排列而成的圓柱體。B 選項的 9+2 結構為「纖毛（Cilia）」與「鞭毛（Flagella）」軸絲的微管特徵，不可混淆；A、D 選項皆非中心粒之微觀排列。",
+    "source": "大仁解剖學 Chap 1-3 P.20 (考點二：胞器微觀功能與製造分泌物)"
+  },
+  {
+    "id": 7,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "人體細胞的有絲分裂（Mitosis）與減數分裂（Meiosis）在遺傳結果上有重大差異，下列敘述何者完全正確？",
+    "options": [
+      "A. 有絲分裂進行一次 DNA 複製與兩次細胞分裂，產生 4 個雙倍體（2n）體細胞",
+      "B. 減數分裂進行兩次 DNA 複製與兩次細胞分裂，產生 4 個單倍體（1n）配子",
+      "C. 有絲分裂產生 2 個遺傳物質完全相同的二倍體（2n）體細胞；減數分裂產生 4 個基因重組的單倍體（1n）生殖細胞",
+      "D. 有絲分裂過程中有同源染色體聯會（Synapsis），使產生的子細胞產生豐富基因多樣性"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。有絲分裂（Mitosis）為 1 次複製、1 次分裂，母細胞（2n）分裂產生 2 個與母細胞遺傳組成完全一致的二倍體（2n）子細胞，用於生長與修復。減數分裂（Meiosis）為 1 次複製、連續 2 次分裂（減數第一次與減數第二次分裂），母細胞（2n）最終產生 4 個染色體數減半之單倍體（1n）配子（精子或卵子）。A 選項分裂次數錯誤；B 選項 DNA 僅複製 1 次；D 選項錯誤：同源染色體聯會僅發生於減數分裂前期 I，有絲分裂不發生聯會。",
+    "source": "大仁解剖學 Chap 1-3 P.25 (🔥考點三：細胞分裂週期全景)"
+  },
+  {
+    "id": 8,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "減數分裂前期 I（Prophase I）是遺傳重組發生的關鍵時期，該時期發生的特定事件為下列何者？",
+    "options": [
+      "A. 姊妹染色單體直接被紡錘絲拉向細胞兩極",
+      "B. 同源染色體配對進行聯會（Synapsis）形成四分體，非姊妹染色單體間發生染色體互換（Crossing-over）",
+      "C. 核膜與核仁在該時期持續保持完整不解離",
+      "D. 染色體排列於赤道板上，著絲點整齊排成單列"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。減數第一次分裂前期（Prophase I）極為漫長，同源染色體（分別來自父方與母方）緊密配對結合，稱為聯會（Synapsis），形成四分體（Tetrad）；非姊妹染色單體在交叉點（Chiasmata）發生遺傳片段交換，稱為互換（Crossing-over），此為後代產生基因多樣性的重要生物學機制。A 選項為後期 II 或有絲分裂後期之特徵；C 選項錯誤：核膜核仁在前期末解體；D 選項為中期之特徵。",
+    "source": "大仁解剖學 Chap 1-3 P.26 (🔥考點三：細胞分裂週期全景)"
+  },
+  {
+    "id": 9,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "上皮組織（Epithelial tissue）具有多項獨特的組織學特徵，下列敘述何者「錯誤」？",
+    "options": [
+      "A. 細胞排列極為緊密，細胞間質（Extracellular matrix）極少",
+      "B. 具有明顯極性（Polarity），分為游離面（Apical surface）與基底面（Basal surface）",
+      "C. 基底面貼附於由基底板與網狀板構成的基底膜（Basement membrane）上",
+      "D. 內部富含微血管網以提供上皮細胞旺盛的氧氣與養分供應"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。上皮組織四大核心特徵中，最關鍵的考點是「無血管性（Avascular）」：上皮組織本身完全沒有血管分佈，其所需的所有養分與氧氣，必須依賴其基底膜下方固有層/真皮之結締組織中的毛細血管透過基底膜「擴散」滲透供應（但上皮富含神經感覺末梢）。A、B、C 選項皆為上皮組織的正確特徵，故錯誤者為 D。",
+    "source": "大仁解剖學 Chap 1-3 P.32 (🔥考點四：上皮組織四大特徵與四種單層上皮)"
+  },
+  {
+    "id": 10,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "單層扁平上皮（Simple squamous epithelium）極度薄透，主要適應於氣體擴散與液體過濾。下列何處的襯裡組織「並非」由單層扁平上皮構成？",
+    "options": [
+      "A. 心臟腔室內壁與全身血管之內皮（Endothelium）",
+      "B. 胸膜、腹膜與心包膜等體腔漿膜之間皮（Mesothelium）",
+      "C. 肺泡壁（Alveolar wall）進行氣體交換處",
+      "D. 胃及小腸全段的管腔黏膜上皮"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。胃及小腸、大腸等消化道管腔黏膜上皮是由「單層柱狀上皮（Simple columnar epithelium）」所構成，具微絨毛與杯狀細胞，適應於分泌消化液與吸收養分。A、B、C 選項皆為典型的單層扁平上皮：血管與淋巴管內襯稱為「內皮（Endothelium）」；體腔漿膜表面稱為「間皮（Mesothelium）」；肺泡壁亦為單層扁平上皮，有利於氣體迅速擴散。",
+    "source": "大仁解剖學 Chap 1-3 P.34 (🔥考點四：上皮組織四大特徵與四種單層上皮)"
+  },
+  {
+    "id": 11,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "關於人體消化系統「胃、小腸、大腸」黏膜內襯所具有的單層柱狀上皮（Simple columnar epithelium），其細胞游離面常見特化構造與主要機能為：",
+    "options": [
+      "A. 具有擺動性纖毛（Cilia），專門推動食糜朝向肛門移動",
+      "B. 具有微絨毛（Microvilli / 刷狀緣 Brush border）大幅增加吸收表面積，並夾雜分泌黏液的杯狀細胞（Goblet cells）",
+      "C. 具有多層角質化死細胞以抵抗胃酸強烈侵蝕",
+      "D. 完全無細胞接合，使養分能自由通過細胞間隙滲入深層"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。消化道（胃至直腸）的單層柱狀上皮細胞柱狀高大，細胞核呈卵圓形位於基底部，游離面密布微絨毛（Microvilli，即光鏡下的刷狀緣），可使吸收表面積擴增數十至數百倍；上皮間散佈杯狀細胞（Goblet cells）分泌黏蛋白保護潤滑黏膜。A 選項錯誤：纖毛（Cilia）主要分佈於呼吸道及輸卵管，胃腸道是微絨毛而非纖毛；C 選項為複層扁平角質化上皮之特徵；D 選項錯誤：鄰近游離端具有緊密接合防止消化液滲漏。",
+    "source": "大仁解剖學 Chap 1-3 P.36 (🔥考點四：上皮組織四大特徵與四種單層上皮)"
+  },
+  {
+    "id": 12,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "人體氣管（Trachea）與主支氣管黏膜內襯由假複層纖毛柱狀上皮（Pseudostratified ciliated columnar epithelium）所構成，下列何者為該上皮之解剖學關鍵定義？",
+    "options": [
+      "A. 實質上由 2 至 3 層不同發育階段的獨立細胞堆疊而成",
+      "B. 所有的細胞基底面「皆直接附著於基底膜上」，但細胞高矮不一且細胞核位置高低錯落，切片外觀呈多層假象",
+      "C. 只有最表層的細胞具有細胞核，底層細胞皆已脫核死亡",
+      "D. 屬於完全不可再生的終末分化組織"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。假複層上皮之所以稱為「假（Pseudo）」複層，是因為「所有細胞的基底部均直接附著在基底膜上」，本質上仍為單層細胞；然而因細胞形態高低不一（柱狀細胞、梭形細胞、錐形基底細胞），使各細胞的細胞核排列於不同高度平面，在光學顯微鏡切片下看似複層。呼吸道此類上皮游離面具發達纖毛，能協調向咽喉方向擺動清除吸入黏液塵埃。A 選項與定義相悖；C、D 選項皆錯誤。",
+    "source": "大仁解剖學 Chap 1-3 P.37 (🔥考點四：上皮組織四大特徵與四種單層上皮)"
+  },
+  {
+    "id": 13,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "在相鄰上皮細胞間的四大細胞接合複合體（Junctional complex）中，位於最靠近細胞游離端頂部、能像拉鍊般阻絕水分與溶質經細胞旁間隙（Paracellular pathway）滲漏的構造是：",
+    "options": [
+      "A. 胞橋小體（Desmosome / Macula adherens）",
+      "B. 黏附小帶（Zonula adherens）",
+      "C. 緊密接合（Tight junction / 閉鎖小帶 Zonula occludens）",
+      "D. 間隙接合（Gap junction）"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。緊密接合（Tight junction，又稱閉鎖小帶 Zonula occludens）位於上皮細胞側表面最頂部（靠近游離端），由膜蛋白 Claudin 和 Occludin 環繞細胞形成網格狀鏈條，將相鄰細胞膜的外層緊密熔合密封，形成一道阻水與阻絕離子非特異性滲漏的物理屏障，例如血腦屏障、胃黏膜與膀胱移行上皮。A 胞橋小體主要抗拉張；B 黏附小帶連繫肌動蛋白；D 間隙接合傳導物質電信號。",
+    "source": "大仁解剖學 Chap 1-3 P.40 (🔥考點五：四大細胞間接合)"
+  },
+  {
+    "id": 14,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": true,
+    "question": "關於間隙接合（Gap junction）與胞橋小體（Desmosome）之結構組成與生理機能，下列敘述何者完全正確？",
+    "options": [
+      "A. 間隙接合由連結素（Connexon）六聚體孔道構成，允許離子與小分子直接在相鄰細胞間穿流，傳遞電訊號",
+      "B. 胞橋小體主要由微管（Microtubules）穿入細胞板形成孔洞，負責細胞間的快速液體流通",
+      "C. 心肌細胞間的「閏盤（Intercalated disc）」中僅有胞橋小體，完全缺乏間隙接合",
+      "D. 表皮棘狀層細胞間富含間隙接合以抵禦外界強大機械剪切應力"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。間隙接合（Gap junction）由 6 個 Connexin 蛋白質單元聚合成圓筒狀連接素（Connexon），兩相鄰細胞的連接素對接形成中央約 1.5~2 nm 的中空孔道，允許無機離子（如 Ca2+、Na+）、cAMP 等小分子直接通過，提供電氣耦聯（如心肌閏盤中的電傳導）；胞橋小體（Desmosome）則在胞質側藉由角蛋白等「中間絲（Intermediate filaments）」錨定於斑塊，提供極高抗拉扯機械強度（皮膚表皮富含）。B 選項錯誤（胞橋小體非孔洞結構且連結中間絲而非微管）；C 選項錯誤：心肌閏盤兼具胞橋小體與間隙接合；D 選項錯誤：抵禦機械張力者為胞橋小體。",
+    "source": "大仁解剖學 Chap 1-3 P.41 (🔥考點五：四大細胞間接合)"
+  },
+  {
+    "id": 15,
+    "chapter": "細胞學基礎與上皮組織",
+    "isExamStar": false,
+    "question": "在解剖學方位與切面描述中，下列關於「解剖學姿勢（Anatomical position）」與「矢狀面（Sagittal plane）」之敘述何者正確？",
+    "options": [
+      "A. 解剖學姿勢要求受試者俯臥，手掌朝向後方（旋前姿勢）",
+      "B. 冠狀面（Coronal plane / 額狀面）將人體橫向切為上（Superior）與下（Inferior）兩半",
+      "C. 標準解剖學姿勢為身體直立、雙眼平視前方、上肢自然下垂於軀幹兩側且「手掌朝向前方（掌心向前）」",
+      "D. 正中矢狀面（Midsagittal plane）將人體分為前（Anterior）與後（Posterior）兩大部分"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。標準解剖學姿勢（Anatomical position）的五大要件：身體直立（Erect）、兩眼平視前方、上肢自然垂於軀幹兩側、手掌朝前（掌心向前 Supination）、雙足併攏足尖朝前。A 選項錯誤；B 選項錯誤：將人體切為上下兩半者為「橫切面（Transverse / Horizontal plane）」，冠狀面是切為前後兩半；D 選項錯誤：正中矢狀面是經身體正中線將人體縱切為「左右對稱的兩半」。",
+    "source": "大仁解剖學 Chap 1-3 P.4-6 (考點五補充：解剖學姿勢與四大切面)"
+  },
+  {
+    "id": 16,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "人類正常受精（Fertilization）過程通常發生於女性生殖道的何處？",
+    "options": [
+      "A. 輸卵管峽部（Isthmus of uterine tube）",
+      "B. 輸卵管壺腹部（Ampulla of uterine tube）",
+      "C. 子宮底（Fundus of uterus）腔內",
+      "D. 卵巢表面腹膜腔"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。精子與卵子結合形成受精卵（Zygote）的正常解剖部位是「輸卵管壺腹部（Ampulla of uterine tube）」，此處管腔寬大、皺襞豐富，受精多發生於排卵後 12~24 小時內。若受精卵未能在正常時程內運送至子宮腔而在壺腹部著床，則為最常見的子宮外孕部位。A、C、D 選項皆非正常受精的首要解剖部位。",
+    "source": "大仁解剖學 Chap 1-3 P.45 (🔥考點六：受精卵發育時程與著床)"
+  },
+  {
+    "id": 17,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "受精卵在輸卵管向子宮運行過程中進行多次有絲分裂（卵裂 Cleavage），關於其發育形態與著床（Implantation）時程，下列何者正確？",
+    "options": [
+      "A. 受精後約第 3~4 天形成外形似桑葚的「桑葚胚（Morula）」，含 16~32 個卵裂球",
+      "B. 桑葚胚在受精當天即進入子宮腔並直接穿入子宮肌肉層著床",
+      "C. 進入子宮腔進行著床的胚胎階段是受精卵本身，此時尚未形成胚泡囊腔",
+      "D. 著床通常發生於受精後第 14 天，著床部位為子宮頸外口黏膜"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。受精卵進行卵裂，於受精後約第 3~4 天分裂成由 16~32 個緊密卵裂球組成的實心細胞團，外形似桑葚，故稱為「桑葚胚（Morula）」。隨後液體滲入形成內細胞團與囊胚腔，發育為「囊胚（Blastocyst）」，於受精後第 5~6 天脫去透明帶，於約第 6~7 天開始著床於子宮體或底部的子宮內膜「功能層（Functional layer）」。B、C、D 選項時程與著床結構描述皆錯誤。",
+    "source": "大仁解剖學 Chap 1-3 P.46 (🔥考點六：受精卵發育時程與著床)"
+  },
+  {
+    "id": 18,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "在人類胚胎發育歷程中，心血管系統是第一個發揮機能的器官系統。原始心臟管（Primitive heart tube）大約在受精發育的第幾週開始規律跳動？",
+    "options": [
+      "A. 第 1 週初",
+      "B. 第 3 週末至第 4 週初（約第 21~22 天）",
+      "C. 第 8 週末",
+      "D. 第 12 週末"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心血管系統是人體最早具備生理功能的系統。中胚層側板的血管生成細胞匯聚形成成對的心內膜管並融合為單一心臟管，在「第 3 週末至第 4 週初（約受精後第 21~22 天）」即開始進行自律性規律收縮跳動並推動血液單向流動。第 8 週為胚胎期結束器官成型期；第 12 週為胎兒期早期，皆過晚。",
+    "source": "大仁解剖學 Chap 1-3 P.48 (🔥考點六：受精卵發育時程與著床)"
+  },
+  {
+    "id": 19,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "胎盤（Placenta）是母體與胎兒進行物質交換的關鍵器官，解剖學上胎盤由哪兩大部分共同組合而成？",
+    "options": [
+      "A. 胎兒面的羊膜（Amnion）與母體面的子宮肌層（Myometrium）",
+      "B. 胎兒面的絨毛膜板及其絨毛（Chorionic frondosum）與母體面的基蛻膜（Decidua basalis）",
+      "C. 胎兒面的卵黃囊（Yolk sac）與母體面的包蛻膜（Decidua capsularis）",
+      "D. 胎兒面的尿囊（Allantois）與母體面的壁蛻膜（Decidua parietalis）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。成熟胎盤由胎兒部分與母體部分緊密結合構成：胎兒部分為「叢密絨毛膜（Chorion frondosum）」及其表面的絨毛膜板；母體部分為子宮內膜特化之「基蛻膜（Decidua basalis）」。母體血液在絨毛間隙（Intervillous space）中浸潤胎兒絨毛，隔著胎盤屏障進行氣體、養分與代謝廢物擴散交換，母胎血液在正常情況下不直接混合流注。A、C、D 選項組合皆非胎盤的主要構成面。",
+    "source": "大仁解剖學 Chap 1-3 P.50 (🔥考點七：胎盤構造、臍帶血管與胎兒循環三大分流)"
+  },
+  {
+    "id": 20,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "正常足月胎兒的臍帶（Umbilical cord）內部所包含的血管數目及其流經血液的含氧特性，下列敘述何者完全正確？",
+    "options": [
+      "A. 包含 1 條臍動脈（含充氧血）與 2 條臍靜脈（含缺氧血）",
+      "B. 包含 2 條臍動脈（含充氧血）與 1 條臍靜脈（含缺氧血）",
+      "C. 包含 2 條臍動脈（含缺氧血與代謝廢物）與 1 條臍靜脈（含富氧血與養分）",
+      "D. 包含 2 條臍動脈與 2 條臍靜脈，血液含氧量完全相同"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。正常臍帶剖面呈「兩動一靜」三根血管（外包華通氏膠 Wharton's jelly）：\n1.「2 條臍動脈（Umbilical arteries）」：由胎兒內髂動脈發出，運送胎兒體內的「缺氧血及代謝廢物」流向胎盤進行交換；\n2.「1 條臍靜脈（Umbilical vein）」：自胎盤收集「充氧血與豐富營養」，運送流入胎兒體內。\n注意：動脈流缺氧血、靜脈流充氧血，不可與成人體循環混淆！故正確答案為 C。",
+    "source": "大仁解剖學 Chap 1-3 P.52 (🔥考點七：胎盤構造、臍帶血管與胎兒循環三大分流)"
+  },
+  {
+    "id": 21,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "在胎兒循環的三大分流途徑中，「靜脈導管（Ductus venosus）」的起始連通與出生後閉鎖形成的解剖結構殘餘為：",
+    "options": [
+      "A. 連通臍動脈與下腔靜脈，出生後閉鎖形成臍正中韌帶",
+      "B. 連通臍靜脈與下腔靜脈（IVC），使約半數富氧血繞過肝臟血竇；出生後退化纖維化為「靜脈韌帶（Ligamentum venosum）」",
+      "C. 連通肺動脈幹與主動脈弓，出生後退化為動脈韌帶",
+      "D. 連通左心房與右心房，出生後形成卵圓窩"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。靜脈導管（Ductus venosus）連通臍靜脈與下腔靜脈（Inferior vena cava），使從胎盤回來的高含氧血液有相當比例能繞過發育中的肝臟毛細血管網，直接注入下腔靜脈快速回心。出生斷臍後，靜脈導管失去血流並在數日內閉鎖纖維化，成人殘留痕跡為位於肝臟底面的「靜脈韌帶（Ligamentum venosum）」。A 選項連通血管錯誤；C 選項為動脈導管；D 選項為卵圓孔。",
+    "source": "大仁解剖學 Chap 1-3 P.54 (🔥考點七：胎盤構造、臍帶血管與胎兒循環三大分流)"
+  },
+  {
+    "id": 22,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "胎兒循環中的「動脈導管（Ductus arteriosus）」負責將血液由何處分流至何處？出生後其閉鎖退化形成的結構稱為：",
+    "options": [
+      "A. 由降主動脈引流至上腔靜脈；退化為動脈圓索",
+      "B. 由右心房直接引流至左心房；退化為卵圓窩",
+      "C. 由肺動脈幹（Pulmonary trunk）引流至降主動脈（Aorta）；出生後退化為「動脈韌帶（Ligamentum arteriosum）」",
+      "D. 由左心室引流至右心室；退化為室間隔膜部"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。在胎兒期，肺部塌陷未充氣且肺血管阻力極高，右心室泵出至肺動脈幹的大部分血液（約 90%）經由「動脈導管（Ductus arteriosus）」直接分流進入降主動脈，供應下半身並回流胎盤。出生後自主呼吸建立，肺血管阻力驟降，動脈導管平滑肌在血氧分壓上升刺激下強烈收縮閉鎖，最終纖維化為連接左肺動脈與主動脈弓下緣的「動脈韌帶（Ligamentum arteriosum）」。若未閉鎖則為臨床常見的開放性動脈導管（PDA）。",
+    "source": "大仁解剖學 Chap 1-3 P.55 (🔥考點七：胎盤構造、臍帶血管與胎兒循環三大分流)"
+  },
+  {
+    "id": 23,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "胎兒心臟房間隔上的「卵圓孔（Foramen ovale）」在出生前具有關鍵分流功能，關於其血流方向與出生後閉合機制，下列敘述何者完全正確？",
+    "options": [
+      "A. 出生前血液由高壓之「右心房直接分流至左心房」；出生後左心房壓力高於右心房，推擠第一房間隔貼合閉鎖，成人遺留「卵圓窩（Fossa ovalis）」",
+      "B. 出生前血液由左心房分流至右心房；出生後卵圓孔開放直徑進一步擴大",
+      "C. 出生前血液由右心室直接射入左心室；出生後形成室間孔",
+      "D. 卵圓孔位於室間隔肌部，出生後纖維化為心臟骨骼之三尖瓣環"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。胎兒期下腔靜脈帶來的大部分富氧血經由下腔靜脈瓣導向房間隔的卵圓孔（Foramen ovale），由壓力較高的「右心房直接流入左心房」，隨後經左心室優先供應大腦與冠狀動脈。出生後第一口呼吸使肺循環阻力驟降，大量血液自肺靜脈回流左心房，使左心房壓力顯著高於右心房，推擠第一房間隔的卵圓孔瓣緊貼第二房間隔，使孔洞功能性關閉，隨後永久閉合，在成年人右心房間隔上留下一個淺凹構造——「卵圓窩（Fossa ovalis）」。",
+    "source": "大仁解剖學 Chap 1-3 P.56 (🔥考點七：胎盤構造、臍帶血管與胎兒循環三大分流)"
+  },
+  {
+    "id": 24,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "人體表皮（Epidermis）屬於複層扁平角質化上皮，由深層（靠近基底膜）至淺層（皮膚表面）的五個細胞層次排列順序何者完全正確？",
+    "options": [
+      "A. 基底層（S. basale）→ 顆粒層（S. granulosum）→ 棘狀層（S. spinosum）→ 透明層（S. lucidum）→ 角質層（S. corneum）",
+      "B. 基底層（S. basale）→ 棘狀層（S. spinosum）→ 顆粒層（S. granulosum）→ 透明層（S. lucidum）→ 角質層（S. corneum）",
+      "C. 角質層（S. corneum）→ 透明層（S. lucidum）→ 顆粒層（S. granulosum）→ 棘狀層（S. spinosum）→ 基底層（S. basale）",
+      "D. 基底層（S. basale）→ 棘狀層（S. spinosum）→ 透明層（S. lucidum）→ 顆粒層（S. granulosum）→ 角質層（S. corneum）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。表皮由深至淺（由底層至表面）的標準五層排列順序為：\n1. 基底層（Stratum basale / 胚芽層）：單層立方形細胞，進行活躍有絲分裂幹細胞；\n2. 棘狀層（Stratum spinosum）：數層多角形細胞，具大量胞橋小體；\n3. 顆粒層（Stratum granulosum）：3~5層扁平細胞，含嗜鹼性透明角質顆粒；\n4. 透明層（Stratum lucidum）：2~3層扁平透明無核嗜酸性死細胞；\n5. 角質層（Stratum corneum）：最表層多層扁平角化脫核死細胞。\n題幹要求「由深層至淺層」，C 選項為由淺至深；A、D 選項層次順序錯位，故正確為 B。",
+    "source": "大仁解剖學chap 5_皮 P.15 (🔥考點八：皮膚系統層次架構與四大腺體)"
+  },
+  {
+    "id": 25,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "在皮膚表皮的五個分層中，哪一層「僅存在於手掌與腳底之厚皮膚（Thick skin）」，而在全身絕大多數的薄皮膚（Thin skin）中均付之闕如？",
+    "options": [
+      "A. 角質層（Stratum corneum）",
+      "B. 顆粒層（Stratum granulosum）",
+      "C. 透明層（Stratum lucidum）",
+      "D. 棘狀層（Stratum spinosum）"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。透明層（Stratum lucidum）是一層薄而發亮的細胞層，其細胞核與胞器均已退化溶解，內部充滿中間代謝產物「角質透明蛋白（Eleidin）」，此層「僅見於手掌（Palms）與腳底（Soles）之厚皮膚（Thick skin）」，全身覆蓋毛髮的薄皮膚（Thin skin）僅有 4 層，完全缺乏透明層。A、B、D 於厚薄皮膚皆具備。",
+    "source": "大仁解剖學chap 5_皮 P.20 (🔥考點八：皮膚系統層次架構與四大腺體)"
+  },
+  {
+    "id": 26,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "皮膚的真皮層（Dermis）位於表皮下方，分為淺部的乳頭層（Papillary layer）與深部的網狀層（Reticular layer），下列關於這兩層組織學構造之比較何者正確？",
+    "options": [
+      "A. 乳頭層由緻密結締組織構成，佔真皮厚度的 80%",
+      "B. 乳頭層由疏鬆結締組織構成，內含毛細血管袢與觸覺小體（Meissner's corpuscles）；網狀層由緻密不規則結締組織構成，富含粗大膠原纖維束提供強大抗拉張力",
+      "C. 網狀層由單層扁平上皮細胞排列而成，負責阻隔水分流失",
+      "D. 皮膚的皮脂腺與汗腺本體皆完全位於表皮層內，真皮層僅有神經分佈"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。真皮分為兩層：\n1.「乳頭層（Papillary layer）」：約佔真皮厚度 20%，由疏鬆結締組織（Areolar CT）構成，突出成真皮乳頭，富含微血管網及梅斯納觸覺小體（Meissner's corpuscles）；\n2.「網狀層（Reticular layer）」：約佔真皮 80%，由緻密不規則結締組織（Dense irregular CT）構成，交織大量粗大 I 型膠原纖維與彈性纖維，賦予皮膚卓越的抗拉伸張力與彈性（皮膚張力線/朗格氏線 Langer's lines 的解剖基礎）。A 選項比例與組織顛倒；C 選項並非單層扁平上皮；D 選項錯誤：腺體多數深入真皮甚至皮下層。",
+    "source": "大仁解剖學chap 5_皮 P.35 (🔥考點八：皮膚系統層次架構與四大腺體)"
+  },
+  {
+    "id": 27,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "關於皮膚附屬腺體中「皮脂腺（Sebaceous gland）」的分泌機轉與分佈特性，下列敘述何者完全正確？",
+    "options": [
+      "A. 屬於全漿分泌腺（Holocrine gland），細胞累積大量脂質後破裂死亡成為分泌物，導管多數開口於毛囊頸部",
+      "B. 屬於外分泌腺（Merocrine gland），細胞藉由胞吐作用分泌水狀無機鹽",
+      "C. 在人體手掌（Palms）與腳底（Soles）分佈密度最高",
+      "D. 分泌物完全不具任何抑制細菌生長的生理功能"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。皮脂腺（Sebaceous gland）屬於典型的「全漿分泌（Holocrine secretion）」腺體，腺細胞在成熟過程中積聚大量脂滴，最終整個細胞崩解破裂死亡，連同脂質殘骸一同排出形成皮脂（Sebum）。其導管絕大多數直接開口於毛囊頸部（立毛肌收縮時擠壓皮脂排出），主要作用為潤滑毛髮、防止水分蒸發並具微弱抑菌作用。注意：手掌與腳底之厚皮膚完全沒有毛囊與皮脂腺！故 C 選項嚴重錯誤；B、D 選項亦錯誤。",
+    "source": "大仁解剖學chap 5_皮 P.52 (🔥考點八：皮膚系統層次架構與四大腺體)"
+  },
+  {
+    "id": 28,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "人體皮膚具有外分泌汗腺（小汗腺 Eccrine sweat gland）與頂漿汗腺（大汗腺 Apocrine sweat gland），下列關於兩者之生理機能與解剖分佈比較何者正確？",
+    "options": [
+      "A. 外分泌汗腺（小汗腺）僅限於腋窩與會陰部分佈，在青春期後才開始具備分泌活性",
+      "B. 頂漿汗腺（大汗腺）以局漿方式分泌純水與氯化鈉，為人體全身調節體溫的核心汗腺",
+      "C. 外分泌汗腺（小汗腺）廣泛分佈全身（手掌足底極密），分泌清澈稀薄水狀汗液以蒸發調節體溫；頂漿汗腺（大汗腺）主要分佈於腋窩、乳暈及會陰肛周，青春期受性荷爾蒙刺激開始分泌黏稠富脂液體，被細菌分解產生特殊體味",
+      "D. 兩者均直接開口於毛囊內部，完全不直接開口於皮膚游離表面"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。講義核心重點對比：\n1.「外分泌汗腺（Eccrine / 小汗腺）」：全身廣泛分佈（額頭、手掌、足底最多），分泌方式為局漿分泌（Merocrine），汗液清澈（99% 為水，含 NaCl 等），導管直接開口於皮膚表面汗孔，專司「體溫調節（Thermoregulation）」；\n2.「頂漿汗腺（Apocrine / 大汗腺）」：腺體粗大，主要局限於腋下、乳暈、外生殖器與會陰部，多開口於毛囊，青春期在性荷爾蒙刺激下才開始活化，分泌黏稠乳樣液體，富含蛋白質與脂質，被皮膚表面細菌分解後產生體臭（狐臭）。A、B、D 描述皆混淆兩者。",
+    "source": "大仁解剖學chap 5_皮 P.58 (🔥考點八：皮膚系統層次架構與四大腺體)"
+  },
+  {
+    "id": 29,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "胚胎發育第三週形成的「中胚層（Mesoderm）」，在後續器官形成中分化為人體許多重要系統。下列哪一組構造「全部」源自中胚層？",
+    "options": [
+      "A. 腦神經系統、皮膚表皮、指甲",
+      "B. 骨骼系統、全身肌肉組織（骨骼肌/心肌/平滑肌）、真皮層、心血管循環系統與腎臟",
+      "C. 胃腸道黏膜上皮、肝臟實質、胰臟外分泌腺",
+      "D. 呼吸道上皮襯裡、甲狀腺濾泡細胞、膀胱黏膜上皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。三胚層分化衍生關係為國考必考考點：\n- 中胚層（Mesoderm）衍生：所有結締組織、骨骼、軟骨、關節、全身所有三種肌肉（骨骼肌、心肌、平滑肌）、皮膚真皮層、心血管與淋巴系統（心臟、血管、血液細胞）、泌尿生殖系統絕大部分器官（腎臟、輸尿管、生殖腺與生殖管道）及腎上腺皮質。\n- A 選項屬於「外胚層（Ectoderm）」衍生；\n- C、D 選項皆屬於「內胚層（Endoderm）」衍生。故正確答案為 B。",
+    "source": "大仁解剖學 Chap 1-3 P.60 (🔥考點九：三胚層分化衍生器官)"
+  },
+  {
+    "id": 30,
+    "chapter": "胚胎發育、胎盤循環與皮膚系統",
+    "isExamStar": true,
+    "question": "下列關於胚胎「外胚層（Ectoderm）」與「內胚層（Endoderm）」衍生構造之配對，何者「錯誤」？",
+    "options": [
+      "A. 中樞神經系統（大腦、脊髓）與周邊神經——源自外胚層神經外胚層（神經管與神經脊）",
+      "B. 腎上腺髓質（Adrenal medulla）——源自外胚層之神經脊細胞（Neural crest cells）",
+      "C. 消化道（胃、小腸、大腸）與呼吸道（氣管、支氣管）的黏膜上皮襯裡——源自內胚層",
+      "D. 皮膚的真皮層（Dermis）與皮下組織脂肪——源自外胚層表面細胞"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。皮膚的「表皮層（Epidermis）」源自外胚層（Ectoderm）；但其下方的「真皮層（Dermis）」與皮下組織結締組織及脂肪，則是源自「中胚層（Mesoderm）」（背側中胚層之皮節 Dermatome），此為極常設下陷阱之高頻考點。A、B、C 選項之胚層配對皆完全正確（注意：腎上腺皮質源自中胚層，腎上腺髓質源自外胚層神經脊）。",
+    "source": "大仁解剖學 Chap 1-3 P.62 (🔥考點九：三胚層分化衍生器官)"
+  },
+  {
+    "id": 31,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "「骨盆界線（Pelvic brim / 骨盆入口界線）」是解剖學上劃分真骨盆（小骨盆）與假骨盆（大骨盆）的關鍵邊界。下列由後向前排列的骨性構造界線何者完全正確？",
+    "options": [
+      "A. 坐骨結節 → 坐骨棘 → 閉孔 → 恥骨聯合下緣",
+      "B. 薦骨岬（Sacral promontory）→ 弓狀線（Arcuate line）→ 恥骨梳（Pecten pubis）→ 恥骨結節（Pubic tubercle）→ 恥骨聯合上緣",
+      "C. 髂嵴（Iliac crest）→ 髂前上棘（ASIS）→ 腹股溝韌帶 → 恥骨結節",
+      "D. 薦髂關節 → 坐骨大切跡 → 坐骨梳 → 恥骨弓"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。骨盆界線（Pelvic brim）形成骨盆入口（Pelvic inlet），其解剖邊界連續環線由後向前依序為：\n1. 薦骨岬（Sacral promontory）；\n2. 薦骨翼前緣；\n3. 髂骨的弓狀線（Arcuate line of ilium）；\n4. 恥骨梳（Pecten pubis / Pectineal line）；\n5. 恥骨結節（Pubic tubercle）；\n6. 恥骨聯合上緣（Superior border of pubic symphysis）。\nA、C、D 所列邊界皆非標準骨盆界線組成。",
+    "source": "大仁解剖學CH06_骨骼 P.35 (🔥考點十：骨盆界線與真假骨盆區分)"
+  },
+  {
+    "id": 32,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "解剖學上將位於骨盆界線上方的大骨盆稱為「假骨盆（False pelvis）」，界線下方的小骨盆稱為「真骨盆（True pelvis）」。下列何種器官解剖位置主要位於「真骨盆腔內」？",
+    "options": [
+      "A. 盲腸（Cecum）與闌尾（Appendix）",
+      "B. 膀胱（Urinary bladder）、直腸（Rectum）及女性子宮（Uterus）",
+      "C. 乙狀結腸（Sigmoid colon）近端與下段迴腸（Ileum）",
+      "D. 升結腸（Ascending colon）與降結腸（Descending colon）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義明確規範：\n1.「假骨盆（大骨盆，界線上方）」：實質上屬於腹腔下部，兩側由髂骨翼支持，內部主要容納下腹部消化道臟器，如盲腸、闌尾、下段迴腸及乙狀結腸部分；\n2.「真骨盆（小骨盆，界線下方）」：具有完整的骨性骨盆壁，內含真正的骨盆腔臟器，包括膀胱、直腸以及內生殖器官（女性之子宮、卵巢、輸卵管、陰道；男性之前列腺、輸精管壺腹、儲精囊）。A、C、D 選項之器官皆主要坐落於假骨盆或腹腔中。",
+    "source": "大仁解剖學CH06_骨骼 P.36 (🔥考點十：骨盆界線與真假骨盆區分)"
+  },
+  {
+    "id": 33,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "在法醫人類學與臨床骨盆測量中，比較成年男性與女性骨盆的「恥骨下角（Subpubic angle / 恥骨弓角度）」，下列數值與形態特徵何者正確？",
+    "options": [
+      "A. 女性恥骨下角小於 60 度，呈尖銳倒 V 形",
+      "B. 男性恥骨下角大於 100 度，呈平坦倒 U 形",
+      "C. 女性恥骨下角通常「大於 90 度（約 90~100 度或以上）」，呈鈍角圓潤之倒 U 形，適應於胎兒娩出產道；男性恥骨下角「小於 90 度（通常約 50~60 度）」，呈狹窄銳角之倒 V 形",
+      "D. 男女恥骨下角無解剖學統計差異，兩者均恆定為 90 度直角"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。男女骨盆鑑別之最核心第一考點即為恥骨下角（Subpubic angle）：\n- 女性骨盆：恥骨弓向兩側開展，恥骨下角為「鈍角（> 90°，通常 90°~100°）」，呈開闊的圓弧倒 U 形，便於分娩時胎頭通過；\n- 男性骨盆：恥骨弓狹窄，恥骨下角為「銳角（< 90°，通常 50°~60°）」，呈倒 V 形。A、B、D 描述皆相反或錯誤。",
+    "source": "大仁解剖學CH06_骨骼 P.38 (🔥考點十：男女骨盆八大特徵全對比)"
+  },
+  {
+    "id": 34,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "檢視骨盆入口（Pelvic inlet）的俯視幾何外形，成年男性與女性的骨盆入口形態呈現何種典型差異？",
+    "options": [
+      "A. 女性呈橫橢圓形（Transverse oval）或近圓形，前後徑較短而橫徑寬闊；男性因薦骨岬顯著向前突出而呈「愛心形（Heart-shaped）」",
+      "B. 女性呈愛心形；男性呈正方形",
+      "C. 女性呈狹長垂直裂縫狀；男性呈橫長橢圓形",
+      "D. 男女皆呈完全對稱的正圓形"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。骨盆入口（Pelvic inlet）的形狀比較：\n- 女性：骨盆入口寬大開闊，呈「橫橢圓形（Transverse oval）」或近似圓形，薦骨岬不向前過度突出，有利於胎頭銜接入盆；\n- 男性：骨盆入口粗糙狹小，薦骨岬明顯向前凸入骨盆腔，使入口輪廓呈現典型的「心形（Heart-shaped）」或三角形。故正確答案為 A。",
+    "source": "大仁解剖學CH06_骨骼 P.39 (🔥考點十：男女骨盆八大特徵全對比)"
+  },
+  {
+    "id": 35,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "關於男女骨盆的坐骨結節（Ischial tuberosities）走向與整體骨盆腔深淺之比較，下列敘述何者完全正確？",
+    "options": [
+      "A. 女性骨盆狹長而深，坐骨結節向內翻（Inverted）",
+      "B. 女性骨盆寬短而淺，坐骨結節「向外翻（Everted）」，使骨盆下口與產道寬大；男性骨盆重厚狹深，坐骨結節「向內翻（Inverted）」侵入產道空間",
+      "C. 男性骨盆骨質輕薄，坐骨棘間徑顯著大於女性",
+      "D. 女性閉孔（Obturator foramen）呈巨大圓形，男性閉孔呈扁小三角形"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。男女骨盆綜合特徵比較：\n- 女性骨盆：適應分娩功能，骨壁較薄且輕，骨盆腔「寬、短、淺」；坐骨結節彼此分開且「向外翻（Everted）」，坐骨棘鈍且不向內突，使骨盆出口橫徑與坐骨棘間徑大幅增加；\n- 男性骨盆：適應肌肉負重，骨壁厚且重，骨盆腔「窄、長、深」呈漏斗狀；坐骨結節「向內翻（Inverted）」，坐骨棘粗大向內突出。D 選項錯誤：女性閉孔偏卵圓形或三角形較小，男性閉孔較大且圓。故選 B。",
+    "source": "大仁解剖學CH06_骨骼 P.40 (🔥考點十：男女骨盆八大特徵全對比)"
+  },
+  {
+    "id": 36,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "正常人體單側手部之「掌骨（Metacarpal bones）」共有幾塊？其在解剖學上的標準編號規則為：",
+    "options": [
+      "A. 共有 5 塊，由內側小指側向外側拇指側依序編號為第 1 至第 5 掌骨",
+      "B. 共有 5 塊，由外側「拇指側向內側小指側」依序編號為第 1 至第 5 掌骨",
+      "C. 共有 7 塊，由掌心向四周放射狀排列編號",
+      "D. 共有 8 塊，分為近側列與遠側列各 4 塊"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。每隻手的手掌骨骼包含 5 塊長骨狀的掌骨（Metacarpals, I~V）。在標準解剖學姿勢下（掌心向前），解剖編號統一定義為：外側（橈側）的拇指為「第一掌骨（1st metacarpal）」，向內側（尺側）依序至小指為「第五掌骨（5th metacarpal）」。A 編號方向顛倒；C 混淆跗骨數目；D 混淆腕骨數目。",
+    "source": "大仁解剖學CH06_骨骼 P.28 (🔥考點十一：上肢掌骨與腕骨排列)"
+  },
+  {
+    "id": 37,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "人體手腕包含 8 塊腕骨（Carpal bones），分為近側列與遠側列。下列關於近側列腕骨「由橈側向尺側（由外向內）」排列名稱何者完全正確？",
+    "options": [
+      "A. 大多角骨 → 小多角骨 → 頭狀骨 → 鉤狀骨",
+      "B. 舟狀骨（Scaphoid）→ 月狀骨（Lunate）→ 三角骨（Triquetrum）→ 豌豆骨（Pisiform）",
+      "C. 月狀骨 → 舟狀骨 → 豌豆骨 → 三角骨",
+      "D. 跟骨 → 距骨 → 舟狀骨 → 骰骨"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。腕骨 8 塊（口訣：舟月三角豆，大小頭狀鉤）：\n1.「近側列（Proximal row，由外側橈側向內側尺側）」：舟狀骨（Scaphoid）→ 月狀骨（Lunate）→ 三角骨（Triquetrum）→ 豌豆骨（Pisiform，屬於種子骨）；\n2.「遠側列（Distal row，由外側橈側向內側尺側）」：大多角骨（Trapezium）→ 小多角骨（Trapezoid）→ 頭狀骨（Capitate，最大腕骨）→ 鉤狀骨（Hamate）。\nA 選項為遠側列腕骨；D 選項為足部跗骨。故正確為 B。",
+    "source": "大仁解剖學CH06_骨骼 P.26 (🔥考點十一：上肢掌骨與腕骨排列)"
+  },
+  {
+    "id": 38,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "人體胸廓包含 12 對肋骨（Ribs），臨床與解剖學上將其精準分類為真肋、假肋與浮肋，下列分類依據與對數配對何者完全正確？",
+    "options": [
+      "A. 第 1~5 對為真肋；第 6~10 對為假肋；第 11~12 對為浮肋",
+      "B. 第 1~7 對為真肋（True ribs，藉自有的肋軟骨直接與胸骨相連）；第 8~10 對為假肋（False ribs，肋軟骨匯合後間接接於胸骨）；第 11~12 對為浮肋（Floating ribs，前端游離無肋軟骨連接胸骨）",
+      "C. 第 1~10 對皆為真肋；第 11~12 對為假肋且前端相連形成肋弓",
+      "D. 第 1~8 對為真肋；第 9~11 對為假肋；僅第 12 對為浮肋"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。人體 12 對肋骨之標準分類（考點十一）：\n1.「真肋（True ribs / 椎胸肋，第 1~7 對）」：每條肋骨前端均藉由其專屬的透明肋軟骨「直接」附著於胸骨兩側；\n2.「假肋（False ribs / 椎軟骨肋，第 8~10 對）」：前端肋軟骨不直接連接胸骨，而是依序與其上位肋軟骨融合相連，間接連接胸骨，共同形成「肋弓（Costal margin）」；\n3.「浮肋（Floating ribs / 椎肋，第 11~12 對）」：屬於假肋的一種，前端完全游離於腹壁肌肉中，完全沒有肋軟骨與胸骨或上位肋骨相連。故正確答案為 B。",
+    "source": "大仁解剖學CH06_骨骼 P.18 (🔥考點十一：肋骨分類與胸廓構造)"
+  },
+  {
+    "id": 39,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "人體脊柱（Vertebral column）在幼年時期與成年時期的獨立椎骨數量會發生改變，關於其各段椎骨數目之轉變，下列敘述何者完全正確？",
+    "options": [
+      "A. 幼年脊柱有 26 塊椎骨，成年後因骨化融合為 24 塊",
+      "B. 幼年時期脊柱共有 33 塊椎骨（頸椎 7、胸椎 12、腰椎 5、薦椎 5、尾椎 4）；成年後 5 塊薦椎癒合成 1 塊薦骨，4 塊尾椎癒合成 1 塊尾骨，總數轉變為 26 塊獨立骨骼",
+      "C. 頸椎在幼年為 8 塊，成年後第一與第二頸椎癒合變為 7 塊",
+      "D. 成年後胸椎會與肋骨融合，使胸椎數目由 12 塊縮減為 6 塊"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。脊柱椎骨數量演變：\n- 幼年時期共有 33 塊獨立椎骨：頸椎（Cervical, C）7 塊 + 胸椎（Thoracic, T）12 塊 + 腰椎（Lumbar, L）5 塊 + 薦椎（Sacral, S）5 塊 + 尾椎（Coccygeal, Co）4 塊。\n- 成年後：5 塊薦椎骨化癒合成單一的「薦骨（Sacrum）」，4 塊尾椎癒合成單一的「尾骨（Coccyx）」，因此成年脊柱共有 26 塊骨骼（7頸椎 + 12胸椎 + 5腰椎 + 1薦骨 + 1尾骨）。頸椎恆定為 7 塊（不可與 8 對頸神經混淆！）。故選 B。",
+    "source": "大仁解剖學CH06_骨骼 P.12 (🔥考點十一：脊柱骨骼發育與脊神經對數)"
+  },
+  {
+    "id": 40,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "人體脊髓發出的「脊神經（Spinal nerves）」共有 31 對，下列各脊柱節段的脊神經對數分配何者完全正確？",
+    "options": [
+      "A. 頸神經 7 對、胸神經 12 對、腰神經 5 對、薦神經 5 對、尾神經 2 對",
+      "B. 頸神經 8 對（C1~C8）、胸神經 12 對（T1~T12）、腰神經 5 對（L1~L5）、薦神經 5 對（S1~S5）、尾神經 1 對（Co1）",
+      "C. 頸神經 8 對、胸神經 10 對、腰神經 6 對、薦神經 6 對、尾神經 1 對",
+      "D. 頸神經 12 對、胸神經 8 對、腰神經 5 對、薦神經 5 對、尾神經 1 對"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。人體共有 31 對脊神經，其節段分佈極具規律：\n- 頸神經（Cervical nerves）：8 對（C1~C8；雖然頸椎僅 7 塊，但 C1 神經由枕骨與 C1 椎弓間穿出，C8 神經由 C7 椎骨與 T1 椎骨之間的椎間孔穿出）；\n- 胸神經（Thoracic nerves）：12 對（T1~T12）；\n- 腰神經（Lumbar nerves）：5 對（L1~L5）；\n- 薦神經（Sacral nerves）：5 對（S1~S5）；\n- 尾神經（Coccygeal nerve）：1 對（Co1）。\n總計 8+12+5+5+1 = 31 對。A 頸神經誤寫為 7 對；C、D 數字分配錯誤。",
+    "source": "大仁解剖學CH06_骨骼 P.14 (🔥考點十一：脊柱骨骼發育與脊神經對數)"
+  },
+  {
+    "id": 41,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "第一頸椎 C1 又稱為「寰椎（Atlas）」，其在解剖外觀上有別於其他所有典型椎骨的兩大缺失構造為：",
+    "options": [
+      "A. 缺乏椎孔（Vertebral foramen）與橫突",
+      "B. 「缺乏椎體（Vertebral body）」與「缺乏棘突（Spinous process）」",
+      "C. 缺乏上關節面與下關節面",
+      "D. 缺乏前弓與後弓"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。寰椎（C1 Atlas）外觀呈環形，其最顯著的解剖特徵是「沒有椎體（Vertebral body）」亦「沒有棘突（Spinous process）」（原屬於 C1 的椎體在胚胎發育時與 C2 融合形成齒突）。寰椎由前弓（Anterior arch）、後弓（Posterior arch）及兩側膨大的側塊（Lateral masses）構成；側塊上方的卵圓形上關節凹與枕骨髁（Occipital condyles）形成「寰枕關節（Atlanto-occipital joint）」，負責點頭動作。故選 B。",
+    "source": "大仁解剖學CH06_骨骼 P.15 (🔥考點十一：特殊椎骨C1寰椎與C2樞椎)"
+  },
+  {
+    "id": 42,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "第二頸椎 C2 又稱為「樞椎（Axis）」，其椎體上方向上垂直突出的代表性構造名稱與關節功能為何？",
+    "options": [
+      "A. 莖突（Styloid process）；與顳骨形成關節",
+      "B. 齒突（Dens / Odontoid process）；伸入寰椎前弓後方的齒突凹中，形成寰樞正中關節，負責頭頸部「左右旋轉（搖頭）」動作",
+      "C. 喙突（Coracoid process）；提供斜方肌附著",
+      "D. 肋小凹（Costal facet）；與第一肋骨形成關節"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。樞椎（C2 Axis）的最核心特徵為其椎體上方豎立一根似牙齒狀的垂直突起——「齒突（Dens / Odontoid process）」。齒突向上穿入寰椎前弓後方的齒突凹（Fovea dentis）內，藉由寰椎橫韌帶固定形成樞軸滑液關節（寰樞正中關節 Median atlantoaxial joint），以齒突為樞軸軸心，使寰椎連同頭部進行左右「旋轉（搖頭動作，Saying 'No'）」活動。A、C、D 選項皆非樞椎特徵。",
+    "source": "大仁解剖學CH06_骨骼 P.16 (🔥考點十一：特殊椎骨C1寰椎與C2樞椎)"
+  },
+  {
+    "id": 43,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "胸骨柄與胸骨體交界處微向前凸形成的「胸骨角（Sternal angle / Angle of Louis）」，在臨床觸診與人體解剖學上對應的重要解剖標誌包括下列何者？",
+    "options": [
+      "A. 向兩側平齊第 1 肋軟骨，相當於頸椎 C7 水平",
+      "B. 向兩側平齊「第 2 肋軟骨（2nd costal cartilage）」，水平向後平對「第 4 與第 5 胸椎（T4~T5）椎間盤」水平",
+      "C. 平齊劍突頂端，對應第 10 胸椎水平",
+      "D. 為心尖搏動之最主要觸診位置"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。胸骨角（Angle of Louis）是臨床上計數肋骨最重要的骨性標誌：\n1. 向兩側直接連接「第 2 肋軟骨」，臨床上由此向下依序觸診第 2~12 肋骨及肋間隙；\n2. 橫切面水平向後穿過「胸椎 T4 與 T5 之間的椎間盤」；\n3. 標誌上縱膈腔與下縱膈腔的交界平面；\n4. 為主動脈弓起始與終止處、氣管分叉（Carina）處及奇靜脈注入上腔靜脈的水平。A 肋骨與椎骨層次錯誤；C、D 選項為劍突或心尖區，非胸骨角。",
+    "source": "大仁解剖學CH06_骨骼 P.20 (🔥考點十一：胸骨角與臨床解剖標誌)"
+  },
+  {
+    "id": 44,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": false,
+    "question": "人體單側足部的跗骨（Tarsal bones）共有 7 塊，其中體積最大且直接承受大部分人體著地重量、形成足跟突起的骨骼是：",
+    "options": [
+      "A. 距骨（Talus）",
+      "B. 跟骨（Calcaneus）",
+      "C. 舟狀骨（Navicular）",
+      "D. 骰骨（Cuboid）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。足部跗骨共 7 塊（距骨、跟骨、骰骨、舟狀骨、3塊楔狀骨）。其中「跟骨（Calcaneus）」是體積最大、最強壯的跗骨，向後突出形成足跟，提供強大阿基里斯腱（跟腱）附著，直接承受站立行走時下傳的大部分重力；距骨（Talus）則是唯一向上與小腿脛腓骨形成踝關節的跗骨。故體積最大且形成足跟者為跟骨，選 B。",
+    "source": "大仁解剖學CH06_骨骼 P.44 (考點十一：下肢骨骼與跗骨)"
+  },
+  {
+    "id": 45,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": false,
+    "question": "在骨骼組織的微觀解剖中，構成緻密骨（Compact bone / 密質骨）的基本結構與功能單位稱為：",
+    "options": [
+      "A. 骨小樑（Trabeculae）",
+      "B. 骨元（Osteon / 哈弗氏系統 Haversian system）",
+      "C. 骨小管（Canaliculi）",
+      "D. 骨髓腔（Medullary cavity）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。密質骨（緻密骨）的基本結構單位是圓柱狀的「骨元（Osteon）」，又稱「哈弗氏系統（Haversian system）」。骨元由中央的哈弗氏管（Haversian canal，內含神經血管）、呈同心圓排列的多層骨板（Concentric lamellae）、散佈於骨板間的骨陷窩（Lacunae，內含骨細胞）及放射狀連接陷窩的微細骨小管（Canaliculi）共同構成。A 骨小樑為海綿骨之結構單位；C、D 僅為附屬構造。",
+    "source": "大仁解剖學CH06_骨骼 P.6 (考點十一：骨組織微觀結構)"
+  },
+  {
+    "id": 46,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": false,
+    "question": "在兒童與青少年生長發育期間，長骨（Long bone）能夠持續生長延長的關鍵解剖構造是位於骨幹與骨骺之間的：",
+    "options": [
+      "A. 骨膜外層纖維膜",
+      "B. 骨骺板（Epiphyseal plate / 生長板）內之透明軟骨區",
+      "C. 黃骨髓（Yellow bone marrow）",
+      "D. 關節滑液膜"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。在生長期的長骨中，位於骨骺（Epiphysis）與骨幹（Diaphysis）交界處的幹骺端存在一塊由透明軟骨構成的「骨骺板（Epiphyseal plate）」，俗稱生長板。板內軟骨細胞透過活躍的有絲分裂、肥大化及軟骨基質鈣化骨化，不斷向骨幹側沉積新骨質，使長骨得以長長。成年後軟骨完全骨化閉合為骨骺線（Epiphyseal line），長骨即停止長長。故選 B。",
+    "source": "大仁解剖學CH06_骨骼 P.8 (考點十一：長骨構造與軟骨內成骨)"
+  },
+  {
+    "id": 47,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": false,
+    "question": "成人脊柱具有四個前後方向的生理彎曲（Curvatures），下列關於其凸向與初級/次級彎曲之敘述何者正確？",
+    "options": [
+      "A. 頸曲凸向後，腰曲凸向後",
+      "B. 胸曲與薦曲凸向前，為出生後發育形成的次級彎曲",
+      "C. 頸曲與腰曲凸向前，為出生後因嬰兒抬頭與幼兒站立行走而發育形成的「次級彎曲（Secondary curvatures）」；胸曲與薦曲凸向後，保留自胎兒期原有的「初級彎曲（Primary curvatures）」",
+      "D. 四個彎曲在胚胎出生前均已發育完全且均凸向前"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。脊柱四個生理彎曲：\n1. 初級彎曲（Primary curvatures）：胎兒期即存在，方向「凸向後（Posteriorly concave anteriorly convex）」，包括「胸曲（Thoracic curvature）」與「薦曲（Sacral curvature）」；\n2. 次級彎曲（Secondary curvatures）：出生後發育形成，方向「凸向前（Anteriorly convex）」，包括嬰兒約 3 個月學會抬頭時形成的「頸曲（Cervical curvature）」及幼兒約 1 歲學習直立行走時形成的「腰曲（Lumbar curvature）」。故正確選項為 C。",
+    "source": "大仁解剖學CH06_骨骼 P.13 (考點十一：脊柱四個生理彎曲)"
+  },
+  {
+    "id": 48,
+    "chapter": "骨骼系統與骨盆分界",
+    "isExamStar": true,
+    "question": "在婦產科產道測量中，產科結合徑（Obstetric conjugate）無法直接由陰道觸診測量，臨床上通常藉由陰道指診測得「對角結合徑（Diagonal conjugate）」，再推估產科結合徑。下列測量標誌與換算公式何者正確？",
+    "options": [
+      "A. 對角結合徑由坐骨結節至恥骨聯合，減去 5 公分",
+      "B. 對角結合徑為「薦骨岬至恥骨聯合下緣」的直線距離（正常約 12.5~13 cm），扣除 1.5~2.0 cm 後，即為由薦骨岬至恥骨聯合後壁中點的「產科結合徑」（正常大於 10.5~11 cm）",
+      "C. 產科結合徑為兩側髂前上棘的距離，通常大於 25 cm",
+      "D. 對角結合徑直接等於骨盆出口橫徑，不需任何扣除"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。產科骨盆入口前後徑測量：\n1.「產科結合徑（Obstetric conjugate）」：薦骨岬至恥骨聯合後表面最突出中點的最短前後距（通常需 ≥ 10.5~11 cm），為胎頭能否通過骨盆入口的最窄限制徑線，但因軟組織阻擋無法經陰道直接測得；\n2.「對角結合徑（Diagonal conjugate）」：醫師將食指與中指伸入陰道，指尖觸及薦骨岬，以食指橈側抵住恥骨聯合下緣測得的距離（正常值約 12.5~13 cm）；\n3. 換算方式：產科結合徑 ＝ 對角結合徑 － 1.5 至 2 cm。故正確答案為 B。",
+    "source": "大仁解剖學CH06_骨骼 P.41 (🔥考點十：骨盆入口前後徑與產科結合徑)"
+  },
+  {
+    "id": 49,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "依據解剖學上關節的「活動度（Functional classification）」分類，完全不可活動的「不動關節（Synarthrosis）」與具有廣泛活動度的「可動關節（Diarthrosis）」，其典型範例分別為下列何者？",
+    "options": [
+      "A. 不動關節：肩關節；可動關節：頭顱縫合",
+      "B. 不動關節：頭顱骨縫（Sutures of skull）；可動關節：肩關節、髖關節等所有滑液關節（Synovial joints）",
+      "C. 不動關節：恥骨聯合；可動關節：椎間盤",
+      "D. 不動關節：膝關節；可動關節：牙齒與齒槽之釘狀嵌合"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。關節按活動度分為三級：\n1.「不動關節（Synarthrosis）」：骨與骨之間由緊密纖維或軟骨連接，無活動性，如成年頭顱的「縫合（Sutures）」、牙齒的釘狀嵌合（Gomphosis）及長骨的骨骺軟骨板；\n2.「微動關節（Amphiarthrosis）」：具些微活動性，典型為纖維軟骨聯合，如「恥骨聯合（Pubic symphysis）」與「椎間盤（Intervertebral discs）」；\n3.「可動關節（Diarthrosis）」：具有關節腔與滑液，活動幅度最大，包括人體「所有滑液關節（Synovial joints）」，如肩關節、髖關節、膝關節等。A、C、D 配對皆顛倒或混淆。",
+    "source": "大仁解剖學CH07_關節 P.8 (🔥考點十二：關節活動度與組織構造分類)"
+  },
+  {
+    "id": 50,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "依據骨骼間的連接組織與是否存在關節腔，關節在「組織結構（Structural classification）」上分為三大類，下列特徵鑑別何者完全正確？",
+    "options": [
+      "A. 纖維關節（Fibrous joints）骨間具發達關節腔，充滿潤滑液體",
+      "B. 軟骨關節（Cartilaginous joints）骨間由軟骨直接相連，無關節腔；滑液關節（Synovial joints）骨間具有封閉的「關節腔（Joint cavity）」並由滑液囊包裹",
+      "C. 滑液關節骨間由粗大緻密膠原纖維直接無腔縫合，不可移動",
+      "D. 纖維關節骨間具有透明軟骨構成的骨骺板，可自由進行三軸旋轉"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。關節的結構性三大分類：\n1. 纖維關節（Fibrous joints）：骨端由緻密結締組織直接連接，「無關節腔」，無活動或極微動（縫合、韌帶聯合、釘狀嵌合）；\n2. 軟骨關節（Cartilaginous joints）：骨端由透明軟骨或纖維軟骨連接，「無關節腔」，活動度小（軟骨結合、纖維軟骨聯合）；\n3. 滑液關節（Synovial joints）：骨端分離，兩骨之間具有被關節囊包裹的「關節腔（Joint cavity）」，內含潤滑滑液，為自由活動的可動關節。A、C、D 選項皆違背定義。",
+    "source": "大仁解剖學CH07_關節 P.10 (🔥考點十二：關節活動度與組織構造分類)"
+  },
+  {
+    "id": 51,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "滑液關節（Synovial joint）是人體活動度最大的關節類型，其必須具備的「四大基本/核心解剖構造」包括下列何者？",
+    "options": [
+      "A. 骨骺板、纖維軟骨盤、滑液囊、骨小樑",
+      "B. 關節軟骨（Articular cartilage）、關節囊（Articular capsule）、滑液膜（Synovial membrane）、關節腔（Joint cavity 內含滑液）",
+      "C. 關節唇、半月板、十字韌帶、側副韌帶",
+      "D. 肌腱、腱鞘、滑液囊、神經血管束"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。滑液關節四大必備核心構造（缺一不可）：\n1.「關節軟骨（Articular cartilage）」：覆蓋於關節骨端接觸面；\n2.「關節囊（Articular capsule）」：包繞關節外周，分為外層纖維囊與內層滑液膜；\n3.「滑液膜（Synovial membrane）」：襯於關節囊內面，分泌潤滑滑液；\n4.「關節腔（Joint cavity）」：由關節軟骨與滑液膜共同圍成的密閉潛在腔隙，內含清澈滑液。A 選項之骨骺板為長骨生長區；C 選項為輔助構造（非所有滑液關節皆具備）；D 選項為肌腱與附屬構造。故選 B。",
+    "source": "大仁解剖學CH07_關節 P.15 (🔥考點十三：滑液關節四大核心構造)"
+  },
+  {
+    "id": 52,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "覆蓋於滑液關節骨端表面的「關節軟骨（Articular cartilage）」，其組織學形態與營養供給方式之敘述何者完全正確？",
+    "options": [
+      "A. 絕大多數由彈性軟骨構成，富含神經感覺纖維以感受疼痛",
+      "B. 絕大多數為透明軟骨（Hyaline cartilage），其內部「無血管、無淋巴管、無神經支配」，軟骨細胞的營養與代謝完全仰賴關節腔內「滑液的擴散作用（Diffusion）」提供",
+      "C. 內部富含粗大毛細血管網，損傷後可快速完全再生修復",
+      "D. 表面覆蓋有緻密骨膜，提供強大的骨細胞再生來源"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。關節軟骨解剖特徵重點：\n1. 絕大多數屬於表面光滑、抗壓減震的「透明軟骨（Hyaline cartilage）」（少數如顳顎關節與胸鎖關節表面為纖維軟骨）；\n2. 關節軟骨表面無骨膜覆蓋，內部「完全沒有血管、淋巴管及神經」（Avascular, alymphatic, aneural）；\n3. 軟骨細胞維持生命所需之葡萄糖與氧氣，全靠關節活動時受壓擠與放鬆，使關節腔內的「滑液（Synovial fluid）」滲透擴散出入軟骨基質；因此關節軟骨一旦磨損或撕裂，自體修復能力極度匱乏。A、C、D 均錯誤。",
+    "source": "大仁解剖學CH07_關節 P.17 (🔥考點十三：滑液關節四大核心構造)"
+  },
+  {
+    "id": 53,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "在滑液關節的輔助構造中，「關節唇（Articular labrum）」的組織構造及其在關節力學上的主要功能為：",
+    "options": [
+      "A. 由透明軟骨構成，專門分泌黏液以降低關節內壓",
+      "B. 由纖維軟骨環（Fibrocartilaginous ring）附著於關節窩周緣，主要功能為「加深關節窩深度」，增大關節接觸面積並提高關節穩定性",
+      "C. 包裹肌腱的雙層鞘狀管，防止肌腱彈出骨溝",
+      "D. 連接骨骼肌與骨膜，傳遞肌肉主動收縮力量"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。關節唇（Articular labrum）是由緻密的「纖維軟骨（Fibrocartilage）」構成的環狀邊緣突起，環形附著在較淺的關節窩骨緣上。其主要生理功能是「加深關節凹窩的深度與容積」，使關節球頭能更穩定地嵌合於窩內，顯著提升關節穩定性並減少脫臼機率。人體典型代表為肩關節的「肩臼唇（Glenoid labrum）」及髖關節的「髖臼唇（Acetabular labrum）」。C 選項為腱鞘；D 選項為肌腱。",
+    "source": "大仁解剖學CH07_關節 P.22 (🔥考點十三：滑液關節輔助構造)"
+  },
+  {
+    "id": 54,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "人體膝關節腔內的內側半月板與外側半月板（Menisci），其組織成分與在膝關節運動中的關鍵功能為下列何者？",
+    "options": [
+      "A. 由彈性軟骨構成，負責牽拉膕肌以鎖定膝關節",
+      "B. 由透明軟骨構成，防止滑液過度分泌",
+      "C. 由纖維軟骨構成之半月狀軟骨墊片，能使凸出的股骨髁與平坦的脛骨平台形狀更契合，發揮吸收衝擊震盪、分散體重承載負荷的功能",
+      "D. 為股四頭肌腱內的種子骨，負責增加伸膝力臂"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。膝關節半月板（Menisci）：\n1. 組織構造：由耐磨抗壓的「纖維軟骨（Fibrocartilage）」構成，內側半月板較大呈「C 形」，外側半月板較小呈近「O 形」；\n2. 生理功能：充填於隆凸的股骨內外側髁與相對平坦的脛骨內外側平台之間，使關節接觸面高度吻合契合，有效分散站立跳躍時的垂直巨大應力（吸收震盪、避震緩衝），並輔助關節潤滑與本體感覺引導。D 選項為髕骨（Patella）之特徵；A、B 選項組織描述錯誤。",
+    "source": "大仁解剖學CH07_關節 P.24 (🔥考點十三：滑液關節輔助構造)"
+  },
+  {
+    "id": 55,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "在運動系統中，肌腱（Tendon）與韌帶（Ligament）皆由緻密規整結締組織構成，但兩者在「解剖連接標的」與「主要生理功能」上截然不同，下列鑑別何者正確？",
+    "options": [
+      "A. 肌腱連接骨骼與骨骼；韌帶連接肌肉與骨骼",
+      "B. 肌腱（Tendon）「連接骨骼肌與骨骼」，負責將肌肉收縮產生的拉力傳遞至骨骼以驅動關節運動；韌帶（Ligament）「連接骨骼與骨骼」，主要功能為加強關節囊、限制過度異常活動並維持關節穩定性",
+      "C. 韌帶具有主動收縮能力，肌腱僅具被動彈性",
+      "D. 肌腱內完全沒有神經分佈，韌帶富含運動神經元"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。肌腱與韌帶核心區別（期中必考定義）：\n-「肌腱（Tendon）」：連接【肌肉與骨骼（Muscle to Bone）】，無主動收縮性，但抗拉強度極高，專司傳導肌肉主動收縮力以牽動骨槓桿造成肢體運動；\n-「韌帶（Ligament）」：連接【骨骼與骨骼（Bone to Bone）】，跨越關節，主要作用為維持骨骼相對位置、增強關節囊抗張強度、防止關節過度過伸過屈或異常脫位。A 連接標的寫反；C 韌帶不可主動收縮；D 肌腱富含高爾基腱器官（GTO）感覺末梢，韌帶亦富含感覺本體感受器，兩者皆不含運動神經元。",
+    "source": "大仁解剖學CH07_關節 P.28 (🔥考點十五：肌腱vs韌帶vs腱鞘比較)"
+  },
+  {
+    "id": 56,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "人體手腕與足踝處分佈許多包裹肌腱的「腱鞘（Tendon sheath）」，下列關於其解剖構造與功能之敘述何者完全正確？",
+    "options": [
+      "A. 為單層緻密骨膜管，將肌腱直接骨化於骨溝內",
+      "B. 實質上為特化的雙層長筒狀滑液囊，內層臟層緊貼包裹肌腱，外層壁層貼於骨面纖維管，兩層間的微細腔隙內含滑液，在肌腱反覆大幅滑動時能將摩擦力降至最低",
+      "C. 僅存在於完全不活動的骨骼交界處",
+      "D. 發炎時會分泌大量膠原纖維使肌腱永久鈣化"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。腱鞘（Tendon sheath）本質上是一個被拉長的雙層閉合「滑液囊套管」，包裹在通過手腕、手掌、足踝等骨纖維管道內活動幅度極大的長肌腱周圍：\n-「內層（臟層 Visceral layer）」：緊密貼附於肌腱表面；\n-「外層（壁層 Parietal layer）」：貼附於骨溝或骨纖維鞘內壁；\n兩層之間形成密封的微細滑液腔，分泌極薄滑液膜潤滑，使肌腱在狹窄骨溝中反覆強烈抽動時免受劇烈摩擦磨損。A、C、D 均錯誤。",
+    "source": "大仁解剖學CH07_關節 P.30 (🔥考點十五：肌腱vs韌帶vs腱鞘比較)"
+  },
+  {
+    "id": 57,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "滑液關節按運動軸向分為單軸、雙軸與多軸。屬於「單軸關節（Uniaxial joint）」且僅允許在矢狀面上進行屈曲（Flexion）與伸展（Extension）單向運動的「屈戌關節（Hinge joint / 鉸鏈關節）」，人體典型代表為下列何者？",
+    "options": [
+      "A. 肩關節（Glenohumeral joint）",
+      "B. 肘關節之肱尺關節（Humeroulnar joint）及手指之指間關節（Interphalangeal joints）",
+      "C. 第一腕掌關節（First carpometacarpal joint）",
+      "D. 橈腕關節（Radiocarpal joint）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。屈戌關節（Hinge joint / 鉸鏈關節）為單軸滑液關節，一骨的凸面呈滑輪狀或圓柱狀，嵌合於另一骨的相應凹槽中，運動軸僅有一個橫軸，運動方式嚴格限制於「屈曲（Flexion）」與「伸展（Extension）」。人體最典型的範例包括：肘關節中的「肱尺關節（Humeroulnar joint）」、踝關節（距小腿關節）以及手足的手指/腳趾「指間關節（Interphalangeal joints）」。A 肩關節為多軸球窩關節；C 第一腕掌關節為雙軸鞍狀關節；D 橈腕關節為雙軸髁狀關節。",
+    "source": "大仁解剖學CH07_關節 P.35 (🔥考點十四：六大滑液關節運動軸分類)"
+  },
+  {
+    "id": 58,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "同樣屬於單軸關節的「樞軸關節（Pivot joint / 車軸關節）」，其骨端運動形式為骨骼圍繞其自身的垂直縱軸進行旋轉。下列何者為人體最經典的樞軸關節實例？",
+    "options": [
+      "A. 寰枕關節（Atlanto-occipital joint）",
+      "B. 寰樞正中關節（Median atlantoaxial joint）及近端橈尺關節（Proximal radioulnar joint）",
+      "C. 髖關節（Hip joint）",
+      "D. 膝關節髕股關節（Patellofemoral joint）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。樞軸關節（Pivot joint / 車軸關節）為單軸旋轉關節，由圓柱狀骨突與相對應的骨-韌帶環套嵌合，僅允許沿著單一縱軸進行「旋轉（Rotation）」：\n1.「寰樞正中關節（Median atlantoaxial joint）」：樞椎齒突（軸心）與寰椎前弓及寰椎橫韌帶所圍成的骨纖維環嵌合，頭部連同寰椎圍繞齒突左右旋轉（搖頭動作）；\n2.「近端橈尺關節（Proximal radioulnar joint）」：橈骨頭在尺骨橈切跡與橈骨環狀韌帶內自轉，實現前臂的旋前（Pronation）與旋後（Supination）。A 寰枕關節為髁狀雙軸關節（點頭）；C 髖關節為多軸球窩關節。",
+    "source": "大仁解剖學CH07_關節 P.36 (🔥考點十四：六大滑液關節運動軸分類)"
+  },
+  {
+    "id": 59,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "滑液關節中兩骨的關節面彼此皆呈一凸一凹互為嵌合、運動形式類似騎手坐於馬鞍上的「鞍狀關節（Saddle joint）」，人體最著名的代表是：",
+    "options": [
+      "A. 大多角骨與第一掌骨底之間的「拇指腕掌關節（1st Carpometacarpal joint）」",
+      "B. 橈骨與舟狀骨之間的橈腕關節",
+      "C. 股骨與脛骨之間的膝關節",
+      "D. 薦骨與髂骨之間的薦髂關節"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。鞍狀關節（Saddle / Biaxial joint）兩骨端關節面均呈馬鞍形狀（垂直面上為凸，水平面上為凹，兩者垂直扣合），允許進行屈伸、內收外展及迴旋運動。人體最著名、最具代表性的鞍狀關節為「拇指腕掌關節（First carpometacarpal joint of the thumb）」（大多角骨 Trapezium 與第一掌骨底相接處），正是由於該鞍狀關節的存在，賦予人類拇指獨特且強大的「對掌運動（Opposition）」，使手部能夠靈巧精細地抓捏工具。B 橈腕關節為髁狀關節；C 膝關節為變形屈戌/雙髁關節；D 薦髂關節為微動平面關節。",
+    "source": "大仁解剖學CH07_關節 P.38 (🔥考點十四：六大滑液關節運動軸分類)"
+  },
+  {
+    "id": 60,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "關於「球窩關節（Ball-and-socket joint / 杵臼關節）」的活動軸向與人體分佈，下列敘述何者完全正確？",
+    "options": [
+      "A. 屬於單軸關節，僅允許單向滑動",
+      "B. 屬於多軸/三軸關節（Multiaxial joint），具有人體所有滑液關節中最大的活動範圍與自由度，人體僅有「肩關節（Shoulder joint）」與「髖關節（Hip joint）」兩處",
+      "C. 人體膝關節與肘關節皆屬於典型的球窩關節",
+      "D. 球窩關節的關節窩深度越深，其關節活動度就越大且越易脫臼"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。球窩關節（Ball-and-socket joint）由一個球狀骨頭（如肱骨頭、股骨頭）嵌入一個杯狀關節窩（如肩胛盂、髖臼）所構成，為三軸/多軸關節，能在冠狀面、矢狀面與水平面進行屈曲、伸展、內收、外展、內旋、外旋以及 360 度迴旋運動，活動自由度高居所有關節之冠。在人體中僅有兩處為球窩關節：「肩關節（肩肱關節）」與「髖關節（髖股關節）」。D 選項錯誤：關節窩越深（如髖關節），穩定性越高，但活動幅度反而受限；肩關節窩淺故活動度最大但也最易脫臼。故選 B。",
+    "source": "大仁解剖學CH07_關節 P.40 (🔥考點十四：六大滑液關節運動軸分類)"
+  },
+  {
+    "id": 61,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "臨床上常見俗稱「媽媽手」的狹窄性腱鞘炎（狄奎凡氏症 De Quervain's tenosynovitis），是因重複勞損導致位於手腕橈骨莖突處「第一伸肌腱背側間隔」的腱鞘發炎腫脹。該腱鞘內包含哪兩條肌肉的肌腱？",
+    "options": [
+      "A. 屈拇長肌腱（Flexor pollicis longus）與掌長肌腱（Palmaris longus）",
+      "B. 外展拇長肌腱（Abductor pollicis longus, APL）與伸拇短肌腱（Extensor pollicis brevis, EPB）",
+      "C. 橈側伸腕長肌腱（Extensor carpi radialis longus）與橈側伸腕短肌腱（Extensor carpi radialis brevis）",
+      "D. 伸拇長肌腱（Extensor pollicis longus）與伸食指肌腱（Extensor indicis）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。狄奎凡氏症（De Quervain's disease / 媽媽手）為國考與期中考極高頻的臨床解剖考點：\n- 解剖位置：腕背側第一伸肌支持帶下方間隔（橈骨莖突處）；\n- 發炎受波及肌腱：\n  1.「外展拇長肌腱（Abductor pollicis longus, APL）」；\n  2.「伸拇短肌腱（Extensor pollicis brevis, EPB）」；\n由於拇指頻繁抓握用力或扭轉手腕，兩條肌腱與共用的滑液腱鞘過度摩擦，導致腱鞘管壁增厚狹窄，產生橈骨莖突處壓痛（芬可斯坦測試 Finkelstein's test 陽性）。故正確為 B。",
+    "source": "大仁解剖學CH07_關節 P.42 (🔥考點十五：臨床常考關節病灶-狄奎凡氏症)"
+  },
+  {
+    "id": 62,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "顳顎關節（Temporomandibular joint, TMJ）是頭面部極為特殊的關節，下列關於其解剖構造特徵之敘述何者完全正確？",
+    "options": [
+      "A. 屬於完全不可活動的纖維縫合關節",
+      "B. 是全體頭顱骨骼（Skull）中「唯一可自由活動的滑液關節」，關節腔內含有一塊纖維軟骨性關節盤（Articular disc）將關節腔分隔為上腔與下腔",
+      "C. 關節骨端接觸面覆蓋一層厚厚的彈性軟骨",
+      "D. 由下頷骨喙突與上頷骨顴突共同形成"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。顳顎關節（TMJ）關鍵解剖特點：\n1.「唯一可動顱骨關節」：成人顱骨除舌骨與下頷骨外其餘皆為不動骨縫，TMJ 為頭部唯一的滑液性可動關節；\n2. 關節組成：顳骨的下頷窩（Mandibular fossa）與關節結節（Articular tubercle）以及下頷骨的「髁突（Condylar process / Mandibular head）」；\n3. 腔內結構：關節腔內具有一塊雙凹圓盤狀的「纖維軟骨性關節盤（Articular disc）」，將關節腔徹底分割為獨立的「上關節腔（負責下頷前進後退滑動）」與「下關節腔（負責開口閉口屈伸鉸鏈旋轉）」。A、C、D 描述皆錯誤。",
+    "source": "大仁解剖學CH07_關節 P.50 (🔥考點十五：臨床常考關節-顳顎關節TMJ)"
+  },
+  {
+    "id": 63,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "當過度用力張大嘴巴（如打大哈欠或咬大塊硬物）時，顳顎關節容易發生脫臼。下列何條咀嚼肌過度收縮會將下頷骨髁突拉過關節結節前方，導致「顳顎關節前脫臼（Anterior dislocation of TMJ）」？",
+    "options": [
+      "A. 咬肌（Masseter）",
+      "B. 顳肌（Temporalis）",
+      "C. 翼內肌（Medial pterygoid）",
+      "D. 翼外肌（Lateral pterygoid）"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。顳顎關節脫臼之肌肉力學與神經機轉（期中必考！）：\n-「翼外肌（Lateral pterygoid muscle）」：起自蝶骨大翼與翼突外側板，止於下頷頸翼肌粗隆及 TMJ 關節盤與關節囊，為咀嚼肌群中「唯一負責張口（Depression）與下頷骨前突（Protraction）」的肌肉；\n- 脫臼機轉：大張口時，下頷髁突向前滑動至顳骨關節結節頂端；若此時翼外肌發生過度痙攣或強烈收縮，會將髁突向前下拉過關節結節前方並卡在結節前凹陷中，由於咬肌與顳肌反射性痙攣緊繃，導致髁突無法自然滑回下頷窩內，形成典型的「前脫臼（Anterior dislocation）」，患者嘴巴卡住無法閉合。故正確為 D。",
+    "source": "大仁解剖學CH07_關節 P.53 (🔥考點十五：臨床常考關節-顳顎關節TMJ脫臼機轉)"
+  },
+  {
+    "id": 64,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "人體肩關節（Glenohumeral joint）活動度高居全身之冠，但也是全身最容易發生脫臼的關節。在臨床解剖學上，肩關節脫臼最常發生的方向為下列何者？",
+    "options": [
+      "A. 正後方脫臼（Posterior dislocation）",
+      "B. 前下方脫臼（Anterior-inferior dislocation）",
+      "C. 垂直上方脫臼（Superior dislocation）",
+      "D. 內側中央嵌入性脫臼（Medial central dislocation）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。肩關節解剖弱點與脫臼方向（期中核心必考題）：\n1. 肩關節上方有喙肩弓（肩峰、喙突、喙肩韌帶）及棘上肌阻擋，上方極為堅固；\n2. 後方有棘下肌與小圓肌保護；\n3. 前方有肩胛下肌支撐；\n4.「下方與前下方」：缺乏任何強大韌帶與肌腱加強覆蓋（僅有鬆弛薄弱的下盂肱韌帶及腋神經穿過的四角孔區域），為關節囊最脆弱薄弱之死角。當上肢處於過度外展（Abduction）與外旋（External rotation）並受到暴力撞擊時，肱骨頭最易自脆弱的下方與前下方衝破關節囊脫出，故「前下方脫臼（Anterior-inferior dislocation）」佔所有肩關節脫臼的 95% 以上。故選 B。",
+    "source": "大仁解剖學CH07_關節 P.65 (🔥考點十五：肩關節解剖特徵與前下方脫臼)"
+  },
+  {
+    "id": 65,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "包繞並動態穩定肩關節囊的「旋轉肌袖（Rotator cuff / SITS 肌群）」，由四條深層肌肉的扁肌腱共同匯聚而成。下列何者包含這四條肌肉且其止點（Insertion）歸類完全正確？",
+    "options": [
+      "A. 大圓肌、三角肌、喙肱肌、胸大肌；全部止於肱骨幹粗隆",
+      "B. 棘上肌（Supraspinatus）、棘下肌（Infraspinatus）、小圓肌（Teres minor）、肩胛下肌（Subscapularis）；其中前三者止於肱骨「大結節（Greater tubercle）」，肩胛下肌止於肱骨「小結節（Lesser tubercle）」",
+      "C. 棘上肌、棘下肌、大圓肌、肩胛下肌；全部止於肱骨小結節",
+      "D. 肱二頭肌長頭、肱三頭肌外側頭、三角肌前束、斜方肌；止於關節盂邊緣"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。旋轉肌袖（Rotator cuff，口訣 SITS）：\n1. 棘上肌（Supraspinatus）：起自肩胛骨棘上窩，止於肱骨大結節上部小面（起始外展 0~15 度）；\n2. 棘下肌（Infraspinatus）：起自棘下窩，止於肱骨大結節中部小面（外旋肱骨）；\n3. 小圓肌（Teres minor）：起自肩胛骨外側緣上部，止於肱骨大結節下部小面（外旋肱骨）；\n4. 肩胛下肌（Subscapularis）：起自肩胛下窩，止於肱骨「小結節（Lesser tubercle）」（內旋肱骨）。\n注意：大圓肌（Teres major）不是旋轉肌袖成員！前三者止於大結節，唯一止於小結節者為肩胛下肌。故選 B。",
+    "source": "大仁解剖學CH07_關節 P.68 (🔥考點十五：旋轉肌袖SITS肌肉組成與止點)"
+  },
+  {
+    "id": 66,
+    "chapter": "關節系統與滑液關節",
+    "isExamStar": true,
+    "question": "膝關節囊內具有兩條強韌的十字交叉韌帶（Cruciate ligaments），關於前十字韌帶（ACL）與後十字韌帶（PCL）在限制膝部異常位移上的主要功能，下列何者正確？",
+    "options": [
+      "A. ACL 主要限制脛骨向後移位；PCL 主要限制脛骨向前移位",
+      "B. ACL（前十字韌帶）起自脛骨髁間前區，向後上方附著於股骨外側髁內側面，主要功能為「防止脛骨向前過度移位（Anterior displacement）」並限制膝關節過伸；PCL（後十字韌帶）起自脛骨髁間後區，主要功能為「防止脛骨向後過度移位（Posterior displacement）」",
+      "C. 兩者均僅限制膝關節的內旋運動，完全不限制前後方向位移",
+      "D. ACL 與 PCL 皆直接附著於髕骨後面，負責維持髕骨運動軌跡"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。膝關節十字韌帶功能鑑別（前拉抽屜與後拉抽屜測試的解剖基礎）：\n1.「前十字韌帶（ACL, Anterior cruciate ligament）」：走向由脛骨髁間前區斜向後上外，止於股骨外側髁內側面，拉緊時防止脛骨相對股骨向前位移（前拉抽屜測試陽性代表 ACL 斷裂），並防止膝關節過度伸展（Hyperextension）；\n2.「後十字韌帶（PCL, Posterior cruciate ligament）」：走向由脛骨髁間後區斜向前上內，止於股骨內側髁外側面，較 ACL 更粗壯，主要功能為防止脛骨相對股骨向後位移（後拉抽屜測試陽性代表 PCL 斷裂）。A 方向顛倒；C、D 錯誤。",
+    "source": "大仁解剖學CH07_關節 P.82 (🔥考點十五：膝關節韌帶與運動功能)"
+  },
+  {
+    "id": 67,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "肌肉組織（Muscle tissue）能夠執行收縮與運動，依據生理學與解剖學歸納，肌肉細胞必須具備的「四大基本生理特性」包括下列何者？",
+    "options": [
+      "A. 分泌性、吸收性、保護性、角質化",
+      "B. 興奮性（Excitability）、收縮性（Contractility）、伸展性（Extensibility）、彈性（Elasticity）",
+      "C. 傳導性、髓鞘化、化學突觸化、自溶性",
+      "D. 鈣化性、骨化性、塑形性、再吸收性"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。肌肉組織的四大生理特性（考點十六）：\n1.「興奮性（Excitability / 應激性）」：肌肉細胞膜能感受化學或電刺激並迅速產生動作電位；\n2.「收縮性（Contractility）」：受到刺激產生動作電位後，肌纖維能縮短產生主動張力或拉力；\n3.「伸展性（Extensibility）」：肌纖維在不受損傷的前提下能被外力拉長伸展；\n4.「彈性（Elasticity）」：肌纖維在收縮或被牽拉延長之後，具有迅速被動回復至初始靜止長度的能力。A 為上皮特徵；C 為神經特徵；D 為骨組織特徵。故選 B。",
+    "source": "CH11_肌肉1102 P.5 (🔥考點十六：肌肉四大生理特性與三大功能)"
+  },
+  {
+    "id": 68,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "骨骼肌纖維（Skeletal muscle fiber）是由多個胚胎成肌細胞（Myoblasts）融合發育而成的合胞體，其在顯微鏡下觀察到的細胞核數量、細胞核位置以及受神經控制的性質為：",
+    "options": [
+      "A. 單一細胞核、位於細胞中央、受自主神經支配的不隨意肌",
+      "B. 多個細胞核（Multinucleated）、細胞核緊貼於「肌膜下方周邊處（Periphery）」、受體神經系統支配的「隨意肌（Voluntary muscle）」",
+      "C. 2~3 個細胞核、位於細胞中央、受交感神經支配的隨意肌",
+      "D. 無細胞核、分佈於血管內皮、受副交感神經控制"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。骨骼肌組織學三核心特徵（考點十七）：\n1.「多核（Multinucleated）」：一條長達數公分至數十公分的圓柱形肌纖維內含有數十至數百個細胞核；\n2.「細胞核位於周邊（Peripheral nuclei）」：因為肌細胞內部空間幾乎完全被平行排列的肌原纖維所充填，將所有的卵圓形細胞核推擠至緊貼肌膜（Sarcolemma）下方的邊緣周邊處；\n3.「隨意肌（Voluntary）」：受軀體運動神經（Somatic motor nerves）支配，受意識控制進行主動運動。心肌細胞核位於中央（1~2個）；平滑肌單核位於中央。故正確答案為 B。",
+    "source": "CH11_肌肉1102 P.12 (🔥考點十七：三大肌組織微觀特徵全表對比)"
+  },
+  {
+    "id": 69,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "心肌組織（Cardiac muscle tissue）具有多項區別於骨骼肌與平滑肌的獨特微觀組織學特徵，下列敘述何者完全符合心肌特點？",
+    "options": [
+      "A. 細胞細長梭形、無橫紋、完全不含肌小節",
+      "B. 肌纖維具有分支互連成網狀、具有明顯橫紋、細胞核通常為 1~2 個且位於「細胞中央」、細胞末端相接處具有階梯狀深染的「閏盤（Intercalated disc）」",
+      "C. 多核且核緊貼細胞膜周邊、無分支、為意識控制之隨意肌",
+      "D. 肌漿網極度發達、終池巨大且形成三聯體結構"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心肌組織學鑑別特徵（三大肌對比必考）：\n1.「橫紋」：與骨骼肌一樣具有明暗相間的橫紋肌小節；\n2.「分支短柱狀」：肌纖維有分支並互相吻合成網絡；\n3.「核位於中央」：通常為單核（或雙核），卵圓形，位於細胞中央深處；\n4.「閏盤（Intercalated disc）」：心肌細胞短端首尾相連處特化的細胞膜階梯狀連結構造，光鏡下呈現深染橫線；\n5.「不隨意肌」：受自主神經調節，具自律收縮節律。A 選項為平滑肌；C 選項為骨骼肌；D 選項為骨骼肌（心肌以二聯體為主）。故選 B。",
+    "source": "CH11_肌肉1102 P.14 (🔥考點十七：三大肌組織微觀特徵全表對比)"
+  },
+  {
+    "id": 70,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "心肌細胞相接處特有的「閏盤（Intercalated disc）」，由橫向部與縱向部兩種關鍵細胞接合構造共同組成。這兩種接合及其主要生理機能為：",
+    "options": [
+      "A. 緊密接合防止離子外漏；微絨毛增加吸收面積",
+      "B. 「胞橋小體（Desmosomes）」提供強韌的機械錨定，防止劇烈跳動時心肌細胞彼此撕裂分離；「間隙接合（Gap junctions）」提供低電阻離子孔道，使動作電位在心肌細胞間迅速擴散同步收縮",
+      "C. 黏附帶製造 ATP；溶小體進行快速自噬",
+      "D. 半胞橋小體將心肌固定於基底膜；神經突觸直接分泌多巴胺"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心肌閏盤的超微結構與雙重機能：\n1.「胞橋小體（Desmosomes / 點狀橋粒）」與黏附筋膜（Fascia adherens）：位於閏盤橫向部，錨定相鄰心肌細胞的中間絲與肌動蛋白，形成極其堅韌的機械扣鎖，確保心室承受每分鐘數十次高壓射血收縮時肌纖維不致斷裂脫離；\n2.「間隙接合（Gap junctions）」：位於閏盤縱向部（平行於肌纖維長軸），由 Connexon 組成中空離子通道，使動作電位電去極化波能直接無阻礙地在細胞質間傳播，使全心肌在電學與機能上表現為一個同步協調的「功能性合胞體（Functional syncytium）」。故選 B。",
+    "source": "CH11_肌肉1102 P.16 (🔥考點十七：三大肌組織微觀特徵全表對比)"
+  },
+  {
+    "id": 71,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "平滑肌組織（Smooth muscle tissue）廣泛分佈於消化道、血管壁與內臟管壁，下列關於平滑肌的形態構造與收縮機轉之敘述何者完全正確？",
+    "options": [
+      "A. 細胞呈多核長柱狀，橫紋排列緊密且具有發達的 T-小管三聯體",
+      "B. 肌細胞呈梭形（Fusiform）、兩端尖細中間膨大、單一細胞核位於細胞中央、「缺乏明暗交替的橫紋（Non-striated）」、受自主神經系統支配為不隨意肌",
+      "C. 肌細胞膜富含粗大運動終板，完全受意識意志自主控制",
+      "D. 僅存在於心臟外膜與骨骼表面"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。平滑肌核心組織特徵：\n1. 形態：細胞呈細長的梭形（兩端漸細，中央最寬）；\n2. 細胞核：單一卵圓形或桿狀細胞核，位於細胞最寬的中央處；\n3. 無橫紋（Non-striated）：內部肌動蛋白與肌凝蛋白不平行排列成規則的肌小節，故無橫紋；\n4. 無 T 小管：細胞膜表面凹陷形成「洞穴（Caveolae）」代替 T 小管以攝取細胞外鈣離子；\n5. 不隨意肌：受交感與副交感神經以及局部荷爾蒙調控，收縮緩慢而持久，抗疲勞能力強。故正確答案為 B。",
+    "source": "CH11_肌肉1102 P.18 (🔥考點十七：三大肌組織微觀特徵全表對比)"
+  },
+  {
+    "id": 72,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "骨骼肌原纖維（Myofibril）具有週期性反覆排列的橫紋結構，解剖學上定義骨骼肌收縮的最基本結構與功能單位——「肌節（Sarcomere）」，是指介於下列哪兩個結構之間的區域？",
+    "options": [
+      "A. 兩個相鄰的 A 帶中央之間",
+      "B. 「兩個相鄰的 Z 線（Z disc / Z line）」之間",
+      "C. 兩個相鄰的 H 帶邊緣之間",
+      "D. 兩個相鄰的 M 線之間"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。肌節（Sarcomere）是骨骼肌與心肌「最基本的結構與功能收縮單位」：在肌原纖維微觀構造中，I 帶（明帶）中央有一條由緻密蛋白質（如 α-actinin）構成的深染橫線，稱為「Z 線（Z disc / Z line）」。一個完整的肌小節精準定義為「介於相鄰兩條 Z 線之間的一段肌原纖維區域」，包含一個完整的中央 A 帶及兩側各半個 I 帶（即 1/2 I + A + 1/2 I）。A、C、D 皆非肌節的標準起訖邊界。",
+    "source": "CH11_肌肉1102 P.25 (🔥考點十八：肌節微觀構造與收縮滑動學說)"
+  },
+  {
+    "id": 73,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "依據肌絲滑動學說（Sliding filament mechanism），當骨骼肌肌纖維受刺激產生主動收縮縮短時，肌節中的「A 帶（A band / 暗帶）」長度會產生何種變化？",
+    "options": [
+      "A. 明顯縮短，甚至縮減至原長度的 50%",
+      "B. 大幅延長並向外擴展",
+      "C. 「維持恆定長度，完全不變」",
+      "D. 迅速崩解分裂為兩半"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。肌節收縮滑動學說之絕對必考陷阱：\n-「A 帶（暗帶 Anisotropic band）」由「粗肌絲（肌凝蛋白 Myosin）」全長所佔據；\n- 當肌肉收縮時，粗肌絲與細肌絲本身長度均「完全不變」，肌肉縮短是藉由細肌絲向肌小節中央（A 帶內部的 H 帶）互相重疊滑動所達成；\n- 因此，代表粗肌絲全長物理尺寸的「A 帶長度在肌肉收縮時始終維持恆定不變（Does not change / Remains constant）」！\n考題中常以 A 帶縮短作為誘答陷阱，考生必須牢記 A 帶不變，而 I 帶與 H 帶縮短。故選 C。",
+    "source": "CH11_肌肉1102 P.27 (🔥考點十八：肌節微觀構造與收縮滑動學說)"
+  },
+  {
+    "id": 74,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "在肌絲滑動收縮過程中，肌節中的各明暗帶與區域之分子成分及其長度變化，下列敘述何者完全正確？",
+    "options": [
+      "A. I 帶僅含粗肌絲；收縮時長度延長",
+      "B. H 帶僅含細肌絲；收縮時長度維持恆定",
+      "C. 「I 帶（明帶）」僅含細肌絲（肌動蛋白），「H 帶」位於 A 帶中央且僅含粗肌絲（肌凝蛋白）；當肌肉收縮時，細肌絲向中心滑動，導致「I 帶與 H 帶皆明顯縮短變窄」，極度收縮時 H 帶可完全消失",
+      "D. M 線與 Z 線在收縮時互相遠離"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。肌節各區域分子組成與收縮動態全景總結：\n1.「I 帶（Isotropic band / 明帶）」：僅由細肌絲（Actin）組成，收縮時細肌絲向 A 帶深處滑動重疊，I 帶「縮短變窄」；\n2.「H 帶（H zone）」：位於 A 帶正中央，僅包含粗肌絲（Myosin）而無細肌絲重疊，收縮時兩側細肌絲向內滑動填補該區域，使 H 帶「縮短變窄甚至完全消失」；\n3.「Z 線」：相鄰 Z 線彼此拉近，肌節縮短；\n4.「A 帶」：粗肌絲全長，長度「恆定不變」。A、B、D 描述皆與事實相反。",
+    "source": "CH11_肌肉1102 P.28 (🔥考點十八：肌節微觀構造與收縮滑動學說)"
+  },
+  {
+    "id": 75,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "在骨骼肌纖維的超微構造中，由肌膜與肌漿網特化形成的「三聯體（Triad）」，其解剖結構組成是由下列何者構成？",
+    "options": [
+      "A. 1 個中心粒 + 2 個高基氏體囊泡",
+      "B. 1 個橫小管（Transverse tubule / T-tubule）+ 兩側各 1 個肌質網終池（Terminal cisternae），共 3 個囊管構造",
+      "C. 3 個平行的粗肌絲肌凝蛋白頭部",
+      "D. 2 個橫小管 + 1 個肌質網中央管"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。骨骼肌三聯體（Triad）的解剖構成（期中骨骼肌微觀超高頻考點）：\n- 三聯體精準定位在骨骼肌肌原纖維的 A 帶與 I 帶交界處；\n- 其由 3 個互相平行的膜性囊管緊密並列構成：\n  1. 中央為「1 個橫小管（T-tubule）」：肌膜向肌纖維深部垂直凹陷形成的環狀小管；\n  2. 兩側緊貼著「2 個肌質網終池（Terminal cisternae）」：滑面肌質網兩端膨大形成的特化儲鈣囊腔；\n共形成「1 個 T 小管 ＋ 2 個終池」的三聯體複合體。D 數目顛倒；A、C 選項錯誤。故選 B。",
+    "source": "CH11_肌肉1102 P.32 (🔥考點十八：三聯體構造與興奮收縮耦聯)"
+  },
+  {
+    "id": 76,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "在骨骼肌細胞中，橫小管（Transverse tubule / T-tubule）的解剖來源與生理機能為下列何者？",
+    "options": [
+      "A. 由高基氏體分泌形成，專門運輸糖原",
+      "B. 為肌細胞膜（肌膜 Sarcolemma）垂直向細胞內部深入凹陷形成的管狀盲管網絡，負責將細胞表面的動作電位迅速傳導至肌纖維深部的每個肌小節",
+      "C. 為粗肌絲突出的交聯橋臂",
+      "D. 為肌纖維內負責合成核糖體的胞器"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。橫小管（T-tubule）是肌膜（Sarcolemma）向肌纖維內部呈漏斗狀深入凹陷延伸形成的細微小管系統。因為骨骼肌纖維直徑粗大（可達 100 微米），若僅靠動作電位沿表面膜傳播，電訊號無法及時抵達深部肌原纖維。T 小管管腔與細胞外液直接相通，能使肌膜動作電位在數毫秒內沿著 T 小管深入纖維核心，激發兩側肌質網終池釋放鈣離子，實現同步收縮。A、C、D 皆非 T 小管之構造或機能。",
+    "source": "CH11_肌肉1102 P.33 (🔥考點十八：三聯體構造與興奮收縮耦聯)"
+  },
+  {
+    "id": 77,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "在骨骼肌興奮-收縮耦聯（Excitation-contraction coupling）過程中，當動作電位沿 T 小管傳導至三聯體時，觸發肌質網終池大量釋放何種關鍵離子？該離子隨後與細肌絲上的何種調節蛋白結合？",
+    "options": [
+      "A. 鈉離子（Na+）；與肌動蛋白（Actin）結合",
+      "B. 鈣離子（Ca2+）；與「肌鈣蛋白 C（Troponin C）」結合引發構形改變，牽引原肌凝蛋白移位",
+      "C. 鉀離子（K+）；與肌凝蛋白頭部（Myosin head）結合",
+      "D. 氯離子（Cl-）；與肌鈣蛋白 I 結合"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。興奮-收縮耦聯之分子生物學機制（期中核心必考題）：\n1. 動作電位沿 T 小管傳入，活化 T 小管膜上的雙氫吡啶受體（DHPR / L型鈣通道）；\n2. 機械性耦聯打開肌質網終池上的雷諾丁受體（RyR1 鈣釋放通道），使肌質網內高濃度儲存的「鈣離子（Ca2+）」順濃度差瞬間湧入肌漿中；\n3. 游離 Ca2+ 迅速與細肌絲上的「肌鈣蛋白 C（Troponin C）」結合，引起肌鈣蛋白複合物空間構形改變；\n4. 肌鈣蛋白拉扯相連的原肌凝蛋白（Tropomyosin）分子移位，暴露出肌動蛋白上的活性位點。故選 B。",
+    "source": "CH11_肌肉1102 P.35 (🔥考點十八：三聯體構造與興奮收縮耦聯)"
+  },
+  {
+    "id": 78,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "依據肌絲滑動學說，在骨骼肌處於靜止舒張狀態（Resting state）時，阻礙粗肌絲肌凝蛋白頭部與細肌絲肌動蛋白結合的分子機制為：",
+    "options": [
+      "A. 粗肌絲頭部被肌紅蛋白包裹隔絕",
+      "B. 雙螺旋排列的「原肌凝蛋白（Tropomyosin）」長鏈恰好遮蔽掩蓋了肌動蛋白上的「肌凝蛋白結合位點（Myosin-binding sites）」",
+      "C. Z 線完全阻隔粗肌絲與細肌絲接觸",
+      "D. 細胞質內 ATP 濃度完全耗盡"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。在舒張狀態下，肌漿中游離 Ca2+ 濃度極低（< 10^-7 M），肌鈣蛋白維持未結合鈣的構形，此時細肌絲雙螺旋溝槽中的「原肌凝蛋白（Tropomyosin）」長條胜肽鏈正好物理性遮蔽、覆蓋了每個肌動蛋白單體上的「肌凝蛋白結合位點（Myosin-binding sites）」，使肌凝蛋白橫橋無法與肌動蛋白結合，肌肉維持放鬆舒張狀態。當 Ca2+ 結合 Troponin C 後，原肌凝蛋白滾動移位露出該結合位點，橫橋方能結合。故正確答案為 B。",
+    "source": "CH11_肌肉1102 P.36 (🔥考點十八：三聯體構造與興奮收縮耦聯)"
+  },
+  {
+    "id": 79,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "骨骼肌的收縮與舒張均為耗能過程，關於三磷酸腺苷（ATP）在肌肉生理過程中的消耗與作用時機，下列敘述何者完全正確？",
+    "options": [
+      "A. 肌肉收縮時消耗 ATP，舒張時為純被動過程完全不消耗任何 ATP",
+      "B. ATP 僅用於合成肌動蛋白，不參與橫橋擺動",
+      "C. ATP 水解為肌凝蛋白頭部的擺動提供動力；同時在肌肉舒張時，肌質網膜上的「鈣離子幫浦（Ca2+-ATPase）」必須持續消耗 ATP 將肌漿中的 Ca2+ 逆濃度差主動泵回終池儲存",
+      "D. 死後僵直（Rigor mortis）是因為體內產生過量 ATP 導致肌肉持續強力收縮"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。ATP 在肌肉收縮與舒張中扮演雙重關鍵角色：\n1. 收縮時：肌凝蛋白頭部的 ATPase 水解 ATP（轉化為 ADP+Pi），為橫橋提供能量進行強力擺動（Power stroke）；隨後新的 ATP 結合到橫橋頭部，使橫橋與肌動蛋白脫離解離；\n2. 舒張時：肌漿網膜上的「肌質網鈣幫浦（SERCA / Ca2+-ATPase）」必須「持續消耗 ATP」，逆著極高濃度梯度將肌漿內的 Ca2+ 主動泵回肌漿網終池內，使胞質 Ca2+ 濃度下降，原肌凝蛋白重新遮蔽結合位點，肌肉方能舒張；\n3. 臨床連結：人死後細胞停止製造 ATP，Ca2+ 無法泵回且橫橋無法與肌動蛋白脫離，導致持續硬結，此即「死後僵直（Rigor mortis）」（非 ATP 過多）。故選 C。",
+    "source": "CH11_肌肉1102 P.38 (🔥考點十八：三聯體構造與興奮收縮耦聯)"
+  },
+  {
+    "id": 80,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "人體骨骼肌協同作功時區分為四種機能角色，在特定關節動作中負責提供「最主要收縮驅動力量」的肌肉稱為：",
+    "options": [
+      "A. 拮抗肌（Antagonist）",
+      "B. 協同肌（Synergist）",
+      "C. 主動肌 / 作用肌（Prime mover / Agonist）",
+      "D. 固定肌（Fixator）"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。肌肉機能角色的標準定義（期中必考名詞）：\n-「主動肌 / 作用肌（Prime mover / Agonist）」：在執行某一特定關節運動（如屈曲、伸展）時，負責產生最主要推進力量的肌肉；\n-「拮抗肌（Antagonist）」：位於關節對側，動作方向與主動肌相反，在主動肌收縮時伸長配合；\n-「協同肌（Synergist）」：協助主動肌增強運動效能或防止不需要的伴隨運動；\n-「固定肌（Fixator）」：固定主動肌的起點骨骼，維持穩定基底。故提供主要驅動力者為主動肌/作用肌，選 C。",
+    "source": "CH11_肌肉1102 P.45 (🔥考點十八：肌肉作功四大角色與實例)"
+  },
+  {
+    "id": 81,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "關於肌肉協同作功中「拮抗肌（Antagonist）」的解剖位置與生理調控作用，下列敘述何者最為正確？",
+    "options": [
+      "A. 通常位於主動肌的同側，與主動肌同時進行最大力量收縮",
+      "B. 位於主動肌的「相反側」，當主動肌收縮時，拮抗肌會逐漸伸長並受神經適度放鬆調節，發揮對抗、減速或穩定運動路徑的作用，防止關節因暴衝而受損",
+      "C. 專門負責固定遠端關節防止晃動",
+      "D. 在任何關節運動過程中始終處於完全電靜止無張力狀態"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。拮抗肌（Antagonist）位於關節相對於主動肌的對側（例如屈側相對於伸側）。當主動肌受運動神經興奮收縮時，透過脊髓相互抑制（Reciprocal inhibition）迴路，拮抗肌的神經支配受到精準調節，並非完全癱瘓，而是以受控的離心或漸進放鬆方式伸長，發揮精確減速煞車、穩定關節軌跡及保護關節免受衝擊損傷的重要作用。A、C、D 描述錯誤。",
+    "source": "CH11_肌肉1102 P.46 (🔥考點十八：肌肉作功四大角色與實例)"
+  },
+  {
+    "id": 82,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": false,
+    "question": "在關節運動中，「固定肌（Fixator）」與「協同肌（Synergist）」在機能分工上的核心差異為：",
+    "options": [
+      "A. 固定肌收縮使關節產生大幅角加速度；協同肌抑制所有運動",
+      "B. 固定肌專門收縮以「固定主動肌的起始骨（Origin bone）」，為動作提供穩固不晃動的基座；協同肌則直接「協助主動肌增加力矩」或跨越中間關節防止不希望出現的代償性旋轉",
+      "C. 協同肌在神經受損時轉變為主動肌，固定肌永不收縮",
+      "D. 兩者皆由平滑肌特化構成，受副交感神經控制"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。固定肌與協同肌機能鑑別：\n-「固定肌（Fixator）」：通常為近端肌肉，專門負責錨定、固定主動肌的起點骨骼（如上肢用力時前鋸肌與菱形肌固定肩胛骨於胸廓上），為主動肌提供堅實的槓桿支點；\n-「協同肌（Synergist）」：與主動肌共同跨越同一個關節，輔助主動肌提升力量（如屈肘時肱橈肌輔助肱肌），或在主動肌跨越多個關節時固定中間關節以防止多餘多軸偏轉（如握拳時伸腕肌收縮防止手腕屈曲）。故選 B。",
+    "source": "CH11_肌肉1102 P.48 (考點十八：肌肉作功四大角色與實例)"
+  },
+  {
+    "id": 83,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "當進行前臂屈曲（Elbow flexion，如將手掌舉向肩膀的屈肘動作）時，下列肌肉在作功角色上的配對何者完全正確？",
+    "options": [
+      "A. 主動肌：肱三頭肌；拮抗肌：肱肌",
+      "B. 主動肌（Prime movers）：肱肌（Brachialis）與肱二頭肌（Biceps brachii）；主要拮抗肌（Antagonist）：肱三頭肌（Triceps brachii）；協同肌（Synergist）：肱橈肌（Brachioradialis）",
+      "C. 主動肌：旋後肌；拮抗肌：三角肌",
+      "D. 主動肌：胸大肌；拮抗肌：背闊肌"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。前臂屈肘動作（Elbow flexion）肌肉角色實例（期中考試經典必考題）：\n1.「主要作用肌 / 主動肌」：肱肌（Brachialis，最強肘屈肌，止於尺骨粗隆）與肱二頭肌（Biceps brachii，止於橈骨粗隆）；\n2.「拮抗肌」：大臂後側的肱三頭肌（Triceps brachii，專司伸肘）；\n3.「協同肌」：前臂外側的肱橈肌（Brachioradialis）及旋前圓肌（Pronator teres）；\n4.「固定肌」：旋轉肌袖與三角肌（固定盂肱關節以維持上臂穩定）。A 選項角色完全顛倒；C、D 選項肌群動作不符。故選 B。",
+    "source": "CH11_肌肉1102 P.52 (🔥考點十八：肌肉作功四大角色與實例)"
+  },
+  {
+    "id": 84,
+    "chapter": "肌肉組織、微觀結構與協同作功",
+    "isExamStar": true,
+    "question": "當人體由深蹲姿勢站起進行膝關節伸展（Knee extension）動作時，下列肌群的主動肌與拮抗肌對應關係何者完全正確？",
+    "options": [
+      "A. 主動肌為大腿後側膕旁肌群；拮抗肌為股四頭肌",
+      "B. 主動肌為大腿前側的「股四頭肌（Quadriceps femoris）」（股直肌、股外側肌、股內側肌、股中間肌）；主要拮抗肌為大腿後側的「膕旁肌群（Hamstrings）」（股二頭肌、半腱肌、半膜肌）",
+      "C. 主動肌為腓腸肌；拮抗肌為比目魚肌",
+      "D. 主動肌為臀大肌；拮抗肌為闊筋膜張肌"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。膝關節運動肌肉角色（考點十八）：\n-「膝關節伸展（Knee extension）」：\n  1. 主動肌：大腿前側的「股四頭肌（Quadriceps femoris）」，四條肌頭共同匯聚成髕肌腱止於脛骨粗隆，為人體最強大的伸膝肌群；\n  2. 拮抗肌：大腿後側的「膕旁肌群（Hamstrings）」（包括股二頭肌、半腱肌、半膜肌），其主要功能為屈膝（Knee flexion），在伸膝時作為對側拮抗肌受控放鬆伸長。A 選項兩者完全寫反；C、D 選項為踝關節或髖關節肌群。故正確為 B。",
+    "source": "CH11_肌肉1102 P.56 (🔥考點十八：肌肉作功四大角色與實例)"
+  },
+  {
+    "id": 85,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "心臟自律傳導系統中掌控整體心跳節律、被稱為「心臟正常節律點（Pacemaker）」的構造名稱與精準解剖位置為下列何者？",
+    "options": [
+      "A. 房室結（AV node）；位於心室中膈膜部",
+      "B. 竇房結（Sinoatrial node / SA node）；位於「右心房心外膜深面，靠近上腔靜脈（Superior vena cava）與右心房交界處」",
+      "C. 希氏束（Bundle of His）；位於左心房後壁",
+      "D. 浦肯野纖維（Purkinje fibers）；位於三尖瓣根部"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心臟節律點（Pacemaker）為「竇房結（Sinoatrial node / SA node）」，由特化的自律自發性起搏心肌細胞群構成。其精確解剖位置坐落於「右心房後壁的界溝上端、心外膜下方，緊鄰上腔靜脈（SVC）入口處」。它能夠自律性自發產生動作電位，控制心臟跳動的基準頻率。A 房室結位於房間隔下部；C、D 位置與功能皆錯誤。",
+    "source": "大仁解剖學 Chap 18-4 P.12 (🔥考點十九：心臟自律傳導系統五大節點順序與速度)"
+  },
+  {
+    "id": 86,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "在安靜無外在自律神經與荷爾蒙干擾下，竇房結（SA node）之所以能成為控制心臟跳動的最高主導節律點（統帥），其最關鍵的生理電學機制為：",
+    "options": [
+      "A. 竇房結的傳導速度為全心傳導系統中最快",
+      "B. 竇房結細胞具有「最高的自律去極化放電頻率（Intrinsic firing rate，約 60~100 次/分）」，其產生的衝動在其他次級節律點尚未自發放電前便已將其去極化（超速驅動壓抑 Overdrive suppression）",
+      "C. 竇房結細胞內部富含骨骼肌肌原纖維",
+      "D. 房室結與希氏束本身完全不具備任何自動去極化起搏潛能"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心臟自律傳導體系的自發性放電頻率呈階梯狀遞減：\n1. 竇房結（SA node）：放電頻率最高，正常約 60~100 次/分；\n2. 房室結（AV node）：次級節律點，約 40~60 次/分；\n3. 希氏束與浦肯野纖維：三級節律點，約 20~40 次/分。\n因為竇房結的自律放電速度最快，它發出的電去極化波能迅速傳遍全心並提前去極化其他次級起搏細胞，使其自發節律被抑制（超速壓抑 Overdrive suppression），因而主導了全心的收縮心率。注意：傳導速度最快者為浦肯野纖維而非竇房結！故 A 錯誤；B 完全正確。",
+    "source": "大仁解剖學 Chap 18-4 P.13 (🔥考點十九：心臟自律傳導系統五大節點順序與速度)"
+  },
+  {
+    "id": 87,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "心臟自律傳導系統中，「房室結（Atrioventricular node / AV node）」的傳導速度極其緩慢（約 0.05 m/s），產生約 0.1 秒的「生理延遲（AV nodal delay）」。這段短暫延遲在心臟血流動力學上的重大意義為：",
+    "options": [
+      "A. 防止心室過早收縮，確保「心房收縮有充裕的時間完全排空血液並注滿心室」之後，心室才啟動收縮",
+      "B. 允許冠狀動脈在心室收縮期得到最大血流灌注",
+      "C. 使二尖瓣與主動脈瓣同時開啟",
+      "D. 讓肺動脈壓降至零"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。房室結延遲（AV nodal delay，約 0.10~0.12 秒）的重大生理意義（期中與國考極常考之核心機制）：\n房室結細胞細小、縫隙連接較少，傳導速度極慢。這段電氣衝動通過房室結的生理延遲，精確確保了「心房先收縮、心室後收縮」的先後順序：讓心房能從容地將心房內的血液擠入心室充盈，待心室充血完畢、心室肌進入舒張末期時，衝動才傳抵心室啟動射血收縮。若無此延遲，心房與心室將同時收縮，心房排血將遭受阻抗而嚴重降低心輸出量。故正確答案為 A。",
+    "source": "大仁解剖學 Chap 18-4 P.15 (🔥考點十九：心臟自律傳導系統五大節點順序與速度)"
+  },
+  {
+    "id": 88,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "正常心臟每產生一次心搏，電氣興奮衝動在傳導系統五大組件中的傳遞先後順序何者完全正確？",
+    "options": [
+      "A. 竇房結 → 房室束 → 房室結 → 浦肯野纖維 → 左右束支",
+      "B. 竇房結（SA node）→ 房室結（AV node）→ 房室束（Bundle of His / 希氏束）→ 左、右束支（Bundle branches）→ 浦肯野纖維（Purkinje fibers）",
+      "C. 房室結 → 竇房結 → 浦肯野纖維 → 房室束 → 左右束支",
+      "D. 竇房結 → 浦肯野纖維 → 左右束支 → 房室束 → 房室結"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心臟電傳導系統之標準行徑順序（考點十九）：\n1.「竇房結（SA node）」：產生動作電位，沿心房肌及結間束擴散；\n2.「房室結（AV node）」：匯聚衝動並產生 0.1 秒生理延遲；\n3.「房室束（Bundle of His / 希氏束）」：穿過心臟纖維骨骼，為心房通往心室的唯一正常電氣通路；\n4.「左、右束支（Left & Right bundle branches）」：沿著心室中隔兩側迅速下行至心尖；\n5.「浦肯野纖維（Purkinje fibers）」：網狀分佈於心室心內膜深面，激發心室心肌。A、C、D 順序皆錯位。",
+    "source": "大仁解剖學 Chap 18-4 P.18 (🔥考點十九：心臟自律傳導系統五大節點順序與速度)"
+  },
+  {
+    "id": 89,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "關於傳導系統末端的「浦肯野纖維（Purkinje fibers）」，其電生理傳導速度與激發心室收縮的空間方向特性為：",
+    "options": [
+      "A. 傳導速度為全心傳導系統中「最快者（達 2~4 m/s）」，由「心尖部（Apex）沿心室壁由下而上、由心內膜向心外膜」迅速激發心室肌同步收縮",
+      "B. 傳導速度為全心最慢，由心底部向下推進",
+      "C. 僅分佈於心房肌肉層中，專門收縮心耳",
+      "D. 直接分泌乙醯膽鹼使心肌舒張"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。浦肯野纖維（Purkinje fibers）是高度特化的心肌細胞，細胞直徑巨大、富含肝糖、肌原纖維少且間隙接合極多，其動作電位傳導速度高達 2~4 m/s（約為普通心肌纖維的 6~10 倍），為「全心傳導速度最快」之組件。衝動經左右束支抵達心尖後，浦肯野纖維引導電去極化波「由心尖（Apex）朝向心底（Base）」、由「心內膜向心外膜」以極高速度激發兩側心室肌幾乎在瞬間同步收縮，猶如擠牙膏般將心室血液由底部高效射入主動脈與肺動脈幹。故正確答案為 A。",
+    "source": "大仁解剖學 Chap 18-4 P.20 (🔥考點十九：心臟自律傳導系統五大節點順序與速度)"
+  },
+  {
+    "id": 90,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "人體主動脈弓（Aortic arch）由凸側向上依序發出三大主要大動脈分支，其由人體「右側向左側（由近端至遠端）」的標準解剖排列順序為：",
+    "options": [
+      "A. 左總頸動脈 → 頭臂動脈幹 → 左鎖骨下動脈",
+      "B. ① 頭臂動脈幹（無名動脈 Brachiocephalic trunk）→ ② 左總頸動脈（Left common carotid a.）→ ③ 左鎖骨下動脈（Left subclavian a.）",
+      "C. 右鎖骨下動脈 → 右總頸動脈 → 左總頸動脈",
+      "D. 左鎖骨下動脈 → 左總頸動脈 → 頭臂動脈幹"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。主動脈弓三大分支之排列順序（必背考點二十）：\n由右至左（亦即沿血流由近端向遠端）依序為：\n1. 第一支（最粗大，偏右側）：【頭臂動脈幹（Brachiocephalic trunk / 無名動脈 Innominate artery）】；\n2. 第二支（居中）：【左總頸動脈（Left common carotid artery）】；\n3. 第三支（最遠端偏左側）：【左鎖骨下動脈（Left subclavian artery）】。\nA 順序顛倒；C 誤將頭臂幹的分支直接置於主動脈弓；D 由左至右排列顛倒。故正確為 B。",
+    "source": "大仁解剖學 Chap 18-4 P.28 (🔥考點二十：主動脈弓三大分支走向)"
+  },
+  {
+    "id": 91,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "主動脈弓發出的第一分支「頭臂動脈幹（Brachiocephalic trunk）」，向上行經右胸鎖關節後方時分叉為哪兩條重要動脈？",
+    "options": [
+      "A. 左鎖骨下動脈與左總頸動脈",
+      "B. 「右鎖骨下動脈（Right subclavian a.）」與「右總頸動脈（Right common carotid a.）」",
+      "C. 內乳動脈與椎動脈",
+      "D. 升主動脈與肺動脈幹"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。人體左右動脈發源具有不對稱性：\n- 左側：左總頸動脈與左鎖骨下動脈是「直接獨立發自」主動脈弓；\n- 右側：主動脈弓僅發出一條粗大的「頭臂動脈幹（Brachiocephalic trunk）」，頭臂幹向上傾斜行至右胸鎖關節深面，分叉為兩條終末支：\n  1.「右鎖骨下動脈（Right subclavian a.）」：供應右上肢與右側腦部；\n  2.「右總頸動脈（Right common carotid a.）」：供應右側頭頸部。故正確答案為 B。",
+    "source": "大仁解剖學 Chap 18-4 P.29 (🔥考點二十：主動脈弓三大分支走向)"
+  },
+  {
+    "id": 92,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "總頸動脈（Common carotid artery）在頸部上行過程中，於何處骨性/軟骨解剖標誌水平分枝為頸內動脈與頸外動脈？",
+    "options": [
+      "A. 環狀軟骨下緣（C6 水平）",
+      "B. 「甲狀軟骨上緣（Superior border of thyroid cartilage）」水平（相當於第 4 頸椎 C4 水平）",
+      "C. 下頷骨下緣（C2 水平）",
+      "D. 舌骨下緣（C3 水平）"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。總頸動脈分叉處（Carotid bifurcation）是極為重要的體表投影標誌：總頸動脈在頸動脈三角內上行至「甲狀軟骨上緣（Superior border of thyroid cartilage）」，大約平對第 3 至第 4 頸椎（C3~C4）椎間盤水平，分為頸內動脈（Internal carotid a.）與頸外動脈（External carotid a.）。此分叉處膨大形成頸動脈竇（Carotid sinus，內含血壓壓力感受器），其後方貼附頸動脈球（Carotid body，化學感受器）。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.34 (🔥考點二十一：頸動脈分支與威利氏動脈環)"
+  },
+  {
+    "id": 93,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "在頸部走向與供血區域上，頸內動脈（Internal carotid artery）與頸外動脈（External carotid artery）具有關鍵的解剖區別，下列敘述何者完全正確？",
+    "options": [
+      "A. 頸內動脈在頸部發出面動脈與舌動脈；頸外動脈無任何分支",
+      "B. 「頸內動脈在頸部完全不發出任何分支」，向上直行穿過顳骨岩部的頸動脈管（Carotid canal）入顱，主要供應大腦前大部與眼眶；「頸外動脈在頸部分支豐富」（如甲狀腺上動脈、舌動脈、顏面動脈、淺顳動脈、上頜動脈等），主要供應顱外頭頸部、顏面部及頭皮",
+      "C. 頸內動脈主要供應下頷骨與牙齒；頸外動脈專供大腦後葉",
+      "D. 兩者在頸部均不發出分支，在顱內才匯合為基底動脈"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。頸內動脈與頸外動脈之極重要鑑別特徵：\n1.「頸內動脈（ICA）」：自總頸動脈發出後，在「頸部完全不發出任何分支」（在頸部手術中藉此與頸外動脈區別！），垂直上行至顱底，經顳骨岩部的「頸動脈管（Carotid canal）」進入顱內，分出大腦前動脈、大腦中動脈及眼動脈，主司顱內大腦半球前 2/3 及眼球之供血；\n2.「頸外動脈（ECA）」：在頸部立即發出 8 條分支，全面分佈於甲狀腺、舌、咽、顏面部、上頜骨、牙齒及顱骨外頭皮。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.36 (🔥考點二十一：頸動脈分支與威利氏動脈環)"
+  },
+  {
+    "id": 94,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "大腦基底部的「威利氏動脈環（Circle of Willis / 大腦動脈環）」在左右側與前後循環間提供關鍵的側支循環血流代償。下列何組動脈共同圍成該完整的吻合環？",
+    "options": [
+      "A. 前交通動脈、左右大腦前動脈、左右內頸動脈末端、左右後交通動脈、左右大腦後動脈",
+      "B. 左右椎動脈、基底動脈、左右大腦中動脈、左右鎖骨下動脈",
+      "C. 左右顏面動脈、左右淺顳動脈、上頜動脈、腦膜中動脈",
+      "D. 升主動脈、肺動脈幹、冠狀動脈、奇靜脈"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。威利氏動脈環（Circle of Willis）圍繞於腦下垂體周圍的蝶鞍上方，由 7 段血管（形成九邊形環）圍合而成：\n1. 前部：由 1 條「前交通動脈（Anterior communicating a.）」吻合左右兩條「大腦前動脈（Anterior cerebral aa.）」；\n2. 側部：由左右「內頸動脈末端（Internal carotid aa.）」及其發出的左右「後交通動脈（Posterior communicating aa.）」；\n3. 後部：由左右「大腦後動脈（Posterior cerebral aa.）」（源自基底動脈分叉）。\n注意：大腦中動脈（MCA）雖然直接由內頸動脈發出，但解剖學上「不屬於威利氏環本體環圈的組成血管」！故選 A。",
+    "source": "大仁解剖學 Chap 18-4 P.40 (🔥考點二十一：頸動脈分支與威利氏動脈環)"
+  },
+  {
+    "id": 95,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "在腦後部血液循環中，由左右兩側「椎動脈（Vertebral arteries）」在大腦橋腦下緣匯合形成的粗大單一動脈幹為下列何者？其向上終止並分叉為哪兩條血管？",
+    "options": [
+      "A. 內頸動脈；分叉為左右眼動脈",
+      "B. 「基底動脈（Basilar artery）」；沿腦幹腹側基底溝上行，在腳間窩分為「左右兩側大腦後動脈（Posterior cerebral arteries）」",
+      "C. 腦膜中動脈；分叉為額支與頂支",
+      "D. 前脊髓動脈；分叉為後脊髓動脈"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。椎-基底動脈系統（Vertebrobasilar system）：\n1. 左右兩側椎動脈（Vertebral aa.，發自鎖骨下動脈）穿過 C6~C1 橫突孔，經枕骨大孔入顱；\n2. 在延腦與橋腦交界處的下緣，兩條椎動脈匯合成一條居中的「基底動脈（Basilar artery）」；\n3. 基底動脈沿橋腦腹側正中的基底溝上行，沿途發出小腦下前動脈、迷路動脈、橋腦支及小腦上動脈；\n4. 在橋腦上緣、中腦腳間窩處，基底動脈分叉為其兩條終末支——「左、右大腦後動脈（Posterior cerebral aa.）」，進入威利氏動脈環後部。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.42 (🔥考點二十一：頸動脈分支與威利氏動脈環)"
+  },
+  {
+    "id": 96,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "人體下肢靜脈在站立與行走時必須克服重力將血液送回心臟，在下列多種靜脈回流輔助機制中，提供「最主要、最重要推進動力」的是下列何者？",
+    "options": [
+      "A. 右心房舒張抽吸力",
+      "B. 「骨骼肌幫浦（Skeletal muscle pump）」，藉由下肢小腿肌肉（如腓腸肌、比目魚肌）規律收縮擠壓深層靜脈推動血液上行",
+      "C. 微血管微弱殘餘血壓",
+      "D. 皮膚淺筋膜的被動回彈力"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。靜脈回流四大動力機制中，推動下肢靜脈克服地球引力回流心臟的最關鍵「主要動力」是「骨骼肌幫浦（Skeletal muscle pump / 肌泵）」。當我們行走站立運動時，小腿深部肌肉（腓腸肌、比目魚肌等）收縮變粗，擠壓包繞在深筋膜內的深層靜脈，使靜脈腔內壓力驟升；配合靜脈瓣膜的單向引導，如同幫浦般將大量血液強力擠壓向上運送回下腔靜脈。長時間久站久坐缺乏肌泵活動，易導致靜脈曲張與下肢水腫。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.48 (🔥考點二十二：靜脈回流四大機制與心音成因)"
+  },
+  {
+    "id": 97,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "四肢靜脈內部具有許多「靜脈瓣膜（Venous valves）」，下列關於其解剖構造本質與在靜脈循環中所發揮之機能，敘述何者完全正確？",
+    "options": [
+      "A. 由厚層平滑肌構成，可由交感神經控制自主關閉",
+      "B. 由血管內膜（Tunica intima）向管腔內摺疊特化形成的成對半月狀瓣膜，其凹面朝向心臟方向，「僅允許血液單向朝心臟流動」，在肌肉放鬆時瓣膜關閉承托血柱，防止血液因重力向下逆流與墜積",
+      "C. 大量分佈於上腔靜脈、下腔靜脈幹與大腦硬腦膜竇中",
+      "D. 在動脈管壁中分佈密度高於靜脈管壁"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。靜脈瓣膜（Venous valves）解剖特徵：\n1. 構造：由靜脈內膜（Tunica intima）摺疊形成的半月形小葉袋狀構造，凹面朝向心臟；\n2. 機能：當血液朝向心臟前進時瓣膜被沖開貼於管壁；當血液因重力倒流時，血液流入瓣葉袋內使瓣膜迅速向腔中心合攏閉鎖，嚴格保證血液「只能單向回流心臟，徹底防止逆流與靜脈高壓」；\n3. 分佈規律：下肢四肢深淺靜脈最多；大靜脈幹（上、下腔靜脈幹）及腦內硬腦膜竇「完全缺乏靜脈瓣膜」！故 B 選項完全正確；A、C、D 錯誤。",
+    "source": "大仁解剖學 Chap 18-4 P.50 (🔥考點二十二：靜脈回流四大機制與心音成因)"
+  },
+  {
+    "id": 98,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": false,
+    "question": "人體進行呼吸運動時所產生的「呼吸幫浦（Respiratory pump）」能促進靜脈血液回流心臟，其運作原理在於「吸氣（Inhalation）」時：",
+    "options": [
+      "A. 橫膈膜上升，胸腔內壓升高擠壓心臟排血",
+      "B. 「橫膈膜收縮下降，胸腔體積擴大產生負壓（胸內壓更負）」，使胸內大靜脈及右心房擴張吸入血液；同時「腹腔內壓升高」擠壓腹內下腔靜脈，驅使血液向上流動回胸腔",
+      "C. 肋間外肌放鬆使胸骨向內壓迫胸壁",
+      "D. 肺部毛細血管全部反射性收縮關閉"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。呼吸幫浦（Respiratory pump）原理：\n- 當吸氣（Inhalation）時：橫膈膜主動收縮下降，胸腔垂直徑增大，胸內壓（Intrathoracic pressure）進一步下降（形成更強的負壓），使胸腔內的大靜脈（上、下腔靜脈）與右心房被動擴張，對血液產生「抽吸效應（Suction effect）」；\n- 同時，橫膈膜下降壓迫腹部臟器使腹腔內壓（Intra-abdominal pressure）上升，擠壓腹部下腔靜脈，上下壓力梯度的增大推動下半身靜脈血加速流向胸腔回心。呼氣時靜脈瓣膜關閉阻擋倒流。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.52 (考點二十二：靜脈回流四大機制與心音成因)"
+  },
+  {
+    "id": 99,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "心臟聽診時所聽到的「第一心音（First heart sound, S1 / Lubb）」，其產生原因、代表之心動週期意義以及最佳聽診部位為下列何者？",
+    "options": [
+      "A. 主動脈瓣與肺動脈瓣關閉；標誌心室舒張期開始；心底部第二肋間聽診",
+      "B. 「二尖瓣（左房室瓣）與三尖瓣（右房室瓣）驟然關閉」及心室肌收縮振動所發出；標誌「心室收縮期（Ventricular systole）的開始」；聲音較低沉鈍長；在「心尖部（Apex / 左側第 5 肋間鎖骨中線內側）」聽診最清楚",
+      "C. 卵圓孔閉合所發出；標誌心房收縮期開始；胸骨柄聽診",
+      "D. 血液高速撞擊主動脈壁；標誌心房充盈期開始；劍突聽診"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。第一心音（S1 / 第一聲 'Lubb'）之核心考點總結：\n1. 產生機轉：心室開始主動收縮，心室內壓急劇升高超過心房壓，迫使「房室瓣（Atrioventricular valves：左側二尖瓣 Mitral valve、右側三尖瓣 Tricuspid valve）瞬間猛烈關閉」並撞擊心室壁與腱索振動所產生；\n2. 週期意義：標誌著「心室收縮期（Ventricular systole）」的正式開始；\n3. 聲音特點：音調較低、持續時間較長（約 0.14 秒）；\n4. 聽診部位：在「心尖部（Cardiac apex）」（左側第 5 肋間鎖骨中線內側 1~2 cm 處）聽診最響亮清晰。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.24 (🔥考點二十二：靜脈回流四大機制與心音成因)"
+  },
+  {
+    "id": 100,
+    "chapter": "心血管系統、傳導與循環機能",
+    "isExamStar": true,
+    "question": "心臟聽診中的「第二心音（Second heart sound, S2 / Dubb）」，其產生原因、臨床意義與最佳聽診部位為：",
+    "options": [
+      "A. 房室瓣關閉；標誌心房舒張期；心尖部聽診",
+      "B. 「半月瓣（Semilunar valves：主動脈瓣與肺動脈瓣）驟然關閉」及大動脈壁彈性回縮振動所發出；標誌「心室舒張期（Ventricular diastole）的開始」；聲音較清脆短促；在「心底部（胸骨左、右緣第 2 肋間）」聽診最清楚",
+      "C. 下腔靜脈瓣關閉；標誌心房收縮期；劍突處聽診",
+      "D. 浦肯野纖維釋放動作電位時的電磁聲響；胸骨角聽診"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。第二心音（S2 / 第二聲 'Dubb'）核心考點對比：\n1. 產生機轉：心室收縮完畢開始舒張，心室內壓驟降低於大動脈壓，主動脈與肺動脈內的逆流血流迫使「半月瓣（Semilunar valves：主動脈瓣 Aortic valve、肺動脈瓣 Pulmonary valve）驟然閉合」引發動脈壁振動；\n2. 週期意義：標誌著「心室舒張期（Ventricular diastole）」的正式開始；\n3. 聲音特點：頻率較高、聲音較清脆而短促（約 0.11 秒）；\n4. 聽診部位：在「心底部（Base of heart）」，即胸骨右緣第 2 肋間（主動脈瓣聽診區）與胸骨左緣第 2 肋間（肺動脈瓣聽診區）聽診最為清楚。故選 B。",
+    "source": "大仁解剖學 Chap 18-4 P.25 (🔥考點二十二：靜脈回流四大機制與心音成因)"
+  }
+];
+
+  </script>
+
+  <!-- Inlined Application Logic -->
+  <script>
+// Anatomy Exam App Logic
+(function() {
+  let allQuestions = [];
+  let activeQuestions = [];
+  let currentIndex = 0;
+  let isShuffle = false;
+
+  // LocalStorage keys
+  const STORAGE_ANSWERS = 'anatomy_quiz_answers_v1';
+  const STORAGE_WRONGS = 'anatomy_quiz_wrongs_v1';
+  const STORAGE_BOOKMARKS = 'anatomy_quiz_bookmarks_v1';
+
+  let userAnswers = {};
+  let wrongIds = new Set();
+  let bookmarkIds = new Set();
+  let currentFilter = 'all';
+
+  // DOM Elements
+  const qStem = document.getElementById('questionStem');
+  const qChapter = document.getElementById('chapterPill');
+  const qExamStar = document.getElementById('examStarPill');
+  const qNum = document.getElementById('questionNumber');
+  const qBookmark = document.getElementById('bookmarkBtn');
+  const optsList = document.getElementById('optionsList');
+  const expBox = document.getElementById('explanationBox');
+  const resBadge = document.getElementById('resultBadge');
+  const srcBadge = document.getElementById('sourceBadge');
+  const expText = document.getElementById('explanationText');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const pBar = document.getElementById('progressBar');
+  const pText = document.getElementById('progressText');
+  const gridContainer = document.getElementById('gridContainer');
+  const navStats = document.getElementById('navStats');
+  const correctScore = document.getElementById('correctScore');
+  const wrongScore = document.getElementById('wrongScore');
+  const bookmarkScore = document.getElementById('bookmarkScore');
+  const wrongCountLabel = document.getElementById('wrongCountLabel');
+  const bookmarkCountLabel = document.getElementById('bookmarkCountLabel');
+  const toast = document.getElementById('toast');
+  const shuffleText = document.getElementById('shuffleText');
+
+  function loadStorage() {
+    try {
+      const a = localStorage.getItem(STORAGE_ANSWERS);
+      if (a) userAnswers = JSON.parse(a);
+      const w = localStorage.getItem(STORAGE_WRONGS);
+      if (w) wrongIds = new Set(JSON.parse(w));
+      const b = localStorage.getItem(STORAGE_BOOKMARKS);
+      if (b) bookmarkIds = new Set(JSON.parse(b));
+    } catch(e) {
+      console.warn('Storage read error:', e);
+    }
+  }
+
+  function saveStorage() {
+    try {
+      localStorage.setItem(STORAGE_ANSWERS, JSON.stringify(userAnswers));
+      localStorage.setItem(STORAGE_WRONGS, JSON.stringify(Array.from(wrongIds)));
+      localStorage.setItem(STORAGE_BOOKMARKS, JSON.stringify(Array.from(bookmarkIds)));
+    } catch(e) {
+      console.warn('Storage save error:', e);
+    }
+  }
+
+  window.clearProgress = function() {
+    if (confirm('確定要清除所有已作答與錯題紀錄嗎？此動作無法復原。')) {
+      userAnswers = {};
+      wrongIds = new Set();
+      bookmarkIds = new Set();
+      saveStorage();
+      renderGrid();
+      updateStats();
+      renderQuestion();
+      showToast('作答紀錄已全部清除！');
+    }
+  };
+
+  window.toggleShuffle = function() {
+    isShuffle = !isShuffle;
+    shuffleText.textContent = isShuffle ? '隨機: 開' : '隨機: 關';
+    if (isShuffle) {
+      shuffleArray(activeQuestions);
+    } else {
+      reapplyFilterOrder();
+    }
+    currentIndex = 0;
+    renderQuestion();
+    renderGrid();
+  };
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  function reapplyFilterOrder() {
+    const activeIds = new Set(activeQuestions.map(q => q.id));
+    activeQuestions = allQuestions.filter(q => activeIds.has(q.id));
+  }
+
+  window.setFilter = function(filterType, btnElem) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    if (btnElem) btnElem.classList.add('active');
+    currentFilter = filterType;
+
+    if (filterType === 'all') {
+      activeQuestions = [...allQuestions];
+    } else if (filterType === 'star') {
+      activeQuestions = allQuestions.filter(q => q.isExamStar);
+    } else if (filterType === 'wrong') {
+      activeQuestions = allQuestions.filter(q => wrongIds.has(q.id));
+      if (activeQuestions.length === 0) {
+        alert('目前尚無錯題！答錯的題目會自動記錄於此。');
+        setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+        return;
+      }
+    } else if (filterType === 'bookmarked') {
+      activeQuestions = allQuestions.filter(q => bookmarkIds.has(q.id));
+      if (activeQuestions.length === 0) {
+        alert('目前尚無收藏題目！點擊題號右上角星號 ★ 即可加入收藏。');
+        setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+        return;
+      }
+    } else if (filterType === 'ch1') {
+      activeQuestions = allQuestions.filter(q => q.id >= 1 && q.id <= 15);
+    } else if (filterType === 'ch2') {
+      activeQuestions = allQuestions.filter(q => q.id >= 16 && q.id <= 30);
+    } else if (filterType === 'ch3') {
+      activeQuestions = allQuestions.filter(q => q.id >= 31 && q.id <= 48);
+    } else if (filterType === 'ch4') {
+      activeQuestions = allQuestions.filter(q => q.id >= 49 && q.id <= 66);
+    } else if (filterType === 'ch5') {
+      activeQuestions = allQuestions.filter(q => q.id >= 67 && q.id <= 84);
+    } else if (filterType === 'ch6') {
+      activeQuestions = allQuestions.filter(q => q.id >= 85 && q.id <= 100);
+    }
+
+    if (isShuffle) {
+      shuffleArray(activeQuestions);
+    }
+
+    currentIndex = 0;
+    renderQuestion();
+    renderGrid();
+  };
+
+  window.toggleBookmark = function() {
+    const q = activeQuestions[currentIndex];
+    if (!q) return;
+    if (bookmarkIds.has(q.id)) {
+      bookmarkIds.delete(q.id);
+      qBookmark.classList.remove('bookmarked');
+      showToast(`已取消收藏第 ${q.id} 題`);
+    } else {
+      bookmarkIds.add(q.id);
+      qBookmark.classList.add('bookmarked');
+      showToast(`已收藏第 ${q.id} 題！`);
+    }
+    saveStorage();
+    updateStats();
+    renderGrid();
+  };
+
+  function renderQuestion() {
+    if (!activeQuestions.length) return;
+    const q = activeQuestions[currentIndex];
+
+    qStem.textContent = q.question;
+    qChapter.textContent = q.chapter || '解剖學核心';
+    qExamStar.style.display = q.isExamStar ? 'inline-flex' : 'none';
+    qNum.textContent = `第 ${currentIndex + 1} / ${activeQuestions.length} 題 (題號 #${q.id})`;
+    pText.textContent = `${currentIndex + 1} / ${activeQuestions.length}`;
+    pBar.style.width = `${((currentIndex + 1) / activeQuestions.length) * 100}%`;
+
+    // Bookmark icon state
+    if (bookmarkIds.has(q.id)) {
+      qBookmark.classList.add('bookmarked');
+    } else {
+      qBookmark.classList.remove('bookmarked');
+    }
+
+    // Options rendering
+    optsList.innerHTML = '';
+    const answered = userAnswers.hasOwnProperty(q.id);
+    const chosenIdx = userAnswers[q.id];
+
+    q.options.forEach((optText, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+
+      // Prefix A, B, C, D
+      const prefix = ['A', 'B', 'C', 'D'][idx];
+      let cleanText = optText;
+      if (cleanText.startsWith(`${prefix}.`)) {
+        cleanText = cleanText.substring(2).trim();
+      }
+
+      btn.innerHTML = `<span class="option-prefix">${prefix}</span><span>${cleanText}</span>`;
+
+      if (answered) {
+        btn.disabled = true;
+        if (idx === q.answer) {
+          btn.classList.add('correct');
+        } else if (idx === chosenIdx) {
+          btn.classList.add('wrong');
+        }
+      } else {
+        btn.onclick = () => selectOption(idx);
+      }
+
+      optsList.appendChild(btn);
+    });
+
+    // Explanation Box
+    if (answered) {
+      expBox.classList.add('active');
+      const isRight = chosenIdx === q.answer;
+      resBadge.textContent = isRight ? '✅ 回答正確！核心考點解析：' : '❌ 回答錯誤！核心考點解析：';
+      resBadge.style.color = isRight ? 'var(--success)' : 'var(--error)';
+      srcBadge.textContent = q.source || '解剖學講義出處';
+      expText.textContent = q.explanation;
+    } else {
+      expBox.classList.remove('active');
+    }
+
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.textContent = (currentIndex === activeQuestions.length - 1) ? '測驗結尾 🏁' : '下一題 ➡';
+
+    renderGridHighlight();
+  }
+
+  function selectOption(selectedIdx) {
+    const q = activeQuestions[currentIndex];
+    if (userAnswers.hasOwnProperty(q.id)) return;
+
+    userAnswers[q.id] = selectedIdx;
+    if (selectedIdx !== q.answer) {
+      wrongIds.add(q.id);
+    } else {
+      wrongIds.delete(q.id);
+    }
+
+    saveStorage();
+    updateStats();
+    renderQuestion();
+    renderGrid();
+  }
+
+  window.prevQuestion = function() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderQuestion();
+    }
+  };
+
+  window.nextQuestion = function() {
+    if (currentIndex < activeQuestions.length - 1) {
+      currentIndex++;
+      renderQuestion();
+    }
+  };
+
+  window.jumpToQuestion = function(qid) {
+    const idx = activeQuestions.findIndex(q => q.id === qid);
+    if (idx !== -1) {
+      currentIndex = idx;
+      renderQuestion();
+    } else {
+      // If question is not in current filter, switch to 'all'
+      setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+      currentIndex = allQuestions.findIndex(q => q.id === qid);
+      renderQuestion();
+    }
+  };
+
+  function renderGrid() {
+    gridContainer.innerHTML = '';
+    allQuestions.forEach((q) => {
+      const btn = document.createElement('button');
+      btn.className = 'grid-btn';
+      btn.textContent = q.id;
+      btn.id = `grid-btn-${q.id}`;
+
+      if (userAnswers.hasOwnProperty(q.id)) {
+        if (userAnswers[q.id] === q.answer) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('wrong');
+        }
+      }
+
+      if (bookmarkIds.has(q.id)) {
+        btn.classList.add('bookmarked');
+      }
+
+      btn.onclick = () => jumpToQuestion(q.id);
+      gridContainer.appendChild(btn);
+    });
+
+    renderGridHighlight();
+  }
+
+  function renderGridHighlight() {
+    document.querySelectorAll('.grid-btn').forEach(b => b.classList.remove('current'));
+    if (activeQuestions.length && activeQuestions[currentIndex]) {
+      const currId = activeQuestions[currentIndex].id;
+      const target = document.getElementById(`grid-btn-${currId}`);
+      if (target) {
+        target.classList.add('current');
+      }
+    }
+  }
+
+  function updateStats() {
+    let correct = 0;
+    let wrong = 0;
+    Object.keys(userAnswers).forEach(id => {
+      const q = allQuestions.find(x => x.id === parseInt(id));
+      if (q) {
+        if (userAnswers[id] === q.answer) correct++;
+        else wrong++;
+      }
+    });
+
+    correctScore.textContent = correct;
+    wrongScore.textContent = wrong;
+    bookmarkScore.textContent = bookmarkIds.size;
+    wrongCountLabel.textContent = wrongIds.size;
+    bookmarkCountLabel.textContent = bookmarkIds.size;
+    navStats.textContent = `${Object.keys(userAnswers).length}/100`;
+  }
+
+  window.copyQuestionReport = function() {
+    const q = activeQuestions[currentIndex];
+    if (!q) return;
+
+    const prefix = ['A', 'B', 'C', 'D'];
+    const optLines = q.options.map(opt => `  ${opt}`).join('\n');
+    const reportText = `【題目勘誤回報】\n題號: #${q.id}\n章節: ${q.chapter}\n星號考點: ${q.isExamStar ? '是' : '否'}\n出處: ${q.source}\n題目: ${q.question}\n選項:\n${optLines}\n正確答案: ${prefix[q.answer]}\n解析: ${q.explanation}`;
+
+    navigator.clipboard.writeText(reportText).then(() => {
+      showToast('📋 已複製本題詳細資訊至剪貼簿！');
+    }).catch(() => {
+      showToast('複製失敗，請手動選取文字');
+    });
+  };
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2200);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!activeQuestions.length) return;
+    const q = activeQuestions[currentIndex];
+    const answered = userAnswers.hasOwnProperty(q.id);
+
+    if (!answered) {
+      if (e.key === '1' || e.key === 'a' || e.key === 'A') selectOption(0);
+      else if (e.key === '2' || e.key === 'b' || e.key === 'B') selectOption(1);
+      else if (e.key === '3' || e.key === 'c' || e.key === 'C') selectOption(2);
+      else if (e.key === '4' || e.key === 'd' || e.key === 'D') selectOption(3);
+    } else {
+      if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        nextQuestion();
+      } else if (e.key === 'ArrowLeft') {
+        prevQuestion();
+      }
+    }
+  });
+
+  // App Init
+  function init() {
+    if (window.QUIZ_DATA && Array.isArray(window.QUIZ_DATA)) {
+      allQuestions = [...window.QUIZ_DATA];
+    } else {
+      allQuestions = [];
+    }
+
+    loadStorage();
+    activeQuestions = [...allQuestions];
+    renderGrid();
+    updateStats();
+    renderQuestion();
+  }
+
+  window.onload = init;
+})();
+
+  </script>
+
+</body>
+</html>
