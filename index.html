@@ -1,626 +1,142 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中藥概論期中全真模擬題庫 (60題・高鑑別度實戰版)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #065f46;
-      --primary-light: #10b981;
-      --primary-dark: #064e3b;
-      --primary-bg: #ecfdf5;
-      --secondary: #b45309;
-      --secondary-bg: #fffbeb;
-      --accent: #854d0e;
-      --accent-bg: #fefce8;
-      --success: #16a34a;
-      --success-bg: #f0fdf4;
-      --error: #dc2626;
-      --error-bg: #fef2f2;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --bg: #f8fafc;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
-    }
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .nav-actions {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .nav-btn {
-      padding: 0.45rem 0.85rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: white;
-      color: var(--text);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-btn:hover {
-      background: var(--bg);
-      border-color: #cbd5e1;
-    }
-    .nav-btn.active-shuffle {
-      background: #fef3c7;
-      border-color: #f59e0b;
-      color: #92400e;
-    }
-
-    main {
-      flex: 1;
-      max-width: 1100px;
-      width: 100%;
-      margin: 1.5rem auto;
-      padding: 0 1rem;
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 860px) {
-      main { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-    }
-
-    /* Filter Card */
-    .filter-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .tab-btn {
-      padding: 0.4rem 0.85rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: white;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .tab-btn:hover { background: #f1f5f9; color: var(--text); }
-    .tab-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 2px 4px rgba(6, 95, 70, 0.25);
-    }
-    .tab-btn.star-tab.active { background: #b45309; border-color: #b45309; }
-    .tab-btn.wrong-tab.active { background: #dc2626; border-color: #dc2626; }
-    .tab-btn.easy-tab.active { background: #16a34a; border-color: #16a34a; }
-    .tab-btn.med-tab.active { background: #d97706; border-color: #d97706; }
-    .tab-btn.hard-tab.active { background: #dc2626; border-color: #dc2626; }
-
-    .stats-bar {
-      margin-top: 0.85rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid #f1f5f9;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .stat-badge { font-weight: 700; }
-    .stat-badge.score { color: var(--success); }
-    .stat-badge.wrong { color: var(--error); }
-    .stat-badge.star { color: #d97706; }
-
-    /* Progress bar */
-    .progress-track {
-      background: #e2e8f0;
-      border-radius: 999px;
-      height: 6px;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--primary-light);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    /* Quiz Card */
-    .quiz-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-    .question-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.25rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .header-badges {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .category-pill {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      background: var(--primary-bg);
-      color: var(--primary);
-      border: 1px solid #a7f3d0;
-    }
-    .exam-star-pill {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      background: #fef3c7;
-      color: #92400e;
-      border: 1px solid #fde68a;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .difficulty-pill {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-    }
-    .difficulty-easy { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-    .difficulty-medium { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    .difficulty-hard { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-
-    .q-number {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-    .bookmark-btn {
-      background: none;
-      border: none;
-      font-size: 1.35rem;
-      cursor: pointer;
-      color: #cbd5e1;
-      transition: all 0.15s;
-    }
-    .bookmark-btn.bookmarked {
-      color: #f59e0b;
-      transform: scale(1.15);
-    }
-
-    .question-text {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      color: #1e293b;
-    }
-
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .option-btn {
-      padding: 1rem 1.25rem;
-      border-radius: 10px;
-      border: 1.5px solid var(--border);
-      background: #ffffff;
-      text-align: left;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text);
-      cursor: pointer;
-      transition: all 0.15s ease;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      line-height: 1.45;
-    }
-    .option-btn:hover:not(:disabled) {
-      border-color: var(--primary);
-      background: #f8fafc;
-      transform: translateY(-1px);
-    }
-    .option-prefix {
-      font-weight: 800;
-      color: var(--text-muted);
-      min-width: 1.5rem;
-    }
-    .option-btn.correct {
-      background: var(--success-bg) !important;
-      border-color: var(--success) !important;
-      color: #14532d !important;
-      font-weight: 700;
-    }
-    .option-btn.correct .option-prefix { color: var(--success); }
-    .option-btn.wrong {
-      background: var(--error-bg) !important;
-      border-color: var(--error) !important;
-      color: #7f1d1d !important;
-    }
-    .option-btn.wrong .option-prefix { color: var(--error); }
-    .option-btn:disabled { cursor: default; }
-
-    /* Explanation */
-    .explanation-box {
-      display: none;
-      margin-top: 1.25rem;
-      padding: 1.25rem;
-      background: #f8fafc;
-      border-radius: 10px;
-      border-left: 4px solid var(--primary);
-      animation: fadeIn 0.25s ease-out;
-    }
-    .explanation-box.active { display: block; }
-    .explanation-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .result-badge {
-      font-size: 0.95rem;
-      font-weight: 800;
-    }
-    .source-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      background: #e2e8f0;
-      color: #334155;
-    }
-    .explanation-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #334155;
-    }
-
-    .copy-report-btn {
-      margin-top: 0.85rem;
-      font-size: 0.75rem;
-      padding: 0.35rem 0.65rem;
-      border: 1px dashed #cbd5e1;
-      border-radius: 6px;
-      background: white;
-      color: #64748b;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: all 0.15s;
-    }
-    .copy-report-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-bg);
-    }
-
-    /* Footer Buttons */
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-    }
-    .btn {
-      padding: 0.65rem 1.25rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.15s;
-    }
-    .btn-secondary {
-      background: #f1f5f9;
-      color: #475569;
-    }
-    .btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-    .btn-primary:hover:not(:disabled) {
-      background: var(--primary-dark);
-      box-shadow: 0 4px 6px -1px rgba(6, 95, 70, 0.3);
-    }
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    /* Sidebar Grid */
-    .sidebar {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      position: sticky;
-      top: 5rem;
-      max-height: calc(100vh - 6rem);
-      overflow-y: auto;
-    }
-    .sidebar-header {
-      font-size: 0.95rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #1e293b;
-    }
-    .legend {
-      display: flex;
-      gap: 0.75rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid #f1f5f9;
-    }
-    .legend-item { display: flex; align-items: center; gap: 0.3rem; }
-    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.4rem;
-    }
-    .grid-btn {
-      aspect-ratio: 1;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #475569;
-      cursor: pointer;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .grid-btn:hover {
-      background: #e2e8f0;
-      border-color: #cbd5e1;
-    }
-    .grid-btn.current {
-      outline: 2px solid var(--primary);
-      outline-offset: 1px;
-      font-weight: 800;
-    }
-    .grid-btn.correct {
-      background: #dcfce7;
-      color: #15803d;
-      border-color: #86efac;
-    }
-    .grid-btn.wrong {
-      background: #fee2e2;
-      color: #b91c1c;
-      border-color: #fca5a5;
-    }
-    .grid-btn.bookmarked::after {
-      content: '★';
-      position: absolute;
-      top: 1px;
-      right: 2px;
-      font-size: 0.65rem;
-      color: #d97706;
-    }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.9);
-      color: white;
-      padding: 0.65rem 1.25rem;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: none; z-index: 1000;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大一醫藥專業學科互動測驗學習系統</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; }
+    </style>
 </head>
-<body>
-  <header>
-    <div class="nav-container">
-      <div class="site-title">
-        <span>🌿</span>
-        <span>中藥概論期中全真模擬題庫 (60題・高鑑別度)</span>
-      </div>
-      <div class="nav-actions">
-        <a href="index.html" class="nav-btn">
-          <span>🏠</span>
-          <span>首頁</span>
-        </a>
-        <button id="shuffleBtn" class="nav-btn" onclick="toggleShuffle()">
-          <span>🔀</span>
-          <span id="shuffleText">隨機: 關</span>
-        </button>
-        <button class="nav-btn" onclick="clearProgress()">
-          <span>🔄</span>
-          <span>重設進度</span>
-        </button>
-      </div>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center text-slate-800 font-sans p-4 sm:p-6">
+    <div class="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 text-center my-6 border border-slate-200">
+        <!-- Logo & Header -->
+        <div class="inline-flex p-3.5 bg-gradient-to-tr from-teal-500 to-emerald-400 text-white rounded-2xl shadow-md mb-3 transform hover:rotate-6 transition duration-300">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-black text-slate-800 mb-1 tracking-tight">大一醫藥專業學科學習系統</h1>
+        <p class="text-slate-500 mb-6 text-xs sm:text-sm font-medium">期中全真模擬題庫・焦點透析・隨時隨地離線刷題</p>
+        
+                <!-- Section: 中藥概論 (期中考焦點) -->
+        <div class="mb-5 text-left">
+            <div class="flex items-center gap-2 mb-2.5 px-1">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">中藥概論 (Traditional Chinese Medicine)</span>
+            </div>
+
+            <!-- 單元六：中藥概論期中考 60 題 -->
+            <a href="chinese-medicine-exam.html" class="relative block w-full p-4 sm:p-5 bg-gradient-to-r from-emerald-700 via-teal-700 to-amber-700 hover:from-emerald-800 hover:to-amber-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-emerald-400">
+                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-amber-300 text-emerald-950 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 易中難 (35%-45%-20%)・60題</span>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-emerald-100 font-bold uppercase tracking-wider">CM Exam・神農品類/科別部位/動物糞便實戰題庫</div>
+                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
+                            <span>🌿</span>
+                            <span>中藥概論期中全真模擬題庫</span>
+                        </div>
+                        <div class="text-xs text-emerald-100 font-normal mt-1 leading-relaxed">
+                            60 題精簡題目選項・去除英文破綻・神農上品中品下品・科別部位・IMG_3181糞便藥材・手寫考點精華
+                        </div>
+                    </div>
+                    <span class="text-emerald-100 text-2xl font-bold ml-2">→</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Section: 人體解剖學 (期中考焦點) -->
+        <div class="mb-5 text-left">
+            <div class="flex items-center gap-2 mb-2.5 px-1">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">人體解剖學 (Human Anatomy)</span>
+            </div>
+
+            <!-- 單元五：解剖學期中考 111 題 -->
+            <a href="anatomy-exam.html" class="relative block w-full p-4 sm:p-5 bg-gradient-to-r from-rose-600 via-red-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-rose-400">
+                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-yellow-300 text-red-900 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 易中難 (35%-45%-20%)・111題</span>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-rose-100 font-bold uppercase tracking-wider">Anatomy Exam・高鑑別度實戰題庫</div>
+                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
+                            <span>🫀</span>
+                            <span>解剖學期中全真模擬題庫</span>
+                        </div>
+                        <div class="text-xs text-rose-100 font-normal mt-1 leading-relaxed">
+                            111 題精簡題目選項・去除英文破綻・涵蓋全類型上皮細胞・以講義紅字為主・分級刷題 (易39/中49/難23)・完整出處解析
+                        </div>
+                    </div>
+                    <span class="text-rose-100 text-2xl font-bold ml-2">→</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Section: 藥用植物學 -->
+        <div class="space-y-3 text-left">
+            <div class="flex items-center gap-2 mb-1 px-1">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">藥用植物學 (Pharmaceutical Botany)</span>
+            </div>
+
+            <!-- 單元四：藥用植物學期中考 200 題 -->
+            <a href="botany-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5 border border-teal-400">
+                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-emerald-200 text-emerald-900 text-[11px] font-black rounded-full shadow-sm">四大考區・200題</span>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-teal-100 font-bold uppercase tracking-wider">Botany Exam・期中全真題庫</div>
+                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
+                            <span>🌸</span>
+                            <span>講義紅字與期中考點全真題庫</span>
+                        </div>
+                        <div class="text-xs text-teal-100 font-normal mt-1">
+                            200 題全覆蓋・30 題顯微圖鑑・組織解剖與結晶全收錄
+                        </div>
+                    </div>
+                    <span class="text-teal-100 text-xl font-bold ml-2">→</span>
+                </div>
+            </a>
+
+            <!-- 單元一 -->
+            <a href="plant-vocab.html" class="block w-full p-3.5 bg-slate-50 hover:bg-teal-50 text-slate-700 hover:text-teal-700 border border-slate-200 hover:border-teal-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 1</div>
+                        <div class="text-sm sm:text-base font-semibold">🌿 單元一：常見藥用植物科名中英對照</div>
+                    </div>
+                    <span class="text-slate-400 hover:text-teal-600 text-lg font-bold">→</span>
+                </div>
+            </a>
+            
+            <!-- 單元二 -->
+            <a href="herb-image.html" class="block w-full p-3.5 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 2</div>
+                        <div class="text-sm sm:text-base font-semibold">🌱 單元二：中藥材圖片辨識與特徵</div>
+                    </div>
+                    <span class="text-slate-400 hover:text-blue-600 text-lg font-bold">→</span>
+                </div>
+            </a>
+
+            <!-- 單元三 -->
+            <a href="herb-family.html" class="block w-full p-3.5 bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 border border-slate-200 hover:border-indigo-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 3</div>
+                        <div class="text-sm sm:text-base font-semibold">📖 單元三：常見中藥科名測驗</div>
+                    </div>
+                    <span class="text-slate-400 hover:text-indigo-600 text-lg font-bold">→</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <span>大仁科技大學 醫藥護專業學科</span>
+            <span>純靜態・零後端・跨裝置支援</span>
+        </div>
     </div>
-  </header>
-
-  <main>
-    <div class="left-col">
-      <!-- Filter Card -->
-      <div class="filter-card">
-        <div class="filter-tabs" id="filterTabs">
-          <button class="tab-btn active" onclick="setFilter('all', this)">全部 60 題</button>
-          <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 必考重點</button>
-          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (21題)</button>
-          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (27題)</button>
-          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (12題)</button>
-          <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
-          <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
-          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 本草品類 (12題)</button>
-          <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 植物動物科別 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 部位採收炮製 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 意想不到中藥材 (8題)</button>
-          <button class="tab-btn" onclick="setFilter('ch5', this)">Ch5 歷代本草藥典 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch6', this)">Ch6 真菌金銀花清冠 (10題)</button>
-        </div>
-        <div class="stats-bar">
-          <div>
-            <span class="stat-badge score">答對: <span id="correctScore">0</span></span>
-            <span class="stat-badge wrong" style="margin-left: 0.75rem;">答錯: <span id="wrongScore">0</span></span>
-            <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
-          </div>
-          <div>
-            <span id="progressText">1 / 60</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Progress Track -->
-      <div class="progress-track">
-        <div class="progress-fill" id="progressBar"></div>
-      </div>
-
-      <!-- Active Quiz Card -->
-      <div class="quiz-card" id="quizCard">
-        <div class="question-header">
-          <div class="header-badges">
-            <span class="category-pill" id="chapterPill">章節名稱</span>
-            <span class="exam-star-pill" id="examStarPill">🔥 期中必考</span>
-            <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="q-number" id="questionNumber">第 1 題 / 共 60 題</span>
-            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
-          </div>
-        </div>
-
-        <div class="question-text" id="questionStem">題目載入中...</div>
-
-        <div class="options-list" id="optionsList"></div>
-
-        <div class="explanation-box" id="explanationBox">
-          <div class="explanation-header">
-            <span class="result-badge" id="resultBadge">解析</span>
-            <span class="source-badge" id="sourceBadge">講義來源</span>
-          </div>
-          <div class="explanation-text" id="explanationText"></div>
-          <button class="copy-report-btn" onclick="copyQuestionReport()">
-            <span>📋</span>
-            <span>複製本題資訊以供修正</span>
-          </button>
-        </div>
-
-        <div class="card-footer">
-          <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>
-            <span>⬅</span>
-            <span>上一題</span>
-          </button>
-          <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
-            <span>下一題</span>
-            <span>➡</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Sidebar Navigator -->
-    <div class="sidebar">
-      <div class="sidebar-header">
-        <span>題號導覽 (1~60)</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/60</span>
-      </div>
-      <div class="legend">
-        <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
-        <div class="legend-item"><span class="legend-dot" style="background:var(--success);"></span> 答對</div>
-        <div class="legend-item"><span class="legend-dot" style="background:var(--error);"></span> 答錯</div>
-      </div>
-      <div class="grid-container" id="gridContainer"></div>
-    </div>
-  </main>
-
-  <div class="toast" id="toast">已複製至剪貼簿！</div>
-
-    <script src="questions.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
