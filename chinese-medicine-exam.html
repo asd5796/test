@@ -3,64 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中藥概論期中全真模擬題庫 (60題・高鑑別度實戰版)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>中藥概論期中全真模擬題庫 (90題・高鑑別度)</title>
   <style>
     :root {
-      --primary: #065f46;
+      --primary: #059669;
+      --primary-dark: #047857;
       --primary-light: #10b981;
-      --primary-dark: #064e3b;
       --primary-bg: #ecfdf5;
-      --secondary: #b45309;
-      --secondary-bg: #fffbeb;
-      --accent: #854d0e;
-      --accent-bg: #fefce8;
-      --success: #16a34a;
-      --success-bg: #f0fdf4;
-      --error: #dc2626;
-      --error-bg: #fef2f2;
-      --card-bg: #ffffff;
-      --text: #0f172a;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --error: #b91c1c;
+      --error-bg: #fee2e2;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --text: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --bg: #f8fafc;
-      --radius: 12px;
-      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --card-bg: #ffffff;
+      --bg: #f1f5f9;
+      --star-color: #d97706;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Noto Sans TC', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
       position: sticky;
       top: 0;
-      z-index: 50;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .nav-container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0.85rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
     .site-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--primary);
+      color: var(--primary-dark);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -71,122 +64,140 @@
       align-items: center;
     }
     .nav-btn {
-      padding: 0.45rem 0.85rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 600;
-      border-radius: 8px;
       border: 1px solid var(--border);
-      background: white;
-      color: var(--text);
+      background: #ffffff;
+      color: var(--text-muted);
       cursor: pointer;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.15s ease;
     }
     .nav-btn:hover {
-      background: var(--bg);
+      background: #f8fafc;
+      color: var(--text);
       border-color: #cbd5e1;
     }
     .nav-btn.active-shuffle {
-      background: #fef3c7;
-      border-color: #f59e0b;
-      color: #92400e;
+      background: var(--primary-bg);
+      color: var(--primary);
+      border-color: var(--primary);
     }
-
     main {
       flex: 1;
-      max-width: 1100px;
-      width: 100%;
+      max-width: 1200px;
       margin: 1.5rem auto;
       padding: 0 1rem;
+      width: 100%;
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 1fr 340px;
       gap: 1.5rem;
       align-items: start;
     }
-
-    @media (max-width: 860px) {
+    @media (max-width: 868px) {
       main { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
     }
-
-    /* Filter Card */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
     .filter-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: var(--shadow);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
       border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
     }
     .tab-btn {
-      padding: 0.4rem 0.85rem;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 0.35rem 0.75rem;
       border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
       border: 1px solid var(--border);
-      background: white;
+      background: #f8fafc;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.15s ease;
     }
-    .tab-btn:hover { background: #f1f5f9; color: var(--text); }
+    .tab-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
+    }
     .tab-btn.active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
-      box-shadow: 0 2px 4px rgba(6, 95, 70, 0.25);
     }
-    .tab-btn.star-tab.active { background: #b45309; border-color: #b45309; }
-    .tab-btn.wrong-tab.active { background: #dc2626; border-color: #dc2626; }
-    .tab-btn.easy-tab.active { background: #16a34a; border-color: #16a34a; }
-    .tab-btn.med-tab.active { background: #d97706; border-color: #d97706; }
-    .tab-btn.hard-tab.active { background: #dc2626; border-color: #dc2626; }
-
+    .tab-btn.star-tab.active {
+      background: var(--warning);
+      border-color: var(--warning);
+    }
+    .tab-btn.wrong-tab.active {
+      background: var(--error);
+      border-color: var(--error);
+    }
+    .tab-btn.easy-tab.active {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+    .tab-btn.med-tab.active {
+      background: #ca8a04;
+      border-color: #ca8a04;
+    }
+    .tab-btn.hard-tab.active {
+      background: #dc2626;
+      border-color: #dc2626;
+    }
     .stats-bar {
-      margin-top: 0.85rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid #f1f5f9;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid #f1f5f9;
+      font-weight: 600;
     }
-    .stat-badge { font-weight: 700; }
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
     .stat-badge.score { color: var(--success); }
     .stat-badge.wrong { color: var(--error); }
-    .stat-badge.star { color: #d97706; }
-
-    /* Progress bar */
+    .stat-badge.star { color: var(--star-color); }
     .progress-track {
-      background: #e2e8f0;
-      border-radius: 999px;
+      width: 100%;
       height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 1rem;
     }
     .progress-fill {
       height: 100%;
-      background: var(--primary-light);
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
       width: 0%;
-      transition: width 0.3s ease;
+      transition: width 0.25s ease;
     }
-
-    /* Quiz Card */
     .quiz-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
+      background: #ffffff;
+      border-radius: 16px;
       padding: 1.75rem;
-      box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      position: relative;
     }
     .question-header {
       display: flex;
@@ -198,67 +209,59 @@
     }
     .header-badges {
       display: flex;
+      gap: 0.4rem;
       align-items: center;
-      gap: 0.5rem;
       flex-wrap: wrap;
     }
     .category-pill {
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
       background: var(--primary-bg);
       color: var(--primary);
-      border: 1px solid #a7f3d0;
     }
     .exam-star-pill {
       font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
       background: #fef3c7;
-      color: #92400e;
+      color: #b45309;
       border: 1px solid #fde68a;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
     }
     .difficulty-pill {
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
     }
-    .difficulty-easy { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-    .difficulty-medium { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    .difficulty-hard { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-
+    .difficulty-easy { background: #dcfce7; color: #166534; }
+    .difficulty-medium { background: #fef9c3; color: #854d0e; }
+    .difficulty-hard { background: #fee2e2; color: #991b1b; }
     .q-number {
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-muted);
     }
     .bookmark-btn {
-      background: none;
+      background: transparent;
       border: none;
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       cursor: pointer;
       color: #cbd5e1;
-      transition: all 0.15s;
+      transition: transform 0.15s, color 0.15s;
+      padding: 0.2rem;
     }
-    .bookmark-btn.bookmarked {
-      color: #f59e0b;
-      transform: scale(1.15);
-    }
-
+    .bookmark-btn:hover { transform: scale(1.15); }
+    .bookmark-btn.active { color: var(--star-color); }
     .question-text {
       font-size: 1.15rem;
       font-weight: 700;
       line-height: 1.6;
+      color: #0f172a;
       margin-bottom: 1.5rem;
-      color: #1e293b;
     }
-
     .options-list {
       display: flex;
       flex-direction: column;
@@ -340,7 +343,6 @@
       line-height: 1.6;
       color: #334155;
     }
-
     .copy-report-btn {
       margin-top: 0.85rem;
       font-size: 0.75rem;
@@ -360,53 +362,55 @@
       color: var(--primary);
       background: var(--primary-bg);
     }
-
-    /* Footer Buttons */
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 1.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
     }
     .btn {
-      padding: 0.65rem 1.25rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 10px;
       font-size: 0.95rem;
       font-weight: 700;
-      border-radius: 8px;
-      border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       transition: all 0.15s;
+      border: none;
     }
     .btn-secondary {
       background: #f1f5f9;
       color: #475569;
     }
-    .btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
+    .btn-secondary:hover:not(:disabled) {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
     .btn-primary {
       background: var(--primary);
       color: white;
     }
     .btn-primary:hover:not(:disabled) {
       background: var(--primary-dark);
-      box-shadow: 0 4px 6px -1px rgba(6, 95, 70, 0.3);
+      transform: translateY(-1px);
     }
     .btn:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
+      transform: none !important;
     }
 
-    /* Sidebar Grid */
+    /* Sidebar Navigator */
     .sidebar {
-      background: white;
-      border-radius: var(--radius);
+      background: #ffffff;
+      border-radius: 16px;
       padding: 1.25rem;
-      box-shadow: var(--shadow);
       border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
       position: sticky;
       top: 5rem;
       max-height: calc(100vh - 6rem);
@@ -505,7 +509,7 @@
     <div class="nav-container">
       <div class="site-title">
         <span>🌿</span>
-        <span>中藥概論期中全真模擬題庫 (60題・高鑑別度)</span>
+        <span>中藥概論期中全真模擬題庫 (90題・高鑑別度)</span>
       </div>
       <div class="nav-actions">
         <a href="index.html" class="nav-btn">
@@ -529,19 +533,21 @@
       <!-- Filter Card -->
       <div class="filter-card">
         <div class="filter-tabs" id="filterTabs">
-          <button class="tab-btn active" onclick="setFilter('all', this)">全部 60 題</button>
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 90 題</button>
           <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 必考重點</button>
-          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (21題)</button>
-          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (27題)</button>
-          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (12題)</button>
+          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (32題)</button>
+          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (41題)</button>
+          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (17題)</button>
           <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
           <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
-          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 本草品類 (12題)</button>
-          <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 植物動物科別 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 部位採收炮製 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 意想不到中藥材 (8題)</button>
-          <button class="tab-btn" onclick="setFilter('ch5', this)">Ch5 歷代本草藥典 (10題)</button>
-          <button class="tab-btn" onclick="setFilter('ch6', this)">Ch6 真菌金銀花清冠 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 導論實習法規 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 神農本草品類 (12題)</button>
+          <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 植物動物科別 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 部位採收炮製 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch5', this)">Ch5 意想不到中藥材 (8題)</button>
+          <button class="tab-btn" onclick="setFilter('ch6', this)">Ch6 歷代本草藥性 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch7', this)">Ch7 真菌金銀花清冠 (10題)</button>
+          <button class="tab-btn" onclick="setFilter('ch8', this)">Ch8 考古精選題型 (20題)</button>
         </div>
         <div class="stats-bar">
           <div>
@@ -550,7 +556,7 @@
             <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
           </div>
           <div>
-            <span id="progressText">1 / 60</span>
+            <span id="progressText">1 / 90</span>
           </div>
         </div>
       </div>
@@ -569,7 +575,7 @@
             <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="q-number" id="questionNumber">第 1 題 / 共 60 題</span>
+            <span class="q-number" id="questionNumber">第 1 題 / 共 90 題</span>
             <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
           </div>
         </div>
@@ -606,8 +612,8 @@
     <!-- Right Sidebar Navigator -->
     <div class="sidebar">
       <div class="sidebar-header">
-        <span>題號導覽 (1~60)</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/60</span>
+        <span>題號導覽 (1~90)</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/90</span>
       </div>
       <div class="legend">
         <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
@@ -624,743 +630,87 @@
     window.QUIZ_DATA = [
   {
     "id": 1,
-    "chapter": "神農本草經藥材品類",
+    "chapter": "導論實習法規",
     "difficulty": "easy",
     "isExamStar": true,
-    "question": "《神農本草經》中將藥物分為上中下三品，其中「上品」藥材的核心特性與用途為何？",
+    "question": "專門研究各種天然藥用物質（植物、動物、礦物）的來源、性味、功效、辨識及文獻考證的學科為：",
     "options": [
-      "A. 主養命以應天，無毒，多服久服不傷人，延年益壽",
-      "B. 主養性以應人，無毒或有毒，專門遏病補虛",
-      "C. 主治病以應地，多毒，不可久服，專除寒熱邪氣",
-      "D. 專門用於急救回陽，毒性劇烈不可內服"
+      "A. 生藥學",
+      "B. 本草學",
+      "C. 藥理學",
+      "D. 方劑學"
     ],
-    "answer": 0,
-    "explanation": "正確答案為 A。《神農本草經》上品藥共 120 種，為君，主養命以應天，無毒，多服久服不傷人，輕身益氣、延年益壽。",
-    "source": "中藥概論 1 P.19 (🔥講義核心考點)"
+    "answer": 1,
+    "explanation": "正確答案為 B。講義明訂「本草學」是專門研究各種藥用物質來源、性味、功效、文獻與用法的傳統中醫藥學科。",
+    "source": "中藥概論 1 P.4 (🔥講義前段導論重點)"
   },
   {
     "id": 2,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "easy",
+    "chapter": "導論實習法規",
+    "difficulty": "medium",
     "isExamStar": true,
-    "question": "下列哪一種常用中藥材，在《神農本草經》中被列為「上品」藥？",
+    "question": "依據講義載述之臺灣中藥實習法規規範，藥學生若前往設有中藥調劑部門之醫院實習，其實習時數至少需滿：",
     "options": [
-      "A. 貝母",
-      "B. 五味子",
-      "C. 附子",
-      "D. 半夏"
+      "A. 40 小時",
+      "B. 80 小時",
+      "C. 160 小時",
+      "D. 320 小時"
     ],
-    "answer": 1,
-    "explanation": "正確答案為 B。五味子在《神農本草經》列為上品；貝母列為中品；附子與半夏列為下品。",
-    "source": "中藥概論 1 P.19, P.23；考古題 Q5 (🔥必考重點)"
+    "answer": 2,
+    "explanation": "正確答案為 C。講義第 9 頁載明：設有中藥調劑部門之醫院與診所實習時數為 160 小時；中藥廠為 80 小時；藥局為 80 小時。",
+    "source": "中藥概論 1 P.9 (🔥講義法規重點)"
   },
   {
     "id": 3,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "easy",
+    "chapter": "導論實習法規",
+    "difficulty": "medium",
     "isExamStar": true,
-    "question": "根據《神農本草經》分類，下列何者屬於「中品」藥材？",
+    "question": "臺灣健保目前對中醫醫療院所給付之中藥製劑，每日健保中藥藥費點數上限標準大約為：",
     "options": [
-      "A. 黃連",
-      "B. 人參",
-      "C. 貝母",
-      "D. 桔梗"
+      "A. 15 點",
+      "B. 37 點",
+      "C. 100 點",
+      "D. 250 點"
     ],
-    "answer": 2,
-    "explanation": "正確答案為 C。貝母列為中品（臣藥，遏病補虛）；黃連與人參為上品；桔梗為下品。",
-    "source": "中藥概論 1 P.19, P.27；考古題 Q4 (🔥必考重點)"
+    "answer": 1,
+    "explanation": "正確答案為 B。講義比較表載明：健保中藥每日藥費給付約 37 點（相較於自費水煎藥每日約 300~500 元）。",
+    "source": "中藥概論 1 P.35 (🔥講義紅字考點)"
   },
   {
     "id": 4,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "easy",
+    "chapter": "導論實習法規",
+    "difficulty": "medium",
     "isExamStar": true,
-    "question": "下列何者在《神農本草經》中屬於「下品」藥，具有毒性且不可久服？",
+    "question": "臺灣藥品分級管理中，「藥性溫和、無蓄積性，不需醫師處方但在藥局需經藥師或專業人員指導下購買」的藥物屬於：",
     "options": [
-      "A. 杜仲",
-      "B. 附子",
-      "C. 當歸",
-      "D. 黃耆"
+      "A. 成藥",
+      "B. 指示藥",
+      "C. 處方藥",
+      "D. 管制藥"
     ],
     "answer": 1,
-    "explanation": "正確答案為 B。附子有毒，在《神農本草經》中列為下品；杜仲與黃耆為上品；當歸為中品。",
-    "source": "中藥概論 1 P.19, P.30 (🔥講義核心考點)"
+    "explanation": "正確答案為 B。指示藥藥性溫和、無蓄積性，需在藥局或藥事人員執業場所經專業指導下購買使用。",
+    "source": "中藥概論 1 P.36 (🔥講義法規考點)"
   },
   {
     "id": 5,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "medium",
+    "chapter": "導論實習法規",
+    "difficulty": "hard",
     "isExamStar": true,
-    "question": "下列哪一組藥材「全部」皆屬於《神農本草經》所記載的「上品」藥？",
+    "question": "關於《臺灣中藥典》第三版與現行第四版收載中藥品目總數的比較，下列數據何者正確？",
     "options": [
-      "A. 黃連、天麻、杜仲、地黃",
-      "B. 厚朴、紫草、當歸、蒼耳子",
-      "C. 附子、半夏、連翹、夏枯草",
-      "D. 吳茱萸、貝母、桑白皮、荊芥"
+      "A. 第三版 357 種；第四版 394 種",
+      "B. 第三版 200 種；第四版 300 種",
+      "C. 第三版 300 種；第四版 355 種",
+      "D. 第三版 394 種；第四版 659 種"
     ],
     "answer": 0,
-    "explanation": "正確答案為 A。A 選項全部為上品藥；B 與 D 選項皆為中品藥；C 選項全部為下品藥。",
-    "source": "中藥概論 1 P.19, P.22~26 (🔥講義彙整表)"
+    "explanation": "正確答案為 A。《臺灣中藥典》第三版收載 357 種（正文收載 355 品目加濃縮製劑）；第四版共收載 394 個品目（中藥材 355、飲片 30、製劑 9）。",
+    "source": "考古題 Q6；中藥概論 1 P.44, P.49 (🔥必考重點)"
   },
   {
     "id": 6,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "下列哪一組藥材「全部」皆屬於《神農本草經》所記載的「中品」藥？",
-    "options": [
-      "A. 石斛、黃柏、遠志、蛇床子",
-      "B. 吳茱萸、厚朴、當歸、紫草",
-      "C. 川芎、陳皮、澤瀉、丹參",
-      "D. 桔梗、連翹、附子、半夏"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。吳茱萸、厚朴、當歸、紫草皆為中品藥；A 與 C 選項均為上品藥；D 選項為下品藥。",
-    "source": "中藥概論 1 P.19, P.27~28 (🔥講義彙整表)"
-  },
-  {
-    "id": 7,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "《神農本草經》記載的「下品」藥材共有幾種？其在處方配伍中主要充當何種角色？",
-    "options": [
-      "A. 120 種；君藥",
-      "B. 120 種；臣藥",
-      "C. 125 種；佐使藥",
-      "D. 365 種；使藥"
-    ],
-    "answer": 2,
-    "explanation": "正確答案為 C。《神農本草經》全書收載 365 種藥物，上品 120 種為君，中品 120 種為臣，下品 125 種為佐使。",
-    "source": "中藥概論 1 P.19；考古題 Q7, Q14 (🔥必考重點)"
-  },
-  {
-    "id": 8,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "關於動物類藥材「阿膠」在《神農本草經》中的品類歸屬與主要功效，下列敘述何者正確？",
-    "options": [
-      "A. 屬於中品，專用於消食導滯",
-      "B. 屬於上品，具有滋陰養血、補肺潤燥之功",
-      "C. 屬於下品，具有大毒需經久煎去毒",
-      "D. 屬於中品，主要用於攻下逐水"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。阿膠為上品藥，由驢皮熬製而成，功效為滋陰養血、補肺潤燥，為中藥三寶之一。",
-    "source": "中藥概論 1 P.20；考古題 Q10, Q28 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 9,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "下列哪一種清熱瀉火解毒藥材，在《神農本草經》中並非列為上品，而是被列為「下品」？",
-    "options": [
-      "A. 黃連",
-      "B. 黃柏",
-      "C. 連翹",
-      "D. 石斛"
-    ],
-    "answer": 2,
-    "explanation": "正確答案為 C。連翹在《神農本草經》中列為「下品」；而黃連、黃柏、石斛皆列為「上品」。",
-    "source": "中藥概論 1 P.19, P.30 (🔥陷阱考點)"
-  },
-  {
-    "id": 10,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "清熱涼血透疹常用藥「紫草」與祛風解表消瘡之「荊芥」，在《神農本草經》中皆歸屬於哪一品？",
-    "options": [
-      "A. 上品",
-      "B. 中品",
-      "C. 下品",
-      "D. 未收載於本經"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。紫草與荊芥在《神農本草經》中均被列入「中品」藥物名錄中。",
-    "source": "中藥概論 1 P.19, P.28, P.29 (🔥講義分類表)"
-  },
-  {
-    "id": 11,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "能利水滲濕、祛濕熱，常與茯苓、白朮配伍的「澤瀉」，在《神農本草經》中歸屬於哪一品？",
-    "options": [
-      "A. 上品",
-      "B. 中品",
-      "C. 下品",
-      "D. 外用藥品"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。澤瀉利水滲濕、洩熱，在《神農本草經》中列為「上品」藥材。",
-    "source": "中藥概論 1 P.19, P.25 (🔥講義分類表)"
-  },
-  {
-    "id": 12,
-    "chapter": "神農本草經藥材品類",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "中醫臨床常用於清肝火、散鬱結的「夏枯草」，在《神農本草經》中屬於下列何品？",
-    "options": [
-      "A. 上品",
-      "B. 中品",
-      "C. 下品",
-      "D. 民間草藥未入經"
-    ],
-    "answer": 2,
-    "explanation": "正確答案為 C。夏枯草在《神農本草經》中列為「下品」藥物（佐使藥）。",
-    "source": "中藥概論 1 P.19, P.31 (🔥講義分類表)"
-  },
-  {
-    "id": 13,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "大苦大寒、善清中焦胃熱的「黃連」，其植物來源屬於下列哪一個科？",
-    "options": [
-      "A. 毛茛科",
-      "B. 芸香科",
-      "C. 唇形科",
-      "D. 豆科"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。黃連植物來源屬於毛茛科，富含小檗鹼（berberine），大苦大寒，主瀉中焦火。",
-    "source": "中藥概論 1 P.22 (🔥講義紅字考點)"
-  },
-  {
-    "id": 14,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "清熱燥濕、善瀉下焦濕熱且抗菌效果顯著的「黃柏」，屬於下列何科植物？",
-    "options": [
-      "A. 毛茛科",
-      "B. 芸香科",
-      "C. 木蘭科",
-      "D. 菊科"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。黃柏屬於芸香科植物，性味苦寒，主清下焦濕熱（如尿道感染）。",
-    "source": "中藥概論 1 P.22 (🔥講義紅字考點)"
-  },
-  {
-    "id": 15,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "治療外陰陰道毛滴蟲感染常製成栓劑使用的「蛇床子」，屬於下列哪一個科？",
-    "options": [
-      "A. 繖形科",
-      "B. 菊科",
-      "C. 豆科",
-      "D. 蘭科"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。蛇床子屬於繖形科植物，藥用部位為乾燥成熟果實，殺蟲止癢。",
-    "source": "中藥概論 1 P.23；考古題 Q20 (🔥必考重點)"
-  },
-  {
-    "id": 16,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "大補元氣、補氣安神的珍貴藥材「人參」，其植物來源屬於下列何科？",
-    "options": [
-      "A. 五加科",
-      "B. 豆科",
-      "C. 玄參科",
-      "D. 遠志科"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。人參屬於五加科植物，以秋季八月採收人參皂苷含量最高。",
-    "source": "中藥概論 1 P.26；考古題 Q1 (🔥必考重點)"
-  },
-  {
-    "id": 17,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "中藥「丹參」與「荊芥」、「夏枯草」在植物分類學上，同屬於下列哪一個科？",
-    "options": [
-      "A. 繖形科",
-      "B. 唇形科",
-      "C. 菊科",
-      "D. 玄參科"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。丹參、荊芥、夏枯草皆屬於唇形科植物。",
-    "source": "中藥概論 1 P.24, P.29, P.31 (🔥跨章節科別歸納)"
-  },
-  {
-    "id": 18,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "常用補血活血藥「當歸」與婦科活血行氣要藥「川芎」，同屬於下列何科？",
-    "options": [
-      "A. 繖形科",
-      "B. 豆科",
-      "C. 芸香科",
-      "D. 毛茛科"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。當歸與川芎（以及蛇床子）皆屬於繖形科植物。",
-    "source": "中藥概論 1 P.23, P.24, P.28 (🔥講義科別整理)"
-  },
-  {
-    "id": 19,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "清熱生津、經九蒸九曬可轉為補血滋陰的「地黃」，其植物來源屬於何科？",
-    "options": [
-      "A. 玄參科",
-      "B. 遠志科",
-      "C. 五加科",
-      "D. 桔梗科"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。地黃屬於玄參科植物，河南懷慶地黃為著名的道地藥材。",
-    "source": "中藥概論 1 P.25；考古題 Q8 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 20,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "下列哪一組藥材「全部」皆屬於「芸香科」植物來源？",
-    "options": [
-      "A. 黃柏、陳皮、吳茱萸",
-      "B. 厚朴、五味子、連翹",
-      "C. 附子、黃連、白芍",
-      "D. 貝母、天麻、石斛"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。黃柏、陳皮、吳茱萸皆為芸香科；B 中厚朴與五味子為木蘭科，連翹為木犀科；C 中黃連與附子為毛茛科；D 中貝母為百合科，天麻與石斛為蘭科。",
-    "source": "中藥概論 1 P.22, P.25, P.27 (🔥講義科別統整)"
-  },
-  {
-    "id": 21,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "必須與「蜜環菌」共生才能生長的息風定驚要藥「天麻」，屬於下列哪一個科？",
-    "options": [
-      "A. 遠志科",
-      "B. 蘭科",
-      "C. 杜仲科",
-      "D. 天南星科"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。天麻別名赤箭，屬於蘭科植物，需與蜜環菌共生方能生長；石斛亦為蘭科。",
-    "source": "中藥概論 1 P.22, P.26 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 22,
-    "chapter": "藥材植物與動物科別",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "台灣珍貴民間藥「牛樟芝」與傳統名貴中藥「靈芝」，在真菌分類學上同屬於下列何科？",
-    "options": [
-      "A. 麥角菌科",
-      "B. 多孔菌科",
-      "C. 側耳科",
-      "D. 傘菌科"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。牛樟芝與靈芝在分類上均屬於真菌界、擔子菌門、多孔菌科。",
-    "source": "中藥概論 1 P.53；藥用真菌 P.9；考古題 Q11 (🔥必考重點)"
-  },
-  {
-    "id": 23,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "傳統補肝腎、強筋骨名藥「杜仲」，其講義標註的藥用部位為下列何者？",
-    "options": [
-      "A. 樹皮",
-      "B. 根莖",
-      "C. 果實",
-      "D. 葉片"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。杜仲的藥用部位為樹皮，折斷時可見細密白色銀絲（膠絲），炮製後銀絲會消失。",
-    "source": "中藥概論 1 P.23 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 24,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "潤肺止咳、化熱痰之名藥「貝母」，其藥用部位為植物的哪一部分？",
-    "options": [
-      "A. 塊根",
-      "B. 鱗莖",
-      "C. 種子",
-      "D. 根皮"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。貝母（如川貝母、浙貝母）的藥用部位為「鱗莖」。",
-    "source": "中藥概論 1 P.27；考古題 Q18 (🔥講義紅字考點)"
-  },
-  {
-    "id": 25,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "常用於鼻淵頭痛、過敏性鼻炎的「蒼耳子」，其藥用部位精確描述為下列何者？",
-    "options": [
-      "A. 乾燥成熟種子",
-      "B. 乾燥成熟帶總苞的果實",
-      "C. 乾燥未成熟幼果",
-      "D. 乾燥地上全草"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。蒼耳子的藥用部位為「乾燥成熟帶總苞的果實」，具發汗解表、通鼻竅止痛之功。",
-    "source": "中藥概論 1 P.29 (🔥講義紅字考點)"
-  },
-  {
-    "id": 26,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "燥濕化痰、降逆止嘔的「半夏」，其藥用部位為下列何者？",
-    "options": [
-      "A. 塊莖",
-      "B. 根皮",
-      "C. 嫩莖",
-      "D. 果實"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。半夏（天南星科）的藥用部位為「塊莖」；生半夏有毒，需經薑礬製後方可內服。",
-    "source": "中藥概論 1 P.30 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 27,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "中藥「桑白皮」具有瀉肺平喘、利水消腫功效，其藥用部位是桑樹的：",
-    "options": [
-      "A. 樹幹外皮",
-      "B. 根皮",
-      "C. 嫩枝皮",
-      "D. 葉片"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。桑白皮為桑科植物桑樹的乾燥「根皮」。",
-    "source": "中藥概論 1 P.28 (🔥講義紅字考點)"
-  },
-  {
-    "id": 28,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "名貴強壯藥材「鹿茸」，採收摘取的最佳時間點通常在每年何時？",
-    "options": [
-      "A. 農曆春節前後",
-      "B. 清明節前後",
-      "C. 端午節前後",
-      "D. 中秋節前後"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。鹿茸為雄鹿初生未骨化密生茸毛的幼角，最佳採收期為清明節前後。",
-    "source": "中藥概論 1 P.20；考古題 Q26 (🔥必考重點)"
-  },
-  {
-    "id": 29,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "生附子含有劇毒成分「烏頭鹼（aconitine）」，臨床內服前必須經過炮製，其主要目的為何？",
-    "options": [
-      "A. 增加藥材香氣便於吞服",
-      "B. 使烏頭鹼水解為低毒性衍生物以降低毒性",
-      "C. 改變藥物質地以利粉碎",
-      "D. 防止藥材受潮發霉"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。附子炮製的主要目的為使劇毒的雙酯型烏頭鹼水解為單酯型或醇胺型生物鹼，大幅降低毒性以策安全。",
-    "source": "中藥概論 1 P.30；考古題 Q19 (🔥手寫筆記考點)"
-  },
-  {
-    "id": 30,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "礦物類中藥如「硃砂（硫化汞）」最常用的精細加工炮製方法為何？",
-    "options": [
-      "A. 炒焦法",
-      "B. 水飛法",
-      "C. 酒炙法",
-      "D. 醋炙法"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。硃砂等不溶於水的礦物藥材，採用「水飛法」反覆加水研磨，可獲取極細粉末並降低毒性。",
-    "source": "中藥概論 1 P.21；考古題 Q25 (🔥手寫筆記考點)"
-  },
-  {
-    "id": 31,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "生半夏口服具有強烈黏膜刺激性，講義手寫筆記提及可用何種方法炮製（薑礬製）以消除毒性？",
-    "options": [
-      "A. 薑汁與白礬共同炮製",
-      "B. 蜜炙並高溫炒黃",
-      "C. 鹽水悶透後烘乾",
-      "D. 童便浸泡三十天"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。生半夏含有草酸鈣針晶與刺激性成分，歷來以「薑礬製」（生薑汁加白礬）炮製為薑半夏以消除毒性刺激。",
-    "source": "中藥概論 1 P.30 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 32,
-    "chapter": "藥用部位與採收炮製",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "地黃經由何種特殊加工炮製工藝後，其藥性由「清熱涼血」轉變為「補血滋陰」之熟地黃？",
-    "options": [
-      "A. 水飛法",
-      "B. 九蒸九曬",
-      "C. 土炒法",
-      "D. 砂燙法"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。生地黃經由「九蒸九曬」（加黃酒、砂仁等反覆蒸曬）炮製後成為熟地黃，性轉溫，主補血滋陰。",
-    "source": "中藥概論 1 P.7, P.25 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 33,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "中藥材「望月砂」因嫦娥望月玉兔之典故而得名，具明目解毒之效，其來源為哪種動物的糞便？",
-    "options": [
-      "A. 野兔",
-      "B. 蝙蝠",
-      "C. 麻雀",
-      "D. 鴿子"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。望月砂為野兔的乾燥糞便，因嫦娥望月中之玉兔而得名，具明目、解毒之功。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 34,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "因具有治療「夜盲症」之功效而得名，但「孕婦不得食用」的中藥材「夜明砂」，是何種動物的糞便？",
-    "options": [
-      "A. 蠶",
-      "B. 蝙蝠",
-      "C. 麻雀",
-      "D. 馬"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。夜明砂為蝙蝠的乾燥糞便，具治療夜盲症之功效，孕婦禁服。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 35,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "中藥材「白丁香」容易取得，可用於治療疝氣、目翳等疾病，其來源為下列何者？",
-    "options": [
-      "A. 麻雀的糞便",
-      "B. 鴿子的糞便",
-      "C. 雞的糞便",
-      "D. 抹香鯨的分泌物"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。白丁香為麻雀的乾燥糞便，可用於治療疝氣、目翳等疾。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 36,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "中藥材「五靈脂」具舒筋活血、止痛之效，其來源為下列哪一種動物的糞便？",
-    "options": [
-      "A. 複齒鼯鼠",
-      "B. 梅花鹿",
-      "C. 野兔",
-      "D. 蝙蝠"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。五靈脂為複齒鼯鼠的乾燥糞便，取其「如凝脂而受五行之氣也」，具活血止痛之效。",
-    "source": "IMG_3181；中藥概論 1 P.49, P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 37,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "因「糞便形狀向左旋轉」而得名，具有生津、消腫之功效的中藥材「左盤龍」，是何種動物的糞便？",
-    "options": [
-      "A. 鴿子",
-      "B. 麻雀",
-      "C. 雄雞",
-      "D. 蝙蝠"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。左盤龍為鴿子的糞便，因其形狀向左旋轉而得名，具生津、消腫功效。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 38,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "中藥材「白馬通」研磨成汁服用可用來止血、止痛，亦可用作外敷，其來源為：",
-    "options": [
-      "A. 馬的糞便",
-      "B. 牛的膽結石",
-      "C. 驢的皮毛",
-      "D. 鹿的唾液"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。白馬通為馬的糞便，可研成汁服止血止痛，亦可外敷。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 39,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "可口服治療頭痛、腹瀉，亦可「炒熱裝袋後放置患部」外敷的中藥材「蠶砂」，是哪種動物的糞便？",
-    "options": [
-      "A. 蠶",
-      "B. 蚯蚓",
-      "C. 蜜蜂",
-      "D. 螞蟻"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。蠶砂為蠶的糞便，可內服治頭痛腹瀉，亦可炒熱裝布袋溫敷患處。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 40,
-    "chapter": "意想不到的中藥材",
-    "difficulty": "hard",
-    "isExamStar": true,
-    "question": "下列關於名貴中藥「龍涎香」與清熱解毒中藥「金汁」的來源描述，何者正確？",
-    "options": [
-      "A. 龍涎香為抹香鯨的分泌物；金汁為男童糞便埋入土裡二至三十年",
-      "B. 龍涎香為海龜的唾液；金汁為黃金經強酸溶解後之精華",
-      "C. 龍涎香為麝香鹿的腺體；金汁為金線蓮全草汁液",
-      "D. 龍涎香為海豚的脂肪；金汁為蜂皇漿經發酵之產物"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。龍涎香為抹香鯨消化道難以消化的食物積累之分泌物；金汁則是將男童糞便特殊處理後埋入土中二、三十年所製成，具清熱解毒功效。",
-    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
-  },
-  {
-    "id": 41,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "南北朝梁代陶弘景所撰，收載藥物 730 種，開創按藥物自然屬性分類法之經典本草為：",
-    "options": [
-      "A. 《本草經集注》",
-      "B. 《新修本草》",
-      "C. 《證類本草》",
-      "D. 《本草綱目》"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。梁代陶弘景整理《神農本草經》，撰成《本草經集注》，收藥 730 種。",
-    "source": "中藥概論 1 P.39, P.40；考古題 Q22 (🔥必考重點)"
-  },
-  {
-    "id": 42,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "唐代顯慶四年（西元 659 年）蘇敬等人奉敕編撰，為「世界上第一部由政府頒布的國家藥典」是：",
-    "options": [
-      "A. 《神農本草經》",
-      "B. 《新修本草》",
-      "C. 《開寶本草》",
-      "D. 《太平惠民和劑局方》"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。唐代蘇敬等編撰的《新修本草》（唐本草）收載 844 種藥物，為歷史上最早的官方官修藥典。",
-    "source": "中藥概論 1 P.39, P.40 (🔥講義核心考點)"
-  },
-  {
-    "id": 43,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "宋代由官方設立，專門負責宮廷藥物炮製、採購與保管的專門機構為何？",
-    "options": [
-      "A. 御藥院",
-      "B. 熟藥所",
-      "C. 校正醫書局",
-      "D. 太醫院"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。宋代「御藥院」專門負責宮廷藥物的炮製、採購與保管。",
-    "source": "宋朝醫藥 P.2 (🔥講義原文考點)"
-  },
-  {
-    "id": 44,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "宋代設立的「熟藥所」（後改為太平惠民局），在世界醫藥史上的重大創舉為何？",
-    "options": [
-      "A. 世界上最早由國家政府經營的公立藥店機構",
-      "B. 世界上最早建立中草藥水飛炮製標準的工廠",
-      "C. 世界上第一個引進西方合成化學藥品的機構",
-      "D. 世界上最早進行動物排泄物藥用認證的機構"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。宋代熟藥所（太平惠民局）是世界上最早由國家經營的成藥藥店機構。",
-    "source": "宋朝醫藥 P.2 (🔥講義紅字考點)"
-  },
-  {
-    "id": 45,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "北宋醫學家王惟一撰寫何書，並奉敕鑄造「針灸銅人」作為針灸醫學教學與考試之用？",
-    "options": [
-      "A. 《銅人腧穴針灸圖經》",
-      "B. 《十四經發揮》",
-      "C. 《針灸甲乙經》",
-      "D. 《針灸大成》"
-    ],
-    "answer": 0,
-    "explanation": "正確答案為 A。宋仁宗時王惟一編撰《銅人腧穴針灸圖經》，並鑄造針灸銅人（體內灌注水或水銀，穴道塗黃蠟）以利考試檢驗。",
-    "source": "宋朝醫藥 P.3 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 46,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "宋代著名法醫學家宋慈撰寫何部專著，名列古代名醫，被譽為「世界最早的法醫學經典」？",
-    "options": [
-      "A. 《折獄龜鑑》",
-      "B. 《洗冤集錄》",
-      "C. 《棠陰比事》",
-      "D. 《疑獄集》"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。南宋宋慈撰寫的《洗冤集錄》為世界上現存最早的系統性法醫學奠基之作。",
-    "source": "宋朝醫藥 P.3 (🔥手寫筆記重點)"
-  },
-  {
-    "id": 47,
-    "chapter": "歷代本草與臺灣中藥典",
+    "chapter": "導論實習法規",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "現行《臺灣中藥典》第四版公告收載品目總數為多少？包含中藥材、飲片及製劑規格：",
@@ -1375,8 +725,8 @@
     "source": "中藥概論 1 P.44, P.49；考古題 Q6 (🔥必考重點)"
   },
   {
-    "id": 48,
-    "chapter": "歷代本草與臺灣中藥典",
+    "id": 7,
+    "chapter": "導論實習法規",
     "difficulty": "hard",
     "isExamStar": true,
     "question": "《臺灣中藥典》第四版相較於第三版，新增加收載的中藥材 3 個品目為何？",
@@ -1391,8 +741,8 @@
     "source": "中藥概論 1 P.44, P.49 (🔥講義紅字考點)"
   },
   {
-    "id": 49,
-    "chapter": "歷代本草與臺灣中藥典",
+    "id": 8,
+    "chapter": "導論實習法規",
     "difficulty": "hard",
     "isExamStar": true,
     "question": "《臺灣中藥典》第四版修訂時，因衛生或基原考量「不再收載」的中藥材 3 個品目為何？",
@@ -1407,56 +757,872 @@
     "source": "中藥概論 1 P.49 (🔥手寫筆記考點)"
   },
   {
-    "id": 50,
-    "chapter": "歷代本草與臺灣中藥典",
-    "difficulty": "medium",
+    "id": 9,
+    "chapter": "導論實習法規",
+    "difficulty": "hard",
     "isExamStar": true,
-    "question": "為確保中藥材原料生產與栽培的品質安全，現代農業生產體系應遵循何種認證規範？",
+    "question": "北宋時期由朝廷設立，專門負責古代醫學典籍的校勘、整理、考訂與國家正式出版的官方機構為：",
     "options": [
-      "A. GMP（優良製造標準）",
-      "B. CGMP（動態藥品生產規範）",
-      "C. GAP（優良農業規範）",
-      "D. GCP（優良臨床試驗規範）"
+      "A. 御藥院",
+      "B. 熟藥所",
+      "C. 校正醫書局",
+      "D. 惠民局"
     ],
     "answer": 2,
-    "explanation": "正確答案為 C。GAP（Good Agricultural Practice，優良農業規範）是用於確保中藥材源頭栽種生產品質的標準規範。",
-    "source": "中藥概論 1 P.34；考古題 Q2 (🔥必考重點)"
+    "explanation": "正確答案為 C。宋代設立「校正醫書局」，有組織、大規模地校訂整理並出版了《傷寒論》、《金匱要略》、《神農本草經集注》等古代醫籍。",
+    "source": "宋朝醫藥 P.2 (🔥講義歷史考點)"
+  },
+  {
+    "id": 10,
+    "chapter": "導論實習法規",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "宋代官方編纂並由惠民局頒布的方劑專書《太平惠民和劑局方》，在醫藥史上的劃時代特色為何？",
+    "options": [
+      "A. 世界上第一部成藥方劑製劑規格標準手冊，開創官辦成藥專賣制度",
+      "B. 世界上第一部全面禁用動物糞便藥材的法規",
+      "C. 第一部提出針灸銅人水銀注穴考核標準的書籍",
+      "D. 第一部記載薄層色譜鑑別中藥的著作"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。《太平惠民和劑局方》為世界醫學史上第一部由官方主持編纂的成藥方劑規格標準手冊，推動了中藥成藥化與普及。",
+    "source": "宋朝醫藥 P.3 (🔥講義核心考點)"
+  },
+  {
+    "id": 11,
+    "chapter": "神農本草品類",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "《神農本草經》中將藥物分為上中下三品，其中「上品」藥材的核心特性與用途為何？",
+    "options": [
+      "A. 主養命以應天，無毒，多服久服不傷人，延年益壽",
+      "B. 主養性以應人，無毒或有毒，專門遏病補虛",
+      "C. 主治病以應地，多毒，不可久服，專除寒熱邪氣",
+      "D. 專門用於急救回陽，毒性劇烈不可內服"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。《神農本草經》上品藥共 120 種，為君，主養命以應天，無毒，多服久服不傷人，輕身益氣、延年益壽。",
+    "source": "中藥概論 1 P.19 (🔥講義核心考點)"
+  },
+  {
+    "id": 12,
+    "chapter": "神農本草品類",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "下列哪一種常用中藥材，在《神農本草經》中被列為「上品」藥？",
+    "options": [
+      "A. 貝母",
+      "B. 五味子",
+      "C. 附子",
+      "D. 半夏"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。五味子在《神農本草經》列為上品；貝母列為中品；附子與半夏列為下品。",
+    "source": "中藥概論 1 P.19, P.23；考古題 Q5 (🔥必考重點)"
+  },
+  {
+    "id": 13,
+    "chapter": "神農本草品類",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "根據《神農本草經》分類，下列何者屬於「中品」藥材？",
+    "options": [
+      "A. 黃連",
+      "B. 人參",
+      "C. 貝母",
+      "D. 桔梗"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。貝母列為中品（臣藥，遏病補虛）；黃連與人參為上品；桔梗為下品。",
+    "source": "中藥概論 1 P.19, P.27；考古題 Q4 (🔥必考重點)"
+  },
+  {
+    "id": 14,
+    "chapter": "神農本草品類",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "下列何者在《神農本草經》中屬於「下品」藥，具有毒性且不可久服？",
+    "options": [
+      "A. 杜仲",
+      "B. 附子",
+      "C. 當歸",
+      "D. 黃耆"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。附子有毒，在《神農本草經》中列為下品；杜仲與黃耆為上品；當歸為中品。",
+    "source": "中藥概論 1 P.19, P.30 (🔥講義核心考點)"
+  },
+  {
+    "id": 15,
+    "chapter": "神農本草品類",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "下列哪一組藥材「全部」皆屬於《神農本草經》所記載的「上品」藥？",
+    "options": [
+      "A. 黃連、天麻、杜仲、地黃",
+      "B. 厚朴、紫草、當歸、蒼耳子",
+      "C. 附子、半夏、連翹、夏枯草",
+      "D. 吳茱萸、貝母、桑白皮、荊芥"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。A 選項全部為上品藥；B 與 D 選項皆為中品藥；C 選項全部為下品藥。",
+    "source": "中藥概論 1 P.19, P.22~26 (🔥講義彙整表)"
+  },
+  {
+    "id": 16,
+    "chapter": "神農本草品類",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "下列哪一組藥材「全部」皆屬於《神農本草經》所記載的「中品」藥？",
+    "options": [
+      "A. 石斛、黃柏、遠志、蛇床子",
+      "B. 吳茱萸、厚朴、當歸、紫草",
+      "C. 川芎、陳皮、澤瀉、丹參",
+      "D. 桔梗、連翹、附子、半夏"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。吳茱萸、厚朴、當歸、紫草皆為中品藥；A 與 C 選項均為上品藥；D 選項為下品藥。",
+    "source": "中藥概論 1 P.19, P.27~28 (🔥講義彙整表)"
+  },
+  {
+    "id": 17,
+    "chapter": "神農本草品類",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "《神農本草經》記載的「下品」藥材共有幾種？其在處方配伍中主要充當何種角色？",
+    "options": [
+      "A. 120 種；君藥",
+      "B. 120 種；臣藥",
+      "C. 125 種；佐使藥",
+      "D. 365 種；使藥"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。《神農本草經》全書收載 365 種藥物，上品 120 種為君，中品 120 種為臣，下品 125 種為佐使。",
+    "source": "中藥概論 1 P.19；考古題 Q7, Q14 (🔥必考重點)"
+  },
+  {
+    "id": 18,
+    "chapter": "神農本草品類",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "關於動物類藥材「阿膠」在《神農本草經》中的品類歸屬與主要功效，下列敘述何者正確？",
+    "options": [
+      "A. 屬於中品，專用於消食導滯",
+      "B. 屬於上品，具有滋陰養血、補肺潤燥之功",
+      "C. 屬於下品，具有大毒需經久煎去毒",
+      "D. 屬於中品，主要用於攻下逐水"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。阿膠為上品藥，由驢皮熬製而成，功效為滋陰養血、補肺潤燥，為中藥三寶之一。",
+    "source": "中藥概論 1 P.20；考古題 Q10, Q28 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 19,
+    "chapter": "神農本草品類",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "下列哪一種清熱瀉火解毒藥材，在《神農本草經》中並非列為上品，而是被列為「下品」？",
+    "options": [
+      "A. 黃連",
+      "B. 黃柏",
+      "C. 連翹",
+      "D. 石斛"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。連翹在《神農本草經》中列為「下品」；而黃連、黃柏、石斛皆列為「上品」。",
+    "source": "中藥概論 1 P.19, P.30 (🔥陷阱考點)"
+  },
+  {
+    "id": 20,
+    "chapter": "神農本草品類",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "清熱涼血透疹常用藥「紫草」與祛風解表消瘡之「荊芥」，在《神農本草經》中皆歸屬於哪一品？",
+    "options": [
+      "A. 上品",
+      "B. 中品",
+      "C. 下品",
+      "D. 未收載於本經"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。紫草與荊芥在《神農本草經》中均被列入「中品」藥物名錄中。",
+    "source": "中藥概論 1 P.19, P.28, P.29 (🔥講義分類表)"
+  },
+  {
+    "id": 21,
+    "chapter": "神農本草品類",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "能利水滲濕、祛濕熱，常與茯苓、白朮配伍的「澤瀉」，在《神農本草經》中歸屬於哪一品？",
+    "options": [
+      "A. 上品",
+      "B. 中品",
+      "C. 下品",
+      "D. 外用藥品"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。澤瀉利水滲濕、洩熱，在《神農本草經》中列為「上品」藥材。",
+    "source": "中藥概論 1 P.19, P.25 (🔥講義分類表)"
+  },
+  {
+    "id": 22,
+    "chapter": "神農本草品類",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "中醫臨床常用於清肝火、散鬱結的「夏枯草」，在《神農本草經》中屬於下列何品？",
+    "options": [
+      "A. 上品",
+      "B. 中品",
+      "C. 下品",
+      "D. 民間草藥未入經"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。夏枯草在《神農本草經》中列為「下品」藥物（佐使藥）。",
+    "source": "中藥概論 1 P.19, P.31 (🔥講義分類表)"
+  },
+  {
+    "id": 23,
+    "chapter": "植物動物科別",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "大苦大寒、善清中焦胃熱的「黃連」，其植物來源屬於下列哪一個科？",
+    "options": [
+      "A. 毛茛科",
+      "B. 芸香科",
+      "C. 唇形科",
+      "D. 豆科"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。黃連植物來源屬於毛茛科，富含小檗鹼（berberine），大苦大寒，主瀉中焦火。",
+    "source": "中藥概論 1 P.22 (🔥講義紅字考點)"
+  },
+  {
+    "id": 24,
+    "chapter": "植物動物科別",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "清熱燥濕、善瀉下焦濕熱且抗菌效果顯著的「黃柏」，屬於下列何科植物？",
+    "options": [
+      "A. 毛茛科",
+      "B. 芸香科",
+      "C. 木蘭科",
+      "D. 菊科"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。黃柏屬於芸香科植物，性味苦寒，主清下焦濕熱（如尿道感染）。",
+    "source": "中藥概論 1 P.22 (🔥講義紅字考點)"
+  },
+  {
+    "id": 25,
+    "chapter": "植物動物科別",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "治療外陰陰道毛滴蟲感染常製成栓劑使用的「蛇床子」，屬於下列哪一個科？",
+    "options": [
+      "A. 繖形科",
+      "B. 菊科",
+      "C. 豆科",
+      "D. 蘭科"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。蛇床子屬於繖形科植物，藥用部位為乾燥成熟果實，殺蟲止癢。",
+    "source": "中藥概論 1 P.23；考古題 Q20 (🔥必考重點)"
+  },
+  {
+    "id": 26,
+    "chapter": "植物動物科別",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "大補元氣、補氣安神的珍貴藥材「人參」，其植物來源屬於下列何科？",
+    "options": [
+      "A. 五加科",
+      "B. 豆科",
+      "C. 玄參科",
+      "D. 遠志科"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。人參屬於五加科植物，以秋季八月採收人參皂苷含量最高。",
+    "source": "中藥概論 1 P.26；考古題 Q1 (🔥必考重點)"
+  },
+  {
+    "id": 27,
+    "chapter": "植物動物科別",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中藥「丹參」與「荊芥」、「夏枯草」在植物分類學上，同屬於下列哪一個科？",
+    "options": [
+      "A. 繖形科",
+      "B. 唇形科",
+      "C. 菊科",
+      "D. 玄參科"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。丹參、荊芥、夏枯草皆屬於唇形科植物。",
+    "source": "中藥概論 1 P.24, P.29, P.31 (🔥跨章節科別歸納)"
+  },
+  {
+    "id": 28,
+    "chapter": "植物動物科別",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "常用補血活血藥「當歸」與婦科活血行氣要藥「川芎」，同屬於下列何科？",
+    "options": [
+      "A. 繖形科",
+      "B. 豆科",
+      "C. 芸香科",
+      "D. 毛茛科"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。當歸與川芎（以及蛇床子）皆屬於繖形科植物。",
+    "source": "中藥概論 1 P.23, P.24, P.28 (🔥講義科別整理)"
+  },
+  {
+    "id": 29,
+    "chapter": "植物動物科別",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "清熱生津、經九蒸九曬可轉為補血滋陰的「地黃」，其植物來源屬於何科？",
+    "options": [
+      "A. 玄參科",
+      "B. 遠志科",
+      "C. 五加科",
+      "D. 桔梗科"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。地黃屬於玄參科植物，河南懷慶地黃為著名的道地藥材。",
+    "source": "中藥概論 1 P.25；考古題 Q8 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 30,
+    "chapter": "植物動物科別",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "下列哪一組藥材「全部」皆屬於「芸香科」植物來源？",
+    "options": [
+      "A. 黃柏、陳皮、吳茱萸",
+      "B. 厚朴、五味子、連翹",
+      "C. 附子、黃連、白芍",
+      "D. 貝母、天麻、石斛"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。黃柏、陳皮、吳茱萸皆為芸香科；B 中厚朴與五味子為木蘭科，連翹為木犀科；C 中黃連與附子為毛茛科；D 中貝母為百合科，天麻與石斛為蘭科。",
+    "source": "中藥概論 1 P.22, P.25, P.27 (🔥講義科別統整)"
+  },
+  {
+    "id": 31,
+    "chapter": "植物動物科別",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "必須與「蜜環菌」共生才能生長的息風定驚要藥「天麻」，屬於下列哪一個科？",
+    "options": [
+      "A. 遠志科",
+      "B. 蘭科",
+      "C. 杜仲科",
+      "D. 天南星科"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。天麻別名赤箭，屬於蘭科植物，需與蜜環菌共生方能生長；石斛亦為蘭科。",
+    "source": "中藥概論 1 P.22, P.26 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 32,
+    "chapter": "植物動物科別",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "台灣珍貴民間藥「牛樟芝」與傳統名貴中藥「靈芝」，在真菌分類學上同屬於下列何科？",
+    "options": [
+      "A. 麥角菌科",
+      "B. 多孔菌科",
+      "C. 側耳科",
+      "D. 傘菌科"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。牛樟芝與靈芝在分類上均屬於真菌界、擔子菌門、多孔菌科。",
+    "source": "中藥概論 1 P.53；藥用真菌 P.9；考古題 Q11 (🔥必考重點)"
+  },
+  {
+    "id": 33,
+    "chapter": "部位採收炮製",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "傳統補肝腎、強筋骨名藥「杜仲」，其講義標註的藥用部位為下列何者？",
+    "options": [
+      "A. 樹皮",
+      "B. 根莖",
+      "C. 果實",
+      "D. 葉片"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。杜仲的藥用部位為樹皮，折斷時可見細密白色銀絲（膠絲），炮製後銀絲會消失。",
+    "source": "中藥概論 1 P.23 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 34,
+    "chapter": "部位採收炮製",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "潤肺止咳、化熱痰之名藥「貝母」，其藥用部位為植物的哪一部分？",
+    "options": [
+      "A. 塊根",
+      "B. 鱗莖",
+      "C. 種子",
+      "D. 根皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。貝母（如川貝母、浙貝母）的藥用部位為「鱗莖」。",
+    "source": "中藥概論 1 P.27；考古題 Q18 (🔥講義紅字考點)"
+  },
+  {
+    "id": 35,
+    "chapter": "部位採收炮製",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "常用於鼻淵頭痛、過敏性鼻炎的「蒼耳子」，其藥用部位精確描述為下列何者？",
+    "options": [
+      "A. 乾燥成熟種子",
+      "B. 乾燥成熟帶總苞的果實",
+      "C. 乾燥未成熟幼果",
+      "D. 乾燥地上全草"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。蒼耳子的藥用部位為「乾燥成熟帶總苞的果實」，具發汗解表、通鼻竅止痛之功。",
+    "source": "中藥概論 1 P.29 (🔥講義紅字考點)"
+  },
+  {
+    "id": 36,
+    "chapter": "部位採收炮製",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "燥濕化痰、降逆止嘔的「半夏」，其藥用部位為下列何者？",
+    "options": [
+      "A. 塊莖",
+      "B. 根皮",
+      "C. 嫩莖",
+      "D. 果實"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。半夏（天南星科）的藥用部位為「塊莖」；生半夏有毒，需經薑礬製後方可內服。",
+    "source": "中藥概論 1 P.30 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 37,
+    "chapter": "部位採收炮製",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中藥「桑白皮」具有瀉肺平喘、利水消腫功效，其藥用部位是桑樹的：",
+    "options": [
+      "A. 樹幹外皮",
+      "B. 根皮",
+      "C. 嫩枝皮",
+      "D. 葉片"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。桑白皮為桑科植物桑樹的乾燥「根皮」。",
+    "source": "中藥概論 1 P.28 (🔥講義紅字考點)"
+  },
+  {
+    "id": 38,
+    "chapter": "部位採收炮製",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "名貴強壯藥材「鹿茸」，採收摘取的最佳時間點通常在每年何時？",
+    "options": [
+      "A. 農曆春節前後",
+      "B. 清明節前後",
+      "C. 端午節前後",
+      "D. 中秋節前後"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。鹿茸為雄鹿初生未骨化密生茸毛的幼角，最佳採收期為清明節前後。",
+    "source": "中藥概論 1 P.20；考古題 Q26 (🔥必考重點)"
+  },
+  {
+    "id": 39,
+    "chapter": "部位採收炮製",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "生附子含有劇毒成分「烏頭鹼（aconitine）」，臨床內服前必須經過炮製，其主要目的為何？",
+    "options": [
+      "A. 增加藥材香氣便於吞服",
+      "B. 使烏頭鹼水解為低毒性衍生物以降低毒性",
+      "C. 改變藥物質地以利粉碎",
+      "D. 防止藥材受潮發霉"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。附子炮製的主要目的為使劇毒的雙酯型烏頭鹼水解為單酯型或醇胺型生物鹼，大幅降低毒性以策安全。",
+    "source": "中藥概論 1 P.30；考古題 Q19 (🔥手寫筆記考點)"
+  },
+  {
+    "id": 40,
+    "chapter": "部位採收炮製",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "礦物類中藥如「硃砂（硫化汞）」最常用的精細加工炮製方法為何？",
+    "options": [
+      "A. 炒焦法",
+      "B. 水飛法",
+      "C. 酒炙法",
+      "D. 醋炙法"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。硃砂等不溶於水的礦物藥材，採用「水飛法」反覆加水研磨，可獲取極細粉末並降低毒性。",
+    "source": "中藥概論 1 P.21；考古題 Q25 (🔥手寫筆記考點)"
+  },
+  {
+    "id": 41,
+    "chapter": "部位採收炮製",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "地黃經由何種特殊加工炮製工藝後，其藥性由「清熱涼血」轉變為「補血滋陰」之熟地黃？",
+    "options": [
+      "A. 水飛法",
+      "B. 九蒸九曬",
+      "C. 土炒法",
+      "D. 砂燙法"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。生地黃經由「九蒸九曬」（加黃酒、砂仁等反覆蒸曬）炮製後成為熟地黃，性轉溫，主補血滋陰。",
+    "source": "中藥概論 1 P.7, P.25 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 42,
+    "chapter": "部位採收炮製",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "人參中的主要有效活性成分為人參皂苷，在一年當中的幾月份採收時，其有效成分含量最高？",
+    "options": [
+      "A. 一月",
+      "B. 四月",
+      "C. 八月",
+      "D. 十二月"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。人參以秋季八月份採收時人參皂苷有效成分含量最高，為歷代採收經驗與現代科研證實。",
+    "source": "考古題 Q1；中藥概論 1 P.26 (🔥必考重點)"
+  },
+  {
+    "id": 43,
+    "chapter": "意想不到中藥材",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥材「望月砂」因嫦娥望月玉兔之典故而得名，具明目解毒之效，其來源為哪種動物的糞便？",
+    "options": [
+      "A. 野兔",
+      "B. 蝙蝠",
+      "C. 麻雀",
+      "D. 鴿子"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。望月砂為野兔的乾燥糞便，因嫦娥望月中之玉兔而得名，具明目、解毒之功。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 44,
+    "chapter": "意想不到中藥材",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "因具有治療「夜盲症」之功效而得名，但「孕婦不得食用」的中藥材「夜明砂」，是何種動物的糞便？",
+    "options": [
+      "A. 蠶",
+      "B. 蝙蝠",
+      "C. 麻雀",
+      "D. 馬"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。夜明砂為蝙蝠的乾燥糞便，具治療夜盲症之功效，孕婦禁服。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 45,
+    "chapter": "意想不到中藥材",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥材「白丁香」容易取得，可用於治療疝氣、目翳等疾病，其來源為下列何者？",
+    "options": [
+      "A. 麻雀的糞便",
+      "B. 鴿子的糞便",
+      "C. 雞的糞便",
+      "D. 抹香鯨的分泌物"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。白丁香為麻雀的乾燥糞便，可用於治療疝氣、目翳等疾。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 46,
+    "chapter": "意想不到中藥材",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥材「五靈脂」具舒筋活血、止痛之效，其來源為下列哪一種動物的糞便？",
+    "options": [
+      "A. 複齒鼯鼠",
+      "B. 梅花鹿",
+      "C. 野兔",
+      "D. 蝙蝠"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。五靈脂為複齒鼯鼠的乾燥糞便，取其「如凝脂而受五行之氣也」，具活血止痛之效。",
+    "source": "IMG_3181；中藥概論 1 P.49, P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 47,
+    "chapter": "意想不到中藥材",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "因「糞便形狀向左旋轉」而得名，具有生津、消腫之功效的中藥材「左盤龍」，是何種動物的糞便？",
+    "options": [
+      "A. 鴿子",
+      "B. 麻雀",
+      "C. 雄雞",
+      "D. 蝙蝠"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。左盤龍為鴿子的糞便，因其形狀向左旋轉而得名，具生津、消腫功效。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 48,
+    "chapter": "意想不到中藥材",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中藥材「白馬通」研磨成汁服用可用來止血、止痛，亦可用作外敷，其來源為：",
+    "options": [
+      "A. 馬的糞便",
+      "B. 牛的膽結石",
+      "C. 驢的皮毛",
+      "D. 鹿的唾液"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。白馬通為馬的糞便，可研成汁服止血止痛，亦可外敷。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 49,
+    "chapter": "意想不到中藥材",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "可口服治療頭痛、腹瀉，亦可「炒熱裝袋後放置患部」外敷的中藥材「蠶砂」，是哪種動物的糞便？",
+    "options": [
+      "A. 蠶",
+      "B. 蚯蚓",
+      "C. 蜜蜂",
+      "D. 螞蟻"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。蠶砂為蠶的糞便，可內服治頭痛腹瀉，亦可炒熱裝布袋溫敷患處。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
+  },
+  {
+    "id": 50,
+    "chapter": "意想不到中藥材",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "下列關於名貴中藥「龍涎香」與清熱解毒中藥「金汁」的來源描述，何者正確？",
+    "options": [
+      "A. 龍涎香為抹香鯨的分泌物；金汁為男童糞便埋入土裡二至三十年",
+      "B. 龍涎香為海龜的唾液；金汁為黃金經強酸溶解後之精華",
+      "C. 龍涎香為麝香鹿的腺體；金汁為金線蓮全草汁液",
+      "D. 龍涎香為海豚的脂肪；金汁為蜂皇漿經發酵之產物"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。龍涎香為抹香鯨消化道難以消化的食物積累之分泌物；金汁則是將男童糞便特殊處理後埋入土中二、三十年所製成，具清熱解毒功效。",
+    "source": "IMG_3181；中藥概論 1 P.52 (🔥指定必考重點)"
   },
   {
     "id": 51,
-    "chapter": "真菌與特色中藥研究",
-    "difficulty": "easy",
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
     "isExamStar": true,
-    "question": "牛樟芝中所含的重要活性成分中，何者具有「抑制血小板凝集、增強體力及延緩疲勞」的作用？",
+    "question": "下列哪兩種著名藥材在《神農本草經》中混為一談並稱為「朮」，直至清代《本草備要》才正式區分開來？",
     "options": [
-      "A. 腺苷（Adenosine）",
-      "B. 超氧歧化酶（SOD）",
-      "C. 多醣體",
-      "D. 三萜類"
+      "A. 蒼朮與白朮",
+      "B. 附子與川烏",
+      "C. 南五味與北五味",
+      "D. 生薑與乾薑"
     ],
     "answer": 0,
-    "explanation": "正確答案為 A。腺苷具抑制血小板凝集、防止血栓、增強體力與延緩疲勞之功效。",
-    "source": "中藥概論 1 P.53；藥用真菌 P.13；考古題 Q13 (🔥必考重點)"
+    "explanation": "正確答案為 A。蒼朮與白朮在《神農本草經》中混為一談統稱為「朮」，直至清代汪昂所著《本草備要》才正式將兩者分立論述其燥濕與補脾之不同。",
+    "source": "中藥概論 1 P.38；考古題 Q30 (🔥必考重點)"
   },
   {
     "id": 52,
-    "chapter": "真菌與特色中藥研究",
+    "chapter": "歷代本草藥性",
     "difficulty": "easy",
     "isExamStar": true,
-    "question": "牛樟芝中含量最豐富且最關鍵、能「提升肝臟運作機能、抑制癌細胞增殖及抗發炎」的成分為：",
+    "question": "宋代由官方設立，專門負責宮廷藥物炮製、採購與保管的專門機構為何？",
     "options": [
-      "A. 三萜類（Triterpenoids）",
-      "B. 腺苷",
-      "C. 超氧歧化酶",
-      "D. 果膠質"
+      "A. 御藥院",
+      "B. 熟藥所",
+      "C. 校正醫書局",
+      "D. 太醫院"
     ],
     "answer": 0,
-    "explanation": "正確答案為 A。三萜類是牛樟芝最重要的指標活性成分，具保肝、抑制癌細胞增殖與抗發炎之效。",
-    "source": "中藥概論 1 P.53；藥用真菌 P.13；考古題 Q16 (🔥必考重點)"
+    "explanation": "正確答案為 A。宋代「御藥院」專門負責宮廷藥物的炮製、採購與保管。",
+    "source": "宋朝醫藥 P.2 (🔥講義原文考點)"
   },
   {
     "id": 53,
-    "chapter": "真菌與特色中藥研究",
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "宋代設立的「熟藥所」（後改為太平惠民局），在世界醫藥史上的重大創舉為何？",
+    "options": [
+      "A. 世界上最早由國家政府經營的公立藥店機構",
+      "B. 世界上最早建立中草藥水飛炮製標準的工廠",
+      "C. 世界上第一個引進西方合成化學藥品的機構",
+      "D. 世界上最早進行動物排泄物藥用認證的機構"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。宋代熟藥所（太平惠民局）是世界上最早由國家經營的成藥藥店機構。",
+    "source": "宋朝醫藥 P.2 (🔥講義紅字考點)"
+  },
+  {
+    "id": 54,
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "北宋醫學家王惟一撰寫何書，並奉敕鑄造「針灸銅人」作為針灸醫學教學與考試之用？",
+    "options": [
+      "A. 《銅人腧穴針灸圖經》",
+      "B. 《十四經發揮》",
+      "C. 《針灸甲乙經》",
+      "D. 《針灸大成》"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。宋仁宗時王惟一編撰《銅人腧穴針灸圖經》，並鑄造針灸銅人（體內灌注水或水銀，穴道塗黃蠟）以利考試檢驗。",
+    "source": "宋朝醫藥 P.3 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 55,
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "宋代著名法醫學家宋慈撰寫何部專著，名列古代名醫，被譽為「世界最早的法醫學經典」？",
+    "options": [
+      "A. 《折獄龜鑑》",
+      "B. 《洗冤集錄》",
+      "C. 《棠陰比事》",
+      "D. 《疑獄集》"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。南宋宋慈撰寫的《洗冤集錄》為世界上現存最早的系統性法醫學奠基之作。",
+    "source": "宋朝醫藥 P.3 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 56,
+    "chapter": "歷代本草藥性",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中醫藥性理論中「五味入五臟」，其中「苦味」所對應的中醫臟腑為何？",
+    "options": [
+      "A. 腎",
+      "B. 心",
+      "C. 肺",
+      "D. 肝"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。五味與臟腑對應為：酸入肝、苦入心、甘入脾、辛入肺、鹹入腎。苦味能洩能燥，對應於心。",
+    "source": "考古題 Q33 (🔥必考重點)"
+  },
+  {
+    "id": 57,
+    "chapter": "歷代本草藥性",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中醫五味歸經理論中，「酸味」藥物（如烏梅、五味子）主要對應並收斂於哪一個臟腑？",
+    "options": [
+      "A. 肝",
+      "B. 心",
+      "C. 脾",
+      "D. 肺"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。酸味能收能澀，對應歸入「肝」臟（酸入肝）。",
+    "source": "考古題 Q33 (🔥必考重點)"
+  },
+  {
+    "id": 58,
+    "chapter": "歷代本草藥性",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥四氣五味理論中，下列何者「不屬於」寒涼藥的主要治療性質與功用？",
+    "options": [
+      "A. 清熱",
+      "B. 瀉火解毒",
+      "C. 抗菌消炎",
+      "D. 助陽補火"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。寒涼藥具有清熱、瀉火、解毒、抗菌等功用；而「助陽補火」屬於溫熱藥（如附子、肉桂）之性質。",
+    "source": "考古題 Q35 (🔥必考重點)"
+  },
+  {
+    "id": 59,
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "在古代本草編纂中，把新發現形態或藥效相近的藥物附在原有正品藥物之後，稱為：",
+    "options": [
+      "A. 新品",
+      "B. 新藥",
+      "C. 附藥",
+      "D. 集注"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。在古代本草專著中，為保留經典原貌並補充新藥，常將形態或效用相近者附於原藥條目之後，稱為「附藥」。",
+    "source": "考古題 Q29 (🔥必考重點)"
+  },
+  {
+    "id": 60,
+    "chapter": "歷代本草藥性",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中藥方劑以「宣、通、補、洩、輕、重、滑、澀、燥、濕」十劑作為藥效分類的創始著作與作者為：",
+    "options": [
+      "A. 李時珍《本草綱目》",
+      "B. 唐代陳藏器《本草拾遺》",
+      "C. 雷斅《雷公炮炙論》",
+      "D. 陶弘景《本草經集注》"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。唐代陳藏器在《本草拾遺》中首次提出方劑「十劑」分類法，對後世方劑學分類產生深遠影響。",
+    "source": "考古題 Q34；中藥概論 1 P.39 (🔥必考重點)"
+  },
+  {
+    "id": 61,
+    "chapter": "真菌金銀花清冠",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "南北朝梁代陶弘景所撰，收載藥物 730 種，開創按藥物自然屬性分類法之經典本草為：",
+    "options": [
+      "A. 《本草經集注》",
+      "B. 《新修本草》",
+      "C. 《證類本草》",
+      "D. 《本草綱目》"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。梁代陶弘景整理《神農本草經》，撰成《本草經集注》，收藥 730 種。",
+    "source": "中藥概論 1 P.39, P.40；考古題 Q22 (🔥必考重點)"
+  },
+  {
+    "id": 62,
+    "chapter": "真菌金銀花清冠",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "唐代顯慶四年（西元 659 年）蘇敬等人奉敕編撰，為「世界上第一部由政府頒布的國家藥典」是：",
+    "options": [
+      "A. 《神農本草經》",
+      "B. 《新修本草》",
+      "C. 《開寶本草》",
+      "D. 《太平惠民和劑局方》"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。唐代蘇敬等編撰的《新修本草》（唐本草）收載 844 種藥物，為歷史上最早的官方官修藥典。",
+    "source": "中藥概論 1 P.39, P.40 (🔥講義核心考點)"
+  },
+  {
+    "id": 63,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "下列哪一種牛樟芝的人工培植方式「所需時間最短（約 7～14 天）」，但僅能產出菌絲體且不含三萜類？",
@@ -1471,8 +1637,8 @@
     "source": "藥用真菌 P.18；考古題 Q12 (🔥必考重點)"
   },
   {
-    "id": 54,
-    "chapter": "真菌與特色中藥研究",
+    "id": 64,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "關於「金銀花」與「山銀花」的植物基原與化學成分差異，下列敘述何者正確？",
@@ -1487,8 +1653,8 @@
     "source": "山銀花與金銀花差異 P.1~5 (🔥講義專論考點)"
   },
   {
-    "id": 55,
-    "chapter": "真菌與特色中藥研究",
+    "id": 65,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "國家中醫藥研究所研發之「臺灣清冠一號（NRICM101）」，其處方基礎是化裁自明代張時徹《攝生妙方》的哪一個方劑？",
@@ -1503,8 +1669,8 @@
     "source": "清冠一號 P.4~5 (🔥講義核心考點)"
   },
   {
-    "id": 56,
-    "chapter": "真菌與特色中藥研究",
+    "id": 66,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "hard",
     "isExamStar": true,
     "question": "清冠一號處方考量新冠病毒「入肺化熱」病勢，減去了荊防敗毒散中的發散風寒藥，其減去的藥材為：",
@@ -1519,8 +1685,8 @@
     "source": "清冠一號 P.8 (🔥講義細節考點)"
   },
   {
-    "id": 57,
-    "chapter": "真菌與特色中藥研究",
+    "id": 67,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "hard",
     "isExamStar": true,
     "question": "現代藥理研究指出「清冠一號」對抗新冠病毒具有三大作用靶點，下列何者「非」其作用機制？",
@@ -1535,8 +1701,8 @@
     "source": "清冠一號 P.11 (🔥講義核心機制)"
   },
   {
-    "id": 58,
-    "chapter": "真菌與特色中藥研究",
+    "id": 68,
+    "chapter": "真菌金銀花清冠",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "講義手寫筆記標註中醫「三焦」分治熱邪，下列哪一組藥物與上焦、中焦、下焦的對應完全正確？",
@@ -1551,8 +1717,328 @@
     "source": "中藥概論 1 P.22 (🔥手寫筆記考點)"
   },
   {
-    "id": 59,
-    "chapter": "真菌與特色中藥研究",
+    "id": 69,
+    "chapter": "真菌金銀花清冠",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "國家中醫藥研究所研製之「防疫茶」，講義特別註記何種疾病患者「不宜使用」，以免過度刺激免疫或加重病情？",
+    "options": [
+      "A. 高血壓與心肌梗塞患者",
+      "B. 骨質疏鬆與關節炎患者",
+      "C. 肝炎及自體免疫疾病患者（如全身性紅斑狼瘡）",
+      "D. 單純消化不良腹瀉患者"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。講義第 13 頁特別警示：防疫茶含有提升免疫之成分，肝炎及自體免疫疾病患者（如 SLE）不宜使用。",
+    "source": "清冠一號 P.13 (🔥講義警示考點)"
+  },
+  {
+    "id": 70,
+    "chapter": "真菌金銀花清冠",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "台灣國寶級一級保育樹種「牛樟樹」，為牛樟芝生長之唯一寄主木材，主要生長於全島中低海拔多少公尺之闊葉林中？",
+    "options": [
+      "A. 100 ~ 300 公尺",
+      "B. 450 ~ 2000 公尺",
+      "C. 2500 ~ 3800 公尺",
+      "D. 3500 公尺以上高山"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 12 頁明載：牛樟生長在全島中低海拔 450 ～ 2000 公尺之闊葉林中，主要分佈於苗栗南庄、南投竹山、高雄六龜及花東四大區域。",
+    "source": "藥用真菌 P.12 (🔥講義生態考點)"
+  },
+  {
+    "id": 71,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "葛根為常用解表退熱中藥材，其藥用部位為地下根部，採收根與根莖類藥材的最佳採收時間點通常為：",
+    "options": [
+      "A. 春末",
+      "B. 夏初",
+      "C. 秋末",
+      "D. 盛夏"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。植物根及根莖類藥材（如葛根）通常於秋冬植物地上部枯萎時（秋末）或早春發芽前採收，此時養分與有效成分最為集中。",
+    "source": "考古題 Q27；中藥概論 1 P.33 (🔥必考重點)"
+  },
+  {
+    "id": 72,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "古人為中藥命名常依據其外觀特徵，下列哪一種中藥材是以植物的「形態」來命名的？",
+    "options": [
+      "A. 金銀花",
+      "B. 鉤藤",
+      "C. 五味子",
+      "D. 黃耆"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。鉤藤因莖枝上有彎曲的鉤狀物而以「形態」命名；金銀花與黃耆以顏色命名，五味子以氣味（味道）命名。",
+    "source": "考古題 Q3；中藥概論 1 P.15 (🔥必考重點)"
+  },
+  {
+    "id": 73,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥材「五味子」皮肉甘酸、核中辛苦、都有鹹味，五味俱全，其命名依據屬於下列何者？",
+    "options": [
+      "A. 藥材形態",
+      "B. 藥材質地",
+      "C. 氣味與味道",
+      "D. 原產地名稱"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。五味子因兼具酸、苦、甘、辛、鹹五種味道，故以「氣味與味道」命名。",
+    "source": "考古題 Q3；中藥概論 1 P.15, P.23 (🔥必考重點)"
+  },
+  {
+    "id": 74,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中醫臨床常用的清熱燥濕解毒名藥「中藥三黃」，性味皆為苦寒，具體是指哪三味藥材？",
+    "options": [
+      "A. 黃芩、黃連、黃柏",
+      "B. 黃耆、黃精、黃柏",
+      "C. 大黃、黃芩、黃連",
+      "D. 黃耆、地黃、黃連"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。「中藥三黃」指黃芩（清上焦）、黃連（瀉中焦）、黃柏（清下焦），三者皆性味苦寒，長於清熱燥濕、瀉火解毒。",
+    "source": "考古題 Q21；中藥概論 1 P.22 (🔥必考重點)"
+  },
+  {
+    "id": 75,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "民間與中醫界傳統並稱的「中藥三寶」，包含人參、鹿茸以及下列何者？",
+    "options": [
+      "A. 當歸",
+      "B. 阿膠",
+      "C. 黃耆",
+      "D. 冬蟲夏草"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。傳統「中藥三寶」指的是：人參、鹿茸、阿膠（非當歸）。",
+    "source": "考古題 Q28；中藥概論 1 P.20 (🔥必考重點)"
+  },
+  {
+    "id": 76,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "中藥「地龍」具有清熱息風、通絡、平喘、利尿之功，其來源為下列何種動物？",
+    "options": [
+      "A. 螞蟻",
+      "B. 蜈蚣",
+      "C. 蚯蚓",
+      "D. 壁虎"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。地龍為巨蚓科動物環毛蚓等「蚯蚓」剖開腹部、去除內臟與泥沙曬乾製成。",
+    "source": "考古題 Q15；中藥概論 1 P.20 (🔥必考重點)"
+  },
+  {
+    "id": 77,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中醫方劑組成原則「君臣佐使」中，專門針對主病或主證起主要治療作用的藥物稱為：",
+    "options": [
+      "A. 君藥",
+      "B. 臣藥",
+      "C. 佐藥",
+      "D. 使藥"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。君藥針對主病或主證起主要治療作用；臣藥輔佐君藥；佐藥協助或制約君藥；使藥引經或調和諸藥。",
+    "source": "考古題 Q14；中藥概論 1 P.2 (🔥必考重點)"
+  },
+  {
+    "id": 78,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "比較臺灣健保給付之「科學中藥（濃縮製劑）」與傳統「水煎藥」，下列敘述何者正確？",
+    "options": [
+      "A. 科學中藥濃度較高，專用於急症重症",
+      "B. 水煎藥濃度高、藥效發揮快，通常無健保給付需自費",
+      "C. 科學中藥不添加任何賦形劑，直接高溫烘乾",
+      "D. 水煎藥每日服用四次，保存與攜帶最為便捷"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義比較表載明：水煎藥濃度高、藥效較快，適用於急症、重症與補養，無健保給付；科學中藥加賦形劑噴霧造粒，適用輕症，健保每日給付約37點。",
+    "source": "中藥概論 1 P.33~35 (🔥講義比較表考點)"
+  },
+  {
+    "id": 79,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中醫「三焦」學說中，「中焦如漚」形容水穀消化腐熟，以現代醫學與解剖學分類主要指下列何者？",
+    "options": [
+      "A. 心血管循環系統",
+      "B. 胃腸道消化系統（脾與胃）",
+      "C. 呼吸道氣體交換系統",
+      "D. 泌尿生殖排泄系統"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。中焦指膈以下、臍以上的上腹部，包括脾與胃，其主要生理功能為消化與吸收，中焦如漚即指胃腸道系統。",
+    "source": "考古題 Q23；中藥概論 1 P.22 (🔥必考重點)"
+  },
+  {
+    "id": 80,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中醫三焦中的「上焦如霧」，強調宣發衛氣與布散津液之功能，在現代解剖生理對應於哪兩個器官？",
+    "options": [
+      "A. 脾與胃",
+      "B. 肝與膽",
+      "C. 心與肺",
+      "D. 腎與膀胱"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。上焦位於膈以上，包含心與肺二臟，主司呼吸與血液運送，宣發衛氣如雲霧散布。",
+    "source": "考古題 Q23；中藥概論 1 P.22 (🔥必考重點)"
+  },
+  {
+    "id": 81,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "臨床具有治療慢性支氣管炎顯著療效的成分「矮地茶素」，來源於下列何種植物科屬？",
+    "options": [
+      "A. 紫金牛科紫金牛屬",
+      "B. 虎耳草科落新婦屬",
+      "C. 大戟科野桐屬",
+      "D. 馬鞭草科誥草屬"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。矮地茶為紫金牛科紫金牛屬植物，其有效成分矮地茶素具有止咳、祛痰、平喘功效，用於治療慢性支氣管炎。",
+    "source": "考古題 Q32 (🔥必考重點)"
+  },
+  {
+    "id": 82,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "下列哪一種常用中藥材「並非」源自真菌類，而是蓼科植物的乾燥塊根？",
+    "options": [
+      "A. 茯苓",
+      "B. 何首烏",
+      "C. 靈芝",
+      "D. 猴頭菇"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。何首烏為蓼科草本植物的乾燥塊根，非真菌類；茯苓、靈芝、猴頭菇皆屬於藥用真菌。",
+    "source": "考古題 Q31；中藥概論 1 P.18 (🔥必考重點)"
+  },
+  {
+    "id": 83,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "現代中藥鑑別常用的色譜分析方法中，薄層色譜法與高效液相色譜法的英文縮寫分別為：",
+    "options": [
+      "A. TLC 與 HPLC",
+      "B. GC 與 TLC",
+      "C. HPLC 與 GC",
+      "D. NMR 與 MS"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。TLC 為 Thin Layer Chromatography（薄層層析/分析），HPLC 為 High Performance Liquid Chromatography（高效液相層析）。",
+    "source": "考古題 Q9；中藥概論 1 P.50 (🔥必考重點)"
+  },
+  {
+    "id": 84,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "中藥材強調「道地藥材（地道藥材）」，下列著名道地藥材產地與藥材的配對何者「錯誤」？",
+    "options": [
+      "A. 廣東陳皮（新會陳皮）",
+      "B. 四川附子（川附子）",
+      "C. 河南懷慶地黃（懷地黃）",
+      "D. 山西阿膠"
+    ],
+    "answer": 3,
+    "explanation": "正確答案為 D。道地阿膠出於「山東東阿」，而非山西；A、B、C 皆為歷史著名之道地產區配對。",
+    "source": "考古題 Q8；中藥概論 1 P.15, P.20 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 85,
+    "chapter": "考古精選題型",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "在中藥方劑配伍「佐藥」的細分中，「反佐藥」的定義與臨床應用目的為何？",
+    "options": [
+      "A. 輔助君藥加強對兼證的治療效果",
+      "B. 專門消除君藥毒性或烈性的藥物",
+      "C. 性味與君藥相反，但在病重邪甚時可防止「拒藥（格拒）」現象發生",
+      "D. 引導諸藥直達病變部位的引經藥"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。反佐藥的性味與君藥相反（如熱因熱用、熱藥中佐以微寒），主要在病重邪甚、病邪拒藥時防止藥物被格拒嘔出。",
+    "source": "考古題 Q14 詳解；中藥概論 1 P.2, P.15 (🔥組方深層考點)"
+  },
+  {
+    "id": 86,
+    "chapter": "考古精選題型",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "為確保中藥材原料生產與栽培的品質安全，現代農業生產體系應遵循何種認證規範？",
+    "options": [
+      "A. 優良製造規範",
+      "B. 動態藥品生產規範",
+      "C. 優良農業規範",
+      "D. 優良臨床試驗規範"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。GAP（Good Agricultural Practice，優良農業規範）是用於確保中藥材源頭栽種生產品質的標準規範。",
+    "source": "中藥概論 1 P.34；考古題 Q2 (🔥必考重點)"
+  },
+  {
+    "id": 87,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "牛樟芝中所含的重要活性成分中，何者具有「抑制血小板凝集、增強體力及延緩疲勞」的作用？",
+    "options": [
+      "A. 腺苷",
+      "B. 超氧歧化酶",
+      "C. 多醣體",
+      "D. 三萜類"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。腺苷具抑制血小板凝集、防止血栓、增強體力與延緩疲勞之功效。",
+    "source": "中藥概論 1 P.53；藥用真菌 P.13；考古題 Q13 (🔥必考重點)"
+  },
+  {
+    "id": 88,
+    "chapter": "考古精選題型",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "牛樟芝中含量最豐富且最關鍵、能「提升肝臟運作機能、抑制癌細胞增殖及抗發炎」的成分為：",
+    "options": [
+      "A. 三萜類",
+      "B. 腺苷",
+      "C. 超氧歧化酶",
+      "D. 果膠質"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。三萜類是牛樟芝最重要的指標活性成分，具保肝、抑制癌細胞增殖與抗發炎之效。",
+    "source": "中藥概論 1 P.53；藥用真菌 P.13；考古題 Q16 (🔥必考重點)"
+  },
+  {
+    "id": 89,
+    "chapter": "考古精選題型",
     "difficulty": "hard",
     "isExamStar": true,
     "question": "講義第 17 頁特別標註含「馬兜鈴酸（Aristolochic acid, A.A.）」具有腎毒性與致癌性，臺灣公告禁用的五大藥材不包含下列何者？",
@@ -1567,8 +2053,8 @@
     "source": "中藥概論 1 P.17 (🔥手寫重點標註)"
   },
   {
-    "id": 60,
-    "chapter": "真菌與特色中藥研究",
+    "id": 90,
+    "chapter": "考古精選題型",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "中醫傳統名方「當歸補血湯」中，黃耆與當歸兩味藥材的劑量比例通常為多少？其主治為何？",
@@ -1596,7 +2082,7 @@
   let currentFilter = 'all';
   let isShuffle = false;
 
-  const STORAGE_KEY = 'tajen_cm_quiz_progress_v1';
+  const STORAGE_KEY = 'tajen_cm_quiz_progress_v2';
 
   // DOM elements
   const qNum = document.getElementById('questionNumber');
@@ -1632,12 +2118,12 @@
       userAnswers = data.answers || {};
       wrongIds = new Set(data.wrongs || []);
       bookmarkIds = new Set(data.bookmarks || []);
-      isShuffle = !!data.shuffle;
-      updateShuffleUI();
+      isShuffle = data.isShuffle || false;
     } catch(e) {
       userAnswers = {};
       wrongIds = new Set();
       bookmarkIds = new Set();
+      isShuffle = false;
     }
   }
 
@@ -1647,7 +2133,7 @@
         answers: userAnswers,
         wrongs: Array.from(wrongIds),
         bookmarks: Array.from(bookmarkIds),
-        shuffle: isShuffle
+        isShuffle: isShuffle
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch(e) {}
@@ -1732,17 +2218,21 @@
         return;
       }
     } else if (filterType === 'ch1') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('品類'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('導論') || q.chapter.includes('法規') || q.chapter.includes('實習'));
     } else if (filterType === 'ch2') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('科別'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('品類'));
     } else if (filterType === 'ch3') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('部位'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('科別'));
     } else if (filterType === 'ch4') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('意想不到'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('部位') || q.chapter.includes('炮製'));
     } else if (filterType === 'ch5') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('歷代本草'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('意想不到'));
     } else if (filterType === 'ch6') {
-      activeQuestions = allQuestions.filter(q => q.chapter.includes('真菌') || q.chapter.includes('特色'));
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('歷代本草') || q.chapter.includes('藥性'));
+    } else if (filterType === 'ch7') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('真菌') || q.chapter.includes('清冠') || q.chapter.includes('金銀花'));
+    } else if (filterType === 'ch8') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('考古'));
     }
 
     if (isShuffle) shuffleArray(activeQuestions);
@@ -1751,150 +2241,164 @@
     renderGrid();
   };
 
-  window.toggleBookmark = function() {
-    if (!activeQuestions.length) return;
-    const q = activeQuestions[currentIndex];
-    if (bookmarkIds.has(q.id)) {
-      bookmarkIds.delete(q.id);
-      showToast('已取消收藏');
-    } else {
-      bookmarkIds.add(q.id);
-      showToast('⭐ 已加入收藏本！');
-    }
-    saveStorage();
-    updateStats();
-    renderQuestion();
-    renderGrid();
-  };
+  function updateStats() {
+    let correctCount = 0;
+    let wrongCount = 0;
+    Object.keys(userAnswers).forEach(qid => {
+      const q = allQuestions.find(item => item.id === parseInt(qid, 10));
+      if (q) {
+        if (userAnswers[qid] === q.answer) correctCount++;
+        else wrongCount++;
+      }
+    });
+
+    if (correctScore) correctScore.textContent = correctCount;
+    if (wrongScore) wrongScore.textContent = wrongCount;
+    if (bookmarkScore) bookmarkScore.textContent = bookmarkIds.size;
+    if (wrongCountLabel) wrongCountLabel.textContent = wrongIds.size;
+    if (bookmarkCountLabel) bookmarkCountLabel.textContent = bookmarkIds.size;
+
+    const totalAnswered = Object.keys(userAnswers).length;
+    if (navStats) navStats.textContent = `${totalAnswered}/${allQuestions.length}`;
+  }
 
   function renderQuestion() {
-    if (!activeQuestions.length) {
-      qStem.textContent = '此篩選分類下暫無題目。';
+    if (!activeQuestions || activeQuestions.length === 0) {
+      qStem.textContent = '無符合條件之題目。';
       optsList.innerHTML = '';
       expBox.classList.remove('active');
       return;
     }
 
     const q = activeQuestions[currentIndex];
-    qNum.textContent = `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題 (原題號 #${q.id})`;
+    qNum.textContent = `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題 (題號 #${q.id})`;
     qStem.textContent = q.question;
+
     qChapter.textContent = q.chapter;
+    qExamStar.style.display = q.isExamStar ? 'inline-block' : 'none';
 
-    // 難度標籤
-    if (qDifficulty) {
-      if (q.difficulty === 'easy') {
-        qDifficulty.textContent = '🟢 基礎 (易)';
-        qDifficulty.className = 'difficulty-pill difficulty-easy';
-      } else if (q.difficulty === 'hard') {
-        qDifficulty.textContent = '🔴 挑戰 (難)';
-        qDifficulty.className = 'difficulty-pill difficulty-hard';
-      } else {
-        qDifficulty.textContent = '🟡 進階 (中)';
-        qDifficulty.className = 'difficulty-pill difficulty-medium';
-      }
+    qDifficulty.className = 'difficulty-pill';
+    if (q.difficulty === 'easy') {
+      qDifficulty.classList.add('difficulty-easy');
+      qDifficulty.textContent = '🟢 基礎 (易)';
+    } else if (q.difficulty === 'medium') {
+      qDifficulty.classList.add('difficulty-medium');
+      qDifficulty.textContent = '🟡 進階 (中)';
+    } else if (q.difficulty === 'hard') {
+      qDifficulty.classList.add('difficulty-hard');
+      qDifficulty.textContent = '🔴 挑戰 (難)';
     }
 
-    // 星號標籤
-    if (q.isExamStar) {
-      qExamStar.style.display = 'inline-flex';
-    } else {
-      qExamStar.style.display = 'none';
-    }
-
-    // 收藏按鈕狀態
     if (bookmarkIds.has(q.id)) {
-      qBookmark.classList.add('bookmarked');
+      qBookmark.classList.add('active');
+      qBookmark.title = '取消收藏';
     } else {
-      qBookmark.classList.remove('bookmarked');
+      qBookmark.classList.remove('active');
+      qBookmark.title = '加入收藏';
     }
 
-    // Options rendering
-    optsList.innerHTML = '';
-    const answered = userAnswers.hasOwnProperty(q.id);
-    const chosenIdx = userAnswers[q.id];
+    const percent = Math.round(((currentIndex + 1) / activeQuestions.length) * 100);
+    pBar.style.width = `${percent}%`;
+    pText.textContent = `${currentIndex + 1} / ${activeQuestions.length} (${percent}%)`;
 
-    q.options.forEach((optText, idx) => {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === activeQuestions.length - 1;
+
+    const answered = userAnswers[q.id] !== undefined;
+    const userChoice = userAnswers[q.id];
+
+    optsList.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D'];
+
+    q.options.forEach((optText, optIdx) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
+      btn.disabled = answered;
 
-      const prefix = ['A', 'B', 'C', 'D'][idx];
-      let cleanText = optText;
-      if (cleanText.startsWith(`${prefix}.`)) {
-        cleanText = cleanText.substring(2).trim();
-      }
+      const prefixSpan = document.createElement('span');
+      prefixSpan.className = 'option-prefix';
+      prefixSpan.textContent = letters[optIdx] + '.';
 
-      btn.innerHTML = `<span class="option-prefix">${prefix}</span><span>${cleanText}</span>`;
+      const textSpan = document.createElement('span');
+      textSpan.textContent = optText.replace(/^[A-D]\.\s*/, '');
+
+      btn.appendChild(prefixSpan);
+      btn.appendChild(textSpan);
 
       if (answered) {
-        btn.disabled = true;
-        if (idx === q.answer) {
+        if (optIdx === q.answer) {
           btn.classList.add('correct');
-        } else if (idx === chosenIdx) {
+        } else if (optIdx === userChoice) {
           btn.classList.add('wrong');
         }
       } else {
-        btn.onclick = () => selectOption(idx);
+        btn.onclick = () => selectOption(optIdx);
       }
 
       optsList.appendChild(btn);
     });
 
-    // Explanation Box
     if (answered) {
       expBox.classList.add('active');
-      const isRight = chosenIdx === q.answer;
-      resBadge.textContent = isRight ? '✅ 回答正確！核心考點解析：' : '❌ 回答錯誤！核心考點解析：';
-      resBadge.style.color = isRight ? 'var(--success)' : 'var(--error)';
-      srcBadge.textContent = q.source || '講義紅字出處';
+      if (userChoice === q.answer) {
+        resBadge.textContent = '答對！ 🎉';
+        resBadge.style.color = '#15803d';
+      } else {
+        resBadge.textContent = '答錯了！ 💡';
+        resBadge.style.color = '#b91c1c';
+      }
+      srcBadge.textContent = q.source || '講義重點';
       expText.textContent = q.explanation;
     } else {
       expBox.classList.remove('active');
     }
 
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.textContent = (currentIndex === activeQuestions.length - 1) ? '測驗結尾 🏁' : '下一題 ➡';
-
-    renderGridHighlight();
+    updateStats();
   }
 
-  function selectOption(selectedIdx) {
+  function selectOption(idx) {
     const q = activeQuestions[currentIndex];
-    if (!q) return;
-    if (userAnswers.hasOwnProperty(q.id)) return;
+    userAnswers[q.id] = idx;
 
-    userAnswers[q.id] = selectedIdx;
-    if (selectedIdx !== q.answer) {
-      wrongIds.add(q.id);
-    } else {
+    if (idx === q.answer) {
       wrongIds.delete(q.id);
+    } else {
+      wrongIds.add(q.id);
     }
 
     saveStorage();
-    updateStats();
     renderQuestion();
     renderGrid();
   }
 
-  window.prevQuestion = function() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      renderQuestion();
+  window.toggleBookmark = function() {
+    if (!activeQuestions[currentIndex]) return;
+    const qid = activeQuestions[currentIndex].id;
+    if (bookmarkIds.has(qid)) {
+      bookmarkIds.delete(qid);
+      showToast('已取消收藏');
+    } else {
+      bookmarkIds.add(qid);
+      showToast('⭐ 已加入收藏題庫！');
     }
+    saveStorage();
+    renderQuestion();
+    renderGrid();
   };
 
   window.nextQuestion = function() {
     if (currentIndex < activeQuestions.length - 1) {
       currentIndex++;
       renderQuestion();
-    } else {
-      showToast('已抵達最後一題！');
+      renderGrid();
     }
   };
 
-  window.jumpToQuestion = function(targetIndex) {
-    if (targetIndex >= 0 && targetIndex < activeQuestions.length) {
-      currentIndex = targetIndex;
+  window.prevQuestion = function() {
+    if (currentIndex > 0) {
+      currentIndex--;
       renderQuestion();
+      renderGrid();
     }
   };
 
@@ -1905,7 +2409,11 @@
       btn.className = 'grid-btn';
       btn.textContent = q.id;
 
-      if (userAnswers.hasOwnProperty(q.id)) {
+      if (idx === currentIndex) {
+        btn.classList.add('current');
+      }
+
+      if (userAnswers[q.id] !== undefined) {
         if (userAnswers[q.id] === q.answer) {
           btn.classList.add('correct');
         } else {
@@ -1917,105 +2425,80 @@
         btn.classList.add('bookmarked');
       }
 
-      btn.onclick = () => jumpToQuestion(idx);
+      btn.onclick = () => {
+        currentIndex = idx;
+        renderQuestion();
+        renderGrid();
+      };
+
       gridContainer.appendChild(btn);
     });
-    renderGridHighlight();
-  }
-
-  function renderGridHighlight() {
-    const btns = gridContainer.querySelectorAll('.grid-btn');
-    btns.forEach((b, i) => {
-      if (i === currentIndex) b.classList.add('current');
-      else b.classList.remove('current');
-    });
-  }
-
-  function updateStats() {
-    const total = activeQuestions.length;
-    const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0;
-    pBar.style.width = `${progress}%`;
-    pText.textContent = `${currentIndex + 1} / ${total}`;
-
-    let correct = 0;
-    let wrong = 0;
-    Object.keys(userAnswers).forEach(id => {
-      const q = allQuestions.find(x => x.id === parseInt(id));
-      if (q) {
-        if (userAnswers[id] === q.answer) correct++;
-        else wrong++;
-      }
-    });
-
-    correctScore.textContent = correct;
-    wrongScore.textContent = wrong;
-    bookmarkScore.textContent = bookmarkIds.size;
-    wrongCountLabel.textContent = wrongIds.size;
-    bookmarkCountLabel.textContent = bookmarkIds.size;
-    navStats.textContent = `${Object.keys(userAnswers).length}/${allQuestions.length}`;
   }
 
   window.copyQuestionReport = function() {
     const q = activeQuestions[currentIndex];
-    if (!q) return;
+    const letters = ['A', 'B', 'C', 'D'];
+    const diffMap = { easy: '易 (基礎)', medium: '中 (進階)', hard: '難 (挑戰)' };
+    const text = `【中藥概論題目勘誤回報】
+題號: #${q.id}
+章節: ${q.chapter}
+難度: ${diffMap[q.difficulty] || q.difficulty}
+出處: ${q.source}
+題目: ${q.question}
+選項:
+  A. ${q.options[0].replace(/^[A-D]\.\s*/, '')}
+  B. ${q.options[1].replace(/^[A-D]\.\s*/, '')}
+  C. ${q.options[2].replace(/^[A-D]\.\s*/, '')}
+  D. ${q.options[3].replace(/^[A-D]\.\s*/, '')}
+正確答案: ${letters[q.answer]}
+解析: ${q.explanation}
 
-    const prefix = ['A', 'B', 'C', 'D'];
-    const optLines = q.options.join('\n  ');
-    const diffMap = { 'easy': '易 (基礎)', 'medium': '中 (進階)', 'hard': '難 (挑戰)' };
-    const reportText = `【中藥概論題目勘誤回報】\n題號: #${q.id}\n章節: ${q.chapter}\n難度: ${diffMap[q.difficulty] || q.difficulty}\n出處: ${q.source}\n題目: ${q.question}\n選項:\n  ${optLines}\n正確答案: ${prefix[q.answer]}\n解析: ${q.explanation}`;
-
-    navigator.clipboard.writeText(reportText).then(() => {
-      showToast('📋 已複製本題詳細資訊至剪貼簿！');
+建議修改或補充:
+`;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('📋 已複製題目回報格式至剪貼簿！');
     }).catch(() => {
-      showToast('複製失敗，請手動選取文字');
+      alert('複製失敗，請手動複製。');
     });
   };
 
   function showToast(msg) {
+    if (!toast) return;
     toast.textContent = msg;
     toast.style.display = 'block';
     setTimeout(() => {
       toast.style.display = 'none';
-    }, 2200);
+    }, 2000);
   }
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (!activeQuestions.length) return;
-    const q = activeQuestions[currentIndex];
-    const answered = userAnswers.hasOwnProperty(q.id);
-
-    if (!answered) {
-      if (e.key === '1' || e.key === 'a' || e.key === 'A') selectOption(0);
-      else if (e.key === '2' || e.key === 'b' || e.key === 'B') selectOption(1);
-      else if (e.key === '3' || e.key === 'c' || e.key === 'C') selectOption(2);
-      else if (e.key === '4' || e.key === 'd' || e.key === 'D') selectOption(3);
-    } else {
-      if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        nextQuestion();
-      } else if (e.key === 'ArrowLeft') {
-        prevQuestion();
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      nextQuestion();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      prevQuestion();
+    } else if (['1', '2', '3', '4'].includes(e.key)) {
+      const idx = parseInt(e.key, 10) - 1;
+      const q = activeQuestions[currentIndex];
+      if (q && userAnswers[q.id] === undefined) {
+        selectOption(idx);
       }
     }
   });
 
-  // App Init
-  function init() {
-    if (window.QUIZ_DATA && Array.isArray(window.QUIZ_DATA)) {
-      allQuestions = [...window.QUIZ_DATA];
-    } else {
-      allQuestions = [];
-    }
-
-    loadStorage();
+  // Init
+  window.addEventListener('DOMContentLoaded', () => {
+    allQuestions = window.QUIZ_DATA || [];
     activeQuestions = [...allQuestions];
-    renderGrid();
-    updateStats();
+    loadStorage();
+    updateShuffleUI();
+    if (isShuffle) {
+      shuffleArray(activeQuestions);
+    }
     renderQuestion();
-  }
-
-  window.onload = init;
+    renderGrid();
+  });
 })();
 
   </script>
