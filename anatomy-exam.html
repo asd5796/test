@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>解剖學期中全真模擬題庫 (100題・高鑑別度)</title>
+  <title>解剖學期中全真模擬題庫 (111題・全類型上皮涵蓋)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -456,7 +456,7 @@
     <div class="nav-container">
       <div class="site-title">
         <span>🫀</span>
-        <span>解剖學期中全真模擬題庫 (100題・高鑑別度)</span>
+        <span>解剖學期中全真模擬題庫 (111題・全類型上皮涵蓋)</span>
       </div>
       <div class="nav-actions">
         <a href="index.html" class="nav-btn">
@@ -480,14 +480,14 @@
       <!-- Filter Card -->
       <div class="filter-card">
         <div class="filter-tabs" id="filterTabs">
-          <button class="tab-btn active" onclick="setFilter('all', this)">全部 100 題</button>
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 111 題</button>
           <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 必考重點</button>
-          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (35題)</button>
-          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (45題)</button>
-          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (20題)</button>
+          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (39題)</button>
+          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (49題)</button>
+          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (23題)</button>
           <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
           <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
-          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 細胞與上皮 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 細胞與上皮 (26題)</button>
           <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 胚胎與皮膚 (15題)</button>
           <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 骨骼與骨盆 (18題)</button>
           <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 關節與滑液 (18題)</button>
@@ -501,7 +501,7 @@
             <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
           </div>
           <div>
-            <span id="progressText">1 / 100</span>
+            <span id="progressText">1 / 111</span>
           </div>
         </div>
       </div>
@@ -520,7 +520,7 @@
             <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="q-number" id="questionNumber">第 1 題 / 共 100 題</span>
+            <span class="q-number" id="questionNumber">第 1 題 / 共 111 題</span>
             <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
           </div>
         </div>
@@ -557,8 +557,8 @@
     <!-- Right Sidebar Navigator -->
     <div class="sidebar">
       <div class="sidebar-header">
-        <span>題號導覽 (1~100)</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/100</span>
+        <span>題號導覽 (1~111)</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/111</span>
       </div>
       <div class="legend">
         <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
@@ -574,7 +574,7 @@
   
   <script>
 /**
- * 解剖學 100 題期中考題庫 (精簡實戰版・無英文破綻・難度易中難 35%-45%-20%)
+ * 解剖學 111 題期中考題庫 (精簡實戰版・無英文破綻・全類型上皮涵蓋・難度易中難 35%-45%-20%)
  */
 window.QUIZ_DATA = [
   {
@@ -724,54 +724,6 @@ window.QUIZ_DATA = [
   {
     "id": 10,
     "chapter": "細胞學基礎與上皮組織",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "下列何處的內襯上皮屬於「單層扁平上皮」？",
-    "options": [
-      "A. 胃黏膜",
-      "B. 血管內皮與肺泡壁",
-      "C. 腎小管",
-      "D. 氣管黏膜"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。心血管內襯的內皮、體腔間皮及肺泡壁皆為單層扁平上皮（單層鱗狀上皮），有利於物質擴散與過濾；胃為單層柱狀，腎小管為單層立方，氣管為偽複層柱狀上皮。",
-    "source": "大仁科大解剖學 Chap 1-3 P.34 (🔥講義紅字考點)"
-  },
-  {
-    "id": 11,
-    "chapter": "細胞學基礎與上皮組織",
-    "difficulty": "easy",
-    "isExamStar": true,
-    "question": "人體胃與小腸黏膜內襯之上皮組織類型為何？",
-    "options": [
-      "A. 單層扁平上皮",
-      "B. 單層立方上皮",
-      "C. 單層柱狀上皮",
-      "D. 複層扁平上皮"
-    ],
-    "answer": 2,
-    "explanation": "正確答案為 C。胃、小腸黏膜上皮皆由單層柱狀上皮構成，表面具微絨毛與杯狀細胞，適應分泌與吸收。",
-    "source": "大仁科大解剖學 Chap 1-3 P.36 (🔥講義紅字考點)"
-  },
-  {
-    "id": 12,
-    "chapter": "細胞學基礎與上皮組織",
-    "difficulty": "medium",
-    "isExamStar": true,
-    "question": "人體氣管與主支氣管黏膜內襯之上皮組織類型為：",
-    "options": [
-      "A. 單層立方上皮",
-      "B. 偽複層柱狀上皮",
-      "C. 移行上皮",
-      "D. 複層扁平上皮"
-    ],
-    "answer": 1,
-    "explanation": "正確答案為 B。氣管黏膜由偽複層柱狀上皮構成，細胞高矮不一但基底部皆附著於基底層，具纖毛掃除痰液與塵埃。",
-    "source": "大仁科大解剖學 Chap 1-3 P.37 (🔥講義紅字考點)"
-  },
-  {
-    "id": 13,
-    "chapter": "細胞學基礎與上皮組織",
     "difficulty": "medium",
     "isExamStar": true,
     "question": "在細胞接合構造中，能像拉鍊般阻隔水分與離子經細胞間隙滲漏的是：",
@@ -786,7 +738,23 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 1-3 P.40 (🔥講義紅字考點)"
   },
   {
-    "id": 14,
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "存在於上皮細胞底層與基底膜相連處，能加強結合、固定細胞並防止其穿越基底膜的構造為：",
+    "options": [
+      "A. 緊密接合",
+      "B. 半胞橋小體",
+      "C. 間隙接合",
+      "D. 黏著帶"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。簡報 P.51 明列：半胞橋小體的作用在於加強上皮細胞和底部基底膜的結合，固定上皮細胞防止其脫落，並能將具有持續分裂能力的上皮細胞固定住，避免其穿越基底膜而進入內部組織。",
+    "source": "大仁科大解剖學 Chap 1-3 P.51 (🔥講義紅字考點)",
+    "id": 11
+  },
+  {
+    "id": 12,
     "chapter": "細胞學基礎與上皮組織",
     "difficulty": "hard",
     "isExamStar": true,
@@ -802,7 +770,215 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 1-3 P.41 (🔥講義紅字考點)"
   },
   {
-    "id": 15,
+    "id": 13,
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "下列何處的內襯上皮屬於「單層扁平上皮」？",
+    "options": [
+      "A. 胃黏膜",
+      "B. 血管內皮與肺泡壁",
+      "C. 腎小管",
+      "D. 氣管黏膜"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。心血管內襯的內皮、體腔間皮及肺泡壁皆為單層扁平上皮（單層鱗狀上皮），有利於物質擴散與過濾；胃為單層柱狀，腎小管為單層立方，氣管為偽複層柱狀上皮。",
+    "source": "大仁科大解剖學 Chap 1-3 P.34 (🔥講義紅字考點)"
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "構成血管與淋巴管內襯，以及形成微血管壁的單層扁平上皮特稱為：",
+    "options": [
+      "A. 內皮",
+      "B. 間皮",
+      "C. 腺上皮",
+      "D. 移形上皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.54 明列：位於血管、淋巴管的內襯或形成微血管壁的上皮稱為「內皮（Endothelium）」；位於心包膜、肋膜、腹膜的上皮層則稱為「間皮（Mesothelium）」。",
+    "source": "大仁科大解剖學 Chap 1-3 P.54 (🔥講義紅字考點)",
+    "id": 14
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "覆蓋於心包膜、肋膜與腹膜表面，能分泌漿液減少摩擦的單層扁平上皮稱為：",
+    "options": [
+      "A. 間皮",
+      "B. 內皮",
+      "C. 表皮",
+      "D. 呼吸上皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.54 明列：位於心包膜、肋膜、腹膜的單層扁平（單層鱗狀）上皮層稱為「間皮（Mesothelium）」。",
+    "source": "大仁科大解剖學 Chap 1-3 P.54 (🔥講義紅字考點)",
+    "id": 15
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "具有吸收與分泌功能，並構成甲狀腺濾泡與腎小管壁的上皮組織為：",
+    "options": [
+      "A. 單層扁平上皮",
+      "B. 單層立方上皮",
+      "C. 複層扁平上皮",
+      "D. 移形上皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。簡報 P.54 明列：單層立方上皮具有吸收與分泌的功能，例如甲狀腺濾泡細胞、腎小管上皮、視網膜的色素上皮。",
+    "source": "大仁科大解剖學 Chap 1-3 P.54 (🔥講義紅字考點)",
+    "id": 16
+  },
+  {
+    "id": 17,
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "人體胃與小腸黏膜內襯之上皮組織類型為何？",
+    "options": [
+      "A. 單層扁平上皮",
+      "B. 單層立方上皮",
+      "C. 單層柱狀上皮",
+      "D. 複層扁平上皮"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。胃、小腸黏膜上皮皆由單層柱狀上皮構成，表面具微絨毛與杯狀細胞，適應分泌與吸收。",
+    "source": "大仁科大解剖學 Chap 1-3 P.36 (🔥講義紅字考點)"
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "關於單層柱狀上皮表面特化構造與其生理功能的配對，下列何者正確？",
+    "options": [
+      "A. 小腸微絨毛：增加吸收表面積",
+      "B. 消化道杯狀細胞：主動吸收葡萄糖",
+      "C. 呼吸道纖毛：分泌胃酸保護胃壁",
+      "D. 生殖道微絨毛：運送痰液"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.55 明列：小腸上皮微絨毛增加吸收表面積；消化道杯狀細胞分泌黏液潤滑食物；呼吸道與生殖道上皮纖毛促使黏液或精卵移動。",
+    "source": "大仁科大解剖學 Chap 1-3 P.55 (🔥講義紅字考點)",
+    "id": 18
+  },
+  {
+    "id": 19,
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "人體氣管與主支氣管黏膜內襯之上皮組織類型為：",
+    "options": [
+      "A. 單層立方上皮",
+      "B. 偽複層柱狀上皮",
+      "C. 移行上皮",
+      "D. 複層扁平上皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。氣管黏膜由偽複層柱狀上皮構成，細胞高矮不一但基底部皆附著於基底層，具纖毛掃除痰液與塵埃。",
+    "source": "大仁科大解剖學 Chap 1-3 P.37 (🔥講義紅字考點)"
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "皮膚表皮含有多層扁平細胞與角蛋白，可防水、抗病菌入侵並提供最佳保護效果，該上皮為：",
+    "options": [
+      "A. 角質化複層鱗狀上皮",
+      "B. 非角質化複層鱗狀上皮",
+      "C. 單層立方上皮",
+      "D. 偽複層柱狀上皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.57 明列：角質化複層鱗狀上皮含角蛋白，可防水、抵抗病菌入侵及抗摩擦，是人體保護效果最好的上皮。",
+    "source": "大仁科大解剖學 Chap 1-3 P.57 (🔥講義紅字考點)",
+    "id": 20
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "人體口腔、食道、肛門與陰道內襯，由下列何種容易發生摩擦且表面維持濕潤的上皮構成？",
+    "options": [
+      "A. 單層柱狀上皮",
+      "B. 非角質化複層鱗狀上皮",
+      "C. 移形上皮",
+      "D. 複層柱狀上皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。簡報 P.57 明列：非角質化複層鱗狀上皮存在容易發生摩擦、表面濕潤，同時無吸收功能的位置，如口腔、食道、肛門與陰道的內襯。",
+    "source": "大仁科大解剖學 Chap 1-3 P.57 (🔥講義紅字考點)",
+    "id": 21
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "人體體內較少見的「複層立方上皮」，主要行保護作用，常見於下列何處？",
+    "options": [
+      "A. 唾液腺與成人汗腺之導管",
+      "B. 胃與十二指腸黏膜",
+      "C. 腎小球囊壁",
+      "D. 肺泡壁"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.58 明列：複層立方上皮較少見，主要行保護作用，例如唾液腺、食道腺、成人汗腺之導管及眼結膜。",
+    "source": "大仁科大解剖學 Chap 1-3 P.58 (🔥講義紅字考點)",
+    "id": 22
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "人體食道與胃交接處以及眼瞼結膜處的上皮組織，屬於下列何種較少見的上皮？",
+    "options": [
+      "A. 複層柱狀上皮",
+      "B. 單層扁平上皮",
+      "C. 移形上皮",
+      "D. 偽複層纖毛上皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.58 明列：體內較少見的複層柱狀上皮，分佈於食道與胃交接處、尿道海綿體及眼瞼結膜處。",
+    "source": "大仁科大解剖學 Chap 1-3 P.58 (🔥講義紅字考點)",
+    "id": 23
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "分佈於輸尿管與膀胱，其細胞形狀可隨器官容積擴張而改變、能承受張力拉扯防破損的上皮為：",
+    "options": [
+      "A. 單層扁平上皮",
+      "B. 移形上皮",
+      "C. 單層柱狀上皮",
+      "D. 複層扁平上皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。簡報 P.58 明列：移形上皮（變形上皮）分佈於泌尿道（輸尿管、膀胱、尿道，又稱泌尿上皮），可承受張力拉扯作用，防止器官破損。",
+    "source": "大仁科大解剖學 Chap 1-3 P.58 (🔥講義紅字考點)",
+    "id": 24
+  },
+  {
+    "chapter": "細胞學基礎與上皮組織",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "關於腺體上皮中外分泌腺與內分泌腺的敘述，下列何者正確？",
+    "options": [
+      "A. 汗腺與皮脂腺屬於外分泌腺，具導管運送分泌物",
+      "B. 腦下腺屬於外分泌腺，分泌物直接排至體表",
+      "C. 內分泌腺又稱為有管腺，具專屬導管",
+      "D. 唾液腺不具導管，直接將分泌物釋放入血液"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。簡報 P.60 明列：外分泌腺（有管腺）經由導管送到皮膚表面或器官空腔，如汗腺、皮脂腺、唾液腺；內分泌腺（無管腺）直接將荷爾蒙釋放到血液中，如腦下腺、腎上腺。",
+    "source": "大仁科大解剖學 Chap 1-3 P.60 (🔥講義紅字考點)",
+    "id": 25
+  },
+  {
+    "id": 26,
     "chapter": "細胞學基礎與上皮組織",
     "difficulty": "medium",
     "isExamStar": false,
@@ -818,7 +994,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 1-3 P.5 (講義基礎概念)"
   },
   {
-    "id": 16,
+    "id": 27,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "easy",
     "isExamStar": true,
@@ -834,7 +1010,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.5 (🔥講義紅字考點)"
   },
   {
-    "id": 17,
+    "id": 28,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -850,7 +1026,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.8 (🔥講義紅字考點)"
   },
   {
-    "id": 18,
+    "id": 29,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -866,7 +1042,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.27 (🔥講義紅字考點)"
   },
   {
-    "id": 19,
+    "id": 30,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -882,7 +1058,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.24 (🔥講義紅字考點)"
   },
   {
-    "id": 20,
+    "id": 31,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "easy",
     "isExamStar": true,
@@ -898,7 +1074,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.33 (🔥講義紅字考點)"
   },
   {
-    "id": 21,
+    "id": 32,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -914,7 +1090,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.33 (🔥講義紅字考點)"
   },
   {
-    "id": 22,
+    "id": 33,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "hard",
     "isExamStar": true,
@@ -930,7 +1106,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.33 (🔥講義紅字考點)"
   },
   {
-    "id": 23,
+    "id": 34,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -946,7 +1122,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.37 (🔥講義紅字考點)"
   },
   {
-    "id": 24,
+    "id": 35,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "hard",
     "isExamStar": true,
@@ -962,7 +1138,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.36 (🔥講義紅字考點)"
   },
   {
-    "id": 25,
+    "id": 36,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "easy",
     "isExamStar": true,
@@ -978,7 +1154,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.44 (🔥講義紅字考點)"
   },
   {
-    "id": 26,
+    "id": 37,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "easy",
     "isExamStar": true,
@@ -994,7 +1170,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.45 (🔥講義紅字考點)"
   },
   {
-    "id": 27,
+    "id": 38,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1010,7 +1186,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.52 (🔥講義紅字考點)"
   },
   {
-    "id": 28,
+    "id": 39,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1026,7 +1202,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.56 (🔥講義紅字考點)"
   },
   {
-    "id": 29,
+    "id": 40,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1042,7 +1218,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.17 (🔥講義紅字考點)"
   },
   {
-    "id": 30,
+    "id": 41,
     "chapter": "胚胎發育、胎盤循環與皮膚系統",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1058,7 +1234,7 @@ window.QUIZ_DATA = [
     "source": "大仁科大解剖學 Chap 18-4 P.11-13 (🔥講義紅字考點)"
   },
   {
-    "id": 31,
+    "id": 42,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1074,7 +1250,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.7 (🔥講義紅字範例考點)"
   },
   {
-    "id": 32,
+    "id": 43,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1090,7 +1266,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.6 (🔥講義紅字考點)"
   },
   {
-    "id": 33,
+    "id": 44,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1106,7 +1282,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.6 (🔥講義紅字考點)"
   },
   {
-    "id": 34,
+    "id": 45,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1122,7 +1298,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.127 (🔥講義紅字考點)"
   },
   {
-    "id": 35,
+    "id": 46,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1138,7 +1314,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.127 (🔥講義紅字考點)"
   },
   {
-    "id": 36,
+    "id": 47,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1154,7 +1330,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.128 (🔥講義紅字考點)"
   },
   {
-    "id": 37,
+    "id": 48,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1170,7 +1346,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.128 (🔥講義紅字考點)"
   },
   {
-    "id": 38,
+    "id": 49,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1186,7 +1362,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.116 (🔥講義紅字考點)"
   },
   {
-    "id": 39,
+    "id": 50,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1202,7 +1378,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.116 (🔥講義紅字考點)"
   },
   {
-    "id": 40,
+    "id": 51,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1218,7 +1394,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.101 (🔥講義紅字考點)"
   },
   {
-    "id": 41,
+    "id": 52,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1234,7 +1410,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.101 (🔥講義紅字考點)"
   },
   {
-    "id": 42,
+    "id": 53,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1250,7 +1426,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.85 (🔥講義紅字考點)"
   },
   {
-    "id": 43,
+    "id": 54,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1266,7 +1442,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.86 (🔥講義紅字考點)"
   },
   {
-    "id": 44,
+    "id": 55,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1282,7 +1458,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.91 (🔥講義紅字考點)"
   },
   {
-    "id": 45,
+    "id": 56,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1298,7 +1474,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.91 (🔥講義紅字考點)"
   },
   {
-    "id": 46,
+    "id": 57,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1314,7 +1490,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.50-54 (🔥講義紅字考點)"
   },
   {
-    "id": 47,
+    "id": 58,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "medium",
     "isExamStar": false,
@@ -1330,7 +1506,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.140 (講義基礎考點)"
   },
   {
-    "id": 48,
+    "id": 59,
     "chapter": "骨骼系統與骨盆分界",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1346,7 +1522,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.140 (🔥講義紅字考點)"
   },
   {
-    "id": 49,
+    "id": 60,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1362,7 +1538,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.2-4 (🔥講義紅字考點)"
   },
   {
-    "id": 50,
+    "id": 61,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1378,7 +1554,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.7-8 (🔥講義紅字考點)"
   },
   {
-    "id": 51,
+    "id": 62,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1394,7 +1570,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.10 (🔥講義紅字考點)"
   },
   {
-    "id": 52,
+    "id": 63,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1410,7 +1586,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.10 (🔥講義紅字考點)"
   },
   {
-    "id": 53,
+    "id": 64,
     "chapter": "關節系統與滑液關節",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1426,7 +1602,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.11 (🔥講義紅字考點)"
   },
   {
-    "id": 54,
+    "id": 65,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1442,7 +1618,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.11 (🔥講義紅字考點)"
   },
   {
-    "id": 55,
+    "id": 66,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1458,7 +1634,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.14 (🔥講義紅字考點)"
   },
   {
-    "id": 56,
+    "id": 67,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1474,7 +1650,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.13-14 (🔥講義紅字考點)"
   },
   {
-    "id": 57,
+    "id": 68,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1490,7 +1666,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.13-14 (🔥講義紅字考點)"
   },
   {
-    "id": 58,
+    "id": 69,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1506,7 +1682,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.17 (🔥講義紅字考點)"
   },
   {
-    "id": 59,
+    "id": 70,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1522,7 +1698,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.18 (🔥講義紅字考點)"
   },
   {
-    "id": 60,
+    "id": 71,
     "chapter": "關節系統與滑液關節",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1538,7 +1714,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.19 (🔥講義紅字考點)"
   },
   {
-    "id": 61,
+    "id": 72,
     "chapter": "關節系統與滑液關節",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1554,7 +1730,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.20 (🔥講義紅字考點)"
   },
   {
-    "id": 62,
+    "id": 73,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1570,7 +1746,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.14 (🔥講義紅字考點)"
   },
   {
-    "id": 63,
+    "id": 74,
     "chapter": "關節系統與滑液關節",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1586,7 +1762,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.32 (🔥講義紅字考點)"
   },
   {
-    "id": 64,
+    "id": 75,
     "chapter": "關節系統與滑液關節",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1602,7 +1778,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.34 (🔥講義紅字考點)"
   },
   {
-    "id": 65,
+    "id": 76,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1618,7 +1794,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH06_關節1012 P.42 (🔥講義紅字考點)"
   },
   {
-    "id": 66,
+    "id": 77,
     "chapter": "關節系統與滑液關節",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1634,7 +1810,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖chap 5_骨骼1005 P.110 (🔥講義紅字考點)"
   },
   {
-    "id": 67,
+    "id": 78,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1650,7 +1826,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.4, 16 (🔥講義紅字考點)"
   },
   {
-    "id": 68,
+    "id": 79,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1666,7 +1842,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.23 (🔥講義紅字考點)"
   },
   {
-    "id": 69,
+    "id": 80,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1682,7 +1858,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.21 (🔥講義紅字考點)"
   },
   {
-    "id": 70,
+    "id": 81,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1698,7 +1874,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.16 (🔥講義紅字考點)"
   },
   {
-    "id": 71,
+    "id": 82,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1714,7 +1890,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.16 (🔥講義紅字考點)"
   },
   {
-    "id": 72,
+    "id": 83,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1730,7 +1906,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.16 (🔥講義紅字考點)"
   },
   {
-    "id": 73,
+    "id": 84,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1746,7 +1922,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.9 (🔥講義紅字考點)"
   },
   {
-    "id": 74,
+    "id": 85,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1762,7 +1938,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.9 (🔥講義紅字考點)"
   },
   {
-    "id": 75,
+    "id": 86,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1778,7 +1954,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.9 (🔥講義紅字考點)"
   },
   {
-    "id": 76,
+    "id": 87,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1794,7 +1970,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.22 (🔥講義紅字考點)"
   },
   {
-    "id": 77,
+    "id": 88,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1810,7 +1986,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.9 (🔥講義紅字考點)"
   },
   {
-    "id": 78,
+    "id": 89,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1826,7 +2002,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.29 (🔥講義紅字考點)"
   },
   {
-    "id": 79,
+    "id": 90,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1842,7 +2018,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.29 (🔥講義紅字考點)"
   },
   {
-    "id": 80,
+    "id": 91,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1858,7 +2034,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.29 (🔥講義紅字考點)"
   },
   {
-    "id": 81,
+    "id": 92,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1874,7 +2050,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.30 (🔥講義紅字考點)"
   },
   {
-    "id": 82,
+    "id": 93,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1890,7 +2066,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.30 (🔥講義紅字考點)"
   },
   {
-    "id": 83,
+    "id": 94,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "hard",
     "isExamStar": false,
@@ -1906,7 +2082,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.30 (講義基礎考點)"
   },
   {
-    "id": 84,
+    "id": 95,
     "chapter": "肌肉組織與主要肌群",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1922,7 +2098,7 @@ window.QUIZ_DATA = [
     "source": "大仁解剖CH07_肌肉1019 P.34 (🔥講義紅字考點)"
   },
   {
-    "id": 85,
+    "id": 96,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "easy",
     "isExamStar": true,
@@ -1938,7 +2114,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.17, 19 (🔥講義紅字考點)"
   },
   {
-    "id": 86,
+    "id": 97,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1954,7 +2130,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.19 (🔥講義紅字考點)"
   },
   {
-    "id": 87,
+    "id": 98,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -1970,7 +2146,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.19 (🔥講義紅字考點)"
   },
   {
-    "id": 88,
+    "id": 99,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "hard",
     "isExamStar": true,
@@ -1986,7 +2162,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.20 (🔥講義紅字考點)"
   },
   {
-    "id": 89,
+    "id": 100,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "easy",
     "isExamStar": true,
@@ -2002,7 +2178,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.17, 20 (🔥講義紅字考點)"
   },
   {
-    "id": 90,
+    "id": 101,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2018,7 +2194,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.17, 20 (🔥講義紅字考點)"
   },
   {
-    "id": 91,
+    "id": 102,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "easy",
     "isExamStar": true,
@@ -2034,7 +2210,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.43-44 (🔥講義紅字考點)"
   },
   {
-    "id": 92,
+    "id": 103,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2050,7 +2226,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.43 (🔥講義紅字考點)"
   },
   {
-    "id": 93,
+    "id": 104,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2066,7 +2242,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.44 (🔥講義紅字考點)"
   },
   {
-    "id": 94,
+    "id": 105,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "hard",
     "isExamStar": true,
@@ -2082,7 +2258,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.44 (🔥講義紅字考點)"
   },
   {
-    "id": 95,
+    "id": 106,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "hard",
     "isExamStar": true,
@@ -2098,7 +2274,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.44, 46 (🔥講義紅字考點)"
   },
   {
-    "id": 96,
+    "id": 107,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2114,7 +2290,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.6 (🔥講義紅字考點)"
   },
   {
-    "id": 97,
+    "id": 108,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "easy",
     "isExamStar": true,
@@ -2130,7 +2306,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.37, 76 (🔥講義紅字考點)"
   },
   {
-    "id": 98,
+    "id": 109,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "easy",
     "isExamStar": true,
@@ -2146,7 +2322,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.26, 37, 76 (🔥講義紅字考點)"
   },
   {
-    "id": 99,
+    "id": 110,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2162,7 +2338,7 @@ window.QUIZ_DATA = [
     "source": "CH11_循環1102 P.21, 76 (🔥講義紅字考點)"
   },
   {
-    "id": 100,
+    "id": 111,
     "chapter": "心血管系統、傳導與循環機能",
     "difficulty": "medium",
     "isExamStar": true,
@@ -2535,7 +2711,7 @@ window.QUIZ_DATA = [
     bookmarkScore.textContent = bookmarkIds.size;
     wrongCountLabel.textContent = wrongIds.size;
     bookmarkCountLabel.textContent = bookmarkIds.size;
-    navStats.textContent = `${Object.keys(userAnswers).length}/100`;
+    navStats.textContent = `${Object.keys(userAnswers).length}/${allQuestions.length}`;
   }
 
   window.copyQuestionReport = function() {
