@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可供食品使用中藥材食用部位測驗 (40題・講義P.23~27全收錄)</title>
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --primary-light: #14b8a6;
+      --primary-bg: #f0fdfa;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --error: #b91c1c;
+      --error-bg: #fee2e2;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --bg: #f8fafc;
+      --star-color: #d97706;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .site-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .nav-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+    .nav-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
+      border-color: #cbd5e1;
+    }
+    .nav-btn.active-shuffle {
+      background: var(--primary-bg);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 868px) {
+      main { grid-template-columns: 1fr; }
+    }
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .filter-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .tab-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .tab-btn.star-tab.active {
+      background: var(--warning);
+      border-color: var(--warning);
+    }
+    .tab-btn.wrong-tab.active {
+      background: var(--error);
+      border-color: var(--error);
+    }
+    .tab-btn.easy-tab.active {
+      background: #16a34a;
+      border-color: #16a34a;
+    }
+    .tab-btn.med-tab.active {
+      background: #ca8a04;
+      border-color: #ca8a04;
+    }
+    .tab-btn.hard-tab.active {
+      background: #dc2626;
+      border-color: #dc2626;
+    }
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid #f1f5f9;
+      font-weight: 600;
+    }
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .stat-badge.score { color: var(--success); }
+    .stat-badge.wrong { color: var(--error); }
+    .stat-badge.star { color: var(--star-color); }
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+    .quiz-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .header-badges {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .category-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: var(--primary-bg);
+      color: var(--primary);
+    }
+    .exam-star-pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+    .difficulty-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .difficulty-easy { background: #dcfce7; color: #166534; }
+    .difficulty-medium { background: #fef9c3; color: #854d0e; }
+    .difficulty-hard { background: #fee2e2; color: #991b1b; }
+    .q-number {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+    .bookmark-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: #cbd5e1;
+      transition: transform 0.15s, color 0.15s;
+      padding: 0.2rem;
+    }
+    .bookmark-btn:hover { transform: scale(1.15); }
+    .bookmark-btn.active { color: var(--star-color); }
+    .question-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.6;
+      color: #0f172a;
+      margin-bottom: 1.5rem;
+    }
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .option-btn {
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      line-height: 1.45;
+    }
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+    .option-prefix {
+      font-weight: 800;
+      color: var(--text-muted);
+      min-width: 1.5rem;
+    }
+    .option-btn.correct {
+      background: var(--success-bg) !important;
+      border-color: var(--success) !important;
+      color: #14532d !important;
+      font-weight: 700;
+    }
+    .option-btn.correct .option-prefix { color: var(--success); }
+    .option-btn.wrong {
+      background: var(--error-bg) !important;
+      border-color: var(--error) !important;
+      color: #7f1d1d !important;
+    }
+    .option-btn.wrong .option-prefix { color: var(--error); }
+    .option-btn:disabled { cursor: default; }
+
+    /* Explanation */
+    .explanation-box {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      background: #f8fafc;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      animation: fadeIn 0.25s ease-out;
+    }
+    .explanation-box.active { display: block; }
+    .explanation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .result-badge {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .source-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .explanation-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #334155;
+    }
+    .copy-report-btn {
+      margin-top: 0.85rem;
+      font-size: 0.75rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px dashed #cbd5e1;
+      border-radius: 6px;
+      background: white;
+      color: #64748b;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.15s;
+    }
+    .copy-report-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-bg);
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s;
+      border: none;
+    }
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* Sidebar Navigator */
+    .sidebar {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 5rem;
+      max-height: calc(100vh - 6rem);
+      overflow-y: auto;
+    }
+    .sidebar-header {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1e293b;
+    }
+    .legend {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.3rem; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.4rem;
+    }
+    .grid-btn {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .grid-btn:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+    .grid-btn.current {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+      font-weight: 800;
+    }
+    .grid-btn.correct {
+      background: #dcfce7;
+      color: #15803d;
+      border-color: #86efac;
+    }
+    .grid-btn.wrong {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fca5a5;
+    }
+    .grid-btn.bookmarked::after {
+      content: '★';
+      position: absolute;
+      top: 1px;
+      right: 2px;
+      font-size: 0.65rem;
+      color: #d97706;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.9);
+      color: white;
+      padding: 0.65rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none; z-index: 1000;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="site-title">
+        <span>🌿</span>
+        <span>可供食品使用中藥材食用部位測驗 (40題・講義P.23~27全收錄)</span>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-btn">
+          <span>🏠</span>
+          <span>首頁</span>
+        </a>
+        <button id="shuffleBtn" class="nav-btn" onclick="toggleShuffle()">
+          <span>🔀</span>
+          <span id="shuffleText">隨機: 關</span>
+        </button>
+        <button class="nav-btn" onclick="clearProgress()">
+          <span>🔄</span>
+          <span>重設進度</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="left-col">
+      <!-- Filter Card -->
+      <div class="filter-card">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 40 題</button>
+          <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 核心考點</button>
+          <button class="tab-btn easy-tab" onclick="setFilter('easy', this)">🟢 基礎 (15題)</button>
+          <button class="tab-btn med-tab" onclick="setFilter('medium', this)">🟡 進階 (16題)</button>
+          <button class="tab-btn hard-tab" onclick="setFilter('hard', this)">🔴 挑戰 (9題)</button>
+          <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">Ch1 根莖與地下部 (6題)</button>
+          <button class="tab-btn" onclick="setFilter('ch2', this)">Ch2 果實與果皮 (11題)</button>
+          <button class="tab-btn" onclick="setFilter('ch3', this)">Ch3 種子與種仁 (8題)</button>
+          <button class="tab-btn" onclick="setFilter('ch4', this)">Ch4 葉花與地上部 (7題)</button>
+          <button class="tab-btn" onclick="setFilter('ch5', this)">Ch5 菌藻動物與莖 (5題)</button>
+          <button class="tab-btn" onclick="setFilter('ch6', this)">Ch6 綜合比較辨析 (3題)</button>
+        </div>
+        <div class="stats-bar">
+          <div>
+            <span class="stat-badge score">答對: <span id="correctScore">0</span></span>
+            <span class="stat-badge wrong" style="margin-left: 0.75rem;">答錯: <span id="wrongScore">0</span></span>
+            <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
+          </div>
+          <div>
+            <span id="progressText">1 / 40</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Track -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+
+      <!-- Active Quiz Card -->
+      <div class="quiz-card" id="quizCard">
+        <div class="question-header">
+          <div class="header-badges">
+            <span class="category-pill" id="chapterPill">章節名稱</span>
+            <span class="exam-star-pill" id="examStarPill">🔥 核心考點</span>
+            <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="q-number" id="questionNumber">第 1 題 / 共 40 題</span>
+            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
+          </div>
+        </div>
+
+        <div class="question-text" id="questionStem">題目載入中...</div>
+
+        <div class="options-list" id="optionsList"></div>
+
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-header">
+            <span class="result-badge" id="resultBadge">解析</span>
+            <span class="source-badge" id="sourceBadge">講義來源</span>
+          </div>
+          <div class="explanation-text" id="explanationText"></div>
+          <button class="copy-report-btn" onclick="copyQuestionReport()">
+            <span>📋</span>
+            <span>複製本題資訊以供修正</span>
+          </button>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>
+            <span>⬅</span>
+            <span>上一題</span>
+          </button>
+          <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+            <span>下一題</span>
+            <span>➡</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar Navigator -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span>題號導覽 (1~40)</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/40</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--success);"></span> 答對</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--error);"></span> 答錯</div>
+      </div>
+      <div class="grid-container" id="gridContainer"></div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">已複製至剪貼簿！</div>
+
+  <script>
+    window.QUIZ_DATA = [
+  {
+    "id": 1,
+    "chapter": "根莖與地下部",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "依據講義「可同時提供食品使用之中藥材」規範，中藥材「百合」所規定的食用部位為下列何者？",
+    "options": [
+      "A. 乾燥肉質鱗葉",
+      "B. 乾燥塊莖",
+      "C. 乾燥根莖",
+      "D. 乾燥全草"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 23 頁明確載明：百合（來源為卷丹、百合、細葉百合）之規定食用部位為「乾燥肉質鱗葉」（注意：百合食用為肥厚肉質之鱗葉，而非整粒鱗莖或根莖）。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 2,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "睡蓮科植物蓮（Nelumbo nucifera）的葉片常入藥與藥膳，講義規範「荷葉」的食用部位為何？",
+    "options": [
+      "A. 新鮮幼嫩嫩芽",
+      "B. 乾燥葉",
+      "C. 乾燥葉柄",
+      "D. 乾燥全草"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：荷葉（基原為蓮 Nelumbo nucifera Gaertn.）之食用部位為「乾燥葉」。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 3,
+    "chapter": "菌藻動物與莖",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "民間常做成甜品滋陰潤肺的「銀耳（白木耳）」，在真菌分類與食品規範中，其食用部位屬於：",
+    "options": [
+      "A. 乾燥菌絲體",
+      "B. 乾燥子實體",
+      "C. 乾燥菌核",
+      "D. 發酵菌液"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：銀耳（白木耳，基原為銀耳 Tremella fuciformis Berk.）之食用部位為「乾燥子實體」。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 4,
+    "chapter": "根莖與地下部",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "四神湯重要原料「山藥」（薯蕷、恆春薯蕷、基隆山藥），依講義規定之食用部位為：",
+    "options": [
+      "A. 乾燥塊根",
+      "B. 乾燥根莖",
+      "C. 乾燥球莖",
+      "D. 新鮮全草"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：山藥（基原為薯蕷、恆春薯蕷、基隆山藥）之食用部位為「乾燥根莖」（常考易混淆點：山藥非塊根，植物學器官歸屬為地下根莖）。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 5,
+    "chapter": "根莖與地下部",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "辛溫解表中藥「生薑」，講義特別註記其食用部位的狀態與器官，下列敘述何者完全正確？",
+    "options": [
+      "A. 乾燥塊根",
+      "B. 新鮮根莖",
+      "C. 烘乾鱗莖",
+      "D. 蒸熟塊莖"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：生薑（基原為薑 Zingiber officinale Rosc.）之食用部位特別規範為「新鮮根莖」（注意：生薑必須為新鮮狀態，若乾燥則為乾薑）。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 6,
+    "chapter": "菌藻動物與莖",
+    "difficulty": "medium",
+    "isExamStar": false,
+    "question": "大型藻類中藥材「昆布」（海帶、昆布），講義所載明之規定食用部位名稱為：",
+    "options": [
+      "A. 乾燥葉狀體",
+      "B. 乾燥全藻體",
+      "C. 乾燥固著器",
+      "D. 乾燥根狀莖"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 23 頁載明：昆布（基原為海帶 Laminaria japonica Aresch. 或昆布 Ecklonia kurome Okam.）之食用部位為「乾燥葉狀體」（對比海藻之食用部位為「乾燥藻體」）。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 7,
+    "chapter": "根莖與地下部",
+    "difficulty": "medium",
+    "isExamStar": false,
+    "question": "常用於胸痺心痛、通陽散結之中藥材「薤白」（小根蒜、薤），其規定之食用部位為：",
+    "options": [
+      "A. 乾燥肉質鱗葉",
+      "B. 乾燥鱗莖",
+      "C. 乾燥根莖",
+      "D. 乾燥塊根"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：薤白（基原為小根蒜 Allium macrostemon 或薤 Allium chinense）之食用部位為「乾燥鱗莖」。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 8,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "具有清熱解毒、涼血止血功效的「馬齒莧」，依講義食用部位規範屬於：",
+    "options": [
+      "A. 乾燥地下根部",
+      "B. 乾燥地上部分",
+      "C. 乾燥種子",
+      "D. 乾燥果皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 23 頁載明：馬齒莧（Portulaca oleracea L.）之食用部位為「乾燥地上部分」。",
+    "source": "藥用植物學 1 P.23 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 9,
+    "chapter": "根莖與地下部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "百合科/蔥科植物「蒜（小蒜）」，其供食品使用之中藥材規定部位為：",
+    "options": [
+      "A. 乾燥種子",
+      "B. 乾燥鱗莖",
+      "C. 新鮮地上莖",
+      "D. 乾燥肉質根"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：蒜（小蒜，基原為小蒜 Allium macrostemon Bunge.）之食用部位為「乾燥鱗莖」。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 10,
+    "chapter": "菌藻動物與莖",
+    "difficulty": "medium",
+    "isExamStar": false,
+    "question": "中藥材「海藻」（海蒿子、羊棲菜）軟堅散結、消痰利水，其規定之食用部位為：",
+    "options": [
+      "A. 乾燥葉狀體",
+      "B. 乾燥藻體",
+      "C. 乾燥孢子囊群",
+      "D. 乾燥根部固著器"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：海藻（基原為海蒿子 Sargassum pallidum 或羊棲菜 Sargassum fusiforme）之食用部位為「乾燥藻體」（注意與昆布的乾燥葉狀體區分）。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 11,
+    "chapter": "果實與果皮",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "溫中散寒、理氣止痛常用香料中藥「小茴香（茴香子）」，其食用部位為：",
+    "options": [
+      "A. 乾燥成熟果皮",
+      "B. 乾燥成熟果實",
+      "C. 乾燥成熟種子",
+      "D. 乾燥花蕾"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：小茴香（茴香子，基原為茴香 Foeniculum vulgare Mill.）之食用部位為「乾燥成熟果實」。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 12,
+    "chapter": "果實與果皮",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "烹調常用的八角（大茴香），基原為 Illicium verum，其食用部位規範為：",
+    "options": [
+      "A. 乾燥花序",
+      "B. 乾燥成熟果實",
+      "C. 乾燥樹皮",
+      "D. 乾燥種仁"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：八角茴香（大茴香，基原為八角茴香 Illicium verum Hook. f.）之食用部位為「乾燥成熟果實」。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 13,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "常用香草中藥「羅勒」（九層塔同屬近緣），講義載明之食用部位為：",
+    "options": [
+      "A. 乾燥根莖",
+      "B. 全草",
+      "C. 成熟種子",
+      "D. 花序"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：羅勒（Ocimum basilicum）之食用部位為「全草」。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 14,
+    "chapter": "果實與果皮",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "滋補心脾要藥「龍眼肉」（Dimocarpus longan），在講義表列中其精準的食用部位描述為：",
+    "options": [
+      "A. 乾燥種仁",
+      "B. 乾燥之中果皮及果肉（假種皮）",
+      "C. 乾燥全果實連核",
+      "D. 乾燥外果皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：龍眼肉之食用部位精確標註為「乾燥之中果皮及果肉」（植物學上可食之龍眼肉主要為肉質假種皮 aril 及中果皮部分）。",
+    "source": "藥用植物學 1 P.24 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 15,
+    "chapter": "果實與果皮",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "明目滋補名藥「枸杞子」，講義手寫筆記特別標註何處出產者為「道地藥材」？其食用部位為何？",
+    "options": [
+      "A. 寧夏枸杞；乾燥果實",
+      "B. 廣東枸杞；乾燥種子",
+      "C. 四川枸杞；乾燥果皮",
+      "D. 雲南枸杞；乾燥根皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 24 頁載明：枸杞子之食用部位為「乾燥果實」；且在寧夏枸杞（Lycium barbarum L.）旁手寫特別標註「道地藥材」。",
+    "source": "藥用植物學 1 P.24 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 16,
+    "chapter": "果實與果皮",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "酸澀收斂之生津名藥「烏梅」，講義對其採收成熟度與製作工藝有特別註記，下列描述何者完全正確？",
+    "options": [
+      "A. 乾燥完全過熟果實，經硫磺燻製而成",
+      "B. 乾燥近成熟果實，經燻製而成",
+      "C. 新鮮未成熟果實，經蜜炙烘乾而成",
+      "D. 乾燥成熟果核，經鹽醃日曬而成"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 24 頁載明：烏梅（梅 Prunus mume）之食用部位特別載明為「乾燥近成熟果實，經燻製而成」（注意：是『近成熟』果實，且必須『經燻製』）。",
+    "source": "藥用植物學 1 P.24 (🔥講義加工細節考點)"
+  },
+  {
+    "id": 17,
+    "chapter": "果實與果皮",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "常用補氣健脾中藥「大棗」，講義第 25 頁明確對「紅棗」與「黑棗」的加工工藝作出了區別，下列何者正確？",
+    "options": [
+      "A. 紅棗為成熟果實烘乾或曬乾；黑棗為成熟果實滾水快煮後，撈出放冷燻製而成",
+      "B. 紅棗為未成熟果實酒炙；黑棗為過熟果實醋炒",
+      "C. 紅棗為果實去皮日曬；黑棗為果實加蜜糖蒸煮",
+      "D. 紅棗為自然落果陰乾；黑棗為硫磺燻乾"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 25 頁載明：大棗食用部位為「乾燥成熟果實」；其中「紅棗：成熟果實烘乾或曬乾」；「黑棗：成熟果實滾水快煮後，撈出放冷燻製而成」。",
+    "source": "藥用植物學 1 P.25 (🔥講義加工細節考點)"
+  },
+  {
+    "id": 18,
+    "chapter": "果實與果皮",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "消食化積名藥「山楂」，其規定食用部位為何？講義在山楂旁手寫特別標註了哪兩個核心作用？",
+    "options": [
+      "A. 乾燥成熟果皮；手寫標註「清熱&利水」",
+      "B. 乾燥成熟果實；手寫標註「消食&收斂」",
+      "C. 乾燥幼嫩果實；手寫標註「理氣&燥濕」",
+      "D. 乾燥成熟種仁；手寫標註「潤下&潤燥」"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：山楂（Crataegus pinnatifida 等）之食用部位為「乾燥成熟果實」；右側手寫字跡特別標註核心功效「消食&收斂」。",
+    "source": "藥用植物學 1 P.25 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 19,
+    "chapter": "果實與果皮",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "溫中散寒之調味名藥「秦椒（花椒）」，芸香科植物來源，其法規規定的食用部位為何？",
+    "options": [
+      "A. 乾燥成熟果實",
+      "B. 乾燥成熟果皮",
+      "C. 乾燥成熟種子",
+      "D. 乾燥假種皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：秦椒（花椒，基原為花椒或青椒）之食用部位為「乾燥成熟果皮」（注意：花椒食用入藥的是裂開的果皮，黑色的種子椒目另有用途）。",
+    "source": "藥用植物學 1 P.25 (🔥易混淆考點)"
+  },
+  {
+    "id": 20,
+    "chapter": "果實與果皮",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "胡椒科植物胡椒（Piper nigrum L.），講義規定之食用部位為：",
+    "options": [
+      "A. 乾燥成熟果皮",
+      "B. 乾燥成熟果實",
+      "C. 乾燥成熟種仁",
+      "D. 乾燥根莖"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：胡椒之食用部位為「乾燥成熟果實」（花椒為果皮，胡椒為果實）。",
+    "source": "藥用植物學 1 P.25 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 21,
+    "chapter": "種子與種仁",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "益腎固精、健脾止瀉常用藥「芡實」（雞頭米），其在食品使用規範中的確切部位為：",
+    "options": [
+      "A. 乾燥成熟果皮",
+      "B. 乾燥成熟果實",
+      "C. 乾燥成熟種仁",
+      "D. 乾燥胚根"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。講義第 25 頁載明：芡實（芡 Euryale ferox Salisb.）之食用部位為「乾燥成熟種仁」（去除外種皮後的種仁）。",
+    "source": "藥用植物學 1 P.25 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 22,
+    "chapter": "種子與種仁",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "解表除煩常用發酵中藥「淡豆豉」，其基原植物為大豆，講義對其食用部位與製法規定為：",
+    "options": [
+      "A. 成熟種子，經食鹽浸泡風乾而成",
+      "B. 成熟種子，加藥汁蒸煮、發酵製成",
+      "C. 未成熟豆莢，經高溫油炸脫水而成",
+      "D. 發芽種子，經炭火炒黑而成"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：淡豆豉之食用部位規範為「成熟種子，加藥汁蒸煮、發酵製成」（大豆加桑葉、青蒿等藥汁蒸煮發酵）。",
+    "source": "藥用植物學 1 P.25 (🔥講義發酵工藝考點)"
+  },
+  {
+    "id": 23,
+    "chapter": "種子與種仁",
+    "difficulty": "medium",
+    "isExamStar": false,
+    "question": "養心安神名藥「蓮子」（蓮 Nelumbo nucifera），講義第 25 頁表列其食用部位為：",
+    "options": [
+      "A. 乾燥花蕾",
+      "B. 乾燥成熟果實",
+      "C. 乾燥胚芽",
+      "D. 乾燥假種皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：蓮子（Nelumbo nucifera Gaertn.）之規定食用部位為「乾燥成熟果實」（植物學上蓮子為小堅果，講義列為成熟果實）。",
+    "source": "藥用植物學 1 P.25 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 24,
+    "chapter": "種子與種仁",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "利水消腫常用藥材「赤小豆」（赤小豆、赤豆），其規定之食用部位為：",
+    "options": [
+      "A. 乾燥成熟種子",
+      "B. 乾燥成熟種仁",
+      "C. 乾燥成熟果莢",
+      "D. 乾燥地上部分"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 25 頁載明：赤小豆（基原為赤小豆或赤豆）之食用部位為「乾燥成熟種子」。",
+    "source": "藥用植物學 1 P.25 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 25,
+    "chapter": "種子與種仁",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "健脾滲濕、排膿消腫之「薏苡仁」，其規定食用部位精確描述為：",
+    "options": [
+      "A. 乾燥全果實",
+      "B. 乾燥成熟種仁",
+      "C. 乾燥根莖",
+      "D. 乾燥胚芽"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 25 頁載明：薏苡仁（Coix lacryma-jobi L. var. ma-yuen）之食用部位為「乾燥成熟種仁」（去除外殼與種皮之種仁）。",
+    "source": "藥用植物學 1 P.25 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 26,
+    "chapter": "菌藻動物與莖",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "平肝潛陽、軟堅散結之動物類藥材「牡蠣殼」，其規定之食用部位為：",
+    "options": [
+      "A. 肌肉軟體部",
+      "B. 貝殼",
+      "C. 珍珠質粉末",
+      "D. 卵巢及消化腺"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 26 頁載明：牡蠣殼（來源為長牡蠣、大連灣牡蠣、近江牡蠣、葡萄牙牡蠣等）之食用部位為「貝殼」。",
+    "source": "藥用植物學 1 P.26 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 27,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "疏散風熱、清肝明目名藥「菊花」（Chrysanthemum morifolium），其規定之食用部位屬於植物學何種器官？",
+    "options": [
+      "A. 乾燥花瓣",
+      "B. 乾燥頭狀花序",
+      "C. 乾燥管狀花",
+      "D. 乾燥花蕾"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 26 頁載明：菊花之食用部位為「乾燥頭狀花序」（菊科特有的頭狀花序）。",
+    "source": "藥用植物學 1 P.26 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 28,
+    "chapter": "根莖與地下部",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "補氣養陰、健脾潤肺名藥「黃精」（多花黃精、黃精、滇黃精），其規定之食用部位為：",
+    "options": [
+      "A. 乾燥塊根",
+      "B. 乾燥根莖",
+      "C. 乾燥肉質鱗葉",
+      "D. 乾燥果實"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 26 頁載明：黃精之食用部位為「乾燥根莖」（黃精為百合科植物地下橫走的肉質根莖）。",
+    "source": "藥用植物學 1 P.26 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 29,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "疏散風熱、清利頭目名藥「薄荷」，依講義食用部位規範為：",
+    "options": [
+      "A. 乾燥地上部分",
+      "B. 乾燥根莖",
+      "C. 乾燥花序",
+      "D. 乾燥果皮"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 26 頁載明：薄荷（Mentha haplocalyx Briq. 及同屬近緣植物）之食用部位為「乾燥地上部分」。",
+    "source": "藥用植物學 1 P.26 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 30,
+    "chapter": "葉花與地上部",
+    "difficulty": "easy",
+    "isExamStar": false,
+    "question": "民間常用降脂保肝茶飲「絞股藍（七葉膽）」，其規定之食用部位為：",
+    "options": [
+      "A. 乾燥成熟果實",
+      "B. 乾燥全草",
+      "C. 乾燥根莖",
+      "D. 乾燥樹皮"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 26 頁載明：絞股藍（七葉膽，Gynostemma pentaphyllum Makino）之食用部位為「乾燥全草」。",
+    "source": "藥用植物學 1 P.26 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 31,
+    "chapter": "種子與種仁",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "清熱明目、潤腸通便之「決明子」，其食用部位為乾燥種子；講義第 26 頁手寫筆記特別標註好藥材的外觀特徵與功效關聯為何？",
+    "options": [
+      "A. 好藥材「稜筋多且高」 > 潤、通便",
+      "B. 好藥材「顆粒圓且黑」 > 補血、安神",
+      "C. 好藥材「皮厚有絨毛」 > 止汗、固表",
+      "D. 好藥材「氣味辛辣濃」 > 溫中、止嘔"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 26 頁載明：決明子食用部位為「乾燥種子」；手寫筆記特徵明確標記：「好藥材：稜筋多且高 > 潤、通便」。",
+    "source": "藥用植物學 1 P.26 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 32,
+    "chapter": "菌藻動物與莖",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "養胃生津、滋陰清熱名貴藥材「石斛」（金釵石斛、鐵皮石斛等），講義規定之食用部位描述具有何種特點？",
+    "options": [
+      "A. 僅限乾燥塊根",
+      "B. 新鮮或乾燥莖",
+      "C. 乾燥花蕾",
+      "D. 僅限乾燥假鱗莖"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 27 頁載明：石斛（Dendrobium nobile 等多種石斛）之食用部位特別載明為「新鮮或乾燥莖」（既可鮮用如鮮石斛榨汁，亦可乾燥入藥）。",
+    "source": "藥用植物學 1 P.27 (🔥講義特殊規格考點)"
+  },
+  {
+    "id": 33,
+    "chapter": "果實與果皮",
+    "difficulty": "easy",
+    "isExamStar": true,
+    "question": "理氣健脾、燥濕化痰要藥「陳皮」，其基原植物為橘及其栽培品種，食用部位為：",
+    "options": [
+      "A. 乾燥幼嫩幼果",
+      "B. 乾燥成熟果皮",
+      "C. 乾燥假種皮",
+      "D. 乾燥成熟種子"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 27 頁載明：陳皮（Citrus reticulata Blanco 及其栽培品種）之食用部位為「乾燥成熟果皮」（未成熟果皮為青皮，幼果為枳實）。",
+    "source": "藥用植物學 1 P.27 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 34,
+    "chapter": "種子與種仁",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "溫中行氣、澀腸止瀉名藥「肉豆蔻」（Myristica fragrans），其規定之食用部位為：",
+    "options": [
+      "A. 乾燥假種皮",
+      "B. 乾燥成熟果皮",
+      "C. 乾燥種仁",
+      "D. 乾燥成熟全果實"
+    ],
+    "answer": 2,
+    "explanation": "正確答案為 C。講義第 27 頁載明：肉豆蔻之食用部位為「乾燥種仁」（其假種皮肉豆蔻皮 Mace 與種仁 Nutmeg 分開使用，表列部位為種仁）。",
+    "source": "藥用植物學 1 P.27 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 35,
+    "chapter": "種子與種仁",
+    "difficulty": "medium",
+    "isExamStar": false,
+    "question": "溫中燥濕名藥「草豆蔻」（Alpinia katsumadai），薑科植物，其食用部位規範為：",
+    "options": [
+      "A. 乾燥近成熟種子",
+      "B. 乾燥成熟果皮",
+      "C. 乾燥根莖",
+      "D. 乾燥成熟種仁"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 27 頁載明：草豆蔻之食用部位為「乾燥近成熟種子」（注意成熟度為『近成熟』）。",
+    "source": "藥用植物學 1 P.27 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 36,
+    "chapter": "果實與果皮",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "化濕開胃、溫脾止瀉之「砂仁」（陽春砂、縮砂、海南砂），其規定食用部位為：",
+    "options": [
+      "A. 乾燥成熟果皮",
+      "B. 乾燥成熟果實",
+      "C. 乾燥種仁",
+      "D. 乾燥地上莖"
+    ],
+    "answer": 1,
+    "explanation": "正確答案為 B。講義第 27 頁載明：砂仁（Amomum villosum 等）之食用部位為「乾燥成熟果實」。",
+    "source": "藥用植物學 1 P.27 (🔥衛福部中藥材食用部位表)"
+  },
+  {
+    "id": 37,
+    "chapter": "葉花與地上部",
+    "difficulty": "medium",
+    "isExamStar": true,
+    "question": "五加科人參（Panax ginseng）的花部亦可供食品使用，其食用部位為何？講義在人參花下方手寫特別註記了什麼？",
+    "options": [
+      "A. 乾燥花序；手寫註記「溫不能多」",
+      "B. 乾燥花柱；手寫註記「寒不可久服」",
+      "C. 乾燥花蕾；手寫註記「瀉火解毒」",
+      "D. 乾燥雄蕊；手寫註記「活血通經」"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 27 頁載明：人參花之食用部位為「乾燥花序」；下方手寫字跡特別標註提示：「溫不能多」（性溫補氣，不可過量）。",
+    "source": "藥用植物學 1 P.27 (🔥手寫筆記重點)"
+  },
+  {
+    "id": 38,
+    "chapter": "綜合比較辨析",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "【綜合比較】依據講義「可同時提供食品使用之中藥材」清單，下列哪一組藥材的食用部位「皆規定為乾燥成熟果皮」，而非果實本身？",
+    "options": [
+      "A. 陳皮 與 秦椒（花椒）",
+      "B. 胡椒 與 砂仁",
+      "C. 小茴香 與 八角茴香",
+      "D. 山楂 與 烏梅"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。比對講義第 25 頁與第 27 頁：陳皮與秦椒（花椒）的規定食用部位皆為「乾燥成熟果皮」；B 組（胡椒、砂仁）與 C 組（小茴香、八角茴香）皆為「乾燥成熟果實」；D 組山楂為「果實」，烏梅為「近成熟果實燻製」。",
+    "source": "藥用植物學 1 P.24~27 (🔥跨藥材部位綜合考點)"
+  },
+  {
+    "id": 39,
+    "chapter": "綜合比較辨析",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "【綜合比較】在中藥材食用部位的精準定義中，「種仁（除去外種皮或果殼）」與「種子」常有嚴格區分。下列哪一組藥材的食用部位「皆規定為種仁」？",
+    "options": [
+      "A. 芡實、薏苡仁、肉豆蔻",
+      "B. 赤小豆、決明子、草豆蔻",
+      "C. 蓮子、黑棗、淡豆豉",
+      "D. 枸杞子、小茴香、胡椒"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義載明：芡實（P.25）、薏苡仁（P.25）、肉豆蔻（P.27）之規定食用部位均為「乾燥成熟種仁」；B 組赤小豆與決明子為「種子」、草豆蔻為「近成熟種子」；C 組蓮子與黑棗為「果實」、淡豆豉為「成熟種子經蒸煮發酵」；D 組皆為「果實」。",
+    "source": "藥用植物學 1 P.25, P.27 (🔥名詞規格辨析)"
+  },
+  {
+    "id": 40,
+    "chapter": "綜合比較辨析",
+    "difficulty": "hard",
+    "isExamStar": true,
+    "question": "【綜合比較】依據講義第 24 頁至第 25 頁之記載，下列哪兩種中藥材在製成食用規格時，其加工工藝中皆明確標註包含「燻製」步驟？",
+    "options": [
+      "A. 烏梅 與 黑棗",
+      "B. 紅棗 與 山楂",
+      "C. 生薑 與 陳皮",
+      "D. 淡豆豉 與 熟地黃"
+    ],
+    "answer": 0,
+    "explanation": "正確答案為 A。講義第 24 頁載明烏梅為「乾燥近成熟果實，經燻製而成」；第 25 頁載明黑棗為「成熟果實滾水快煮後，撈出放冷燻製而成」。兩者皆有明確的「燻製」工藝記載。",
+    "source": "藥用植物學 1 P.24, P.25 (🔥特殊工藝對比考點)"
+  }
+];
+  </script>
+  <script>
+(function() {
+  let allQuestions = [];
+  let activeQuestions = [];
+  let currentIndex = 0;
+  let userAnswers = {};
+  let wrongIds = new Set();
+  let bookmarkIds = new Set();
+  let currentFilter = 'all';
+  let isShuffle = false;
+
+  const STORAGE_KEY = 'tajen_edible_herbs_progress_v1';
+
+  // DOM elements
+  const qNum = document.getElementById('questionNumber');
+  const qStem = document.getElementById('questionStem');
+  const optsList = document.getElementById('optionsList');
+  const expBox = document.getElementById('explanationBox');
+  const resBadge = document.getElementById('resultBadge');
+  const srcBadge = document.getElementById('sourceBadge');
+  const expText = document.getElementById('explanationText');
+  const qChapter = document.getElementById('chapterPill');
+  const qExamStar = document.getElementById('examStarPill');
+  const qDifficulty = document.getElementById('difficultyPill');
+  const qBookmark = document.getElementById('bookmarkBtn');
+  const pBar = document.getElementById('progressBar');
+  const pText = document.getElementById('progressText');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const gridContainer = document.getElementById('gridContainer');
+  const toast = document.getElementById('toast');
+  const shuffleBtn = document.getElementById('shuffleBtn');
+  const shuffleText = document.getElementById('shuffleText');
+
+  const correctScore = document.getElementById('correctScore');
+  const wrongScore = document.getElementById('wrongScore');
+  const bookmarkScore = document.getElementById('bookmarkScore');
+  const wrongCountLabel = document.getElementById('wrongCountLabel');
+  const bookmarkCountLabel = document.getElementById('bookmarkCountLabel');
+  const navStats = document.getElementById('navStats');
+
+  function loadStorage() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      userAnswers = data.answers || {};
+      wrongIds = new Set(data.wrongs || []);
+      bookmarkIds = new Set(data.bookmarks || []);
+      isShuffle = data.isShuffle || false;
+    } catch(e) {
+      userAnswers = {};
+      wrongIds = new Set();
+      bookmarkIds = new Set();
+      isShuffle = false;
+    }
+  }
+
+  function saveStorage() {
+    try {
+      const data = {
+        answers: userAnswers,
+        wrongs: Array.from(wrongIds),
+        bookmarks: Array.from(bookmarkIds),
+        isShuffle: isShuffle
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch(e) {}
+  }
+
+  window.clearProgress = function() {
+    if (confirm('確定要重設所有答題記錄與標記嗎？此操作不可逆。')) {
+      localStorage.removeItem(STORAGE_KEY);
+      userAnswers = {};
+      wrongIds.clear();
+      bookmarkIds.clear();
+      isShuffle = false;
+      updateShuffleUI();
+      setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+      showToast('進度已完全重設！');
+    }
+  };
+
+  function updateShuffleUI() {
+    if (shuffleText) {
+      shuffleText.textContent = isShuffle ? '隨機: 開' : '隨機: 關';
+      if (isShuffle) shuffleBtn.classList.add('active-shuffle');
+      else shuffleBtn.classList.remove('active-shuffle');
+    }
+  }
+
+  window.toggleShuffle = function() {
+    isShuffle = !isShuffle;
+    updateShuffleUI();
+    saveStorage();
+    if (isShuffle) {
+      shuffleArray(activeQuestions);
+      showToast('🔀 已開啟隨機亂序出題！');
+    } else {
+      reapplyFilterOrder();
+      showToast('已恢復正常題號循序！');
+    }
+    currentIndex = 0;
+    renderQuestion();
+    renderGrid();
+  };
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  function reapplyFilterOrder() {
+    const activeIds = new Set(activeQuestions.map(q => q.id));
+    activeQuestions = allQuestions.filter(q => activeIds.has(q.id));
+  }
+
+  window.setFilter = function(filterType, btnElem) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    if (btnElem) btnElem.classList.add('active');
+    currentFilter = filterType;
+
+    if (filterType === 'all') {
+      activeQuestions = [...allQuestions];
+    } else if (filterType === 'star') {
+      activeQuestions = allQuestions.filter(q => q.isExamStar);
+    } else if (filterType === 'easy') {
+      activeQuestions = allQuestions.filter(q => q.difficulty === 'easy');
+    } else if (filterType === 'medium') {
+      activeQuestions = allQuestions.filter(q => q.difficulty === 'medium');
+    } else if (filterType === 'hard') {
+      activeQuestions = allQuestions.filter(q => q.difficulty === 'hard');
+    } else if (filterType === 'wrong') {
+      activeQuestions = allQuestions.filter(q => wrongIds.has(q.id));
+      if (activeQuestions.length === 0) {
+        alert('目前尚無錯題！答錯的題目會自動記錄於此。');
+        setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+        return;
+      }
+    } else if (filterType === 'bookmarked') {
+      activeQuestions = allQuestions.filter(q => bookmarkIds.has(q.id));
+      if (activeQuestions.length === 0) {
+        alert('目前尚無收藏題目！點擊題目右上角的星號即可收藏。');
+        setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+        return;
+      }
+    } else if (filterType === 'ch1') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('根莖'));
+    } else if (filterType === 'ch2') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('果實') || q.chapter.includes('果皮'));
+    } else if (filterType === 'ch3') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('種子') || q.chapter.includes('種仁'));
+    } else if (filterType === 'ch4') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('葉花') || q.chapter.includes('地上部'));
+    } else if (filterType === 'ch5') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('菌藻') || q.chapter.includes('動物') || q.chapter.includes('莖'));
+    } else if (filterType === 'ch6') {
+      activeQuestions = allQuestions.filter(q => q.chapter.includes('綜合'));
+    }
+
+    if (isShuffle) shuffleArray(activeQuestions);
+    currentIndex = 0;
+    renderQuestion();
+    renderGrid();
+  };
+
+  function updateStats() {
+    let correctCount = 0;
+    let wrongCount = 0;
+    Object.keys(userAnswers).forEach(qid => {
+      const q = allQuestions.find(item => item.id === parseInt(qid, 10));
+      if (q) {
+        if (userAnswers[qid] === q.answer) correctCount++;
+        else wrongCount++;
+      }
+    });
+
+    if (correctScore) correctScore.textContent = correctCount;
+    if (wrongScore) wrongScore.textContent = wrongCount;
+    if (bookmarkScore) bookmarkScore.textContent = bookmarkIds.size;
+    if (wrongCountLabel) wrongCountLabel.textContent = wrongIds.size;
+    if (bookmarkCountLabel) bookmarkCountLabel.textContent = bookmarkIds.size;
+
+    const totalAnswered = Object.keys(userAnswers).length;
+    if (navStats) navStats.textContent = `${totalAnswered}/${allQuestions.length}`;
+  }
+
+  function renderQuestion() {
+    if (!activeQuestions || activeQuestions.length === 0) {
+      qStem.textContent = '無符合條件之題目。';
+      optsList.innerHTML = '';
+      expBox.classList.remove('active');
+      return;
+    }
+
+    const q = activeQuestions[currentIndex];
+    qNum.textContent = `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題 (題號 #${q.id})`;
+    qStem.textContent = q.question;
+
+    qChapter.textContent = q.chapter;
+    qExamStar.style.display = q.isExamStar ? 'inline-block' : 'none';
+
+    qDifficulty.className = 'difficulty-pill';
+    if (q.difficulty === 'easy') {
+      qDifficulty.classList.add('difficulty-easy');
+      qDifficulty.textContent = '🟢 基礎 (易)';
+    } else if (q.difficulty === 'medium') {
+      qDifficulty.classList.add('difficulty-medium');
+      qDifficulty.textContent = '🟡 進階 (中)';
+    } else if (q.difficulty === 'hard') {
+      qDifficulty.classList.add('difficulty-hard');
+      qDifficulty.textContent = '🔴 挑戰 (難)';
+    }
+
+    if (bookmarkIds.has(q.id)) {
+      qBookmark.classList.add('active');
+      qBookmark.title = '取消收藏';
+    } else {
+      qBookmark.classList.remove('active');
+      qBookmark.title = '加入收藏';
+    }
+
+    const percent = Math.round(((currentIndex + 1) / activeQuestions.length) * 100);
+    pBar.style.width = `${percent}%`;
+    pText.textContent = `${currentIndex + 1} / ${activeQuestions.length} (${percent}%)`;
+
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === activeQuestions.length - 1;
+
+    const answered = userAnswers[q.id] !== undefined;
+    const userChoice = userAnswers[q.id];
+
+    optsList.innerHTML = '';
+    const letters = ['A', 'B', 'C', 'D'];
+
+    q.options.forEach((optText, optIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.disabled = answered;
+
+      const prefixSpan = document.createElement('span');
+      prefixSpan.className = 'option-prefix';
+      prefixSpan.textContent = letters[optIdx] + '.';
+
+      const textSpan = document.createElement('span');
+      textSpan.textContent = optText.replace(/^[A-D]\.\s*/, '');
+
+      btn.appendChild(prefixSpan);
+      btn.appendChild(textSpan);
+
+      if (answered) {
+        if (optIdx === q.answer) {
+          btn.classList.add('correct');
+        } else if (optIdx === userChoice) {
+          btn.classList.add('wrong');
+        }
+      } else {
+        btn.onclick = () => selectOption(optIdx);
+      }
+
+      optsList.appendChild(btn);
+    });
+
+    if (answered) {
+      expBox.classList.add('active');
+      if (userChoice === q.answer) {
+        resBadge.textContent = '答對！ 🎉';
+        resBadge.style.color = '#15803d';
+      } else {
+        resBadge.textContent = '答錯了！ 💡';
+        resBadge.style.color = '#b91c1c';
+      }
+      srcBadge.textContent = q.source || '講義重點';
+      expText.textContent = q.explanation;
+    } else {
+      expBox.classList.remove('active');
+    }
+
+    updateStats();
+  }
+
+  function selectOption(idx) {
+    const q = activeQuestions[currentIndex];
+    userAnswers[q.id] = idx;
+
+    if (idx === q.answer) {
+      wrongIds.delete(q.id);
+    } else {
+      wrongIds.add(q.id);
+    }
+
+    saveStorage();
+    renderQuestion();
+    renderGrid();
+  }
+
+  window.toggleBookmark = function() {
+    if (!activeQuestions[currentIndex]) return;
+    const qid = activeQuestions[currentIndex].id;
+    if (bookmarkIds.has(qid)) {
+      bookmarkIds.delete(qid);
+      showToast('已取消收藏');
+    } else {
+      bookmarkIds.add(qid);
+      showToast('⭐ 已加入收藏題庫！');
+    }
+    saveStorage();
+    renderQuestion();
+    renderGrid();
+  };
+
+  window.nextQuestion = function() {
+    if (currentIndex < activeQuestions.length - 1) {
+      currentIndex++;
+      renderQuestion();
+      renderGrid();
+    }
+  };
+
+  window.prevQuestion = function() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderQuestion();
+      renderGrid();
+    }
+  };
+
+  function renderGrid() {
+    gridContainer.innerHTML = '';
+    activeQuestions.forEach((q, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'grid-btn';
+      btn.textContent = q.id;
+
+      if (idx === currentIndex) {
+        btn.classList.add('current');
+      }
+
+      if (userAnswers[q.id] !== undefined) {
+        if (userAnswers[q.id] === q.answer) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('wrong');
+        }
+      }
+
+      if (bookmarkIds.has(q.id)) {
+        btn.classList.add('bookmarked');
+      }
+
+      btn.onclick = () => {
+        currentIndex = idx;
+        renderQuestion();
+        renderGrid();
+      };
+
+      gridContainer.appendChild(btn);
+    });
+  }
+
+  window.copyQuestionReport = function() {
+    const q = activeQuestions[currentIndex];
+    const letters = ['A', 'B', 'C', 'D'];
+    const diffMap = { easy: '易 (基礎)', medium: '中 (進階)', hard: '難 (挑戰)' };
+    const text = `【中藥材食用部位題目勘誤回報】
+題號: #${q.id}
+章節: ${q.chapter}
+難度: ${diffMap[q.difficulty] || q.difficulty}
+出處: ${q.source}
+題目: ${q.question}
+選項:
+  A. ${q.options[0].replace(/^[A-D]\.\s*/, '')}
+  B. ${q.options[1].replace(/^[A-D]\.\s*/, '')}
+  C. ${q.options[2].replace(/^[A-D]\.\s*/, '')}
+  D. ${q.options[3].replace(/^[A-D]\.\s*/, '')}
+正確答案: ${letters[q.answer]}
+解析: ${q.explanation}
+
+建議修改或補充:
+`;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('📋 已複製題目回報格式至剪貼簿！');
+    }).catch(() => {
+      alert('複製失敗，請手動複製。');
+    });
+  };
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2000);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      nextQuestion();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      prevQuestion();
+    } else if (['1', '2', '3', '4'].includes(e.key)) {
+      const idx = parseInt(e.key, 10) - 1;
+      const q = activeQuestions[currentIndex];
+      if (q && userAnswers[q.id] === undefined) {
+        selectOption(idx);
+      }
+    }
+  });
+
+  // Init
+  window.addEventListener('DOMContentLoaded', () => {
+    allQuestions = window.QUIZ_DATA || [];
+    activeQuestions = [...allQuestions];
+    loadStorage();
+    updateShuffleUI();
+    if (isShuffle) {
+      shuffleArray(activeQuestions);
+    }
+    renderQuestion();
+    renderGrid();
+  });
+})();
+  </script>
+</body>
+</html>
