@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中醫概論 期中考全真是非題題庫 (60題・鄭凱駿老師課堂與考古題全收錄)</title>
+  <title>中醫概論 期中考全真是非題題庫 (120題・基本題60題＋進階題60題分區練習)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
@@ -67,7 +67,7 @@
     }
 
     .site-title {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -138,7 +138,7 @@
     .filter-card {
       background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 1rem;
+      padding: 1.1rem;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
@@ -146,7 +146,7 @@
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.45rem;
       margin-bottom: 0.75rem;
     }
 
@@ -173,6 +173,30 @@
       border-color: var(--primary);
     }
 
+    .tab-btn.basic-tab {
+      color: #15803d;
+      border-color: #86efac;
+      background: #f0fdf4;
+    }
+
+    .tab-btn.basic-tab.active {
+      background: #16a34a;
+      color: white;
+      border-color: #16a34a;
+    }
+
+    .tab-btn.advanced-tab {
+      color: #b45309;
+      border-color: #fde047;
+      background: #fefce8;
+    }
+
+    .tab-btn.advanced-tab.active {
+      background: #d97706;
+      color: white;
+      border-color: #d97706;
+    }
+
     .tab-btn.wrong-tab {
       color: var(--error);
       border-color: #fca5a5;
@@ -185,14 +209,14 @@
     }
 
     .tab-btn.star-tab {
-      color: var(--accent);
-      border-color: #fcd34d;
+      color: #b45309;
+      border-color: #fed7aa;
     }
 
     .tab-btn.star-tab.active {
-      background: var(--accent);
+      background: #ea580c;
       color: white;
-      border-color: var(--accent);
+      border-color: #ea580c;
     }
 
     /* Stats bar */
@@ -234,28 +258,28 @@
 
     /* Progress bar */
     .progress-track {
-      height: 6px;
       background: #e2e8f0;
-      border-radius: 999px;
+      height: 6px;
+      border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 0.5rem;
     }
 
     .progress-fill {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       height: 100%;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
       width: 0%;
       transition: width 0.3s ease;
     }
 
-    /* Active Quiz Card */
+    /* Quiz Card */
     .quiz-card {
       background: var(--card-bg);
       border-radius: var(--radius);
       padding: 1.75rem;
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
-      position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .question-header {
@@ -263,8 +287,8 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 1.25rem;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .header-badges {
@@ -274,54 +298,47 @@
       flex-wrap: wrap;
     }
 
-    .category-pill {
-      background: #f0f9ff;
-      color: var(--primary-dark);
-      border: 1px solid #bae6fd;
+    .section-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
       padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      border-radius: 999px;
+    }
+
+    .section-basic {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+
+    .section-advanced {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde047;
+    }
+
+    .category-pill {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid #bae6fd;
     }
 
     .exam-star-pill {
-      background: #fffbeb;
-      color: #b45309;
-      border: 1px solid #fde68a;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
+      background: #ffedd5;
+      color: #c2410c;
+      font-size: 0.75rem;
       font-weight: 700;
-      display: none;
-    }
-
-    .difficulty-pill {
       padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .difficulty-easy {
-      background: #f0fdf4;
-      color: #166534;
-      border: 1px solid #bbf7d0;
-    }
-
-    .difficulty-medium {
-      background: #fefce8;
-      color: #854d0e;
-      border: 1px solid #fef08a;
-    }
-
-    .difficulty-hard {
-      background: #fef2f2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
+      border-radius: 999px;
+      border: 1px solid #fed7aa;
     }
 
     .q-number {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 700;
       color: var(--text-muted);
     }
@@ -350,17 +367,18 @@
 
     .question-prompt-tag {
       display: inline-block;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 0.2rem 0.5rem;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.25rem 0.6rem;
       border-radius: 4px;
       font-size: 0.8rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
+      border-left: 3px solid #0284c7;
     }
 
     .question-text {
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 600;
       line-height: 1.8;
       margin-bottom: 1.75rem;
@@ -371,7 +389,7 @@
     .options-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.25rem;
       margin-bottom: 1.5rem;
     }
 
@@ -528,17 +546,17 @@
     }
 
     .copy-report-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-subtle);
+      background: #f1f5f9;
+      color: var(--text);
+      border-color: #94a3b8;
     }
 
-    /* Card Footer Navigation */
+    /* Card Footer Buttons */
     .card-footer {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 1rem;
+      margin-top: auto;
     }
 
     .btn {
@@ -547,21 +565,11 @@
       font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
+      border: none;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       transition: all 0.2s;
-      border: none;
-    }
-
-    .btn-secondary {
-      background: #f1f5f9;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover:not(:disabled) {
-      background: #e2e8f0;
     }
 
     .btn-primary {
@@ -572,6 +580,15 @@
     .btn-primary:hover:not(:disabled) {
       background: var(--primary-dark);
       transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: #cbd5e1;
     }
 
     .btn:disabled {
@@ -719,7 +736,7 @@
     <div class="nav-container">
       <div class="site-title">
         <span>☯️</span>
-        <span>中醫概論 期中考全真是非題題庫 (60題・鄭凱駿老師課堂與考古題全收錄)</span>
+        <span>中醫概論 期中考全真是非題題庫 (120題・基本題60題＋進階題60題分區練習)</span>
       </div>
       <div class="nav-actions">
         <a href="index.html" class="nav-btn">
@@ -743,14 +760,16 @@
       <!-- Filter Card -->
       <div class="filter-card">
         <div class="filter-tabs" id="filterTabs">
-          <button class="tab-btn active" onclick="setFilter('all', this)">全部 60 題</button>
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 120 題</button>
+          <button class="tab-btn basic-tab" onclick="setFilter('basic', this)">🟢 基本題庫 (60題・考古直出短題幹)</button>
+          <button class="tab-btn advanced-tab" onclick="setFilter('advanced', this)">🟡 進階題庫 (60題・深度觀念辨析)</button>
           <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 考古必考重點</button>
           <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
           <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
-          <button class="tab-btn" onclick="setFilter('ch1', this)">單元一：導論與陰陽 (15題)</button>
-          <button class="tab-btn" onclick="setFilter('ch2', this)">單元二：五行生剋制化 (15題)</button>
-          <button class="tab-btn" onclick="setFilter('ch3', this)">單元三：藏象與臟腑 (15題)</button>
-          <button class="tab-btn" onclick="setFilter('ch4', this)">單元四：精氣血津液神 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">單元一：導論與陰陽 (30題)</button>
+          <button class="tab-btn" onclick="setFilter('ch2', this)">單元二：五行生剋制化 (30題)</button>
+          <button class="tab-btn" onclick="setFilter('ch3', this)">單元三：藏象與臟腑 (30題)</button>
+          <button class="tab-btn" onclick="setFilter('ch4', this)">單元四：精氣血津液神 (30題)</button>
         </div>
         <div class="stats-bar">
           <div>
@@ -759,7 +778,7 @@
             <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
           </div>
           <div>
-            <span id="progressText">1 / 60</span>
+            <span id="progressText">1 / 120</span>
           </div>
         </div>
       </div>
@@ -773,12 +792,12 @@
       <div class="quiz-card" id="quizCard">
         <div class="question-header">
           <div class="header-badges">
+            <span class="section-pill" id="sectionPill">題型分區</span>
             <span class="category-pill" id="chapterPill">單元分類</span>
             <span class="exam-star-pill" id="examStarPill">🔥 考古必考題</span>
-            <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
           </div>
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="q-number" id="questionNumber">第 1 題 / 共 60 題</span>
+            <span class="q-number" id="questionNumber">第 1 題 / 共 120 題</span>
             <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
           </div>
         </div>
@@ -820,8 +839,8 @@
     <!-- Right Sidebar Navigator -->
     <div class="sidebar">
       <div class="sidebar-header">
-        <span>題號導覽 (1~60)</span>
-        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/60</span>
+        <span>題號導覽</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/120</span>
       </div>
       <div class="legend">
         <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
@@ -836,7 +855,7 @@
   <div class="toast" id="toast">已複製至剪貼簿！</div>
 
   <script>
-    window.QUIZ_DATA = [{"id": 1, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《黃帝內經》現存分為《素問》與《靈樞》兩大部分，其中《素問》主要記載詳細解剖、經絡腧穴與詳細針灸治療方法，而《靈樞》則側重於討論環境衛生、養生與基礎生理病理醫學概要。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】兩書內容分工剛好顛倒！《素問》偏重於生理、病理、自然環境與醫學理論概要；《靈樞》（古代又稱《針經》）則專門記載經絡、解剖構造與詳細針灸治療方法。", "source": "中醫概論 1 P.8；期中考古 Q1、Q2 (🔥必考典籍素問靈樞分工)"}, {"id": 2, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "東漢末年成書的《神農本草經》為中國現存最早的藥物學專著，書中收錄 365 種藥物，並將其分類為上、中、下三品，其中「下品」藥多無毒且以延年益壽為主，可長期大量服用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】《神農本草經》中「上品」藥材方為主養命延年、無毒、多服久服不傷人；「下品」藥多具有毒性，專為除寒熱邪氣、破積聚病疾所設，不可久服。", "source": "中醫概論 1 P.9；期中考古 Q3 (🔥本草上品與下品區分)"}, {"id": 3, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中藥飲片皆源於天然動植物與礦物，因此在臨床使用上絕對純天然且完全無副作用，任何體質皆可隨意自行服用無虞。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】中醫歷來強調「是藥三分毒」，中藥飲片必須遵循辨證論治與君臣佐使配伍，盲目或隨意濫服同樣會導致臟腑損傷或中毒，並非完全無毒無副作用。", "source": "中醫概論 1 P.11-13；期中考古 Q4 (🔥中藥安全觀念)"}, {"id": 4, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中藥藥性理論中的「四氣」是指酸、苦、甘、辛四種滋味，其中辛味具有升散行氣之功，屬陽；酸苦具有收斂清熱之功，屬陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「五味」，而非「四氣」！中藥的「四氣」是指寒、熱、溫、涼四種藥性；酸、苦、甘、辛、鹹才是五味。", "source": "中醫概論 1 P.23；期中考古 Q5 (🔥四氣與五味定義區分)"}, {"id": 5, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "民間常說「西醫治標，中醫治本」，在中醫臨床治療準則中，並非一味單純治本，而是講求「急則治其標，緩則治其本」，在面對大出血等急重症時應優先治標挽救生命。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】中醫治則講求「急則治其標，緩則治其本」或「標本兼治」。急性期標急時先治其標，慢性期或緩解期方深求其本。", "source": "中醫概論 1 P.15、20；期中考古 Q6 (🔥治標與治本辨析)"}, {"id": 6, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中醫將自然界的風、寒、暑、濕、燥、火稱為「六氣」；當六氣發生太過或不及之異常變化，侵入人體導致疾病時，則轉變為「六淫」致病邪氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】正常氣候條件下六者為滋生萬物的「六氣」；若氣候劇變、六氣反常成為致病因素，即稱「六淫」或六邪。", "source": "中醫概論 1 P.23；期中考古 Q7 (🔥六氣與六淫區分)"}, {"id": 7, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《黃帝內經》提出「上工治未病」，其核心理念是指在疾病尚未顯著發作或惡化前，透過養生調攝與預防醫學手段達成「未病先防」與「既病防變」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「上工治未病」強調預防為主，包含未病先防、既病防變與瘥後防復三大層次。", "source": "中醫概論 1 P.26；期中考古 Q8 (🔥治未病核心含義)"}, {"id": 8, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中國古代以日光照射角度劃分陰陽方位，地理學傳統上將「山之北面」與「水之南面」定義為陽，而「山之南面」與「水之北面」定義為陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】方位完全倒置！古代地理學之標準定義為：「山南水北謂之陽，山北水南謂之陰」。", "source": "中醫概論 1 P.29；期中考古 Q9 (🔥山南水北方位陰陽)"}, {"id": 9, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《易經》及哲學所提之「萬物負陰而抱陽」，在人體生理與能量層面，「負陰」主要體現為有形的實體物質與臟腑形質基礎，而「抱陽」則指人體生命能量、活力與功能體現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「負陰而抱陽」中，負陰代表萬物依託於有形可見的實質形體與物質基礎，抱陽代表外界能量輸入與生命功能活力的展現。", "source": "中醫概論 1 P.32；期中考古 Q11 (🔥負陰抱陽易學內涵)"}, {"id": 10, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "依據《素問·金匱真言論》劃分人體前後與上下陰陽，人體以背部為陰、腹部為陽；以腰為界，腰以上為陰、腰以下為陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】正確劃分為「背為陽，腹為陰」；以腰部為界則是「腰以上為陽，腰以下為陰」（頭為諸陽之會，陽性升發在上）。本題敘述剛好顛倒！", "source": "中醫概論 1 P.33-34；期中考古 Q12 (🔥人體部位陰陽劃分)"}, {"id": 11, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "在中醫臟腑陰陽劃分中，五臟（肝、心、脾、肺、腎）具有藏精氣而不瀉的特性，故屬陰；六腑（膽、胃、小腸、大腸、膀胱、三焦）具有傳化物而不藏的特性，故屬陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《素問》明言：「五臟者，藏精氣而不瀉也，故滿而不能實；六腑者，傳化物而不藏，故實而不能滿也。」五臟主藏精屬陰，六腑主傳化屬陽。", "source": "中醫概論 1 P.37；期中考古 Q13 (🔥五臟六腑陰陽歸屬)"}, {"id": 12, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "hard", "isExamStar": true, "question": "三陽三陰的「開、闔、樞」機制中，陽明經主導體表陽氣初升與向外散發，故稱為「開」；太陽經主導收斂封藏，故稱為「闔」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】三陽的開闔樞為「太陽為開，陽明為闔，少陽為樞」！太陽主表為開放向外；陽明主裡熱收闔；少陽為半表半裡樞紐。題目將太陽與陽明職責倒置。", "source": "中醫概論 1 P.40-42；期中考古 Q14-16 (🔥三陰三陽開闔樞)"}, {"id": 13, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "八綱辨證包含陰、陽、表、裡、寒、熱、虛、實，其中「陰陽」為八綱辨證之總綱，通常將表證、熱證、實證歸屬於陽，而將裡證、寒證、虛證歸屬於陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】八綱中陰陽為總綱。表、熱、實證代謝亢進或在表，歸為陽；裡、寒、虛證代謝低下或在裡，歸為陰。", "source": "中醫概論 1 P.45；期中考古 Q17 (🔥八綱辨證以陰陽為總綱)"}, {"id": 14, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中醫古籍記載「隔夜茶傷脾胃，不可飲也」，現代人若常將昨夜冷飲留置隔日飲用，容易損傷人體的「陰血」，造成體內熱氣旺盛而形成實火體質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】隔夜冰冷飲料最直接損傷的是脾胃「陽氣」，導致脾胃虛寒（陽虛），表現為手足冰冷、消化不良、腹脹腹瀉，而非陰虛或實熱！", "source": "中醫概論 1 P.46-49；期中考古 Q19 (🔥隔夜飲料損傷陽氣考點)"}, {"id": 15, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "臨床上患者出現面紅目赤、口舌生瘡、心煩失眠、尿黃短赤刺痛、舌尖紅絳、脈數洪等症狀，多屬於「心火上炎」之熱證上火表現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】心開竅於舌、心火下移小腸（尿赤刺痛），故口舌生瘡、舌紅、尿黃、面赤為典型心火旺盛之表現。", "source": "中醫概論 1 P.20、22；期中考古 Q20 (🔥上火心火臨床特徵)"}, {"id": 16, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行學說中「木曰曲直」，引申至人體臟腑為「心」，代表心陽具有生生不息、向上生長與調暢氣血之特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「木曰曲直」引申對應的臟腑為「肝」（肝主升發疏泄，屬木）；心陽溫熱上升，對應的是「火曰炎上」（屬火）！", "source": "中醫概論 2 P.7、10；期中考古 Q21 (🔥木曰曲直對應肝)"}, {"id": 17, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "中醫所說的「脾」在人體生理與器官系統對應上，與西醫解剖學上的脾臟（Spleen，主要為淋巴免疫組織）完全一致，兩者皆僅專門負責人體免疫防禦而不參與消化吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】西醫解剖學的脾（Spleen）主要是淋巴與免疫器官；中醫的「脾」概念極為廣泛，涵蓋整個消化吸收、運化水穀精微、水濕代謝、肌肉營養以及統攝血液等功能。", "source": "中醫概論 2 P.8；期中考古 Q22 (🔥中醫脾與西醫脾對照)"}, {"id": 18, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五行與五臟配屬中，土對應脾、五色為黃、五味為「酸」；木對應肝、五色為青、五味為「甘」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五味配屬顛倒！木（肝）對應的是「酸」味；土（脾）對應的是「甘」味。酸入肝，甘入脾。", "source": "中醫概論 2 P.16；期中考古 Q23 (🔥五行五臟五味配屬顛倒陷阱)"}, {"id": 19, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "中醫五行生剋規律中，相生與相剋互為矛盾對立，在健康人體內部相生與相剋必然不能同時存在，只要出現相剋現象就代表五行系統已經病態失衡。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】相生與相剋是維持五行相對動態平衡（「制化」）不可或缺的兩種力量！「生中有剋，剋中有生」，正常生理下相生與相剋協同運作，並非相剋即代表病態。", "source": "中醫概論 2 P.17-19；期中考古 Q25 (🔥五行相對平衡叫制化)"}, {"id": 20, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "臨床觀察病患若「面色泛青帶黃、伴隨泛酸腹脹、脈象弦而無力」，通常提示肝氣鬱滯化旺且過度剋制脾土，此病理機轉在中醫稱為「肝木乘脾土」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】青為肝色，黃為脾色，脈弦為肝旺，脈弱為脾虛，泛酸腹脹為脾胃受困，此即肝氣偏旺乘襲脾土（木乘土）的典型表現。", "source": "中醫概論 2 P.22-24；期中考古 Q26 (🔥肝旺乘脾面色脈象)"}, {"id": 21, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五志分屬五臟中「脾在志為思」，長期思慮過度或焦慮多想的人，容易導致心火亢盛而腎精枯竭，但絕不會影響脾胃的運化與食慾吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「思傷脾」，思慮過度最直接損害脾氣，導致脾臟氣機結滯、運化失司，常見症狀為不思飲食、脘腹脹滿，進而化源不足影響心脾失眠。", "source": "中醫概論 2 P.26-27；期中考古 Q27 (🔥思慮過度傷脾)"}, {"id": 22, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "在五行病理傳變中，若肺病（金）日久耗傷母臟，波及並導致脾胃（土）功能衰弱、食慾不振與精神萎靡，此種子系統帶壞母系統的現象稱為「子盜母氣」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾土生肺金（脾為母，肺為子）。肺病久虛損耗脾土精氣，導致脾胃功能失常，即典型的「子盜母氣（子病及母）」傳變。", "source": "中醫概論 2 P.29-30；期中考古 Q28 (🔥子盜母氣觀念)"}, {"id": 23, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行學說中「水曰潤下」，引申至人體五臟中與「肺」相呼應，因肺主肅降且為水之上源，故水之特性歸屬於肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】水曰潤下對應的是「腎」（腎主水）；肺主肅降收斂，在五行中對應的是「金曰從革」！", "source": "中醫概論 2 P.13-14 (🔥水曰潤下對應腎)"}, {"id": 24, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "依據五行相生相剋次序，相生的正確順序為：木生火、火生土、土生金、金生水、水生木；相剋的正確順序為：木剋土、土剋水、水剋火、火剋金、金剋木。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】此為五行生剋基礎法則：木火土金水循環相生；木剋土、土剋水、水剋火、火剋金、金剋木依序相剋。", "source": "中醫概論 2 P.18-19 (🔥五行生剋標準次序)"}, {"id": 25, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行病理中的「相侮」是指被剋者實力過度強盛，反而逆向欺負剋制其原本的主導者，因此在古代又稱為「反克」或「反侮」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】相乘為順向過度剋制；相侮為逆向反剋（如木本受金剋，但木氣過旺反而反剋金，稱木侮金）。", "source": "中醫概論 2 P.22 (🔥五行相乘與相侮定義)"}, {"id": 26, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行配屬自然界季節與方位中，長夏屬土，其方位居中央，對應之氣候為「燥」，對應之臟腑為肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】長夏屬土、居中央，對應氣候為「濕」，對應臟腑為「脾」！秋季屬金、西方，對應氣候才為「燥」，對應臟腑為「肺」。", "source": "中醫概論 2 P.16 (🔥五行五季五氣五方配屬)"}, {"id": 27, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "著名臨床治則「滋水涵木法」（如使用六味地黃丸補腎水以滋養肝木），屬於運用五行「相剋」法則所建立的治療策略。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】腎水生肝木，滋水涵木法是透過補腎陰（水）來滋養肝陰（木），屬於運用五行「相生」規律（虛則補其母）的治法，並非相剋法！", "source": "中醫概論 2 P.25 (🔥滋水涵木相生治法)"}, {"id": 28, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行特性中「火曰炎上」，其引申含義包含溫熱、升騰與光明，因此心陽具有溫煦全身氣血與臟腑組織的生理作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】火性升騰溫熱光明，在人體代表心陽之溫煦，故心歸屬於火。", "source": "中醫概論 2 P.7、11 (🔥火曰炎上特性)"}, {"id": 29, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "金元四大家之張子和曾記載以「生氣疏肝、調暢氣機」的方法治療婦人因思慮過度導致兩年不寐之病案，在五行理論上體現了「以木剋土」解開脾氣結滯的思維。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義引用張子和醫案：思慮傷脾（土）導致氣機結滯，利用肝木疏泄升發之性（以木克土）理順散開脾胃鬱結，從而治癒頑固失眠。", "source": "中醫概論 2 P.26-27 (🔥張子和以木剋土醫案)"}, {"id": 30, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": false, "question": "相乘與相侮在人體病理演變中往往是互為因果、同時發生的連鎖反應，例如當肝木之氣極度亢盛時，既可能發生「木乘土」，又可反向出現「木侮金」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義明確指出：相乘與相侮往往同時發生或互為因果。例如肝木暴盛，既過度克伐脾土（木乘土），又反過來侮制肺金（木侮金）。", "source": "中醫概論 2 P.23 (🔥相乘相侮連鎖反應)"}, {"id": 31, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫「藏象學說」中的「藏」是指藏於體內的內臟組織器官，而「象」是指表現於外的生理現象與病理徵候，因此藏象即是由外在徵象觀察推斷內在臟腑狀態的方法學。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「藏象」之義即「有諸內必形諸外」，藏居於內，象形於外，透過觀察外在表現以推知內在臟腑之生理與病理變動。", "source": "中醫概論 3 P.2；期中考古 Q29 (🔥藏象之含義)"}, {"id": 32, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "中醫奇恆之腑包括「腦、髓、骨、脈、膽、女子胞」，之所以冠上「奇恆」之稱，是因為它們形態多屬中空類似於腑，但生理功能卻偏向藏聚精氣類似於臟。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】奇恆之腑形似腑而神似臟（形態中空似六腑，功能藏精似五臟，非臟非腑，名曰奇恆之腑）。注意膽兼具六腑與奇恆之腑雙重身分。", "source": "中醫概論 3 P.3、20；期中考古 Q30 (🔥奇恆之腑定義與成員)"}, {"id": 33, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "六腑包含膽、胃、小腸、大腸、膀胱、三焦，其總體生理功能特點為「受盛和傳化水穀」，具有「實而不能滿、藏精氣而不瀉」的特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】六腑的特性是「傳化物而不藏，故實而不能滿」！題目中「藏精氣而不瀉、滿而不能實」是五臟的特性，敘述顛倒混淆。", "source": "中醫概論 3 P.11；期中考古 Q31 (🔥六腑生理特點實而不能滿)"}, {"id": 34, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "《素問·靈蘭秘典論》將十二臟腑比喻為國家官職體系，其中肝為君主之官、謀慮出焉；心為將軍之官、神明出焉。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】官職對應顛倒！心為「君主之官，神明出焉」；肝為「將軍之官，謀慮出焉」！", "source": "中醫概論 3 P.6、7；期中考古 Q32-34 (🔥靈蘭秘典官位對應顛倒陷阱)"}, {"id": 35, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "脾的生理功能主要包含「主運化」水穀精微與水濕，以及「主統血」使血液約束於脈管之內；若脾氣虛衰失控，則可能導致皮下出血、便血或崩漏等出血症狀。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾主運化為後天之本，脾又主統血。脾氣健旺則能固攝血液運行於脈內，脾氣虛衰則統血無權而致出血。", "source": "中醫概論 3 P.8；期中考古 Q32 (🔥脾主運化與統血)"}, {"id": 36, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "肺在體表組織與五官外竅之延伸對應關係為：在體合筋，其華在爪，開竅於目；且肺主宣發肅降與通調水道。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「在體合筋、其華在爪、開竅於目」是「肝」的對應！肺是對應「在體合皮、其華在毛、開竅於鼻」。", "source": "中醫概論 3 P.9；期中考古 Q33 (🔥肺與肝之體竅華混淆陷阱)"}, {"id": 37, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "腎在中醫生理功能中被稱為「後天之本」，主受納水穀，其在體合肌肉，其華在唇，開竅於口。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「脾」！腎為「先天之本」，主藏精、主水、主納氣，在體合骨生髓，其華在髮，開竅於耳及二陰。", "source": "中醫概論 3 P.10；期中考古 Q34 (🔥腎與脾之先天後天混淆陷阱)"}, {"id": 38, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "大腸的生理功能主要是接受小腸下移的食物殘渣，並將其中剩餘的汁液完全排棄，在中醫生理理論中被稱為「主液」，而小腸才負責「主津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！中醫傳統將大腸功能定為「傳導糟粕，大腸主津」（吸收殘餘水分）；小腸泌別清濁則定為「小腸主液」。", "source": "中醫概論 3 P.15；期中考古 Q35 (🔥大腸主津與小腸主液區別)"}, {"id": 39, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "三焦劃分中，上、中、下三焦界限明確，其中「中焦」在人體解剖分界上的切點是位於「橫膈（膻中）」以下至「神闕（肚臍）」之間，主要包含脾與胃。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】橫膈（膻中）以上為上焦（心肺）；橫膈至神闕（肚臍）為中焦（脾胃）；肚臍以下為下焦（肝腎大腸小腸膀胱女子胞）。", "source": "中醫概論 3 P.17；期中考古 Q36 (🔥中焦解剖切點膻中與神闕)"}, {"id": 40, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": true, "question": "人體體液代謝是一項極為複雜的系統工程，必須依賴胃之受納腐熟、脾之運化轉輸、肺之宣發肅降通調水道、腎之蒸騰氣化以及膀胱氣化出焉等器官協同完成。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】水液代謝涉及肺、脾、腎、胃、小腸、大腸、膀胱及三焦水道等多臟腑的綜合運化與氣化調節。", "source": "中醫概論 3 P.19；期中考古 Q37 (🔥水液代謝途徑與主導臟腑)"}, {"id": 41, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "女子胞之生理與天癸密切相關，所謂「天癸」是指一種源於先天腎精、受後天水穀精微滋養充盛，能促進人體生殖器官發育成熟與維持月經生殖機能的重要精微物質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「二七而天癸至，任脈通，太衝脈盛，月事以時下，故有子」。天癸是促成人體性發育成熟和維持生殖機能的先天腎精化生精微物質。", "source": "中醫概論 3 P.20；期中考古 Q38 (🔥天癸名詞實質定義)"}, {"id": 42, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "名醫學說「乙癸同源」是指心與腎相交（水火既濟）的生理現象，因為心屬乙木而腎屬癸水，故又稱心腎同源。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「乙癸同源」是指「肝腎同源」！天干中乙屬木（肝），癸屬水（腎）。肝藏血、腎藏精，精血同源互生，故稱乙癸同源，絕非心腎！", "source": "中醫概論 3 P.26；期中考古 Q39 (🔥乙癸同源即肝腎同源)"}, {"id": 43, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "小腸具有「受盛化物」與「泌別清濁」之功能，能將胃傳來的食糜進行進一步消化，並區分為清液（吸收後轉輸全身）與濁質（下傳大腸與膀胱）。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】小腸為受盛之官，化物出焉；泌別清濁即將食糜分清別濁，精微水液吸收，糟粕入大腸，廢液滲入膀胱。", "source": "中醫概論 3 P.14 (🔥小腸受盛化物泌別清濁)"}, {"id": 44, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": false, "question": "膽被列為六腑之一，其內部貯存之膽汁是由膽囊本身之肌肉組織直接消化水穀精微化生而成，與肝臟之疏泄功能毫無關聯。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】膽汁是由肝之餘氣化生並聚積於膽，受肝之疏泄調控排入腸道以助消化，並非膽囊自己消化水穀產生！", "source": "中醫概論 3 P.12 (🔥膽汁化生與肝疏泄之關係)"}, {"id": 45, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "三焦作為六腑之一，被稱為「孤腑」或元氣之別使，其主要生理功能是作為元氣運行布散於全身的通道，以及人體水液代謝運行的專屬水道路徑。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「三焦者，決瀆之官，水道出焉」，三焦既是元氣通行之通道（通行元氣），也是水液運行之通道（運行水液）。", "source": "中醫概論 3 P.18 (🔥三焦通行元氣與運行水液)"}, {"id": 46, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體的「後天之氣」主要源於脾胃所運化的「水穀精微之氣」，並與肺吸入之「自然界清氣」相互結合而成，與出生前遺傳自父母的先天之氣相互補充滋養。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】後天之氣由脾胃運化之水穀精微與肺吸入之自然清氣化合而成；先天之氣受後天之氣充養，兩者相輔相成。", "source": "中醫概論 4 P.5；期中考古 Q40 (🔥後天之氣化生來源)"}, {"id": 47, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣的分類中，「衛氣」是運行於脈管之內的精純營養物質，負責化生血液並滋潤內在臟腑；而「營氣」則是運行於脈外體表負責保衛抵禦外邪之氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！「營在脈中，衛在脈外」！營氣行於脈中負責營養與化血；衛氣「慓疾滑利」行於脈外體表肌膚腠理，司開闔、溫分肉、護衛肌表抵禦外邪。", "source": "中醫概論 4 P.6-7；期中考古 Q41 (🔥營氣在脈中與衛氣在脈外)"}, {"id": 48, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "氣的「固攝作用」是指氣具有推動血液與津液生長運行、抵禦外邪侵襲的能力，若固攝失常則會導致嚴重發冷畏寒與四肢不溫。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題目描述的是「推動」與「溫煦/防禦」功能！氣的「固攝作用」是指統攝、控制液態物質（防止血液逸出脈外，防止汗液、尿液、精液無故流失）。", "source": "中醫概論 4 P.12；期中考古 Q42 (🔥氣之固攝功能概念混淆)"}, {"id": 49, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "人體最根本的原動力為「元氣」，元氣根於腎，必須藉由「三焦」作為專屬通道才能布散宣發至五臟六腑與全身四肢百骸。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「難經：三焦者，水穀之道路，氣之所終始也...三焦者，元氣之別使也」。元氣根於腎，通過三焦布達全身。", "source": "中醫概論 4 P.2、4；期中考古 Q43 (🔥元氣通過三焦布散全身)"}, {"id": 50, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "若病患出現「脾氣鬱滯」，其主要臨床病理特徵為突然昏厥倒地、神志昏迷、牙關緊閉且四肢厥冷。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】突發昏厥、牙關緊閉是危重急症「氣閉（厥證）」的表現！「脾氣鬱滯」主要特徵是進食後脘腹脹悶不適、噯氣、消化不良。", "source": "中醫概論 4 P.17、19；期中考古 Q44、Q45 (🔥脾氣鬱滯與氣閉混淆陷阱)"}, {"id": 51, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "氣機失調中的「氣閉」是指氣機閉塞結聚於內，喪失出入內外之開闔功能，臨床表現為突發神昏暴厥、牙關緊閉、呼吸驟阻等危重厥證。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「氣閉」乃氣機閉結在內、不能外達，出入神機閉塞所致之急重厥證（如西醫之昏厥 Syncope）。", "source": "中醫概論 4 P.19；期中考古 Q45 (🔥氣閉急症定義)"}, {"id": 52, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫認為「腎精具有化生血液的功能」，因為腎藏精，精能生髓，髓能化血，且腎陽之溫煦促使氣化旺盛以助血液生生不息，此即「精血同源」之理。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】腎精充足則骨髓充盈，骨髓化赤為血，故腎精化生血液為精血同源之重要依據。", "source": "中醫概論 4 P.23、32；期中考古 Q46 (🔥腎精化生血液與精血同源)"}, {"id": 53, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "五臟化生五液的標準對應關係為：「汗為心之液、涕為肝之液、淚為肺之液、涎為腎之液、唾為脾之液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五液配屬完全混淆！《宣明五氣》標準為：心為汗、肺為涕、肝為淚、脾為涎、腎為唾！", "source": "中醫概論 4 P.28；期中考古 Q47 (🔥五臟五液對應顛倒陷阱)"}, {"id": 54, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣化理論中，人體內部深層的水液蒸騰氣化與全身陽氣推動，主要是由「心」臟的君火單獨主導，與腎陽之溫煦氣化完全無關。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】體內深層水液蒸騰與氣化功能主要由「腎」主導！腎陽為一身陽氣之根本，推動並蒸騰下焦水液，溫煦諸臟以行氣化。", "source": "中醫概論 4 P.15、30；期中考古 Q50 (🔥體內深層氣化由腎主導)"}, {"id": 55, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣與血的關係密切，傳統概括為「氣為血之帥，血為氣之母」，其中氣為血之帥包含氣能生血、氣能行血與氣能攝血三大內涵。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣為血之帥：氣旺則生血充沛、氣行則血行不滯、氣固攝則血不外溢；血為氣之母：血能載氣，血能養氣。", "source": "中醫概論 4 P.24-25 (🔥氣為血之帥三大功能)"}, {"id": 56, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "中醫將體內水液統稱為津液，其中質地較為清稀、流動性較大、主要布散於體表皮膚孔竅以發揮滋潤作用者稱為「液」；而質地濃稠、灌注於骨節臟腑腦髓者稱為「津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】津與液之定義剛好顛倒！清稀、流動性大、布於體表孔竅者為「津」（屬陽）；稠厚、流動性小、灌注於骨節臟腑腦髓起濡養作用者為「液」（屬陰）。", "source": "中醫概論 4 P.26-27 (🔥津與液清稀濃稠陰陽辨析)"}, {"id": 57, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣的五大生理功能包括：推動作用、溫煦作用、防禦作用、固攝作用以及氣化作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣的五大生理功能即為：推動（推動生長與運行）、溫煦（維持體溫）、防禦（抗禦外邪）、固攝（約束津血）、氣化（促進物質轉化）。", "source": "中醫概論 4 P.9-13 (🔥氣的五大生理功能)"}, {"id": 58, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": false, "question": "「宗氣」發源於下焦命門，是由先天腎精直接化生而成，主要儲存於膀胱，負責固攝尿液與下焦氣化。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是元氣/下焦之氣！「宗氣」聚集於胸中（膻中），是由肺吸入之自然清氣與脾胃運化之水穀精氣結合而成，主呼吸與行血。", "source": "中醫概論 4 P.5 (🔥宗氣生成部位與功能混淆)"}, {"id": 59, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣機失調中的「氣逆」是指臟腑氣機應降反升或升發太過，常見如肺氣上逆出現咳嗽氣喘、胃氣上逆出現呃逆嘔吐，以及肝氣上逆出現急躁易怒、面紅耳赤。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】肺胃之氣宜降，肝氣主升發但不可太過。肺氣上逆則咳喘、胃氣上逆則嘔呃、肝氣上逆則頭脹面赤急躁，皆為氣逆之典型表現。", "source": "中醫概論 4 P.18 (🔥氣逆病理表現)"}, {"id": 60, "chapter": "單元四：精氣血津液神氣化", "difficulty": "hard", "isExamStar": false, "question": "「精血同源」是指精與血在人體生理活動中相互依賴、相互滋生化育，腎藏精以生髓化血，同時脾胃化生的水穀精微與營血充足亦能不斷滋養充盛腎精。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】精能化血，血亦能化精，精血互生互化，故稱「精血同源」或「精血互生」。", "source": "中醫概論 4 P.32-33 (🔥精血同源生理機轉)"}];
+    window.QUIZ_DATA = [{"id": 1, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《黃帝內經》成書於戰國時代，既是醫學奠基之書也是養生書。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《黃帝內經》為戰國時代作品，為中國醫學初等書亦為養生書，重天人合一。", "source": "113.pdf Q1；中醫概論 1 P.8"}, {"id": 2, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《黃帝內經》在養生防病上提出「春夏養陰，秋冬養陽」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】顛倒！《黃帝內經》明確主張「春夏養陽，秋冬養陰」，順四時而適寒暑。", "source": "113.pdf Q1；中醫概論 1 P.8"}, {"id": 3, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《靈樞》主要記載了人體解剖構造與詳細的針灸治療方法。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《靈樞》（古稱針經）記載解剖、經絡及針灸療法；《素問》講述基礎理論。", "source": "113.pdf Q2；中醫概論 1 P.8"}, {"id": 4, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《神農本草經》為中國最早藥物學著作，書中共收錄 365 味藥物。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《神農本草經》成書東漢末年，收錄 365 種藥物，分為上中下三品。", "source": "113.pdf Q3；中醫概論 1 P.9"}, {"id": 5, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《神農本草經》之「下品藥」多無毒，稱為君藥，主張可以長期服用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】上品藥才是君藥、無毒主久服；下品藥為佐使藥，多毒性，不可久服。", "source": "113.pdf Q3；中醫概論 1 P.9"}, {"id": 6, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中藥飲片皆來自天然動植物與礦物，故臨床使用完全安全無副作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】中醫強調「是藥三分毒」，中藥飲片必須辨證論治，並非完全無副作用。", "source": "113.pdf Q4；中醫概論 1 P.11"}, {"id": 7, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中藥的「四氣」是指寒、熱、溫、涼四種藥性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】四氣即寒、熱、溫、涼四種藥性；酸苦甘辛鹹為五味。", "source": "113.pdf Q5；中醫概論 1 P.23"}, {"id": 8, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "四氣中，寒涼藥性因能降火解毒故屬於陽，溫熱藥性則屬於陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】顛倒！溫熱能溫陽散寒故屬陽；寒涼能清熱瀉火故屬陰。", "source": "113.pdf Q5；中醫概論 1 P.23"}, {"id": 9, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "無論中醫或西醫，只要採取最適治療手段解決問題，就是「治本」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】113考古特別強調：無論中醫或西醫，只要採取最適手段解決問題就是治本！", "source": "113.pdf Q6；中醫概論 1 P.15"}, {"id": 10, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中醫所說的「六淫」邪氣是指喜、怒、憂、思、悲、恐六種情志變化。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】喜怒憂思悲恐是七情內傷；六淫是指風、寒、暑、濕、燥、火六種外感邪氣。", "source": "113.pdf Q7；中醫概論 1 P.23"}, {"id": 11, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "「上工治未病」的核心概念是指預防醫學與養生防病思想。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】治未病即強調未病先防與既病防變之預防醫學概念。", "source": "113.pdf Q8；中醫概論 1 P.26"}, {"id": 12, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "古代地理陰陽劃分中，「山之北面」與「水之南面」屬於陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「山南水北為陽，山北水南為陰」。題幹陳述為陰。", "source": "113.pdf Q9；中醫概論 1 P.29"}, {"id": 13, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中醫陰陽觀念中，「陽」是指具有實體形態的陰液陰血，「陰」則指無形的功能能量。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】顛倒！113.pdf Q10 明確指出：陰多在形容有實體實質之物（陰液、陰血）；陽多指無形、有能量甚至有功能之陽氣。", "source": "113.pdf Q10；中醫概論 1 P.30"}, {"id": 14, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "「抱陽負陰」在人體中，負陰指依賴實質形體，抱陽指外界能量輸入與功能。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】負陰指有形實體存在，抱陽指系統依賴能量輸入與內部功能作用。", "source": "113.pdf Q11；中醫概論 1 P.31"}, {"id": 15, "section": "basic", "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "人體前後分陰陽時，前胸腹部屬於陽，後背部則屬於陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】《素問》：「背為陽，腹為陰。」題幹前後顛倒。", "source": "113.pdf Q12；中醫概論 1 P.33"}, {"id": 16, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五臟具有藏精氣而不洩的特性故屬陰，六腑傳化水穀排出濁渣故屬陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】五臟藏而不洩為陰（滿而不實）；六腑傳導排出為陽（實而不滿）。", "source": "113.pdf Q13；中醫概論 1 P.37"}, {"id": 17, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "三陽經中，「陽明為闔」的機制是為了防止陽氣過度釋放而亢奮耗傷。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】太陽為開升發陽氣；陽明為闔關閉門扇使亢奮停止；少陽為樞紐。", "source": "113.pdf Q14；中醫概論 1 P.41"}, {"id": 18, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "三陰經的開闔樞為：太陰為闔，少陰為開，厥陰為樞。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】三陰開闔樞為：太陰為開，厥陰為闔，少陰為樞。題幹配對錯誤。", "source": "113.pdf Q15；中醫概論 1 P.42"}, {"id": 19, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "八綱辨證包含表裡、寒熱、虛實、陰陽，其中以「陰陽」為總綱。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】八綱辨證以陰陽二綱統攝表裡、寒熱、虛實六綱。", "source": "113.pdf Q17；中醫概論 1 P.45"}, {"id": 20, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "「陰陽兩虛」是指陽氣過度旺盛而陰液亦同步亢奮之實熱證候。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】陰陽兩虛是陽氣與陰液皆虧乏不足，全身臟腑機能極度低下之虛弱重症。", "source": "113.pdf Q18；中醫概論 1 P.48"}, {"id": 21, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "喝隔夜冰冷飲料容易損傷脾胃陽氣，導致脾胃虛寒。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】隔夜冰冷飲損耗脾陽，引發脾胃虛寒與消化不良。", "source": "113.pdf Q19；中醫概論 1 P.49"}, {"id": 22, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "「陽虛體質」者體內宛如隨時有小火苗，臨床最容易出現口乾咽痛的上火表現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】113.pdf Q20 考點：是「陰虛體質」體內陰液不足無法制陽，隨時有小火苗而容易上火；陽虛者主要為畏寒肢冷。", "source": "113.pdf Q20；中醫概論 1 P.20"}, {"id": 23, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "中醫認為「肝」主肅降收斂，在五行屬性中屬於金。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】肝主升發疏泄屬木；肺才主肅降收斂屬金。", "source": "113.pdf Q21；中醫概論 2 P.7"}, {"id": 24, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "西醫解剖學之脾臟（Spleen），在人體生理上主要是淋巴與免疫器官。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】西醫脾主要為淋巴免疫器官；中醫脾則主導消化吸收與水穀運化。", "source": "113.pdf Q22；中醫概論 2 P.8"}, {"id": 25, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行木、火、土、金、水對應的五臟依序為心、肝、脾、肺、腎。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五行五臟依序為：木肝、火心、土脾、金肺、水腎。題幹木火順序顛倒。", "source": "113.pdf Q23；中醫概論 2 P.16"}, {"id": 26, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行木火土金水對應的五味依序為辛、鹹、甘、酸、苦。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五行五味正確為：木酸、火苦、土甘、金辛、水鹹。", "source": "113.pdf Q23；中醫概論 2 P.16"}, {"id": 27, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行系統生剋協同維持的相對動態平衡，在中醫稱為「制化」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】五行處於生克制約之相對動態平衡狀態，稱為制化。", "source": "113.pdf Q24；中醫概論 2 P.17"}, {"id": 28, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "病患臉色青黃、口泛酸水、脈象弦弱，在中醫五行病機上屬於「心火刑肺金」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】113.pdf Q25 重點考點：青色脈弦為肝旺，黃色酸水脈弱為脾虛，此病機為「肝旺剋脾（木乘土）」。", "source": "113.pdf Q25；中醫概論 2 P.24"}, {"id": 29, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "中醫五志中，「思」為脾之志，長期思慮過度或用腦過多最傷脾胃。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】思傷脾，思慮過度導致脾氣結滯不舒、運化失職。", "source": "113.pdf Q27；中醫概論 2 P.26"}, {"id": 30, "section": "basic", "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "肺病日久波及脾土，使脾胃功能亦衰弱，在中醫稱為「子盜母氣」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾土生肺金（脾為母，肺為子）。子病累及母臟耗損母氣，稱為子盜母氣。", "source": "113.pdf Q28；中醫概論 2 P.29"}, {"id": 31, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "「藏象」是古代用語，整體是指體內臟腑之生理與病理現象表現於外。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】藏居於內，象現於外，臟腑生理病理現象表現於外即為藏象。", "source": "113.pdf Q29；中醫概論 3 P.2"}, {"id": 32, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "奇恆之腑共包括腦、髓、骨、脈、胃、女子胞六種器官。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】胃是六腑之一！奇恆之腑六者為：腦、髓、骨、脈、膽、女子胞。", "source": "113.pdf Q30；中醫概論 3 P.3"}, {"id": 33, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "六腑包括膽、胃、大腸、小腸、三焦、膀胱六個空腔器官。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】六腑為膽、胃、大腸、小腸、三焦、膀胱。", "source": "113.pdf Q31；中醫概論 3 P.11"}, {"id": 34, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "六腑的功能特點為「藏精氣而不瀉，故滿而不能實」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】六腑是「傳化物而不藏，故實而不能滿」；滿而不能實是五臟的特點。", "source": "113.pdf Q13、Q31；中醫概論 3 P.11"}, {"id": 35, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "脾的主要生理功能為「主運化」水穀水濕，並具有「主統血」之功。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾主運化水穀水濕、主統血，為後天之本。", "source": "113.pdf Q32；中醫概論 3 P.8"}, {"id": 36, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫認為肺在體合筋，其華在爪，開竅於耳。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】肺在體合皮，其華在毛，開竅於鼻；筋與爪為肝，耳為腎。", "source": "113.pdf Q33；中醫概論 3 P.9"}, {"id": 37, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "腎在體合骨生髓，其華在髮，開竅於耳及二陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】腎主骨生髓，華在髮，開竅於耳與二陰，藏精主水主納氣。", "source": "113.pdf Q34；中醫概論 3 P.10"}, {"id": 38, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "大腸的生理功能主要是腐熟水穀，在中醫稱為「大腸主液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】腐熟水穀是胃的功能；大腸功能為傳導糟粕與吸收殘餘水分（大腸主津）。", "source": "113.pdf Q35；中醫概論 3 P.15"}, {"id": 39, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "大腸的生理功能主要是傳導糟粕，並吸收殘餘水分（大腸主津）。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】大腸傳化糟粕，吸收殘餘水分形成糞便排出，稱為大腸主津。", "source": "113.pdf Q35；中醫概論 3 P.15"}, {"id": 40, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中焦在人體解剖分界上的切點為「膻中（橫膈）」至「神闕（肚臍）」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】膻中至神闕之間為中焦（脾胃所居）；膻中以上為上焦，神闕以下為下焦。", "source": "113.pdf Q36；中醫概論 3 P.17"}, {"id": 41, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "膻中（橫膈）以上到頭面部位在三焦分劃中屬於中焦。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】橫膈（膻中）以上為「上焦」（心肺所居）。", "source": "113.pdf Q36；中醫概論 3 P.17"}, {"id": 42, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "人體的體液代謝主要依賴肺、脾、腎等臟腑的共同協調運化。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】肺通調水道、脾運化水濕、腎主水蒸騰氣化，三焦為水液運行通路。", "source": "113.pdf Q37；中醫概論 3 P.19"}, {"id": 43, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "「天癸」是由後天脾胃水穀化生，與先天腎精完全無關。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】天癸源於先天腎精，腎氣充盛至一定階段化生，主導性成熟與生殖機能。", "source": "113.pdf Q38；中醫概論 3 P.20"}, {"id": 44, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫「乙癸同源」即「肝腎同源」，臨床常用六味地黃丸作為調治代表方。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】乙木為肝，癸水為腎，肝腎同源、精血同源，常用六味地黃丸滋補調治。", "source": "113.pdf Q39；中醫概論 3 P.26"}, {"id": 45, "section": "basic", "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫名詞「乙癸同源」是指心與腎相交之「心腎同源」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】乙癸同源是指「肝腎同源」，非心腎同源！", "source": "113.pdf Q39；中醫概論 3 P.26"}, {"id": 46, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "後天之氣由脾胃運化之水穀精微與肺吸入之自然清氣結合而成。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】後天之氣即由脾胃水穀之氣與肺吸入之清氣化合而成。", "source": "113.pdf Q40；中醫概論 4 P.5"}, {"id": 47, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "衛氣運行於脈管之內，專門負責滋養臟腑與化生血液。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】營氣行於脈中化血；衛氣「慓疾滑利」行於脈外體表護衛抗邪。", "source": "113.pdf Q41；中醫概論 4 P.6-7"}, {"id": 48, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "衛氣具有「慓疾滑利」特性，運行於脈外體表肌腠以護衛抗邪。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】衛氣慓疾滑利，行於脈外體表肌腠，司開闔、溫分肉、護衛肌表。", "source": "113.pdf Q41；中醫概論 4 P.7"}, {"id": 49, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "氣的固攝作用是指推動血液在血管內循環流動的動力機能。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】推動血行是氣的「推動作用」；「固攝作用」是統攝控制防止血液與津液外溢流失。", "source": "113.pdf Q42；中醫概論 4 P.10、12"}, {"id": 50, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "氣的「固攝作用」是指統攝血液於脈內，並控制汗、尿、精等不妄泄。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】固攝作用即約束統攝血液防止外溢，控制津液不無故流失。", "source": "113.pdf Q42；中醫概論 4 P.12"}, {"id": 51, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體的元氣根發於心，必須藉由「肺經」作為主要通路布散至全身。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】元氣根發於「腎」，必須藉由「三焦」作為通路運行布散至全身。", "source": "113.pdf Q43；中醫概論 4 P.2、4"}, {"id": 52, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "病患若出現「脾氣鬱滯」，主要症狀表現為吃飯時產生脘腹悶脹。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】113考古特別考點：脾氣鬱滯阻礙運化，吃飯時會導致脘腹悶脹不適。", "source": "113.pdf Q44；中醫概論 4 P.17"}, {"id": 53, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "「氣閉」是指氣虛無力推動，表現為長期疲憊乏力的慢性虛弱證候。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】氣閉是急重症！氣機閉結在內、喪失出入，表現為突發神昏暴厥（厥證）。", "source": "113.pdf Q45；中醫概論 4 P.19"}, {"id": 54, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫認為人體中是「腎氣」直接具有生化血液的功能，而非腎精。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】113.pdf Q46 重點考點！腎氣沒有直接生化血液的功能，腎精才有！腎氣的功能是溫潤、促生血。", "source": "113.pdf Q46；中醫概論 4 P.23"}, {"id": 55, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫「氣血相伴」代表的深層涵義，是指陽（氣）與陰（血）相伴平衡。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】113.pdf Q47 特別記載：氣血相伴代表陰陽相伴，達到平衡。", "source": "113.pdf Q47；中醫概論 4 P.25"}, {"id": 56, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫劃分津液陰陽時，質地清稀的「津」屬於陰，稠厚的「液」屬於陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】顛倒！113.pdf Q48 明確標註：津屬陽（清稀行表），液屬陰（稠厚灌裡）。", "source": "113.pdf Q48；中醫概論 4 P.27"}, {"id": 57, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫五臟化生五液中，「汗為心之液，涕為肺之液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】汗為心液、涕為肺液、涎為脾液、淚為肝液、唾為腎液。", "source": "113.pdf Q49；中醫概論 4 P.28"}, {"id": 58, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫五臟化生五液中，「淚為腎之液，唾為肝之液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】配對錯位！淚為肝之液，唾為腎之液。", "source": "113.pdf Q49；中醫概論 4 P.28"}, {"id": 59, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體內部深層水液的溫煦、蒸騰與氣化功能，主要由「腎陽」主導推動。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】113.pdf Q50 重點考點：體內深層蒸騰氣化作用主要由「腎」陽主導推動。", "source": "113.pdf Q50；中醫概論 4 P.30"}, {"id": 60, "section": "basic", "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體內部深層水液的蒸騰氣化功能，主要由「肝陰」主導推動。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】深層水液的蒸騰氣化功能主要由「腎」（腎陽）主導，非肝陰。", "source": "113.pdf Q50；中醫概論 4 P.30"}, {"id": 61, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《黃帝內經》現存分為《素問》與《靈樞》兩大部分，其中《素問》主要記載詳細解剖、經絡腧穴與詳細針灸治療方法，而《靈樞》則側重於討論環境衛生、養生與基礎生理病理醫學概要。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】兩書內容分工剛好顛倒！《素問》偏重於生理、病理、自然環境與醫學理論概要；《靈樞》（古代又稱《針經》）則專門記載經絡、解剖構造與詳細針灸治療方法。", "source": "中醫概論 1 P.8；期中考古 Q1、Q2 (🔥必考典籍素問靈樞分工)", "section": "advanced"}, {"id": 62, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "東漢末年成書的《神農本草經》為中國現存最早的藥物學專著，書中收錄 365 種藥物，並將其分類為上、中、下三品，其中「下品」藥多無毒且以延年益壽為主，可長期大量服用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】《神農本草經》中「上品」藥材方為主養命延年、無毒、多服久服不傷人；「下品」藥多具有毒性，專為除寒熱邪氣、破積聚病疾所設，不可久服。", "source": "中醫概論 1 P.9；期中考古 Q3 (🔥本草上品與下品區分)", "section": "advanced"}, {"id": 63, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中藥飲片皆源於天然動植物與礦物，因此在臨床使用上絕對純天然且完全無副作用，任何體質皆可隨意自行服用無虞。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】中醫歷來強調「是藥三分毒」，中藥飲片必須遵循辨證論治與君臣佐使配伍，盲目或隨意濫服同樣會導致臟腑損傷或中毒，並非完全無毒無副作用。", "source": "中醫概論 1 P.11-13；期中考古 Q4 (🔥中藥安全觀念)", "section": "advanced"}, {"id": 64, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中藥藥性理論中的「四氣」是指酸、苦、甘、辛四種滋味，其中辛味具有升散行氣之功，屬陽；酸苦具有收斂清熱之功，屬陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「五味」，而非「四氣」！中藥的「四氣」是指寒、熱、溫、涼四種藥性；酸、苦、甘、辛、鹹才是五味。", "source": "中醫概論 1 P.23；期中考古 Q5 (🔥四氣與五味定義區分)", "section": "advanced"}, {"id": 65, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "民間常說「西醫治標，中醫治本」，在中醫臨床治療準則中，並非一味單純治本，而是講求「急則治其標，緩則治其本」，在面對大出血等急重症時應優先治標挽救生命。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】中醫治則講求「急則治其標，緩則治其本」或「標本兼治」。急性期標急時先治其標，慢性期或緩解期方深求其本。", "source": "中醫概論 1 P.15、20；期中考古 Q6 (🔥治標與治本辨析)", "section": "advanced"}, {"id": 66, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中醫將自然界的風、寒、暑、濕、燥、火稱為「六氣」；當六氣發生太過或不及之異常變化，侵入人體導致疾病時，則轉變為「六淫」致病邪氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】正常氣候條件下六者為滋生萬物的「六氣」；若氣候劇變、六氣反常成為致病因素，即稱「六淫」或六邪。", "source": "中醫概論 1 P.23；期中考古 Q7 (🔥六氣與六淫區分)", "section": "advanced"}, {"id": 67, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《黃帝內經》提出「上工治未病」，其核心理念是指在疾病尚未顯著發作或惡化前，透過養生調攝與預防醫學手段達成「未病先防」與「既病防變」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「上工治未病」強調預防為主，包含未病先防、既病防變與瘥後防復三大層次。", "source": "中醫概論 1 P.26；期中考古 Q8 (🔥治未病核心含義)", "section": "advanced"}, {"id": 68, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中國古代以日光照射角度劃分陰陽方位，地理學傳統上將「山之北面」與「水之南面」定義為陽，而「山之南面」與「水之北面」定義為陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】方位完全倒置！古代地理學之標準定義為：「山南水北謂之陽，山北水南謂之陰」。", "source": "中醫概論 1 P.29；期中考古 Q9 (🔥山南水北方位陰陽)", "section": "advanced"}, {"id": 69, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《易經》及哲學所提之「萬物負陰而抱陽」，在人體生理與能量層面，「負陰」主要體現為有形的實體物質與臟腑形質基礎，而「抱陽」則指人體生命能量、活力與功能體現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「負陰而抱陽」中，負陰代表萬物依託於有形可見的實質形體與物質基礎，抱陽代表外界能量輸入與生命功能活力的展現。", "source": "中醫概論 1 P.32；期中考古 Q11 (🔥負陰抱陽易學內涵)", "section": "advanced"}, {"id": 70, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "依據《素問·金匱真言論》劃分人體前後與上下陰陽，人體以背部為陰、腹部為陽；以腰為界，腰以上為陰、腰以下為陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】正確劃分為「背為陽，腹為陰」；以腰部為界則是「腰以上為陽，腰以下為陰」（頭為諸陽之會，陽性升發在上）。本題敘述剛好顛倒！", "source": "中醫概論 1 P.33-34；期中考古 Q12 (🔥人體部位陰陽劃分)", "section": "advanced"}, {"id": 71, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "在中醫臟腑陰陽劃分中，五臟（肝、心、脾、肺、腎）具有藏精氣而不瀉的特性，故屬陰；六腑（膽、胃、小腸、大腸、膀胱、三焦）具有傳化物而不藏的特性，故屬陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《素問》明言：「五臟者，藏精氣而不瀉也，故滿而不能實；六腑者，傳化物而不藏，故實而不能滿也。」五臟主藏精屬陰，六腑主傳化屬陽。", "source": "中醫概論 1 P.37；期中考古 Q13 (🔥五臟六腑陰陽歸屬)", "section": "advanced"}, {"id": 72, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "hard", "isExamStar": true, "question": "三陽三陰的「開、闔、樞」機制中，陽明經主導體表陽氣初升與向外散發，故稱為「開」；太陽經主導收斂封藏，故稱為「闔」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】三陽的開闔樞為「太陽為開，陽明為闔，少陽為樞」！太陽主表為開放向外；陽明主裡熱收闔；少陽為半表半裡樞紐。題目將太陽與陽明職責倒置。", "source": "中醫概論 1 P.40-42；期中考古 Q14-16 (🔥三陰三陽開闔樞)", "section": "advanced"}, {"id": 73, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "八綱辨證包含陰、陽、表、裡、寒、熱、虛、實，其中「陰陽」為八綱辨證之總綱，通常將表證、熱證、實證歸屬於陽，而將裡證、寒證、虛證歸屬於陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】八綱中陰陽為總綱。表、熱、實證代謝亢進或在表，歸為陽；裡、寒、虛證代謝低下或在裡，歸為陰。", "source": "中醫概論 1 P.45；期中考古 Q17 (🔥八綱辨證以陰陽為總綱)", "section": "advanced"}, {"id": 74, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中醫古籍記載「隔夜茶傷脾胃，不可飲也」，現代人若常將昨夜冷飲留置隔日飲用，容易損傷人體的「陰血」，造成體內熱氣旺盛而形成實火體質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】隔夜冰冷飲料最直接損傷的是脾胃「陽氣」，導致脾胃虛寒（陽虛），表現為手足冰冷、消化不良、腹脹腹瀉，而非陰虛或實熱！", "source": "中醫概論 1 P.46-49；期中考古 Q19 (🔥隔夜飲料損傷陽氣考點)", "section": "advanced"}, {"id": 75, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "臨床上患者出現面紅目赤、口舌生瘡、心煩失眠、尿黃短赤刺痛、舌尖紅絳、脈數洪等症狀，多屬於「心火上炎」之熱證上火表現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】心開竅於舌、心火下移小腸（尿赤刺痛），故口舌生瘡、舌紅、尿黃、面赤為典型心火旺盛之表現。", "source": "中醫概論 1 P.20、22；期中考古 Q20 (🔥上火心火臨床特徵)", "section": "advanced"}, {"id": 76, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行學說中「木曰曲直」，引申至人體臟腑為「心」，代表心陽具有生生不息、向上生長與調暢氣血之特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「木曰曲直」引申對應的臟腑為「肝」（肝主升發疏泄，屬木）；心陽溫熱上升，對應的是「火曰炎上」（屬火）！", "source": "中醫概論 2 P.7、10；期中考古 Q21 (🔥木曰曲直對應肝)", "section": "advanced"}, {"id": 77, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "中醫所說的「脾」在人體生理與器官系統對應上，與西醫解剖學上的脾臟（Spleen，主要為淋巴免疫組織）完全一致，兩者皆僅專門負責人體免疫防禦而不參與消化吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】西醫解剖學的脾（Spleen）主要是淋巴與免疫器官；中醫的「脾」概念極為廣泛，涵蓋整個消化吸收、運化水穀精微、水濕代謝、肌肉營養以及統攝血液等功能。", "source": "中醫概論 2 P.8；期中考古 Q22 (🔥中醫脾與西醫脾對照)", "section": "advanced"}, {"id": 78, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五行與五臟配屬中，土對應脾、五色為黃、五味為「酸」；木對應肝、五色為青、五味為「甘」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五味配屬顛倒！木（肝）對應的是「酸」味；土（脾）對應的是「甘」味。酸入肝，甘入脾。", "source": "中醫概論 2 P.16；期中考古 Q23 (🔥五行五臟五味配屬顛倒陷阱)", "section": "advanced"}, {"id": 79, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "中醫五行生剋規律中，相生與相剋互為矛盾對立，在健康人體內部相生與相剋必然不能同時存在，只要出現相剋現象就代表五行系統已經病態失衡。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】相生與相剋是維持五行相對動態平衡（「制化」）不可或缺的兩種力量！「生中有剋，剋中有生」，正常生理下相生與相剋協同運作，並非相剋即代表病態。", "source": "中醫概論 2 P.17-19；期中考古 Q25 (🔥五行相對平衡叫制化)", "section": "advanced"}, {"id": 80, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "臨床觀察病患若「面色泛青帶黃、伴隨泛酸腹脹、脈象弦而無力」，通常提示肝氣鬱滯化旺且過度剋制脾土，此病理機轉在中醫稱為「肝木乘脾土」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】青為肝色，黃為脾色，脈弦為肝旺，脈弱為脾虛，泛酸腹脹為脾胃受困，此即肝氣偏旺乘襲脾土（木乘土）的典型表現。", "source": "中醫概論 2 P.22-24；期中考古 Q26 (🔥肝旺乘脾面色脈象)", "section": "advanced"}, {"id": 81, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五志分屬五臟中「脾在志為思」，長期思慮過度或焦慮多想的人，容易導致心火亢盛而腎精枯竭，但絕不會影響脾胃的運化與食慾吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「思傷脾」，思慮過度最直接損害脾氣，導致脾臟氣機結滯、運化失司，常見症狀為不思飲食、脘腹脹滿，進而化源不足影響心脾失眠。", "source": "中醫概論 2 P.26-27；期中考古 Q27 (🔥思慮過度傷脾)", "section": "advanced"}, {"id": 82, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "在五行病理傳變中，若肺病（金）日久耗傷母臟，波及並導致脾胃（土）功能衰弱、食慾不振與精神萎靡，此種子系統帶壞母系統的現象稱為「子盜母氣」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾土生肺金（脾為母，肺為子）。肺病久虛損耗脾土精氣，導致脾胃功能失常，即典型的「子盜母氣（子病及母）」傳變。", "source": "中醫概論 2 P.29-30；期中考古 Q28 (🔥子盜母氣觀念)", "section": "advanced"}, {"id": 83, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行學說中「水曰潤下」，引申至人體五臟中與「肺」相呼應，因肺主肅降且為水之上源，故水之特性歸屬於肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】水曰潤下對應的是「腎」（腎主水）；肺主肅降收斂，在五行中對應的是「金曰從革」！", "source": "中醫概論 2 P.13-14 (🔥水曰潤下對應腎)", "section": "advanced"}, {"id": 84, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "依據五行相生相剋次序，相生的正確順序為：木生火、火生土、土生金、金生水、水生木；相剋的正確順序為：木剋土、土剋水、水剋火、火剋金、金剋木。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】此為五行生剋基礎法則：木火土金水循環相生；木剋土、土剋水、水剋火、火剋金、金剋木依序相剋。", "source": "中醫概論 2 P.18-19 (🔥五行生剋標準次序)", "section": "advanced"}, {"id": 85, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行病理中的「相侮」是指被剋者實力過度強盛，反而逆向欺負剋制其原本的主導者，因此在古代又稱為「反克」或「反侮」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】相乘為順向過度剋制；相侮為逆向反剋（如木本受金剋，但木氣過旺反而反剋金，稱木侮金）。", "source": "中醫概論 2 P.22 (🔥五行相乘與相侮定義)", "section": "advanced"}, {"id": 86, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行配屬自然界季節與方位中，長夏屬土，其方位居中央，對應之氣候為「燥」，對應之臟腑為肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】長夏屬土、居中央，對應氣候為「濕」，對應臟腑為「脾」！秋季屬金、西方，對應氣候才為「燥」，對應臟腑為「肺」。", "source": "中醫概論 2 P.16 (🔥五行五季五氣五方配屬)", "section": "advanced"}, {"id": 87, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "著名臨床治則「滋水涵木法」（如使用六味地黃丸補腎水以滋養肝木），屬於運用五行「相剋」法則所建立的治療策略。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】腎水生肝木，滋水涵木法是透過補腎陰（水）來滋養肝陰（木），屬於運用五行「相生」規律（虛則補其母）的治法，並非相剋法！", "source": "中醫概論 2 P.25 (🔥滋水涵木相生治法)", "section": "advanced"}, {"id": 88, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行特性中「火曰炎上」，其引申含義包含溫熱、升騰與光明，因此心陽具有溫煦全身氣血與臟腑組織的生理作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】火性升騰溫熱光明，在人體代表心陽之溫煦，故心歸屬於火。", "source": "中醫概論 2 P.7、11 (🔥火曰炎上特性)", "section": "advanced"}, {"id": 89, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "金元四大家之張子和曾記載以「生氣疏肝、調暢氣機」的方法治療婦人因思慮過度導致兩年不寐之病案，在五行理論上體現了「以木剋土」解開脾氣結滯的思維。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義引用張子和醫案：思慮傷脾（土）導致氣機結滯，利用肝木疏泄升發之性（以木克土）理順散開脾胃鬱結，從而治癒頑固失眠。", "source": "中醫概論 2 P.26-27 (🔥張子和以木剋土醫案)", "section": "advanced"}, {"id": 90, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": false, "question": "相乘與相侮在人體病理演變中往往是互為因果、同時發生的連鎖反應，例如當肝木之氣極度亢盛時，既可能發生「木乘土」，又可反向出現「木侮金」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義明確指出：相乘與相侮往往同時發生或互為因果。例如肝木暴盛，既過度克伐脾土（木乘土），又反過來侮制肺金（木侮金）。", "source": "中醫概論 2 P.23 (🔥相乘相侮連鎖反應)", "section": "advanced"}, {"id": 91, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫「藏象學說」中的「藏」是指藏於體內的內臟組織器官，而「象」是指表現於外的生理現象與病理徵候，因此藏象即是由外在徵象觀察推斷內在臟腑狀態的方法學。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「藏象」之義即「有諸內必形諸外」，藏居於內，象形於外，透過觀察外在表現以推知內在臟腑之生理與病理變動。", "source": "中醫概論 3 P.2；期中考古 Q29 (🔥藏象之含義)", "section": "advanced"}, {"id": 92, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "中醫奇恆之腑包括「腦、髓、骨、脈、膽、女子胞」，之所以冠上「奇恆」之稱，是因為它們形態多屬中空類似於腑，但生理功能卻偏向藏聚精氣類似於臟。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】奇恆之腑形似腑而神似臟（形態中空似六腑，功能藏精似五臟，非臟非腑，名曰奇恆之腑）。注意膽兼具六腑與奇恆之腑雙重身分。", "source": "中醫概論 3 P.3、20；期中考古 Q30 (🔥奇恆之腑定義與成員)", "section": "advanced"}, {"id": 93, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "六腑包含膽、胃、小腸、大腸、膀胱、三焦，其總體生理功能特點為「受盛和傳化水穀」，具有「實而不能滿、藏精氣而不瀉」的特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】六腑的特性是「傳化物而不藏，故實而不能滿」！題目中「藏精氣而不瀉、滿而不能實」是五臟的特性，敘述顛倒混淆。", "source": "中醫概論 3 P.11；期中考古 Q31 (🔥六腑生理特點實而不能滿)", "section": "advanced"}, {"id": 94, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "《素問·靈蘭秘典論》將十二臟腑比喻為國家官職體系，其中肝為君主之官、謀慮出焉；心為將軍之官、神明出焉。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】官職對應顛倒！心為「君主之官，神明出焉」；肝為「將軍之官，謀慮出焉」！", "source": "中醫概論 3 P.6、7；期中考古 Q32-34 (🔥靈蘭秘典官位對應顛倒陷阱)", "section": "advanced"}, {"id": 95, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "脾的生理功能主要包含「主運化」水穀精微與水濕，以及「主統血」使血液約束於脈管之內；若脾氣虛衰失控，則可能導致皮下出血、便血或崩漏等出血症狀。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾主運化為後天之本，脾又主統血。脾氣健旺則能固攝血液運行於脈內，脾氣虛衰則統血無權而致出血。", "source": "中醫概論 3 P.8；期中考古 Q32 (🔥脾主運化與統血)", "section": "advanced"}, {"id": 96, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "肺在體表組織與五官外竅之延伸對應關係為：在體合筋，其華在爪，開竅於目；且肺主宣發肅降與通調水道。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「在體合筋、其華在爪、開竅於目」是「肝」的對應！肺是對應「在體合皮、其華在毛、開竅於鼻」。", "source": "中醫概論 3 P.9；期中考古 Q33 (🔥肺與肝之體竅華混淆陷阱)", "section": "advanced"}, {"id": 97, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "腎在中醫生理功能中被稱為「後天之本」，主受納水穀，其在體合肌肉，其華在唇，開竅於口。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「脾」！腎為「先天之本」，主藏精、主水、主納氣，在體合骨生髓，其華在髮，開竅於耳及二陰。", "source": "中醫概論 3 P.10；期中考古 Q34 (🔥腎與脾之先天後天混淆陷阱)", "section": "advanced"}, {"id": 98, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "大腸的生理功能主要是接受小腸下移的食物殘渣，並將其中剩餘的汁液完全排棄，在中醫生理理論中被稱為「主液」，而小腸才負責「主津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！中醫傳統將大腸功能定為「傳導糟粕，大腸主津」（吸收殘餘水分）；小腸泌別清濁則定為「小腸主液」。", "source": "中醫概論 3 P.15；期中考古 Q35 (🔥大腸主津與小腸主液區別)", "section": "advanced"}, {"id": 99, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "三焦劃分中，上、中、下三焦界限明確，其中「中焦」在人體解剖分界上的切點是位於「橫膈（膻中）」以下至「神闕（肚臍）」之間，主要包含脾與胃。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】橫膈（膻中）以上為上焦（心肺）；橫膈至神闕（肚臍）為中焦（脾胃）；肚臍以下為下焦（肝腎大腸小腸膀胱女子胞）。", "source": "中醫概論 3 P.17；期中考古 Q36 (🔥中焦解剖切點膻中與神闕)", "section": "advanced"}, {"id": 100, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": true, "question": "人體體液代謝是一項極為複雜的系統工程，必須依賴胃之受納腐熟、脾之運化轉輸、肺之宣發肅降通調水道、腎之蒸騰氣化以及膀胱氣化出焉等器官協同完成。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】水液代謝涉及肺、脾、腎、胃、小腸、大腸、膀胱及三焦水道等多臟腑的綜合運化與氣化調節。", "source": "中醫概論 3 P.19；期中考古 Q37 (🔥水液代謝途徑與主導臟腑)", "section": "advanced"}, {"id": 101, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "女子胞之生理與天癸密切相關，所謂「天癸」是指一種源於先天腎精、受後天水穀精微滋養充盛，能促進人體生殖器官發育成熟與維持月經生殖機能的重要精微物質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「二七而天癸至，任脈通，太衝脈盛，月事以時下，故有子」。天癸是促成人體性發育成熟和維持生殖機能的先天腎精化生精微物質。", "source": "中醫概論 3 P.20；期中考古 Q38 (🔥天癸名詞實質定義)", "section": "advanced"}, {"id": 102, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "名醫學說「乙癸同源」是指心與腎相交（水火既濟）的生理現象，因為心屬乙木而腎屬癸水，故又稱心腎同源。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「乙癸同源」是指「肝腎同源」！天干中乙屬木（肝），癸屬水（腎）。肝藏血、腎藏精，精血同源互生，故稱乙癸同源，絕非心腎！", "source": "中醫概論 3 P.26；期中考古 Q39 (🔥乙癸同源即肝腎同源)", "section": "advanced"}, {"id": 103, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "小腸具有「受盛化物」與「泌別清濁」之功能，能將胃傳來的食糜進行進一步消化，並區分為清液（吸收後轉輸全身）與濁質（下傳大腸與膀胱）。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】小腸為受盛之官，化物出焉；泌別清濁即將食糜分清別濁，精微水液吸收，糟粕入大腸，廢液滲入膀胱。", "source": "中醫概論 3 P.14 (🔥小腸受盛化物泌別清濁)", "section": "advanced"}, {"id": 104, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": false, "question": "膽被列為六腑之一，其內部貯存之膽汁是由膽囊本身之肌肉組織直接消化水穀精微化生而成，與肝臟之疏泄功能毫無關聯。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】膽汁是由肝之餘氣化生並聚積於膽，受肝之疏泄調控排入腸道以助消化，並非膽囊自己消化水穀產生！", "source": "中醫概論 3 P.12 (🔥膽汁化生與肝疏泄之關係)", "section": "advanced"}, {"id": 105, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "三焦作為六腑之一，被稱為「孤腑」或元氣之別使，其主要生理功能是作為元氣運行布散於全身的通道，以及人體水液代謝運行的專屬水道路徑。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「三焦者，決瀆之官，水道出焉」，三焦既是元氣通行之通道（通行元氣），也是水液運行之通道（運行水液）。", "source": "中醫概論 3 P.18 (🔥三焦通行元氣與運行水液)", "section": "advanced"}, {"id": 106, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體的「後天之氣」主要源於脾胃所運化的「水穀精微之氣」，並與肺吸入之「自然界清氣」相互結合而成，與出生前遺傳自父母的先天之氣相互補充滋養。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】後天之氣由脾胃運化之水穀精微與肺吸入之自然清氣化合而成；先天之氣受後天之氣充養，兩者相輔相成。", "source": "中醫概論 4 P.5；期中考古 Q40 (🔥後天之氣化生來源)", "section": "advanced"}, {"id": 107, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣的分類中，「衛氣」是運行於脈管之內的精純營養物質，負責化生血液並滋潤內在臟腑；而「營氣」則是運行於脈外體表負責保衛抵禦外邪之氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！「營在脈中，衛在脈外」！營氣行於脈中負責營養與化血；衛氣「慓疾滑利」行於脈外體表肌膚腠理，司開闔、溫分肉、護衛肌表抵禦外邪。", "source": "中醫概論 4 P.6-7；期中考古 Q41 (🔥營氣在脈中與衛氣在脈外)", "section": "advanced"}, {"id": 108, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "氣的「固攝作用」是指氣具有推動血液與津液生長運行、抵禦外邪侵襲的能力，若固攝失常則會導致嚴重發冷畏寒與四肢不溫。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題目描述的是「推動」與「溫煦/防禦」功能！氣的「固攝作用」是指統攝、控制液態物質（防止血液逸出脈外，防止汗液、尿液、精液無故流失）。", "source": "中醫概論 4 P.12；期中考古 Q42 (🔥氣之固攝功能概念混淆)", "section": "advanced"}, {"id": 109, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "人體最根本的原動力為「元氣」，元氣根於腎，必須藉由「三焦」作為專屬通道才能布散宣發至五臟六腑與全身四肢百骸。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「難經：三焦者，水穀之道路，氣之所終始也...三焦者，元氣之別使也」。元氣根於腎，通過三焦布達全身。", "source": "中醫概論 4 P.2、4；期中考古 Q43 (🔥元氣通過三焦布散全身)", "section": "advanced"}, {"id": 110, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "若病患出現「脾氣鬱滯」，其主要臨床病理特徵為突然昏厥倒地、神志昏迷、牙關緊閉且四肢厥冷。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】突發昏厥、牙關緊閉是危重急症「氣閉（厥證）」的表現！「脾氣鬱滯」主要特徵是進食後脘腹脹悶不適、噯氣、消化不良。", "source": "中醫概論 4 P.17、19；期中考古 Q44、Q45 (🔥脾氣鬱滯與氣閉混淆陷阱)", "section": "advanced"}, {"id": 111, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "氣機失調中的「氣閉」是指氣機閉塞結聚於內，喪失出入內外之開闔功能，臨床表現為突發神昏暴厥、牙關緊閉、呼吸驟阻等危重厥證。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「氣閉」乃氣機閉結在內、不能外達，出入神機閉塞所致之急重厥證（如西醫之昏厥 Syncope）。", "source": "中醫概論 4 P.19；期中考古 Q45 (🔥氣閉急症定義)", "section": "advanced"}, {"id": 112, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫認為「腎精具有化生血液的功能」，因為腎藏精，精能生髓，髓能化血，且腎陽之溫煦促使氣化旺盛以助血液生生不息，此即「精血同源」之理。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】腎精充足則骨髓充盈，骨髓化赤為血，故腎精化生血液為精血同源之重要依據。", "source": "中醫概論 4 P.23、32；期中考古 Q46 (🔥腎精化生血液與精血同源)", "section": "advanced"}, {"id": 113, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "五臟化生五液的標準對應關係為：「汗為心之液、涕為肝之液、淚為肺之液、涎為腎之液、唾為脾之液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五液配屬完全混淆！《宣明五氣》標準為：心為汗、肺為涕、肝為淚、脾為涎、腎為唾！", "source": "中醫概論 4 P.28；期中考古 Q47 (🔥五臟五液對應顛倒陷阱)", "section": "advanced"}, {"id": 114, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣化理論中，人體內部深層的水液蒸騰氣化與全身陽氣推動，主要是由「心」臟的君火單獨主導，與腎陽之溫煦氣化完全無關。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】體內深層水液蒸騰與氣化功能主要由「腎」主導！腎陽為一身陽氣之根本，推動並蒸騰下焦水液，溫煦諸臟以行氣化。", "source": "中醫概論 4 P.15、30；期中考古 Q50 (🔥體內深層氣化由腎主導)", "section": "advanced"}, {"id": 115, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣與血的關係密切，傳統概括為「氣為血之帥，血為氣之母」，其中氣為血之帥包含氣能生血、氣能行血與氣能攝血三大內涵。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣為血之帥：氣旺則生血充沛、氣行則血行不滯、氣固攝則血不外溢；血為氣之母：血能載氣，血能養氣。", "source": "中醫概論 4 P.24-25 (🔥氣為血之帥三大功能)", "section": "advanced"}, {"id": 116, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "中醫將體內水液統稱為津液，其中質地較為清稀、流動性較大、主要布散於體表皮膚孔竅以發揮滋潤作用者稱為「液」；而質地濃稠、灌注於骨節臟腑腦髓者稱為「津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】津與液之定義剛好顛倒！清稀、流動性大、布於體表孔竅者為「津」（屬陽）；稠厚、流動性小、灌注於骨節臟腑腦髓起濡養作用者為「液」（屬陰）。", "source": "中醫概論 4 P.26-27 (🔥津與液清稀濃稠陰陽辨析)", "section": "advanced"}, {"id": 117, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣的五大生理功能包括：推動作用、溫煦作用、防禦作用、固攝作用以及氣化作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣的五大生理功能即為：推動（推動生長與運行）、溫煦（維持體溫）、防禦（抗禦外邪）、固攝（約束津血）、氣化（促進物質轉化）。", "source": "中醫概論 4 P.9-13 (🔥氣的五大生理功能)", "section": "advanced"}, {"id": 118, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": false, "question": "「宗氣」發源於下焦命門，是由先天腎精直接化生而成，主要儲存於膀胱，負責固攝尿液與下焦氣化。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是元氣/下焦之氣！「宗氣」聚集於胸中（膻中），是由肺吸入之自然清氣與脾胃運化之水穀精氣結合而成，主呼吸與行血。", "source": "中醫概論 4 P.5 (🔥宗氣生成部位與功能混淆)", "section": "advanced"}, {"id": 119, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣機失調中的「氣逆」是指臟腑氣機應降反升或升發太過，常見如肺氣上逆出現咳嗽氣喘、胃氣上逆出現呃逆嘔吐，以及肝氣上逆出現急躁易怒、面紅耳赤。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】肺胃之氣宜降，肝氣主升發但不可太過。肺氣上逆則咳喘、胃氣上逆則嘔呃、肝氣上逆則頭脹面赤急躁，皆為氣逆之典型表現。", "source": "中醫概論 4 P.18 (🔥氣逆病理表現)", "section": "advanced"}, {"id": 120, "chapter": "單元四：精氣血津液神氣化", "difficulty": "hard", "isExamStar": false, "question": "「精血同源」是指精與血在人體生理活動中相互依賴、相互滋生化育，腎藏精以生髓化血，同時脾胃化生的水穀精微與營血充足亦能不斷滋養充盛腎精。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】精能化血，血亦能化精，精血互生互化，故稱「精血同源」或「精血互生」。", "source": "中醫概論 4 P.32-33 (🔥精血同源生理機轉)", "section": "advanced"}];
 
     (function() {
       let allQuestions = [];
@@ -848,7 +867,7 @@
       let currentFilter = 'all';
       let isShuffle = false;
 
-      const STORAGE_KEY = 'tajen_tcm_foundation_progress_v1';
+      const STORAGE_KEY = 'tajen_tcm_foundation_progress_v2';
 
       // DOM elements
       const qNum = document.getElementById('questionNumber');
@@ -858,9 +877,9 @@
       const resBadge = document.getElementById('resultBadge');
       const srcBadge = document.getElementById('sourceBadge');
       const expText = document.getElementById('explanationText');
+      const qSection = document.getElementById('sectionPill');
       const qChapter = document.getElementById('chapterPill');
       const qExamStar = document.getElementById('examStarPill');
-      const qDifficulty = document.getElementById('difficultyPill');
       const qBookmark = document.getElementById('bookmarkBtn');
       const pBar = document.getElementById('progressBar');
       const pText = document.getElementById('progressText');
@@ -961,6 +980,10 @@
 
         if (filterType === 'all') {
           activeQuestions = [...allQuestions];
+        } else if (filterType === 'basic') {
+          activeQuestions = allQuestions.filter(q => q.section === 'basic');
+        } else if (filterType === 'advanced') {
+          activeQuestions = allQuestions.filter(q => q.section === 'advanced');
         } else if (filterType === 'star') {
           activeQuestions = allQuestions.filter(q => q.isExamStar);
         } else if (filterType === 'wrong') {
@@ -1026,6 +1049,15 @@
         const isAnswered = userAnswers[q.id] !== undefined;
         const userChoice = userAnswers[q.id];
 
+        // Section Pill
+        if (q.section === 'basic') {
+          qSection.textContent = '🟢 基本題 (考古直出短題幹)';
+          qSection.className = 'section-pill section-basic';
+        } else {
+          qSection.textContent = '🟡 進階題 (深度概念辨析)';
+          qSection.className = 'section-pill section-advanced';
+        }
+
         // Header
         qChapter.textContent = q.chapter;
         qNum.textContent = `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題 (全庫 #${q.id})`;
@@ -1034,19 +1066,6 @@
           qExamStar.style.display = 'inline-block';
         } else {
           qExamStar.style.display = 'none';
-        }
-
-        // Difficulty badge
-        qDifficulty.className = 'difficulty-pill';
-        if (q.difficulty === 'easy') {
-          qDifficulty.textContent = '🟢 基礎';
-          qDifficulty.classList.add('difficulty-easy');
-        } else if (q.difficulty === 'hard') {
-          qDifficulty.textContent = '🔴 挑戰';
-          qDifficulty.classList.add('difficulty-hard');
-        } else {
-          qDifficulty.textContent = '🟡 進階';
-          qDifficulty.classList.add('difficulty-medium');
         }
 
         // Bookmark
@@ -1209,8 +1228,10 @@
         const q = activeQuestions[currentIndex];
         const ansText = q.answer === 0 ? '○ 正確 (True)' : '╳ 錯誤 (False)';
         const userChoiceText = userAnswers[q.id] !== undefined ? (userAnswers[q.id] === 0 ? '○ 正確' : '╳ 錯誤') : '未作答';
+        const secText = q.section === 'basic' ? '基本題型 (考古直出)' : '進階題型 (深度辨析)';
         const text = `【中醫概論是非題題目勘誤回報】
 題號: #${q.id}
+類型: ${secText}
 單元: ${q.chapter}
 出處: ${q.source}
 題幹陳述: ${q.question}
@@ -1225,7 +1246,7 @@
         }).catch(() => {
           alert('複製失敗，請手動複製。');
         });
-      };
+      }
 
       function showToast(msg) {
         if (!toast) return;
