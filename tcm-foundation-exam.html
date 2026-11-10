@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中醫概論 期中考全真是非題題庫 (60題・鄭凱駿老師課堂與考古題全收錄)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-light: #38bdf8;
+      --primary-dark: #0369a1;
+      --primary-subtle: #f0f9ff;
+      --secondary: #0d9488;
+      --accent: #d97706;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --error: #b91c1c;
+      --error-bg: #fee2e2;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Nav */
+    header {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0d9488 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .site-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.active-shuffle {
+      background: #fbbf24;
+      color: #78350f;
+      border-color: #f59e0b;
+      font-weight: 700;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1400px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.5rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Filter Card */
+    .filter-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tab-btn {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .tab-btn.wrong-tab {
+      color: var(--error);
+      border-color: #fca5a5;
+    }
+
+    .tab-btn.wrong-tab.active {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+
+    .tab-btn.star-tab {
+      color: var(--accent);
+      border-color: #fcd34d;
+    }
+
+    .tab-btn.star-tab.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .stat-badge.score {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .stat-badge.wrong {
+      background: var(--error-bg);
+      color: var(--error);
+    }
+
+    .stat-badge.star {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    /* Progress bar */
+    .progress-track {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Active Quiz Card */
+    .quiz-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .category-pill {
+      background: #f0f9ff;
+      color: var(--primary-dark);
+      border: 1px solid #bae6fd;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .exam-star-pill {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: none;
+    }
+
+    .difficulty-pill {
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .difficulty-easy {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .difficulty-medium {
+      background: #fefce8;
+      color: #854d0e;
+      border: 1px solid #fef08a;
+    }
+
+    .difficulty-hard {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .q-number {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .bookmark-btn {
+      background: none;
+      border: 1px solid var(--border);
+      font-size: 1.1rem;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .bookmark-btn:hover {
+      color: #eab308;
+      border-color: #fde047;
+    }
+
+    .bookmark-btn.active {
+      color: #eab308;
+      background: #fefce8;
+      border-color: #facc15;
+    }
+
+    .question-prompt-tag {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .question-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+      color: #0f172a;
+    }
+
+    /* True/False Options Layout */
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .options-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 1.15rem 1.4rem;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: var(--primary-subtle);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .option-prefix {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .tf-symbol {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .tf-symbol-true {
+      color: #16a34a;
+    }
+
+    .tf-symbol-false {
+      color: #dc2626;
+    }
+
+    .option-btn.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    .option-btn.correct .option-prefix {
+      background: var(--success);
+      color: white;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--error);
+      background: var(--error-bg);
+      color: #7f1d1d;
+      font-weight: 700;
+    }
+
+    .option-btn.wrong .option-prefix {
+      background: var(--error);
+      color: white;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* Explanation Box */
+    .explanation-box {
+      display: none;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--primary);
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .explanation-box.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .explanation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .result-badge {
+      font-size: 0.875rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .source-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: #e2e8f0;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .explanation-text {
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .copy-report-btn {
+      background: white;
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .copy-report-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-subtle);
+    }
+
+    /* Card Footer Navigation */
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: #e2e8f0;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Sidebar Navigator */
+    .sidebar {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      height: fit-content;
+      position: sticky;
+      top: 5rem;
+    }
+
+    .sidebar-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .legend {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+      gap: 0.4rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.35rem;
+    }
+
+    .grid-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .grid-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .grid-btn {
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      position: relative;
+    }
+
+    .grid-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .grid-btn.current {
+      outline: 2.5px solid #0284c7;
+      outline-offset: 1px;
+      font-weight: 700;
+    }
+
+    .grid-btn.correct {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+
+    .grid-btn.wrong {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+
+    .grid-btn.bookmarked::after {
+      content: '★';
+      position: absolute;
+      top: -3px;
+      right: 1px;
+      font-size: 9px;
+      color: #eab308;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: white;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 9999;
+      animation: toastIn 0.2s ease-out;
+    }
+
+    @keyframes toastIn {
+      from { transform: translate(-50%, 10px); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="site-title">
+        <span>☯️</span>
+        <span>中醫概論 期中考全真是非題題庫 (60題・鄭凱駿老師課堂與考古題全收錄)</span>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html" class="nav-btn">
+          <span>🏠</span>
+          <span>首頁</span>
+        </a>
+        <button id="shuffleBtn" class="nav-btn" onclick="toggleShuffle()">
+          <span>🔀</span>
+          <span id="shuffleText">隨機: 關</span>
+        </button>
+        <button class="nav-btn" onclick="clearProgress()">
+          <span>🔄</span>
+          <span>重設進度</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="left-col">
+      <!-- Filter Card -->
+      <div class="filter-card">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="tab-btn active" onclick="setFilter('all', this)">全部 60 題</button>
+          <button class="tab-btn star-tab" onclick="setFilter('star', this)">🔥 考古必考重點</button>
+          <button class="tab-btn wrong-tab" onclick="setFilter('wrong', this)">錯題重練 (<span id="wrongCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('bookmarked', this)">⭐ 收藏題 (<span id="bookmarkCountLabel">0</span>)</button>
+          <button class="tab-btn" onclick="setFilter('ch1', this)">單元一：導論與陰陽 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch2', this)">單元二：五行生剋制化 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch3', this)">單元三：藏象與臟腑 (15題)</button>
+          <button class="tab-btn" onclick="setFilter('ch4', this)">單元四：精氣血津液神 (15題)</button>
+        </div>
+        <div class="stats-bar">
+          <div>
+            <span class="stat-badge score">答對: <span id="correctScore">0</span></span>
+            <span class="stat-badge wrong" style="margin-left: 0.75rem;">答錯: <span id="wrongScore">0</span></span>
+            <span class="stat-badge star" style="margin-left: 0.75rem;">收藏: <span id="bookmarkScore">0</span></span>
+          </div>
+          <div>
+            <span id="progressText">1 / 60</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Track -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+
+      <!-- Active Quiz Card -->
+      <div class="quiz-card" id="quizCard">
+        <div class="question-header">
+          <div class="header-badges">
+            <span class="category-pill" id="chapterPill">單元分類</span>
+            <span class="exam-star-pill" id="examStarPill">🔥 考古必考題</span>
+            <span class="difficulty-pill difficulty-medium" id="difficultyPill">🟡 進階 (中)</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="q-number" id="questionNumber">第 1 題 / 共 60 題</span>
+            <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
+          </div>
+        </div>
+
+        <div>
+          <span class="question-prompt-tag">【是非題・判斷題幹敘述是否正確】</span>
+        </div>
+
+        <div class="question-text" id="questionStem">題目載入中...</div>
+
+        <!-- True / False Options -->
+        <div class="options-list" id="optionsList"></div>
+
+        <div class="explanation-box" id="explanationBox">
+          <div class="explanation-header">
+            <span class="result-badge" id="resultBadge">解析</span>
+            <span class="source-badge" id="sourceBadge">講義來源</span>
+          </div>
+          <div class="explanation-text" id="explanationText"></div>
+          <button class="copy-report-btn" onclick="copyQuestionReport()">
+            <span>📋</span>
+            <span>複製本題資訊以供修正</span>
+          </button>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>
+            <span>⬅</span>
+            <span>上一題</span>
+          </button>
+          <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+            <span>下一題</span>
+            <span>➡</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar Navigator -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span>題號導覽 (1~60)</span>
+        <span style="font-size: 0.75rem; color: var(--text-muted);" id="navStats">0/60</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#e2e8f0;"></span> 未答</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--success);"></span> 答對</div>
+        <div class="legend-item"><span class="legend-dot" style="background:var(--error);"></span> 答錯</div>
+        <div class="legend-item"><span style="color:#eab308;font-size:10px;">★</span> 收藏</div>
+      </div>
+      <div class="grid-container" id="gridContainer"></div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">已複製至剪貼簿！</div>
+
+  <script>
+    window.QUIZ_DATA = [{"id": 1, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《黃帝內經》現存分為《素問》與《靈樞》兩大部分，其中《素問》主要記載詳細解剖、經絡腧穴與詳細針灸治療方法，而《靈樞》則側重於討論環境衛生、養生與基礎生理病理醫學概要。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】兩書內容分工剛好顛倒！《素問》偏重於生理、病理、自然環境與醫學理論概要；《靈樞》（古代又稱《針經》）則專門記載經絡、解剖構造與詳細針灸治療方法。", "source": "中醫概論 1 P.8；期中考古 Q1、Q2 (🔥必考典籍素問靈樞分工)"}, {"id": 2, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "東漢末年成書的《神農本草經》為中國現存最早的藥物學專著，書中收錄 365 種藥物，並將其分類為上、中、下三品，其中「下品」藥多無毒且以延年益壽為主，可長期大量服用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】《神農本草經》中「上品」藥材方為主養命延年、無毒、多服久服不傷人；「下品」藥多具有毒性，專為除寒熱邪氣、破積聚病疾所設，不可久服。", "source": "中醫概論 1 P.9；期中考古 Q3 (🔥本草上品與下品區分)"}, {"id": 3, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中藥飲片皆源於天然動植物與礦物，因此在臨床使用上絕對純天然且完全無副作用，任何體質皆可隨意自行服用無虞。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】中醫歷來強調「是藥三分毒」，中藥飲片必須遵循辨證論治與君臣佐使配伍，盲目或隨意濫服同樣會導致臟腑損傷或中毒，並非完全無毒無副作用。", "source": "中醫概論 1 P.11-13；期中考古 Q4 (🔥中藥安全觀念)"}, {"id": 4, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中藥藥性理論中的「四氣」是指酸、苦、甘、辛四種滋味，其中辛味具有升散行氣之功，屬陽；酸苦具有收斂清熱之功，屬陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「五味」，而非「四氣」！中藥的「四氣」是指寒、熱、溫、涼四種藥性；酸、苦、甘、辛、鹹才是五味。", "source": "中醫概論 1 P.23；期中考古 Q5 (🔥四氣與五味定義區分)"}, {"id": 5, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "民間常說「西醫治標，中醫治本」，在中醫臨床治療準則中，並非一味單純治本，而是講求「急則治其標，緩則治其本」，在面對大出血等急重症時應優先治標挽救生命。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】中醫治則講求「急則治其標，緩則治其本」或「標本兼治」。急性期標急時先治其標，慢性期或緩解期方深求其本。", "source": "中醫概論 1 P.15、20；期中考古 Q6 (🔥治標與治本辨析)"}, {"id": 6, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中醫將自然界的風、寒、暑、濕、燥、火稱為「六氣」；當六氣發生太過或不及之異常變化，侵入人體導致疾病時，則轉變為「六淫」致病邪氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】正常氣候條件下六者為滋生萬物的「六氣」；若氣候劇變、六氣反常成為致病因素，即稱「六淫」或六邪。", "source": "中醫概論 1 P.23；期中考古 Q7 (🔥六氣與六淫區分)"}, {"id": 7, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "《黃帝內經》提出「上工治未病」，其核心理念是指在疾病尚未顯著發作或惡化前，透過養生調攝與預防醫學手段達成「未病先防」與「既病防變」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「上工治未病」強調預防為主，包含未病先防、既病防變與瘥後防復三大層次。", "source": "中醫概論 1 P.26；期中考古 Q8 (🔥治未病核心含義)"}, {"id": 8, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "中國古代以日光照射角度劃分陰陽方位，地理學傳統上將「山之北面」與「水之南面」定義為陽，而「山之南面」與「水之北面」定義為陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】方位完全倒置！古代地理學之標準定義為：「山南水北謂之陽，山北水南謂之陰」。", "source": "中醫概論 1 P.29；期中考古 Q9 (🔥山南水北方位陰陽)"}, {"id": 9, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "《易經》及哲學所提之「萬物負陰而抱陽」，在人體生理與能量層面，「負陰」主要體現為有形的實體物質與臟腑形質基礎，而「抱陽」則指人體生命能量、活力與功能體現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「負陰而抱陽」中，負陰代表萬物依託於有形可見的實質形體與物質基礎，抱陽代表外界能量輸入與生命功能活力的展現。", "source": "中醫概論 1 P.32；期中考古 Q11 (🔥負陰抱陽易學內涵)"}, {"id": 10, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "依據《素問·金匱真言論》劃分人體前後與上下陰陽，人體以背部為陰、腹部為陽；以腰為界，腰以上為陰、腰以下為陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】正確劃分為「背為陽，腹為陰」；以腰部為界則是「腰以上為陽，腰以下為陰」（頭為諸陽之會，陽性升發在上）。本題敘述剛好顛倒！", "source": "中醫概論 1 P.33-34；期中考古 Q12 (🔥人體部位陰陽劃分)"}, {"id": 11, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "easy", "isExamStar": true, "question": "在中醫臟腑陰陽劃分中，五臟（肝、心、脾、肺、腎）具有藏精氣而不瀉的特性，故屬陰；六腑（膽、胃、小腸、大腸、膀胱、三焦）具有傳化物而不藏的特性，故屬陽。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】《素問》明言：「五臟者，藏精氣而不瀉也，故滿而不能實；六腑者，傳化物而不藏，故實而不能滿也。」五臟主藏精屬陰，六腑主傳化屬陽。", "source": "中醫概論 1 P.37；期中考古 Q13 (🔥五臟六腑陰陽歸屬)"}, {"id": 12, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "hard", "isExamStar": true, "question": "三陽三陰的「開、闔、樞」機制中，陽明經主導體表陽氣初升與向外散發，故稱為「開」；太陽經主導收斂封藏，故稱為「闔」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】三陽的開闔樞為「太陽為開，陽明為闔，少陽為樞」！太陽主表為開放向外；陽明主裡熱收闔；少陽為半表半裡樞紐。題目將太陽與陽明職責倒置。", "source": "中醫概論 1 P.40-42；期中考古 Q14-16 (🔥三陰三陽開闔樞)"}, {"id": 13, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "八綱辨證包含陰、陽、表、裡、寒、熱、虛、實，其中「陰陽」為八綱辨證之總綱，通常將表證、熱證、實證歸屬於陽，而將裡證、寒證、虛證歸屬於陰。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】八綱中陰陽為總綱。表、熱、實證代謝亢進或在表，歸為陽；裡、寒、虛證代謝低下或在裡，歸為陰。", "source": "中醫概論 1 P.45；期中考古 Q17 (🔥八綱辨證以陰陽為總綱)"}, {"id": 14, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "中醫古籍記載「隔夜茶傷脾胃，不可飲也」，現代人若常將昨夜冷飲留置隔日飲用，容易損傷人體的「陰血」，造成體內熱氣旺盛而形成實火體質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】隔夜冰冷飲料最直接損傷的是脾胃「陽氣」，導致脾胃虛寒（陽虛），表現為手足冰冷、消化不良、腹脹腹瀉，而非陰虛或實熱！", "source": "中醫概論 1 P.46-49；期中考古 Q19 (🔥隔夜飲料損傷陽氣考點)"}, {"id": 15, "chapter": "單元一：中醫導論與陰陽學說", "difficulty": "medium", "isExamStar": true, "question": "臨床上患者出現面紅目赤、口舌生瘡、心煩失眠、尿黃短赤刺痛、舌尖紅絳、脈數洪等症狀，多屬於「心火上炎」之熱證上火表現。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】心開竅於舌、心火下移小腸（尿赤刺痛），故口舌生瘡、舌紅、尿黃、面赤為典型心火旺盛之表現。", "source": "中醫概論 1 P.20、22；期中考古 Q20 (🔥上火心火臨床特徵)"}, {"id": 16, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": true, "question": "五行學說中「木曰曲直」，引申至人體臟腑為「心」，代表心陽具有生生不息、向上生長與調暢氣血之特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「木曰曲直」引申對應的臟腑為「肝」（肝主升發疏泄，屬木）；心陽溫熱上升，對應的是「火曰炎上」（屬火）！", "source": "中醫概論 2 P.7、10；期中考古 Q21 (🔥木曰曲直對應肝)"}, {"id": 17, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "中醫所說的「脾」在人體生理與器官系統對應上，與西醫解剖學上的脾臟（Spleen，主要為淋巴免疫組織）完全一致，兩者皆僅專門負責人體免疫防禦而不參與消化吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】西醫解剖學的脾（Spleen）主要是淋巴與免疫器官；中醫的「脾」概念極為廣泛，涵蓋整個消化吸收、運化水穀精微、水濕代謝、肌肉營養以及統攝血液等功能。", "source": "中醫概論 2 P.8；期中考古 Q22 (🔥中醫脾與西醫脾對照)"}, {"id": 18, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五行與五臟配屬中，土對應脾、五色為黃、五味為「酸」；木對應肝、五色為青、五味為「甘」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五味配屬顛倒！木（肝）對應的是「酸」味；土（脾）對應的是「甘」味。酸入肝，甘入脾。", "source": "中醫概論 2 P.16；期中考古 Q23 (🔥五行五臟五味配屬顛倒陷阱)"}, {"id": 19, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "中醫五行生剋規律中，相生與相剋互為矛盾對立，在健康人體內部相生與相剋必然不能同時存在，只要出現相剋現象就代表五行系統已經病態失衡。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】相生與相剋是維持五行相對動態平衡（「制化」）不可或缺的兩種力量！「生中有剋，剋中有生」，正常生理下相生與相剋協同運作，並非相剋即代表病態。", "source": "中醫概論 2 P.17-19；期中考古 Q25 (🔥五行相對平衡叫制化)"}, {"id": 20, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "臨床觀察病患若「面色泛青帶黃、伴隨泛酸腹脹、脈象弦而無力」，通常提示肝氣鬱滯化旺且過度剋制脾土，此病理機轉在中醫稱為「肝木乘脾土」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】青為肝色，黃為脾色，脈弦為肝旺，脈弱為脾虛，泛酸腹脹為脾胃受困，此即肝氣偏旺乘襲脾土（木乘土）的典型表現。", "source": "中醫概論 2 P.22-24；期中考古 Q26 (🔥肝旺乘脾面色脈象)"}, {"id": 21, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": true, "question": "五志分屬五臟中「脾在志為思」，長期思慮過度或焦慮多想的人，容易導致心火亢盛而腎精枯竭，但絕不會影響脾胃的運化與食慾吸收。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「思傷脾」，思慮過度最直接損害脾氣，導致脾臟氣機結滯、運化失司，常見症狀為不思飲食、脘腹脹滿，進而化源不足影響心脾失眠。", "source": "中醫概論 2 P.26-27；期中考古 Q27 (🔥思慮過度傷脾)"}, {"id": 22, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "在五行病理傳變中，若肺病（金）日久耗傷母臟，波及並導致脾胃（土）功能衰弱、食慾不振與精神萎靡，此種子系統帶壞母系統的現象稱為「子盜母氣」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾土生肺金（脾為母，肺為子）。肺病久虛損耗脾土精氣，導致脾胃功能失常，即典型的「子盜母氣（子病及母）」傳變。", "source": "中醫概論 2 P.29-30；期中考古 Q28 (🔥子盜母氣觀念)"}, {"id": 23, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行學說中「水曰潤下」，引申至人體五臟中與「肺」相呼應，因肺主肅降且為水之上源，故水之特性歸屬於肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】水曰潤下對應的是「腎」（腎主水）；肺主肅降收斂，在五行中對應的是「金曰從革」！", "source": "中醫概論 2 P.13-14 (🔥水曰潤下對應腎)"}, {"id": 24, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "依據五行相生相剋次序，相生的正確順序為：木生火、火生土、土生金、金生水、水生木；相剋的正確順序為：木剋土、土剋水、水剋火、火剋金、金剋木。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】此為五行生剋基礎法則：木火土金水循環相生；木剋土、土剋水、水剋火、火剋金、金剋木依序相剋。", "source": "中醫概論 2 P.18-19 (🔥五行生剋標準次序)"}, {"id": 25, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行病理中的「相侮」是指被剋者實力過度強盛，反而逆向欺負剋制其原本的主導者，因此在古代又稱為「反克」或「反侮」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】相乘為順向過度剋制；相侮為逆向反剋（如木本受金剋，但木氣過旺反而反剋金，稱木侮金）。", "source": "中醫概論 2 P.22 (🔥五行相乘與相侮定義)"}, {"id": 26, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "五行配屬自然界季節與方位中，長夏屬土，其方位居中央，對應之氣候為「燥」，對應之臟腑為肺。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】長夏屬土、居中央，對應氣候為「濕」，對應臟腑為「脾」！秋季屬金、西方，對應氣候才為「燥」，對應臟腑為「肺」。", "source": "中醫概論 2 P.16 (🔥五行五季五氣五方配屬)"}, {"id": 27, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": true, "question": "著名臨床治則「滋水涵木法」（如使用六味地黃丸補腎水以滋養肝木），屬於運用五行「相剋」法則所建立的治療策略。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】腎水生肝木，滋水涵木法是透過補腎陰（水）來滋養肝陰（木），屬於運用五行「相生」規律（虛則補其母）的治法，並非相剋法！", "source": "中醫概論 2 P.25 (🔥滋水涵木相生治法)"}, {"id": 28, "chapter": "單元二：五行學說與生剋制化", "difficulty": "easy", "isExamStar": false, "question": "五行特性中「火曰炎上」，其引申含義包含溫熱、升騰與光明，因此心陽具有溫煦全身氣血與臟腑組織的生理作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】火性升騰溫熱光明，在人體代表心陽之溫煦，故心歸屬於火。", "source": "中醫概論 2 P.7、11 (🔥火曰炎上特性)"}, {"id": 29, "chapter": "單元二：五行學說與生剋制化", "difficulty": "medium", "isExamStar": false, "question": "金元四大家之張子和曾記載以「生氣疏肝、調暢氣機」的方法治療婦人因思慮過度導致兩年不寐之病案，在五行理論上體現了「以木剋土」解開脾氣結滯的思維。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義引用張子和醫案：思慮傷脾（土）導致氣機結滯，利用肝木疏泄升發之性（以木克土）理順散開脾胃鬱結，從而治癒頑固失眠。", "source": "中醫概論 2 P.26-27 (🔥張子和以木剋土醫案)"}, {"id": 30, "chapter": "單元二：五行學說與生剋制化", "difficulty": "hard", "isExamStar": false, "question": "相乘與相侮在人體病理演變中往往是互為因果、同時發生的連鎖反應，例如當肝木之氣極度亢盛時，既可能發生「木乘土」，又可反向出現「木侮金」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】講義明確指出：相乘與相侮往往同時發生或互為因果。例如肝木暴盛，既過度克伐脾土（木乘土），又反過來侮制肺金（木侮金）。", "source": "中醫概論 2 P.23 (🔥相乘相侮連鎖反應)"}, {"id": 31, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "中醫「藏象學說」中的「藏」是指藏於體內的內臟組織器官，而「象」是指表現於外的生理現象與病理徵候，因此藏象即是由外在徵象觀察推斷內在臟腑狀態的方法學。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「藏象」之義即「有諸內必形諸外」，藏居於內，象形於外，透過觀察外在表現以推知內在臟腑之生理與病理變動。", "source": "中醫概論 3 P.2；期中考古 Q29 (🔥藏象之含義)"}, {"id": 32, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "中醫奇恆之腑包括「腦、髓、骨、脈、膽、女子胞」，之所以冠上「奇恆」之稱，是因為它們形態多屬中空類似於腑，但生理功能卻偏向藏聚精氣類似於臟。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】奇恆之腑形似腑而神似臟（形態中空似六腑，功能藏精似五臟，非臟非腑，名曰奇恆之腑）。注意膽兼具六腑與奇恆之腑雙重身分。", "source": "中醫概論 3 P.3、20；期中考古 Q30 (🔥奇恆之腑定義與成員)"}, {"id": 33, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "六腑包含膽、胃、小腸、大腸、膀胱、三焦，其總體生理功能特點為「受盛和傳化水穀」，具有「實而不能滿、藏精氣而不瀉」的特性。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】六腑的特性是「傳化物而不藏，故實而不能滿」！題目中「藏精氣而不瀉、滿而不能實」是五臟的特性，敘述顛倒混淆。", "source": "中醫概論 3 P.11；期中考古 Q31 (🔥六腑生理特點實而不能滿)"}, {"id": 34, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "《素問·靈蘭秘典論》將十二臟腑比喻為國家官職體系，其中肝為君主之官、謀慮出焉；心為將軍之官、神明出焉。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】官職對應顛倒！心為「君主之官，神明出焉」；肝為「將軍之官，謀慮出焉」！", "source": "中醫概論 3 P.6、7；期中考古 Q32-34 (🔥靈蘭秘典官位對應顛倒陷阱)"}, {"id": 35, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "脾的生理功能主要包含「主運化」水穀精微與水濕，以及「主統血」使血液約束於脈管之內；若脾氣虛衰失控，則可能導致皮下出血、便血或崩漏等出血症狀。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】脾主運化為後天之本，脾又主統血。脾氣健旺則能固攝血液運行於脈內，脾氣虛衰則統血無權而致出血。", "source": "中醫概論 3 P.8；期中考古 Q32 (🔥脾主運化與統血)"}, {"id": 36, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "肺在體表組織與五官外竅之延伸對應關係為：在體合筋，其華在爪，開竅於目；且肺主宣發肅降與通調水道。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「在體合筋、其華在爪、開竅於目」是「肝」的對應！肺是對應「在體合皮、其華在毛、開竅於鼻」。", "source": "中醫概論 3 P.9；期中考古 Q33 (🔥肺與肝之體竅華混淆陷阱)"}, {"id": 37, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "腎在中醫生理功能中被稱為「後天之本」，主受納水穀，其在體合肌肉，其華在唇，開竅於口。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是「脾」！腎為「先天之本」，主藏精、主水、主納氣，在體合骨生髓，其華在髮，開竅於耳及二陰。", "source": "中醫概論 3 P.10；期中考古 Q34 (🔥腎與脾之先天後天混淆陷阱)"}, {"id": 38, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "大腸的生理功能主要是接受小腸下移的食物殘渣，並將其中剩餘的汁液完全排棄，在中醫生理理論中被稱為「主液」，而小腸才負責「主津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！中醫傳統將大腸功能定為「傳導糟粕，大腸主津」（吸收殘餘水分）；小腸泌別清濁則定為「小腸主液」。", "source": "中醫概論 3 P.15；期中考古 Q35 (🔥大腸主津與小腸主液區別)"}, {"id": 39, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "easy", "isExamStar": true, "question": "三焦劃分中，上、中、下三焦界限明確，其中「中焦」在人體解剖分界上的切點是位於「橫膈（膻中）」以下至「神闕（肚臍）」之間，主要包含脾與胃。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】橫膈（膻中）以上為上焦（心肺）；橫膈至神闕（肚臍）為中焦（脾胃）；肚臍以下為下焦（肝腎大腸小腸膀胱女子胞）。", "source": "中醫概論 3 P.17；期中考古 Q36 (🔥中焦解剖切點膻中與神闕)"}, {"id": 40, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": true, "question": "人體體液代謝是一項極為複雜的系統工程，必須依賴胃之受納腐熟、脾之運化轉輸、肺之宣發肅降通調水道、腎之蒸騰氣化以及膀胱氣化出焉等器官協同完成。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】水液代謝涉及肺、脾、腎、胃、小腸、大腸、膀胱及三焦水道等多臟腑的綜合運化與氣化調節。", "source": "中醫概論 3 P.19；期中考古 Q37 (🔥水液代謝途徑與主導臟腑)"}, {"id": 41, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "女子胞之生理與天癸密切相關，所謂「天癸」是指一種源於先天腎精、受後天水穀精微滋養充盛，能促進人體生殖器官發育成熟與維持月經生殖機能的重要精微物質。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「二七而天癸至，任脈通，太衝脈盛，月事以時下，故有子」。天癸是促成人體性發育成熟和維持生殖機能的先天腎精化生精微物質。", "source": "中醫概論 3 P.20；期中考古 Q38 (🔥天癸名詞實質定義)"}, {"id": 42, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": true, "question": "名醫學說「乙癸同源」是指心與腎相交（水火既濟）的生理現象，因為心屬乙木而腎屬癸水，故又稱心腎同源。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】「乙癸同源」是指「肝腎同源」！天干中乙屬木（肝），癸屬水（腎）。肝藏血、腎藏精，精血同源互生，故稱乙癸同源，絕非心腎！", "source": "中醫概論 3 P.26；期中考古 Q39 (🔥乙癸同源即肝腎同源)"}, {"id": 43, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "小腸具有「受盛化物」與「泌別清濁」之功能，能將胃傳來的食糜進行進一步消化，並區分為清液（吸收後轉輸全身）與濁質（下傳大腸與膀胱）。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】小腸為受盛之官，化物出焉；泌別清濁即將食糜分清別濁，精微水液吸收，糟粕入大腸，廢液滲入膀胱。", "source": "中醫概論 3 P.14 (🔥小腸受盛化物泌別清濁)"}, {"id": 44, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "hard", "isExamStar": false, "question": "膽被列為六腑之一，其內部貯存之膽汁是由膽囊本身之肌肉組織直接消化水穀精微化生而成，與肝臟之疏泄功能毫無關聯。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】膽汁是由肝之餘氣化生並聚積於膽，受肝之疏泄調控排入腸道以助消化，並非膽囊自己消化水穀產生！", "source": "中醫概論 3 P.12 (🔥膽汁化生與肝疏泄之關係)"}, {"id": 45, "chapter": "單元三：藏象學說與臟腑功能", "difficulty": "medium", "isExamStar": false, "question": "三焦作為六腑之一，被稱為「孤腑」或元氣之別使，其主要生理功能是作為元氣運行布散於全身的通道，以及人體水液代謝運行的專屬水道路徑。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「三焦者，決瀆之官，水道出焉」，三焦既是元氣通行之通道（通行元氣），也是水液運行之通道（運行水液）。", "source": "中醫概論 3 P.18 (🔥三焦通行元氣與運行水液)"}, {"id": 46, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "人體的「後天之氣」主要源於脾胃所運化的「水穀精微之氣」，並與肺吸入之「自然界清氣」相互結合而成，與出生前遺傳自父母的先天之氣相互補充滋養。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】後天之氣由脾胃運化之水穀精微與肺吸入之自然清氣化合而成；先天之氣受後天之氣充養，兩者相輔相成。", "source": "中醫概論 4 P.5；期中考古 Q40 (🔥後天之氣化生來源)"}, {"id": 47, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣的分類中，「衛氣」是運行於脈管之內的精純營養物質，負責化生血液並滋潤內在臟腑；而「營氣」則是運行於脈外體表負責保衛抵禦外邪之氣。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】剛好顛倒！「營在脈中，衛在脈外」！營氣行於脈中負責營養與化血；衛氣「慓疾滑利」行於脈外體表肌膚腠理，司開闔、溫分肉、護衛肌表抵禦外邪。", "source": "中醫概論 4 P.6-7；期中考古 Q41 (🔥營氣在脈中與衛氣在脈外)"}, {"id": 48, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "氣的「固攝作用」是指氣具有推動血液與津液生長運行、抵禦外邪侵襲的能力，若固攝失常則會導致嚴重發冷畏寒與四肢不溫。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題目描述的是「推動」與「溫煦/防禦」功能！氣的「固攝作用」是指統攝、控制液態物質（防止血液逸出脈外，防止汗液、尿液、精液無故流失）。", "source": "中醫概論 4 P.12；期中考古 Q42 (🔥氣之固攝功能概念混淆)"}, {"id": 49, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "人體最根本的原動力為「元氣」，元氣根於腎，必須藉由「三焦」作為專屬通道才能布散宣發至五臟六腑與全身四肢百骸。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「難經：三焦者，水穀之道路，氣之所終始也...三焦者，元氣之別使也」。元氣根於腎，通過三焦布達全身。", "source": "中醫概論 4 P.2、4；期中考古 Q43 (🔥元氣通過三焦布散全身)"}, {"id": 50, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "若病患出現「脾氣鬱滯」，其主要臨床病理特徵為突然昏厥倒地、神志昏迷、牙關緊閉且四肢厥冷。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】突發昏厥、牙關緊閉是危重急症「氣閉（厥證）」的表現！「脾氣鬱滯」主要特徵是進食後脘腹脹悶不適、噯氣、消化不良。", "source": "中醫概論 4 P.17、19；期中考古 Q44、Q45 (🔥脾氣鬱滯與氣閉混淆陷阱)"}, {"id": 51, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "氣機失調中的「氣閉」是指氣機閉塞結聚於內，喪失出入內外之開闔功能，臨床表現為突發神昏暴厥、牙關緊閉、呼吸驟阻等危重厥證。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】「氣閉」乃氣機閉結在內、不能外達，出入神機閉塞所致之急重厥證（如西醫之昏厥 Syncope）。", "source": "中醫概論 4 P.19；期中考古 Q45 (🔥氣閉急症定義)"}, {"id": 52, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "中醫認為「腎精具有化生血液的功能」，因為腎藏精，精能生髓，髓能化血，且腎陽之溫煦促使氣化旺盛以助血液生生不息，此即「精血同源」之理。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】腎精充足則骨髓充盈，骨髓化赤為血，故腎精化生血液為精血同源之重要依據。", "source": "中醫概論 4 P.23、32；期中考古 Q46 (🔥腎精化生血液與精血同源)"}, {"id": 53, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": true, "question": "五臟化生五液的標準對應關係為：「汗為心之液、涕為肝之液、淚為肺之液、涎為腎之液、唾為脾之液」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】五液配屬完全混淆！《宣明五氣》標準為：心為汗、肺為涕、肝為淚、脾為涎、腎為唾！", "source": "中醫概論 4 P.28；期中考古 Q47 (🔥五臟五液對應顛倒陷阱)"}, {"id": 54, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": true, "question": "在中醫氣化理論中，人體內部深層的水液蒸騰氣化與全身陽氣推動，主要是由「心」臟的君火單獨主導，與腎陽之溫煦氣化完全無關。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】體內深層水液蒸騰與氣化功能主要由「腎」主導！腎陽為一身陽氣之根本，推動並蒸騰下焦水液，溫煦諸臟以行氣化。", "source": "中醫概論 4 P.15、30；期中考古 Q50 (🔥體內深層氣化由腎主導)"}, {"id": 55, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣與血的關係密切，傳統概括為「氣為血之帥，血為氣之母」，其中氣為血之帥包含氣能生血、氣能行血與氣能攝血三大內涵。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣為血之帥：氣旺則生血充沛、氣行則血行不滯、氣固攝則血不外溢；血為氣之母：血能載氣，血能養氣。", "source": "中醫概論 4 P.24-25 (🔥氣為血之帥三大功能)"}, {"id": 56, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "中醫將體內水液統稱為津液，其中質地較為清稀、流動性較大、主要布散於體表皮膚孔竅以發揮滋潤作用者稱為「液」；而質地濃稠、灌注於骨節臟腑腦髓者稱為「津」。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】津與液之定義剛好顛倒！清稀、流動性大、布於體表孔竅者為「津」（屬陽）；稠厚、流動性小、灌注於骨節臟腑腦髓起濡養作用者為「液」（屬陰）。", "source": "中醫概論 4 P.26-27 (🔥津與液清稀濃稠陰陽辨析)"}, {"id": 57, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣的五大生理功能包括：推動作用、溫煦作用、防禦作用、固攝作用以及氣化作用。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】氣的五大生理功能即為：推動（推動生長與運行）、溫煦（維持體溫）、防禦（抗禦外邪）、固攝（約束津血）、氣化（促進物質轉化）。", "source": "中醫概論 4 P.9-13 (🔥氣的五大生理功能)"}, {"id": 58, "chapter": "單元四：精氣血津液神氣化", "difficulty": "easy", "isExamStar": false, "question": "「宗氣」發源於下焦命門，是由先天腎精直接化生而成，主要儲存於膀胱，負責固攝尿液與下焦氣化。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 1, "explanation": "【錯誤】題幹描述的是元氣/下焦之氣！「宗氣」聚集於胸中（膻中），是由肺吸入之自然清氣與脾胃運化之水穀精氣結合而成，主呼吸與行血。", "source": "中醫概論 4 P.5 (🔥宗氣生成部位與功能混淆)"}, {"id": 59, "chapter": "單元四：精氣血津液神氣化", "difficulty": "medium", "isExamStar": false, "question": "氣機失調中的「氣逆」是指臟腑氣機應降反升或升發太過，常見如肺氣上逆出現咳嗽氣喘、胃氣上逆出現呃逆嘔吐，以及肝氣上逆出現急躁易怒、面紅耳赤。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】肺胃之氣宜降，肝氣主升發但不可太過。肺氣上逆則咳喘、胃氣上逆則嘔呃、肝氣上逆則頭脹面赤急躁，皆為氣逆之典型表現。", "source": "中醫概論 4 P.18 (🔥氣逆病理表現)"}, {"id": 60, "chapter": "單元四：精氣血津液神氣化", "difficulty": "hard", "isExamStar": false, "question": "「精血同源」是指精與血在人體生理活動中相互依賴、相互滋生化育，腎藏精以生髓化血，同時脾胃化生的水穀精微與營血充足亦能不斷滋養充盛腎精。", "options": ["A. ○ 正確", "B. ╳ 錯誤"], "answer": 0, "explanation": "【正確】精能化血，血亦能化精，精血互生互化，故稱「精血同源」或「精血互生」。", "source": "中醫概論 4 P.32-33 (🔥精血同源生理機轉)"}];
+
+    (function() {
+      let allQuestions = [];
+      let activeQuestions = [];
+      let currentIndex = 0;
+      let userAnswers = {};
+      let wrongIds = new Set();
+      let bookmarkIds = new Set();
+      let currentFilter = 'all';
+      let isShuffle = false;
+
+      const STORAGE_KEY = 'tajen_tcm_foundation_progress_v1';
+
+      // DOM elements
+      const qNum = document.getElementById('questionNumber');
+      const qStem = document.getElementById('questionStem');
+      const optsList = document.getElementById('optionsList');
+      const expBox = document.getElementById('explanationBox');
+      const resBadge = document.getElementById('resultBadge');
+      const srcBadge = document.getElementById('sourceBadge');
+      const expText = document.getElementById('explanationText');
+      const qChapter = document.getElementById('chapterPill');
+      const qExamStar = document.getElementById('examStarPill');
+      const qDifficulty = document.getElementById('difficultyPill');
+      const qBookmark = document.getElementById('bookmarkBtn');
+      const pBar = document.getElementById('progressBar');
+      const pText = document.getElementById('progressText');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const gridContainer = document.getElementById('gridContainer');
+      const toast = document.getElementById('toast');
+      const shuffleBtn = document.getElementById('shuffleBtn');
+      const shuffleText = document.getElementById('shuffleText');
+
+      const correctScore = document.getElementById('correctScore');
+      const wrongScore = document.getElementById('wrongScore');
+      const bookmarkScore = document.getElementById('bookmarkScore');
+      const wrongCountLabel = document.getElementById('wrongCountLabel');
+      const bookmarkCountLabel = document.getElementById('bookmarkCountLabel');
+      const navStats = document.getElementById('navStats');
+
+      function loadStorage() {
+        try {
+          const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+          userAnswers = data.answers || {};
+          wrongIds = new Set(data.wrongs || []);
+          bookmarkIds = new Set(data.bookmarks || []);
+          isShuffle = data.isShuffle || false;
+        } catch(e) {
+          userAnswers = {};
+          wrongIds = new Set();
+          bookmarkIds = new Set();
+          isShuffle = false;
+        }
+      }
+
+      function saveStorage() {
+        try {
+          const data = {
+            answers: userAnswers,
+            wrongs: Array.from(wrongIds),
+            bookmarks: Array.from(bookmarkIds),
+            isShuffle: isShuffle
+          };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch(e) {}
+      }
+
+      window.clearProgress = function() {
+        if (confirm('確定要重設所有中醫概論是非題答題記錄與標記嗎？此操作不可逆。')) {
+          localStorage.removeItem(STORAGE_KEY);
+          userAnswers = {};
+          wrongIds.clear();
+          bookmarkIds.clear();
+          isShuffle = false;
+          updateShuffleUI();
+          setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+          showToast('進度已完全重設！');
+        }
+      };
+
+      function updateShuffleUI() {
+        if (shuffleText) {
+          shuffleText.textContent = isShuffle ? '隨機: 開' : '隨機: 關';
+          if (isShuffle) shuffleBtn.classList.add('active-shuffle');
+          else shuffleBtn.classList.remove('active-shuffle');
+        }
+      }
+
+      window.toggleShuffle = function() {
+        isShuffle = !isShuffle;
+        updateShuffleUI();
+        saveStorage();
+        if (isShuffle) {
+          shuffleArray(activeQuestions);
+          showToast('🔀 已開啟隨機亂序出題！');
+        } else {
+          reapplyFilterOrder();
+          showToast('已恢復正常題號循序！');
+        }
+        currentIndex = 0;
+        renderQuestion();
+        renderGrid();
+      };
+
+      function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+      }
+
+      function reapplyFilterOrder() {
+        const activeIds = new Set(activeQuestions.map(q => q.id));
+        activeQuestions = allQuestions.filter(q => activeIds.has(q.id));
+      }
+
+      window.setFilter = function(filterType, btnElem) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if (btnElem) btnElem.classList.add('active');
+        currentFilter = filterType;
+
+        if (filterType === 'all') {
+          activeQuestions = [...allQuestions];
+        } else if (filterType === 'star') {
+          activeQuestions = allQuestions.filter(q => q.isExamStar);
+        } else if (filterType === 'wrong') {
+          activeQuestions = allQuestions.filter(q => wrongIds.has(q.id));
+          if (activeQuestions.length === 0) {
+            alert('目前尚無錯題！答錯的題目會自動記錄於此。');
+            setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+            return;
+          }
+        } else if (filterType === 'bookmarked') {
+          activeQuestions = allQuestions.filter(q => bookmarkIds.has(q.id));
+          if (activeQuestions.length === 0) {
+            alert('目前尚無收藏題目！點擊題目右上角的星號即可收藏。');
+            setFilter('all', document.querySelectorAll('.tab-btn')[0]);
+            return;
+          }
+        } else if (filterType === 'ch1') {
+          activeQuestions = allQuestions.filter(q => q.chapter.includes('單元一'));
+        } else if (filterType === 'ch2') {
+          activeQuestions = allQuestions.filter(q => q.chapter.includes('單元二'));
+        } else if (filterType === 'ch3') {
+          activeQuestions = allQuestions.filter(q => q.chapter.includes('單元三'));
+        } else if (filterType === 'ch4') {
+          activeQuestions = allQuestions.filter(q => q.chapter.includes('單元四'));
+        }
+
+        if (isShuffle) shuffleArray(activeQuestions);
+        currentIndex = 0;
+        renderQuestion();
+        renderGrid();
+      };
+
+      function updateStats() {
+        let correctCount = 0;
+        let wrongCount = 0;
+        Object.keys(userAnswers).forEach(qid => {
+          const q = allQuestions.find(item => item.id === parseInt(qid, 10));
+          if (q) {
+            if (userAnswers[qid] === q.answer) correctCount++;
+            else wrongCount++;
+          }
+        });
+
+        if (correctScore) correctScore.textContent = correctCount;
+        if (wrongScore) wrongScore.textContent = wrongCount;
+        if (bookmarkScore) bookmarkScore.textContent = bookmarkIds.size;
+        if (wrongCountLabel) wrongCountLabel.textContent = wrongIds.size;
+        if (bookmarkCountLabel) bookmarkCountLabel.textContent = bookmarkIds.size;
+
+        const totalAnswered = Object.keys(userAnswers).length;
+        if (navStats) navStats.textContent = `${totalAnswered}/${allQuestions.length}`;
+      }
+
+      function renderQuestion() {
+        if (!activeQuestions || activeQuestions.length === 0) {
+          qStem.textContent = '無符合條件之題目。';
+          optsList.innerHTML = '';
+          expBox.classList.remove('active');
+          return;
+        }
+
+        const q = activeQuestions[currentIndex];
+        const isAnswered = userAnswers[q.id] !== undefined;
+        const userChoice = userAnswers[q.id];
+
+        // Header
+        qChapter.textContent = q.chapter;
+        qNum.textContent = `第 ${currentIndex + 1} 題 / 共 ${activeQuestions.length} 題 (全庫 #${q.id})`;
+        
+        if (q.isExamStar) {
+          qExamStar.style.display = 'inline-block';
+        } else {
+          qExamStar.style.display = 'none';
+        }
+
+        // Difficulty badge
+        qDifficulty.className = 'difficulty-pill';
+        if (q.difficulty === 'easy') {
+          qDifficulty.textContent = '🟢 基礎';
+          qDifficulty.classList.add('difficulty-easy');
+        } else if (q.difficulty === 'hard') {
+          qDifficulty.textContent = '🔴 挑戰';
+          qDifficulty.classList.add('difficulty-hard');
+        } else {
+          qDifficulty.textContent = '🟡 進階';
+          qDifficulty.classList.add('difficulty-medium');
+        }
+
+        // Bookmark
+        if (qBookmark) {
+          if (bookmarkIds.has(q.id)) qBookmark.classList.add('active');
+          else qBookmark.classList.remove('active');
+        }
+
+        // Stem
+        qStem.textContent = q.question;
+
+        // Progress bar
+        const pct = Math.round(((currentIndex + 1) / activeQuestions.length) * 100);
+        pBar.style.width = `${pct}%`;
+        pText.textContent = `${currentIndex + 1} / ${activeQuestions.length} (${pct}%)`;
+
+        // Nav buttons
+        prevBtn.disabled = (currentIndex === 0);
+        nextBtn.disabled = (currentIndex === activeQuestions.length - 1);
+
+        // True / False Options
+        optsList.innerHTML = '';
+        const letters = ['A', 'B'];
+        const tfLabels = ['○ 正確 (True)', '╳ 錯誤 (False)'];
+        const tfSymbols = ['○', '╳'];
+        const tfClasses = ['tf-symbol-true', 'tf-symbol-false'];
+
+        q.options.forEach((optText, optIdx) => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.disabled = isAnswered;
+
+          const prefixSpan = document.createElement('span');
+          prefixSpan.className = 'option-prefix';
+          prefixSpan.textContent = letters[optIdx];
+
+          const symbolSpan = document.createElement('span');
+          symbolSpan.className = `tf-symbol ${tfClasses[optIdx]}`;
+          symbolSpan.textContent = tfSymbols[optIdx];
+
+          const textSpan = document.createElement('span');
+          textSpan.textContent = tfLabels[optIdx];
+
+          btn.appendChild(prefixSpan);
+          btn.appendChild(symbolSpan);
+          btn.appendChild(textSpan);
+
+          if (isAnswered) {
+            if (optIdx === q.answer) {
+              btn.classList.add('correct');
+            } else if (optIdx === userChoice) {
+              btn.classList.add('wrong');
+            }
+          } else {
+            btn.onclick = () => selectOption(optIdx);
+          }
+
+          optsList.appendChild(btn);
+        });
+
+        // Explanation Box
+        if (isAnswered) {
+          expBox.classList.add('active');
+          if (userChoice === q.answer) {
+            resBadge.textContent = '答對！ 🎉';
+            resBadge.style.color = 'var(--success)';
+          } else {
+            resBadge.textContent = '答錯了！ 💡';
+            resBadge.style.color = 'var(--error)';
+          }
+          srcBadge.textContent = q.source || '中醫概論核心考點';
+          expText.textContent = q.explanation;
+        } else {
+          expBox.classList.remove('active');
+        }
+
+        updateStats();
+      }
+
+      function selectOption(idx) {
+        const q = activeQuestions[currentIndex];
+        userAnswers[q.id] = idx;
+
+        if (idx === q.answer) {
+          wrongIds.delete(q.id);
+        } else {
+          wrongIds.add(q.id);
+        }
+
+        saveStorage();
+        renderQuestion();
+        renderGrid();
+      }
+
+      window.toggleBookmark = function() {
+        if (!activeQuestions[currentIndex]) return;
+        const qid = activeQuestions[currentIndex].id;
+        if (bookmarkIds.has(qid)) {
+          bookmarkIds.delete(qid);
+          showToast('已取消收藏');
+        } else {
+          bookmarkIds.add(qid);
+          showToast('⭐ 已加入收藏題庫！');
+        }
+        saveStorage();
+        renderQuestion();
+        renderGrid();
+      };
+
+      window.nextQuestion = function() {
+        if (currentIndex < activeQuestions.length - 1) {
+          currentIndex++;
+          renderQuestion();
+          renderGrid();
+        }
+      };
+
+      window.prevQuestion = function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          renderQuestion();
+          renderGrid();
+        }
+      };
+
+      function renderGrid() {
+        gridContainer.innerHTML = '';
+        activeQuestions.forEach((q, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'grid-btn';
+          btn.textContent = q.id;
+
+          if (idx === currentIndex) {
+            btn.classList.add('current');
+          }
+
+          if (userAnswers[q.id] !== undefined) {
+            if (userAnswers[q.id] === q.answer) {
+              btn.classList.add('correct');
+            } else {
+              btn.classList.add('wrong');
+            }
+          }
+
+          if (bookmarkIds.has(q.id)) {
+            btn.classList.add('bookmarked');
+          }
+
+          btn.onclick = () => {
+            currentIndex = idx;
+            renderQuestion();
+            renderGrid();
+          };
+
+          gridContainer.appendChild(btn);
+        });
+      }
+
+      window.copyQuestionReport = function() {
+        const q = activeQuestions[currentIndex];
+        const ansText = q.answer === 0 ? '○ 正確 (True)' : '╳ 錯誤 (False)';
+        const userChoiceText = userAnswers[q.id] !== undefined ? (userAnswers[q.id] === 0 ? '○ 正確' : '╳ 錯誤') : '未作答';
+        const text = `【中醫概論是非題題目勘誤回報】
+題號: #${q.id}
+單元: ${q.chapter}
+出處: ${q.source}
+題幹陳述: ${q.question}
+考生作答: ${userChoiceText}
+標準正解: ${ansText}
+考點解析: ${q.explanation}
+
+建議修改或補充:
+`;
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('📋 已複製題目回報格式至剪貼簿！');
+        }).catch(() => {
+          alert('複製失敗，請手動複製。');
+        });
+      };
+
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 2000);
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          nextQuestion();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          prevQuestion();
+        } else if (['1', 'a', 'A', 'o', 'O', 't', 'T'].includes(e.key)) {
+          const q = activeQuestions[currentIndex];
+          if (q && userAnswers[q.id] === undefined) {
+            selectOption(0);
+          }
+        } else if (['2', 'b', 'B', 'x', 'X', 'f', 'F'].includes(e.key)) {
+          const q = activeQuestions[currentIndex];
+          if (q && userAnswers[q.id] === undefined) {
+            selectOption(1);
+          }
+        }
+      });
+
+      // Init
+      window.addEventListener('DOMContentLoaded', () => {
+        allQuestions = window.QUIZ_DATA || [];
+        activeQuestions = [...allQuestions];
+        loadStorage();
+        updateShuffleUI();
+        if (isShuffle) {
+          shuffleArray(activeQuestions);
+        }
+        renderQuestion();
+        renderGrid();
+      });
+    })();
+  </script>
+</body>
+</html>
