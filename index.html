@@ -3,248 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大一醫藥專業學科互動測驗學習系統</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>醫藥專業學科題庫 · 大一上學期</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Noto Sans TC', sans-serif; }
+        :root {
+            --bg: #f6f5f1;
+            --surface: #ffffff;
+            --surface-hover: #faf9f6;
+            --border: #e5e3dc;
+            --border-strong: #d4d1c7;
+            --ink: #171716;
+            --ink-secondary: #686660;
+            --ink-muted: #94918a;
+            --accent: #185c4b;
+            --accent-subtle: rgba(24, 92, 75, 0.08);
+        }
 
-        /* === INDEX DARK MODE === */
         body.dark-mode {
-            background-color: #0f172a !important;
-            color: #f1f5f9 !important;
+            --bg: #111315;
+            --surface: #181a1d;
+            --surface-hover: #1f2226;
+            --border: #272a2f;
+            --border-strong: #363a41;
+            --ink: #eceae4;
+            --ink-secondary: #9498a0;
+            --ink-muted: #646870;
+            --accent: #56b89d;
+            --accent-subtle: rgba(86, 184, 157, 0.12);
         }
-        body.dark-mode .main-portal-card {
-            background-color: #1e293b !important;
-            border-color: #334155 !important;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        body.dark-mode h1,
-        body.dark-mode h2 {
-            color: #f8fafc !important;
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--ink);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
-        body.dark-mode .tcm-card-link {
-            background: linear-gradient(to right, rgba(2, 132, 199, 0.2), rgba(30, 58, 138, 0.25)) !important;
-            border-color: #0284c7 !important;
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 20px 64px;
         }
-        body.dark-mode .tcm-card-link p {
-            color: #cbd5e1 !important;
+
+        /* Top Bar */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
         }
-        body.dark-mode .unit-sub-link {
-            background-color: #0f172a !important;
-            border-color: #334155 !important;
-            color: #e2e8f0 !important;
+
+        .eyebrow {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            letter-spacing: 0.02em;
         }
-        body.dark-mode .unit-sub-link:hover {
-            background-color: #334155 !important;
-        }
-        .theme-portal-btn {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
+
+        .theme-btn {
+            appearance: none;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--ink-secondary);
+            font-family: inherit;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 999px;
-            font-size: 0.78rem;
+            gap: 6px;
+            transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--border-strong);
+            color: var(--ink);
+            background-color: var(--surface);
+        }
+
+        .theme-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--ink-secondary);
+            transition: background-color 0.15s ease;
+        }
+
+        body.dark-mode .theme-dot {
+            background-color: var(--accent);
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: clamp(1.625rem, 3.5vw, 2rem);
             font-weight: 700;
-            background: #f1f5f9;
-            color: #334155;
-            border: 1px solid #cbd5e1;
-            cursor: pointer;
-            transition: all 0.2s;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 8px;
         }
-        .theme-portal-btn:hover {
-            background: #e2e8f0;
-            transform: translateY(-1px);
+
+        .subtitle {
+            font-size: 0.9375rem;
+            color: var(--ink-secondary);
         }
-        body.dark-mode .theme-portal-btn {
-            background: #0f172a;
-            color: #f8fafc;
-            border-color: #475569;
+
+        /* Section Layout */
+        .section {
+            margin-bottom: 36px;
         }
-        body.dark-mode .theme-portal-btn:hover {
-            background: #334155;
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding: 0 2px;
         }
-        /* === END INDEX DARK MODE === */
+
+        .section-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--ink-secondary);
+            letter-spacing: 0.04em;
+        }
+
+        .section-meta {
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Primary Exam List */
+        .exam-list {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .exam-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.15s ease;
+        }
+
+        .exam-item:last-child {
+            border-bottom: none;
+        }
+
+        .exam-item:hover {
+            background-color: var(--surface-hover);
+        }
+
+        .exam-main {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .exam-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .exam-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--ink);
+            transition: color 0.15s ease;
+        }
+
+        .exam-item:hover .exam-title {
+            color: var(--accent);
+        }
+
+        .exam-tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent);
+            background-color: var(--accent-subtle);
+            padding: 1px 7px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .exam-desc {
+            font-size: 0.84375rem;
+            color: var(--ink-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .exam-aside {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .exam-count {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .exam-arrow {
+            font-size: 0.9375rem;
+            color: var(--ink-muted);
+            transition: transform 0.15s ease, color 0.15s ease;
+        }
+
+        .exam-item:hover .exam-arrow {
+            transform: translateX(3px);
+            color: var(--accent);
+        }
+
+        /* Secondary Unit Drills */
+        .unit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .unit-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .unit-item:hover {
+            border-color: var(--border-strong);
+            background-color: var(--surface-hover);
+        }
+
+        .unit-num {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--ink-muted);
+            margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .unit-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.4;
+        }
+
+        .unit-item:hover .unit-name {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                padding: 28px 16px 48px;
+            }
+
+            .exam-item {
+                padding: 15px 16px;
+            }
+
+            .exam-desc {
+                white-space: normal;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+
+            .unit-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .unit-item {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 16px;
+            }
+
+            .unit-num {
+                margin-bottom: 0;
+                order: 2;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen flex items-center justify-center text-slate-800 font-sans p-4 sm:p-6">
-    <div class="main-portal-card relative max-w-lg w-full bg-white rounded-3xl shadow-2xl p-6 sm:p-8 text-center my-6 border border-slate-200">
-                <!-- Theme Toggle Button -->
-        <button id="themePortalBtn" class="theme-portal-btn" onclick="togglePortalTheme()" title="切換深色/淺色模式">
-            <span id="portalThemeIcon">🌙</span>
-            <span id="portalThemeText">深色模式</span>
-        </button>
-        <!-- Logo & Header -->
-        <div class="inline-flex p-3.5 bg-gradient-to-tr from-teal-500 to-emerald-400 text-white rounded-2xl shadow-md mb-3 transform hover:rotate-6 transition duration-300">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-            </svg>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <span class="eyebrow">大仁科技大學 · 藥學系大一上</span>
+            <button id="themePortalBtn" class="theme-btn" onclick="togglePortalTheme()" type="button">
+                <span class="theme-dot"></span>
+                <span id="portalThemeText">深色模式</span>
+            </button>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black text-slate-800 mb-1 tracking-tight">大一醫藥專業學科學習系統</h1>
-        <p class="text-slate-500 mb-6 text-xs sm:text-sm font-medium">期中全真模擬題庫・焦點透析・隨時隨地離線刷題</p>
-        
-        <!-- Section: 中藥概論 (期中考焦點) -->
-        <div class="mb-5 text-left">
-            <div class="flex items-center gap-2 mb-2.5 px-1">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">中藥概論 (Traditional Chinese Medicine)</span>
+
+        <header>
+            <h1>醫藥專業學科題庫</h1>
+            <p class="subtitle">期中模擬與考古題練習，支援題號跳轉、錯題重練與單題勘誤回報。</p>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">期中模擬與專題題庫</h2>
+                <span class="section-meta">共 5 科 · 581 題</span>
             </div>
 
-            <!-- 單元六：中藥概論期中考 90 題 -->
-            
-                        <!-- TCM Foundation Exam Card (是非題 120題) -->
-        <a href="tcm-foundation-exam.html" class="tcm-card-link group block p-4 bg-gradient-to-r from-sky-50 to-blue-50 hover:from-sky-100 hover:to-blue-100 rounded-2xl border-2 border-sky-300 hover:border-sky-500 transition duration-300 shadow-sm hover:shadow-md text-left relative overflow-hidden mb-3">
-            <div class="flex items-center justify-between mb-1.5">
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-200 text-sky-800 border border-sky-300">期中考 100% 是非題・120題</span>
-                <span class="text-xs font-semibold text-sky-600 bg-white/80 px-2 py-0.5 rounded-md border border-sky-200">🟢基本60題＋🟡進階60題</span>
+            <div class="exam-list">
+                <a href="tcm-foundation-exam.html" class="exam-item">
+                    <div class="exam-main">
+                        <div class="exam-title-row">
+                            <span class="exam-title">中醫概論</span>
+                            <span class="exam-tag">是非題</span>
+                        </div>
+                        <p class="exam-desc">113 考古基本題與進階題分區 · 陰陽五行、藏象臟腑、精氣血津液</p>
+                    </div>
+                    <div class="exam-aside">
+                        <span class="exam-count">120 題</span>
+                        <span class="exam-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="chinese-medicine-exam.html" class="exam-item">
+                    <div class="exam-main">
+                        <div class="exam-title-row">
+                            <span class="exam-title">中藥概論</span>
+                        </div>
+                        <p class="exam-desc">導論與實習規定、神農本草經品類、藥用部位、道地藥材與考古題</p>
+                    </div>
+                    <div class="exam-aside">
+                        <span class="exam-count">90 題</span>
+                        <span class="exam-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="anatomy-exam.html" class="exam-item">
+                    <div class="exam-main">
+                        <div class="exam-title-row">
+                            <span class="exam-title">人體解剖學</span>
+                        </div>
+                        <p class="exam-desc">上皮與結締組織、骨骼關節、肌肉與神經系統 · 依易中難分級</p>
+                    </div>
+                    <div class="exam-aside">
+                        <span class="exam-count">111 題</span>
+                        <span class="exam-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="botany-exam.html" class="exam-item">
+                    <div class="exam-main">
+                        <div class="exam-title-row">
+                            <span class="exam-title">藥用植物學</span>
+                            <span class="exam-tag">含顯微圖鑑</span>
+                        </div>
+                        <p class="exam-desc">細胞內含物、氣孔與維管束、根莖葉花果實解剖構造及 50 題顯微鑑別</p>
+                    </div>
+                    <div class="exam-aside">
+                        <span class="exam-count">220 題</span>
+                        <span class="exam-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="edible-herbs-exam.html" class="exam-item">
+                    <div class="exam-main">
+                        <div class="exam-title-row">
+                            <span class="exam-title">中藥材食用部位專題</span>
+                        </div>
+                        <p class="exam-desc">衛福部公告 37 種可供食品使用之中藥材法定部位與特殊加工規範</p>
+                    </div>
+                    <div class="exam-aside">
+                        <span class="exam-count">40 題</span>
+                        <span class="exam-arrow">→</span>
+                    </div>
+                </a>
             </div>
-            <h2 class="text-base font-bold text-slate-800 group-hover:text-sky-700 transition flex items-center">
-                <span>☯️ 中醫概論期中全真是非題題庫</span>
-            </h2>
-            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                精準 1:1 是非平衡・分區練習【🟢基本考古題＋🟡進階辨析題】・四大單元全覆蓋（導論陰陽/五行生剋/藏象臟腑/精氣血津液）→
-            </p>
-        </a>
+        </section>
 
-        <a href="chinese-medicine-exam.html" class="relative block w-full p-4 sm:p-5 bg-gradient-to-r from-emerald-700 via-teal-700 to-amber-700 hover:from-emerald-800 hover:to-amber-800 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-emerald-400">
-                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-amber-300 text-emerald-950 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 易中難 (35%-45%-20%)・90題</span>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[11px] text-emerald-100 font-bold uppercase tracking-wider">CM Exam・導論實習/神農品類/科別部位/糞便/考古題庫</div>
-                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
-                            <span>🌿</span>
-                            <span>中藥概論期中全真模擬題庫</span>
-                        </div>
-                        <div class="text-xs text-emerald-100 font-normal mt-1 leading-relaxed">
-                            90 題精準考點・去除英文破綻・完整整合前段導論與160小時實習/健保點數/神農品類/科別部位/動物糞便/宋朝醫藥/清冠一號/考古精選
-                        </div>
-                    </div>
-                    <span class="text-emerald-100 text-2xl font-bold ml-2">→</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- Section: 人體解剖學 (期中考焦點) -->
-        <div class="mb-5 text-left">
-            <div class="flex items-center gap-2 mb-2.5 px-1">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">人體解剖學 (Human Anatomy)</span>
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">藥用植物基礎練習</h2>
+                <span class="section-meta">單元測驗</span>
             </div>
 
-            <!-- 單元五：解剖學期中考 111 題 -->
-            <a href="anatomy-exam.html" class="relative block w-full p-4 sm:p-5 bg-gradient-to-r from-rose-600 via-red-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white rounded-2xl font-bold shadow-lg hover:shadow-xl transition duration-200 transform hover:-translate-y-0.5 border border-rose-400">
-                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-yellow-300 text-red-900 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 易中難 (35%-45%-20%)・111題</span>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[11px] text-rose-100 font-bold uppercase tracking-wider">Anatomy Exam・高鑑別度實戰題庫</div>
-                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
-                            <span>🫀</span>
-                            <span>解剖學期中全真模擬題庫</span>
-                        </div>
-                        <div class="text-xs text-rose-100 font-normal mt-1 leading-relaxed">
-                            111 題精簡題目選項・去除英文破綻・涵蓋全類型上皮細胞・以講義紅字為主・分級刷題 (易39/中49/難23)・完整出處解析
-                        </div>
-                    </div>
-                    <span class="text-rose-100 text-2xl font-bold ml-2">→</span>
-                </div>
-            </a>
-        </div>
+            <div class="unit-grid">
+                <a href="interactive_vocabulary_quiz.html" class="unit-item">
+                    <span class="unit-num">單元 01</span>
+                    <span class="unit-name">植物科名中英對照</span>
+                </a>
 
-        <!-- Section: 藥用植物學 -->
-        <div class="space-y-3 text-left">
-            <div class="flex items-center gap-2 mb-1 px-1">
-                <span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500"></span>
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">藥用植物學 (Pharmaceutical Botany)</span>
+                <a href="herb-image.html" class="unit-item">
+                    <span class="unit-num">單元 02</span>
+                    <span class="unit-name">中藥材圖片與特徵</span>
+                </a>
+
+                <a href="herb-family.html" class="unit-item">
+                    <span class="unit-num">單元 03</span>
+                    <span class="unit-name">常見中藥科名測驗</span>
+                </a>
             </div>
+        </section>
 
-            <!-- 單元四：藥用植物學期中考 200 題 -->
-            <a href="botany-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5 border border-teal-400">
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">四大考區・220題 (50題顯微鑑別)</span>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[11px] text-teal-100 font-bold uppercase tracking-wider">Botany Exam・期中全真題庫</div>
-                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
-                            <span>🌸</span>
-                            <span>講義紅字與期中考點全真題庫</span>
-                        </div>
-                        <div class="text-xs text-teal-100 font-normal mt-1">
-                            220 題全覆蓋・50 題顯微圖鑑・題號矩陣即時對錯顯示與錯題重練
-                        </div>
-                    </div>
-                    <span class="text-teal-100 text-xl font-bold ml-2">→</span>
-                </div>
-            </a>
-
-                        <!-- 專題測驗：中藥材食用部位 40 題 (講義P.23~27全收錄) -->
-            <a href="edible-herbs-exam.html" class="relative block w-full p-4 bg-gradient-to-r from-teal-700 via-emerald-700 to-cyan-800 hover:from-teal-800 hover:to-cyan-900 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition duration-200 transform hover:-translate-y-0.5 border border-teal-400">
-                <span class="absolute -top-2.5 right-3 px-2.5 py-0.5 bg-amber-300 text-teal-950 text-[11px] font-black rounded-full shadow-sm animate-pulse tracking-wide">🔥 衛福部公告・37中藥材部位・40題</span>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[11px] text-teal-100 font-bold uppercase tracking-wider">Edible Parts Exam・可供食品使用中藥材專題</div>
-                        <div class="text-base sm:text-lg flex items-center gap-1.5 mt-0.5">
-                            <span>🥗</span>
-                            <span>中藥材食用部位專題測驗</span>
-                        </div>
-                        <div class="text-xs text-teal-100 font-normal mt-1 leading-relaxed">
-                            40 題全收錄・涵蓋講義 P.23~27 全部 37 種中藥材規定部位、燻製發酵特殊工藝與手寫考點
-                        </div>
-                    </div>
-                    <span class="text-teal-100 text-xl font-bold ml-2">→</span>
-                </div>
-            </a>
-
-            <!-- 單元一 -->
-            <a href="interactive_vocabulary_quiz.html" class="unit-sub-link block w-full p-3.5 bg-slate-50 hover:bg-teal-50 text-slate-700 hover:text-teal-700 border border-slate-200 hover:border-teal-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 1</div>
-                        <div class="text-sm sm:text-base font-semibold">🌿 單元一：常見藥用植物科名中英對照</div>
-                    </div>
-                    <span class="text-slate-400 hover:text-teal-600 text-lg font-bold">→</span>
-                </div>
-            </a>
-            
-            <!-- 單元二 -->
-            <a href="herb-image.html" class="unit-sub-link block w-full p-3.5 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-slate-200 hover:border-blue-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 2</div>
-                        <div class="text-sm sm:text-base font-semibold">🌱 單元二：中藥材圖片辨識與特徵</div>
-                    </div>
-                    <span class="text-slate-400 hover:text-blue-600 text-lg font-bold">→</span>
-                </div>
-            </a>
-
-            <!-- 單元三 -->
-            <a href="herb-family.html" class="unit-sub-link block w-full p-3.5 bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 border border-slate-200 hover:border-indigo-300 rounded-xl font-bold transition duration-200 transform hover:-translate-y-0.5">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Unit 3</div>
-                        <div class="text-sm sm:text-base font-semibold">📖 單元三：常見中藥科名測驗</div>
-                    </div>
-                    <span class="text-slate-400 hover:text-indigo-600 text-lg font-bold">→</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-            <span>大仁科技大學 醫藥護專業學科</span>
-            <span>純靜態・零後端・跨裝置支援</span>
-        </div>
+        <footer>
+            <span>離線題庫系統</span>
+            <span>主題設定自動同步至各科測驗</span>
+        </footer>
     </div>
+
     <script id="indexThemeScript">
         (function() {
             const KEY = 'tajen_quiz_theme';
             function apply(dark) {
                 if (dark) document.body.classList.add('dark-mode');
                 else document.body.classList.remove('dark-mode');
-                const ic = document.getElementById('portalThemeIcon');
                 const tx = document.getElementById('portalThemeText');
-                if (ic) ic.textContent = dark ? '☀️' : '🌙';
                 if (tx) tx.textContent = dark ? '淺色模式' : '深色模式';
             }
             window.togglePortalTheme = function() {
