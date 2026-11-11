@@ -502,6 +502,510 @@
       backdrop-filter: blur(4px);
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* === DARK MODE & GOOGLE FORM REPORT MODAL === */
+    body.dark-mode {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary-subtle: rgba(56, 189, 248, 0.12);
+      --success-bg: rgba(21, 128, 61, 0.25);
+      --error-bg: rgba(185, 28, 28, 0.25);
+      background: #0f172a !important;
+      color: #f1f5f9 !important;
+    }
+    body.dark-mode header {
+      border-bottom-color: #334155 !important;
+    }
+    body.dark-mode header:not([style*="gradient"]) {
+      background: #1e293b !important;
+    }
+    body.dark-mode .site-title {
+      color: #f8fafc;
+    }
+    body.dark-mode .nav-btn {
+      background: rgba(30, 41, 59, 0.85);
+      color: #f1f5f9 !important;
+      border-color: rgba(148, 163, 184, 0.35) !important;
+    }
+    body.dark-mode .nav-btn:hover {
+      background: #334155 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .filter-card,
+    body.dark-mode .quiz-card,
+    body.dark-mode .sidebar {
+      background: #1e293b !important;
+      border-color: #334155 !important;
+      color: #f1f5f9 !important;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.35) !important;
+    }
+    body.dark-mode .question-text {
+      color: #f8fafc !important;
+    }
+    body.dark-mode .option-btn {
+      background: #0f172a !important;
+      border-color: #334155 !important;
+      color: #e2e8f0 !important;
+    }
+    body.dark-mode .option-btn:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.12) !important;
+      border-color: #38bdf8 !important;
+    }
+    body.dark-mode .option-prefix {
+      background: #334155 !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .option-btn.correct {
+      background: rgba(22, 163, 74, 0.22) !important;
+      border-color: #22c55e !important;
+      color: #86efac !important;
+    }
+    body.dark-mode .option-btn.correct .option-prefix {
+      background: #16a34a !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .option-btn.wrong {
+      background: rgba(220, 38, 38, 0.22) !important;
+      border-color: #ef4444 !important;
+      color: #fca5a5 !important;
+    }
+    body.dark-mode .option-btn.wrong .option-prefix {
+      background: #dc2626 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .tab-btn {
+      background: #0f172a !important;
+      border-color: #334155 !important;
+      color: #94a3b8 !important;
+    }
+    body.dark-mode .tab-btn:hover {
+      background: #334155 !important;
+      color: #f1f5f9 !important;
+    }
+    body.dark-mode .tab-btn.active {
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border-color: var(--primary) !important;
+    }
+    body.dark-mode .tab-btn.basic-tab {
+      color: #4ade80 !important;
+      border-color: rgba(74, 222, 128, 0.4) !important;
+    }
+    body.dark-mode .tab-btn.basic-tab.active,
+    body.dark-mode .tab-btn.easy-tab.active {
+      background: #16a34a !important;
+      border-color: #16a34a !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .tab-btn.advanced-tab {
+      color: #fbbf24 !important;
+      border-color: rgba(251, 191, 36, 0.4) !important;
+    }
+    body.dark-mode .tab-btn.advanced-tab.active,
+    body.dark-mode .tab-btn.med-tab.active,
+    body.dark-mode .tab-btn.star-tab.active {
+      background: #d97706 !important;
+      border-color: #d97706 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .tab-btn.wrong-tab {
+      color: #f87171 !important;
+      border-color: rgba(248, 113, 113, 0.4) !important;
+    }
+    body.dark-mode .tab-btn.wrong-tab.active,
+    body.dark-mode .tab-btn.hard-tab.active {
+      background: #dc2626 !important;
+      border-color: #dc2626 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .explanation-box {
+      background: #0f172a !important;
+      border-color: #334155 !important;
+      border-left: 4px solid var(--primary) !important;
+    }
+    body.dark-mode .explanation-text {
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .source-badge {
+      background: #334155 !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .grid-btn {
+      background: #0f172a !important;
+      border-color: #334155 !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .grid-btn:hover {
+      background: #334155 !important;
+    }
+    body.dark-mode .grid-btn.correct {
+      background: #16a34a !important;
+      border-color: #16a34a !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .grid-btn.wrong {
+      background: #dc2626 !important;
+      border-color: #dc2626 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .progress-track {
+      background: #334155 !important;
+    }
+    body.dark-mode .stats-bar,
+    body.dark-mode .legend {
+      border-color: #334155 !important;
+    }
+    body.dark-mode .btn-secondary {
+      background: #334155 !important;
+      color: #e2e8f0 !important;
+    }
+    body.dark-mode .btn-secondary:hover:not(:disabled) {
+      background: #475569 !important;
+    }
+    body.dark-mode .bookmark-btn {
+      background: #0f172a !important;
+      border-color: #334155 !important;
+      color: #94a3b8 !important;
+    }
+    body.dark-mode .bookmark-btn.active {
+      background: rgba(234, 179, 8, 0.15) !important;
+      border-color: #eab308 !important;
+      color: #facc15 !important;
+    }
+    body.dark-mode .question-prompt-tag {
+      background: #0f172a !important;
+      color: #94a3b8 !important;
+    }
+    body.dark-mode .copy-report-btn {
+      background: #1e293b !important;
+      border-color: #475569 !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .copy-report-btn:hover {
+      background: #334155 !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .category-pill {
+      background: rgba(2, 132, 199, 0.2) !important;
+      color: #7dd3fc !important;
+      border-color: rgba(56, 189, 248, 0.35) !important;
+    }
+    body.dark-mode .section-basic,
+    body.dark-mode .difficulty-easy {
+      background: rgba(22, 163, 74, 0.2) !important;
+      color: #86efac !important;
+      border-color: rgba(74, 222, 128, 0.35) !important;
+    }
+    body.dark-mode .section-advanced,
+    body.dark-mode .difficulty-medium,
+    body.dark-mode .exam-star-pill {
+      background: rgba(217, 119, 6, 0.2) !important;
+      color: #fcd34d !important;
+      border-color: rgba(251, 191, 36, 0.35) !important;
+    }
+    body.dark-mode .difficulty-hard {
+      background: rgba(220, 38, 38, 0.2) !important;
+      color: #fca5a5 !important;
+      border-color: rgba(248, 113, 113, 0.35) !important;
+    }
+
+    /* Report Button & Modal Styles */
+    .report-header-btn {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      color: #e11d48;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      transition: all 0.2s;
+    }
+    .report-header-btn:hover {
+      background: #ffe4e6;
+      border-color: #fda4af;
+      transform: translateY(-1px);
+    }
+    body.dark-mode .report-header-btn {
+      background: rgba(225, 29, 72, 0.18);
+      border-color: rgba(244, 63, 94, 0.45);
+      color: #fda4af;
+    }
+    body.dark-mode .report-header-btn:hover {
+      background: rgba(225, 29, 72, 0.28);
+    }
+
+    .report-btn-primary {
+      background: #fff1f2;
+      border: 1px solid #fda4af;
+      color: #be123c;
+      padding: 0.38rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .report-btn-primary:hover {
+      background: #ffe4e6;
+      border-color: #f43f5e;
+    }
+    body.dark-mode .report-btn-primary {
+      background: rgba(225, 29, 72, 0.2);
+      border-color: rgba(244, 63, 94, 0.45);
+      color: #fda4af;
+    }
+    body.dark-mode .report-btn-primary:hover {
+      background: rgba(225, 29, 72, 0.32);
+    }
+
+    .report-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .report-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.68);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 1rem;
+    }
+    .report-modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.2s ease-out;
+    }
+    .report-modal-box {
+      background: #ffffff;
+      color: #1e293b;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      border: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    body.dark-mode .report-modal-box {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-color: #334155;
+    }
+    .report-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    body.dark-mode .report-modal-header {
+      border-color: #334155;
+    }
+    .report-modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #e11d48;
+    }
+    body.dark-mode .report-modal-title {
+      color: #fb7185;
+    }
+    .report-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.35rem;
+      color: #64748b;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+    }
+    .report-modal-close:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    body.dark-mode .report-modal-close:hover {
+      background: #334155;
+      color: #f8fafc;
+    }
+    .report-field-group {
+      margin-bottom: 1rem;
+    }
+    .report-field-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #334155;
+    }
+    body.dark-mode .report-field-label {
+      color: #cbd5e1;
+    }
+    .report-info-preview {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.8rem;
+      color: #475569;
+      line-height: 1.5;
+      height: 82px;
+      overflow-y: auto;
+      font-family: inherit;
+      resize: none;
+    }
+    body.dark-mode .report-info-preview {
+      background: #0f172a;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+    .report-radio-group {
+      display: flex;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .report-radio-option {
+      flex: 1;
+      min-width: 105px;
+      position: relative;
+    }
+    .report-radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .report-radio-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.55rem 0.6rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #ffffff;
+      color: #334155;
+      transition: all 0.15s;
+      text-align: center;
+    }
+    body.dark-mode .report-radio-option label {
+      background: #0f172a;
+      border-color: #334155;
+      color: #cbd5e1;
+    }
+    .report-radio-option input[type="radio"]:checked + label {
+      border-color: #e11d48;
+      background: #fff1f2;
+      color: #be123c;
+      font-weight: 700;
+    }
+    body.dark-mode .report-radio-option input[type="radio"]:checked + label {
+      border-color: #f43f5e;
+      background: rgba(225, 29, 72, 0.22);
+      color: #fda4af;
+    }
+    .report-textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #0f172a;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .report-textarea:focus {
+      outline: none;
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+    body.dark-mode .report-textarea {
+      background: #0f172a;
+      border-color: #334155;
+      color: #f1f5f9;
+    }
+    .report-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.15rem;
+      flex-wrap: wrap;
+    }
+    .report-submit-btn {
+      background: #e11d48;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .report-submit-btn:hover:not(:disabled) {
+      background: #be123c;
+      transform: translateY(-1px);
+    }
+    .report-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .report-cancel-btn {
+      background: #e2e8f0;
+      color: #334155;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    body.dark-mode .report-cancel-btn {
+      background: #334155;
+      color: #cbd5e1;
+    }
+    .report-fallback-link {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-decoration: underline;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    body.dark-mode .report-fallback-link {
+      color: #94a3b8;
+    }
+    /* === END DARK MODE & REPORT MODAL === */
+
   </style>
 </head>
 <body>
@@ -512,6 +1016,10 @@
         <span>可供食品使用中藥材食用部位測驗 (40題・講義P.23~27全收錄)</span>
       </div>
       <div class="nav-actions">
+        <button id="themeToggleBtn" class="nav-btn" onclick="toggleTheme()" title="切換深色/淺色護眼模式">
+          <span id="themeIcon">🌙</span>
+          <span id="themeText">深色</span>
+        </button>
         <a href="index.html" class="nav-btn">
           <span>🏠</span>
           <span>首頁</span>
@@ -575,6 +1083,7 @@
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span class="q-number" id="questionNumber">第 1 題 / 共 40 題</span>
             <button class="bookmark-btn" id="bookmarkBtn" onclick="toggleBookmark()" title="標記/收藏本題">★</button>
+            <button class="report-header-btn" onclick="openReportModal()" title="回報本題錯誤或疑義">🚨 回報</button>
           </div>
         </div>
 
@@ -588,10 +1097,16 @@
             <span class="source-badge" id="sourceBadge">講義來源</span>
           </div>
           <div class="explanation-text" id="explanationText"></div>
-          <button class="copy-report-btn" onclick="copyQuestionReport()">
-            <span>📋</span>
-            <span>複製本題資訊以供修正</span>
-          </button>
+          <div class="report-actions-row">
+            <button class="report-btn-primary" onclick="openReportModal()">
+              <span>🚨</span>
+              <span>回報本題問題 (免跳轉直接送出)</span>
+            </button>
+            <button class="copy-report-btn" onclick="copyQuestionReport()">
+              <span>📋</span>
+              <span>複製文字資訊</span>
+            </button>
+          </div>
         </div>
 
         <div class="card-footer">
@@ -621,6 +1136,59 @@
       <div class="grid-container" id="gridContainer"></div>
     </div>
   </main>
+
+
+  <!-- Google Form Report Modal -->
+  <div class="report-modal-overlay" id="reportModalOverlay" onclick="if(event.target===this) closeReportModal()">
+    <div class="report-modal-box">
+      <div class="report-modal-header">
+        <div class="report-modal-title">
+          <span>🚨</span>
+          <span>題目問題回報</span>
+        </div>
+        <button class="report-modal-close" onclick="closeReportModal()" title="關閉">✕</button>
+      </div>
+
+      <div class="report-field-group">
+        <label class="report-field-label">📌 題號與資訊（系統已自動帶入）</label>
+        <textarea class="report-info-preview" id="reportInfoPreview" readonly></textarea>
+      </div>
+
+      <div class="report-field-group">
+        <label class="report-field-label">🏷️ 問題類型（必選）</label>
+        <div class="report-radio-group">
+          <div class="report-radio-option">
+            <input type="radio" name="reportIssueType" id="issueType1" value="答案錯誤" checked>
+            <label for="issueType1">❌ 答案錯誤</label>
+          </div>
+          <div class="report-radio-option">
+            <input type="radio" name="reportIssueType" id="issueType2" value="題目敘述有誤">
+            <label for="issueType2">📝 題目敘述有誤</label>
+          </div>
+          <div class="report-radio-option">
+            <input type="radio" name="reportIssueType" id="issueType3" value="其他">
+            <label for="issueType3">💬 其他</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-field-group">
+        <label class="report-field-label" for="reportDescInput">✍️ 說明（選填，可填寫正確答案或講義頁數）</label>
+        <textarea class="report-textarea" id="reportDescInput" placeholder="例如：講義第 15 頁寫的是... 或 正確答案應為..."></textarea>
+      </div>
+
+      <div class="report-modal-footer">
+        <button type="button" class="report-fallback-link" onclick="openPrefilledGoogleForm()" title="開啟 Google 表單網頁預填">🔗 改用 Google 表單網頁開啟</button>
+        <div style="display: flex; gap: 0.6rem;">
+          <button type="button" class="report-cancel-btn" onclick="closeReportModal()">取消</button>
+          <button type="button" class="report-submit-btn" id="reportSubmitBtn" onclick="submitQuestionReport()">
+            <span>🚀</span>
+            <span id="reportSubmitText">直接送出回報</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="toast" id="toast">已複製至剪貼簿！</div>
 
@@ -1628,7 +2196,140 @@
     });
   }
 
-  window.copyQuestionReport = function() {
+  // === DARK MODE & GOOGLE FORM REPORT LOGIC ===
+      const THEME_STORAGE_KEY = 'tajen_quiz_theme';
+      const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeeuhUtsdux9m3EgCDKocSfZMrF254vzmG_8Vj76-wUs91X7w/formResponse';
+      const GOOGLE_FORM_VIEW = 'https://docs.google.com/forms/d/e/1FAIpQLSeeuhUtsdux9m3EgCDKocSfZMrF254vzmG_8Vj76-wUs91X7w/viewform';
+      const ENTRY_INFO = 'entry.988229156';
+      const ENTRY_TYPE = 'entry.1380588807';
+      const ENTRY_DESC = 'entry.1539958000';
+
+      function applyTheme(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+        const iconEl = document.getElementById('themeIcon');
+        const textEl = document.getElementById('themeText');
+        if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
+        if (textEl) textEl.textContent = isDark ? '淺色' : '深色';
+      }
+
+      window.toggleTheme = function() {
+        const isDark = !document.body.classList.contains('dark-mode');
+        applyTheme(isDark);
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, isDark ? 'dark' : 'light');
+        } catch(e) {}
+        showToast(isDark ? '🌙 已切換至深色護眼模式' : '☀️ 已切換至淺色模式');
+      };
+
+      // Initialize theme immediately
+      try {
+        const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+        if (savedTheme === 'dark') {
+          applyTheme(true);
+        }
+      } catch(e) {}
+
+      function getQuestionReportInfo() {
+        if (!activeQuestions || !activeQuestions.length) return '';
+        const q = activeQuestions[currentIndex];
+        if (!q) return '';
+        const rawTitle = (document.title || '測驗題庫').split(' ')[0];
+        const cat = q.chapter || q.category || '';
+        const src = q.source ? ` | 出處: ${q.source}` : '';
+        if (q.options && q.options.length === 2 && (q.options[0].includes('○') || q.options[0].includes('正確'))) {
+          const ansText = q.answer === 0 ? '○ 正確 (True)' : '╳ 錯誤 (False)';
+          return `【${rawTitle}】題號 #${q.id} (${cat})\n題幹: ${q.question}\n目前正解: ${ansText}${src}`;
+        } else {
+          const letters = ['A', 'B', 'C', 'D'];
+          const opts = (q.options || []).map((o, i) => `${letters[i]}.${o.replace(/^[A-D]\.\s*/, '')}`).join(' ');
+          return `【${rawTitle}】題號 #${q.id} (${cat})\n題目: ${q.question}\n選項: ${opts}\n目前正解: ${letters[q.answer]}${src}`;
+        }
+      }
+
+      window.openReportModal = function() {
+        const modal = document.getElementById('reportModalOverlay');
+        const preview = document.getElementById('reportInfoPreview');
+        const desc = document.getElementById('reportDescInput');
+        const submitBtn = document.getElementById('reportSubmitBtn');
+        const submitText = document.getElementById('reportSubmitText');
+        if (!modal) return;
+        if (preview) preview.value = getQuestionReportInfo();
+        if (desc) desc.value = '';
+        const r1 = document.getElementById('issueType1');
+        if (r1) r1.checked = true;
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitText) submitText.textContent = '直接送出回報';
+        modal.classList.add('active');
+      };
+
+      window.closeReportModal = function() {
+        const modal = document.getElementById('reportModalOverlay');
+        if (modal) modal.classList.remove('active');
+      };
+
+      window.openPrefilledGoogleForm = function() {
+        const info = getQuestionReportInfo();
+        const checkedRadio = document.querySelector('input[name="reportIssueType"]:checked');
+        const issueType = checkedRadio ? checkedRadio.value : '答案錯誤';
+        const desc = (document.getElementById('reportDescInput') || {}).value || '';
+        const params = new URLSearchParams();
+        params.append('usp', 'pp_url');
+        params.append(ENTRY_INFO, info);
+        params.append(ENTRY_TYPE, issueType);
+        if (desc.trim()) params.append(ENTRY_DESC, desc.trim());
+        window.open(`${GOOGLE_FORM_VIEW}?${params.toString()}`, '_blank', 'noopener');
+      };
+
+      window.submitQuestionReport = function() {
+        const info = getQuestionReportInfo();
+        const checkedRadio = document.querySelector('input[name="reportIssueType"]:checked');
+        const issueType = checkedRadio ? checkedRadio.value : '答案錯誤';
+        const desc = ((document.getElementById('reportDescInput') || {}).value || '').trim();
+        const submitBtn = document.getElementById('reportSubmitBtn');
+        const submitText = document.getElementById('reportSubmitText');
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitText) submitText.textContent = '傳送中...';
+
+        const params = new URLSearchParams();
+        params.append(ENTRY_INFO, info);
+        params.append(ENTRY_TYPE, issueType);
+        params.append(ENTRY_DESC, desc);
+        params.append('fvv', '1');
+        params.append('pageHistory', '0');
+
+        fetch(GOOGLE_FORM_ACTION, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: params.toString()
+        }).then(() => {
+          closeReportModal();
+          showToast('✅ 問題回報已成功送出！感謝您的協助！');
+        }).catch(() => {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitText) submitText.textContent = '直接送出回報';
+          if (confirm('網路連線受阻，是否改為開啟預填好的 Google 表單頁面送出？')) {
+            openPrefilledGoogleForm();
+            closeReportModal();
+          }
+        });
+      };
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeReportModal();
+        }
+      });
+      // === END DARK MODE & GOOGLE FORM REPORT LOGIC ===
+
+      window.copyQuestionReport = function() {
     const q = activeQuestions[currentIndex];
     const letters = ['A', 'B', 'C', 'D'];
     const diffMap = { easy: '易 (基礎)', medium: '中 (進階)', hard: '難 (挑戰)' };
@@ -1666,6 +2367,7 @@
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || (document.getElementById('reportModalOverlay') && document.getElementById('reportModalOverlay').classList.contains('active'))) return;
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown') {
       nextQuestion();
