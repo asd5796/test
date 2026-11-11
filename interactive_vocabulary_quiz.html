@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見藥用植物科名測驗 · 單元一</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f6f5f1;
+            --surface: #ffffff;
+            --surface-hover: #faf9f6;
+            --border: #e5e3dc;
+            --border-strong: #d4d1c7;
+            --ink: #171716;
+            --ink-secondary: #686660;
+            --ink-muted: #94918a;
+            --accent: #185c4b;
+            --success-bg: #dcfce7;
+            --success-border: #86efac;
+            --success-text: #15803d;
+            --error-bg: #fee2e2;
+            --error-border: #fca5a5;
+            --error-text: #b91c1c;
+        }
+
+        body.dark-mode {
+            --bg: #111315;
+            --surface: #181a1d;
+            --surface-hover: #1f2226;
+            --border: #272a2f;
+            --border-strong: #363a41;
+            --ink: #eceae4;
+            --ink-secondary: #9498a0;
+            --ink-muted: #646870;
+            --accent: #56b89d;
+            --success-bg: rgba(34, 197, 94, 0.18);
+            --success-border: rgba(34, 197, 94, 0.35);
+            --success-text: #86efac;
+            --error-bg: rgba(239, 68, 68, 0.18);
+            --error-border: rgba(239, 68, 68, 0.35);
+            --error-text: #fca5a5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 480px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--ink-secondary);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            transition: all 0.15s ease;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+            border-color: var(--border-strong);
+            background-color: var(--surface-hover);
+        }
+
+        .theme-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--ink-secondary);
+            font-size: 0.8125rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--border-strong);
+            color: var(--ink);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-size: 0.8125rem;
+            color: var(--ink-secondary);
+        }
+
+        #question-container {
+            text-align: center;
+            min-height: 4.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.4;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-button {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--ink);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.15s ease;
+            font-family: inherit;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: var(--surface-hover);
+            border-color: var(--border-strong);
+        }
+
+        .option-button:disabled {
+            cursor: default;
+        }
+
+        .correct-bg {
+            background-color: var(--success-bg) !important;
+            border-color: var(--success-border) !important;
+            color: var(--success-text) !important;
+            font-weight: 600 !important;
+        }
+
+        .wrong-bg {
+            background-color: var(--error-bg) !important;
+            border-color: var(--error-border) !important;
+            color: var(--error-text) !important;
+            font-weight: 600 !important;
+        }
+
+        .neutral-bg {
+            opacity: 0.5;
+        }
+
+        footer {
+            margin-top: 24px;
+            min-height: 44px;
+        }
+
+        #next-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--ink);
+            color: var(--surface);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            display: none;
+            transition: opacity 0.15s ease;
+        }
+
+        body.dark-mode #next-btn {
+            background-color: var(--accent);
+            color: #0f172a;
+        }
+
+        #next-btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 18px 16px;
+            }
+            #question-text {
+                font-size: 1.15rem;
+            }
+            .option-button {
+                padding: 10px 14px;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-top">
+            <a href="index.html" class="back-link">← 首頁</a>
+            <button id="themeToggleBtn" class="theme-btn" onclick="toggleTheme()">🌙 深色</button>
+        </div>
+
+        <header>
+            <h1>常見藥用植物科名測驗</h1>
+            <p class="subtitle">單元一 · 點擊對應之中文或英文科名</p>
+        </header>
+
+        <main>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+            </div>
+
+            <div id="options-container" class="options-container"></div>
+        </main>
+
+        <footer>
+            <button id="next-btn">下一題 →</button>
+        </footer>
+    </div>
+
+    <script>
+        const THEME_KEY = 'tajen_quiz_theme';
+        function applyTheme(isDark) {
+            document.body.classList.toggle('dark-mode', isDark);
+            const btn = document.getElementById('themeToggleBtn');
+            if (btn) btn.textContent = isDark ? '☀️ 淺色' : '🌙 深色';
+        }
+        function toggleTheme() {
+            const isDark = !document.body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            try { localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light'); } catch(e) {}
+        }
+        try {
+            if (localStorage.getItem(THEME_KEY) === 'dark') applyTheme(true);
+        } catch(e) {}
+
+        const vocabulary = [
+            { zh: "菊科", en: "Asteraceae / Compositae" },
+            { zh: "五加科", en: "Araliaceae" },
+            { zh: "毛茛科", en: "Ranunculaceae" },
+            { zh: "馬兜鈴科", en: "Aristolochiaceae" },
+            { zh: "豆科", en: "Fabaceae / Leguminosae" },
+            { zh: "葫蘆科", en: "Cucurbitaceae" },
+            { zh: "唇形科", en: "Lamiaceae / Labiatae" },
+            { zh: "蘭科", en: "Orchidaceae" },
+            { zh: "繖形科", en: "Apiaceae / Umbelliferae" },
+            { zh: "木蘭科", en: "Magnoliaceae" },
+            { zh: "茄科", en: "Solanaceae" },
+            { zh: "紫葳科", en: "Bignoniaceae" },
+            { zh: "十字花科", en: "Brassicaceae / Cruciferae" },
+            { zh: "夾竹桃科", en: "Apocynaceae" },
+            { zh: "百合科", en: "Liliaceae" },
+            { zh: "薔薇科", en: "Rosaceae" },
+            { zh: "薑科", en: "Zingiberaceae" },
+            { zh: "石竹科", en: "Caryophyllaceae" },
+            { zh: "芸香科", en: "Rutaceae" },
+            { zh: "大戟科", en: "Euphorbiaceae" }
+        ];
+
+        let currentCorrectOption = null;
+        let isAnswered = false;
+        let currentOptionsData = [];
+        let isEnToZh = true;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function loadNextQuestion() {
+            isAnswered = false;
+            nextBtn.style.display = 'none';
+            optionsContainer.innerHTML = '';
+
+            isEnToZh = Math.random() < 0.5;
+
+            const targetIndex = getRandomInt(vocabulary.length);
+            const targetItem = vocabulary[targetIndex];
+            currentCorrectOption = isEnToZh ? targetItem.zh : targetItem.en;
+
+            questionText.textContent = isEnToZh ? targetItem.en : targetItem.zh;
+
+            let wrongIndices = [];
+            while (wrongIndices.length < 3) {
+                const randIndex = getRandomInt(vocabulary.length);
+                if (randIndex !== targetIndex && !wrongIndices.includes(randIndex)) {
+                    wrongIndices.push(randIndex);
+                }
+            }
+
+            let options = wrongIndices.map(index => isEnToZh ? vocabulary[index].zh : vocabulary[index].en);
+            options.push(currentCorrectOption);
+            currentOptionsData = shuffleArray(options);
+
+            currentOptionsData.forEach(optText => {
+                const btn = document.createElement('button');
+                btn.className = "option-button";
+                btn.textContent = optText;
+                btn.addEventListener('click', () => handleOptionClick(btn, optText));
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleOptionClick(selectedBtn, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const buttons = optionsContainer.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.textContent === currentCorrectOption) {
+                    btn.classList.add('correct-bg');
+                } else if (btn === selectedBtn) {
+                    btn.classList.add('wrong-bg');
+                } else {
+                    btn.classList.add('neutral-bg');
+                }
+            });
+
+            nextBtn.style.display = 'block';
+        }
+
+        nextBtn.addEventListener('click', loadNextQuestion);
+        loadNextQuestion();
+    </script>
+</body>
+</html>
